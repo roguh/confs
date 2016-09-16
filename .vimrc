@@ -64,3 +64,7 @@ set statusline +=%3*%y%*                "file type
 set statusline +=%1*%=%5l%*             "current line
 set statusline +=%2*/%L%*               "total lines
 set statusline +=%4*\ %<%F%*            "full path
+
+if filereadable(".vim.custom")
+    so .vim.custom
+endif
