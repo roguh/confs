@@ -1,7 +1,6 @@
 # Path to oh-my-zsh installation.
 export ZSH=$HOME/.oh-my-zsh
 
-# Set name of the theme to load.
 # Look in ~/.oh-my-zsh/themes/
 ZSH_THEME="ys"
 
@@ -16,21 +15,21 @@ ENABLE_CORRECTION="true"
 COMPLETION_WAITING_DOTS="true"
 
 # Plugins can be found in ~/.oh-my-zsh/plugins/*
+# Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 plugins=(gitfast python)
 
 export PATH=$HOME/bin:/usr/local/bin:$PATH
 
 source $ZSH/oh-my-zsh.sh
 
-# May need to manually set your language environment
-# export LANG=en_US.UTF-8
-
 alias m=mupdf-x11
 alias e=evince
 alias em='emacs -nw'
 alias emc='emacsclient -nw --alternate-editor=""'
 alias ll='ls -Fa --group-directories-first'
+alias l='ls -lFah --group-directories-first'
 
-# Disable history
+export TERM='xterm-256color'
+
 unset HISTFILE
-export HISTSIZE=0
+export HISTSIZE=100
