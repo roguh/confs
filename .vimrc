@@ -68,3 +68,6 @@ set statusline +=%4*\ %<%F%*            "full path
 if filereadable(".vim.custom")
     so .vim.custom
 endif
+
+" reload a file if it's changed by another process
+set autoread
