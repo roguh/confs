@@ -28,10 +28,23 @@
 (let ((file-name-handler-alist nil))
 
 ;; Higher garbage collection limit while loading the init file.
-(setq gc-cons-threshold 100000000)
+(setq gc-cons-threshold 1000000000)
+
+;; Reset garbage collection limit to a sane number.
+(run-with-idle-timer
+ 5 nil
+ (lambda ()
+   (setq gc-cons-threshold 100000)
+   (message "gc-cons-threshold restored to %S"
+            gc-cons-threshold)))
+)
+
 
 ;; No hard tabs.
 (setq-default indent-tabs-mode nil)
+
+;; (use-package smart-mode-line
+;;   :config (setq sml/theme 'dark))
 
 (use-package benchmark-init
   :config (benchmark-init/activate)
@@ -39,6 +52,7 @@
 
 ;; Syntax checker for ~40 languages.
 (use-package flycheck
+  :defer 1
   :config (global-flycheck-mode))
 
 ;; Clean up whitespace.
@@ -59,19 +73,19 @@
 
 
 ;; Vim keybindings.
-
 (use-package evil
   :config
   (evil-mode)
   ;; Bind ; to :
   (define-key evil-normal-state-map (kbd ";") 'evil-ex))
 
-;; IDO auto complete.
-(use-package ido
-  :config (ido-mode t))
-
+;; Smart M-x enhancement built on top of IDO
 (use-package smex
+  :defer 0.5 
   :config
+  ;; IDO auto complete.
+  (use-package ido
+    :config (ido-mode t))
   (global-set-key (kbd "M-x") 'smex)
   (global-set-key (kbd "M-X") 'smex-major-mode-commands))
 
@@ -90,19 +104,23 @@
 ;; Live web development.
 ;; Commands: httpd-start to start server
 ;;           impateint-mode to publish file
-(use-package impatient-mode)
+(use-package impatient-mode
+  :defer 1.5)
 
 ;; Javascript mode.
 ;; (use-package js2-mode)
 
 ;; Coffeescript mode.
-(use-package coffee-mode)
+(use-package coffee-mode
+  :defer 1)
 
 ;; JSON mode.
-(use-package json-mode)
+(use-package json-mode
+  :defer 1)
 
 ;; Improved Haskel mode.
 (use-package intero
+  :defer 1
   :no-require t)
 
 ;; Markdown mode.
@@ -115,12 +133,12 @@
 ;;   (add-to-list 'auto-mode-alist '("\\.md\\'" . markdown-mode)))
 
 ;; Explore keybindings.
-(use-package guide-key
-  :config
-  (setq guide-key/guide-key-sequence '("C-x"))
-  (setq guide-key/recursive-key-sequence-flag t)
-  (setq guide-key/idle-delay 0.1)
-  (guide-key-mode 1))
+;; (use-package guide-key
+;;   :config
+;;   (setq guide-key/guide-key-sequence '("C-x"))
+;;   (setq guide-key/recursive-key-sequence-flag t)
+;;   (setq guide-key/idle-delay 0.1)
+;;   (guide-key-mode 1))
 
 ;; See trailing whitespace.
 (use-package whitespace
@@ -132,15 +150,16 @@
   :config (global-whitespace-cleanup-mode))
 
 ;; Git.
-(use-package magit
-  :no-require t)
+;; Adds 0.5 seconds to load time.
+;; (use-package magit
+;;   :no-require t)
 
 ;; Auto complete.
 (use-package auto-complete
   :config (ac-config-default))
 
-;; Android
-(use-package android-mode)
+;; Android 
+;; (use-package android-mode)
 
 ;; System monitor.
 ;; (use-package symon
@@ -154,8 +173,9 @@
 
 ;; Org mode. Enable indent mode.
 (use-package org
-  :no-require t
-  :config (add-hook 'org-mode-hook 'org-indent-mode))
+  :defer 1
+  :no-require t)
+  ;; :config (add-hook 'org-mode-hook 'org-indent-mode))
 
 ;; No splash screen. Show agenda on startup.
 (setq inhibit-splash-screen t)
@@ -212,11 +232,11 @@
 ;; (setq ispell-dictionary "espanol")
 
 ;; Use java based LanguageTool grammar and spellchecker
-(use-package langtool
-  :config
-  (setq langtool-language-tool-jar "~/.emacs.d/LanguageTool-3.3/languagetool-commandline.jar")
-  (setq langtool-default-language "es")
-  (setq langtool-mother-tongue "en"))
+;; (use-package langtool
+;;   :config
+;;   (setq langtool-language-tool-jar "~/.emacs.d/LanguageTool-3.3/languagetool-commandline.jar")
+;;   (setq langtool-default-language "es")
+;;   (setq langtool-mother-tongue "en"))
 
 
 ;; C indentation
@@ -256,15 +276,6 @@
 
 ;; Load manually installed packages.
 ;; (load-file "~/.emacs.d/emacs-local-packages/proofgeneral-4.2/generic/proof-site.el")
-
-;; Reset garbage collection limit to a sane number.
-(run-with-idle-timer
- 5 nil
- (lambda ()
-   (setq gc-cons-threshold 1000000)
-   (message "gc-cons-threshold restored to %S"
-            gc-cons-threshold)))
-)
 
 ;;; init.el ends here
 (custom-set-variables
