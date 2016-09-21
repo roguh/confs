@@ -1,8 +1,7 @@
 ;;; init.el --- Load packages fast!
 ;;;
 ;;; Commentary:
-;;;
-;;; uses use-package
+;;; lots of use-package
 ;;;
 ;;; Code:
 
@@ -28,7 +27,7 @@
 (let ((file-name-handler-alist nil))
 
 ;; Higher garbage collection limit while loading the init file.
-(setq gc-cons-threshold 1000000000)
+(setq gc-cons-threshold 100000000)
 
 ;; Reset garbage collection limit to a sane number.
 (run-with-idle-timer
@@ -36,19 +35,10 @@
  (lambda ()
    (setq gc-cons-threshold 100000)
    (message "gc-cons-threshold restored to %S"
-            gc-cons-threshold)))
-)
-
-
-;; No hard tabs.
-(setq-default indent-tabs-mode nil)
-
-;; (use-package smart-mode-line
-;;   :config (setq sml/theme 'dark))
+            gc-cons-threshold))))
 
 (use-package benchmark-init
-  :config (benchmark-init/activate)
-)
+  :config (benchmark-init/activate))
 
 ;; Syntax checker for ~40 languages.
 (use-package flycheck
@@ -74,6 +64,9 @@
 
 ;; Vim keybindings.
 (use-package evil
+  :init
+  ;; Free the Ctrl-Z fbinding
+  (setq evil-toggle-key "C-`")
   :config
   (evil-mode)
   ;; Bind ; to :
@@ -81,7 +74,7 @@
 
 ;; Smart M-x enhancement built on top of IDO
 (use-package smex
-  :defer 0.5 
+  :defer 0.5
   :config
   ;; IDO auto complete.
   (use-package ido
@@ -104,8 +97,8 @@
 ;; Live web development.
 ;; Commands: httpd-start to start server
 ;;           impateint-mode to publish file
-(use-package impatient-mode
-  :defer 1.5)
+;; (use-package impatient-mode
+;;   :defer 1.5)
 
 ;; Javascript mode.
 ;; (use-package js2-mode)
@@ -115,10 +108,10 @@
   :defer 1)
 
 ;; JSON mode.
-(use-package json-mode
-  :defer 1)
+;; (use-package json-mode
+;;   :defer 1)
 
-;; Improved Haskel mode.
+;; Improved Haskell mode.
 (use-package intero
   :defer 1
   :no-require t)
@@ -140,12 +133,6 @@
 ;;   (setq guide-key/idle-delay 0.1)
 ;;   (guide-key-mode 1))
 
-;; See trailing whitespace.
-(use-package whitespace
-  :config
-  (setq whitespace-style '(face trailing))
-  (global-whitespace-mode))
-
 (use-package whitespace-cleanup-mode
   :config (global-whitespace-cleanup-mode))
 
@@ -158,7 +145,7 @@
 (use-package auto-complete
   :config (ac-config-default))
 
-;; Android 
+;; Android
 ;; (use-package android-mode)
 
 ;; System monitor.
@@ -183,31 +170,28 @@
 ;; 			   (org-agenda-list)
 ;;      		   (delete-other-windows)))
 
-;; Save us from the clobbering.
-(global-auto-revert-mode 1)
-
-;; Enable Unicode.
-(set-language-environment "UTF-8")
-(set-default-coding-systems 'utf-8)
-
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
+ '(custom-safe-themes
+   (quote
+    ("a27c00821ccfd5a78b01e4f35dc056706dd9ede09a8b90c6955ae6a390eb1c1e" default)))
  '(linum-relative-current-symbol "")
  '(linum-relative-format
    (let
        ((max-width
-	 (length
-	  (number-to-string
-	   (count-lines
-	    (point-min)
-	    (point-max))))))
+         (length
+          (number-to-string
+           (count-lines
+            (point-min)
+            (point-max))))))
      (format "%%%ds " max-width)))
- '(org-agenda-files
+ '(org-agenda-files (quote ("~/TODO.org")))
+ '(package-selected-packages
    (quote
-    ("~/TODO.org" "~/107TODO.org"))))
+    (android-mode whitespace-cleanup-mode use-package tao-theme smex rainbow-mode magit linum-relative langtool json-mode impatient-mode haskell-mode guide-key flycheck evil column-marker col-highlight coffee-mode benchmark-init auto-complete auctex))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -238,6 +222,12 @@
 ;;   (setq langtool-default-language "es")
 ;;   (setq langtool-mother-tongue "en"))
 
+;; Save us from the clobbering.
+(global-auto-revert-mode 1)
+
+;; Enable Unicode.
+(set-language-environment "UTF-8")
+(set-default-coding-systems 'utf-8)
 
 ;; C indentation
 (setq-default c-basic-offset 4)
@@ -245,6 +235,15 @@
 
 ;; .check <=> .c
 (add-to-list 'auto-mode-alist '("\\.check\\'" . c-mode))
+
+;; Enable y/n answers.
+(fset 'yes-or-no-p 'y-or-n-p)
+
+;; Automatic indentation.
+(electric-indent-mode 1)
+
+;; No hard tabs.
+(setq-default indent-tabs-mode nil)
 
 ;; Backup and auto-save directories.
 (defvar backup-dir (concat user-emacs-directory "emacs-backups/"))
@@ -278,28 +277,5 @@
 ;; (load-file "~/.emacs.d/emacs-local-packages/proofgeneral-4.2/generic/proof-site.el")
 
 ;;; init.el ends here
-(custom-set-variables
- ;; custom-set-variables was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(linum-relative-current-symbol "")
- '(linum-relative-format
-   (let
-       ((max-width
-         (length
-          (number-to-string
-           (count-lines
-            (point-min)
-            (point-max))))))
-     (format "%%%ds " max-width)))
- '(org-agenda-files (quote ("~/TODO.org")))
- '(package-selected-packages
-   (quote
-    (android-mode whitespace-cleanup-mode use-package tao-theme smex rainbow-mode magit linum-relative langtool json-mode impatient-mode haskell-mode guide-key flycheck evil column-marker col-highlight coffee-mode benchmark-init auto-complete auctex))))
-(custom-set-faces
- ;; custom-set-faces was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- )
+
+

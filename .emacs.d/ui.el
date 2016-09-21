@@ -7,7 +7,7 @@
 ;; Color for lines, indentation and column
 (setq line-backcolor "#eff")
 (setq line-forecolor "#000")
-(setq col-highlight-color "#888")
+(setq col-highlight-color "#ddd")
 (setq comment-background-color "#222")
 (setq comment-color "#fff")
 
@@ -17,6 +17,17 @@
 ;; Matching parentheses.
 (setq show-paren-style 'expression)
 (show-paren-mode 1)
+
+;; Disable menus
+(tool-bar-mode -1)
+(menu-bar-mode -1)
+(scroll-bar-mode -1)
+
+;; Neat status line
+(use-package smart-mode-line
+  :config
+  (setq sml/theme 'light)
+  (smart-mode-line-enable))
 
 ;; Theme
 ;; download and package-install-file:
@@ -49,13 +60,13 @@
 (column-number-mode t)
 (size-indication-mode t)
 
-;; Enable y/n answers.
-(fset 'yes-or-no-p 'y-or-n-p)
+;;; See trailing whitespace.
+(use-package whitespace
+  :config
+  (setq whitespace-style '(face trailing))
+  (global-whitespace-mode))
 
-;; Automatic indentation.
-(electric-indent-mode 1)
-
-;; Line numbering.
+; Line numbering.
 (use-package linum
   :config (global-linum-mode 1))
 
@@ -75,14 +86,7 @@
 (use-package rainbow-mode
   :config (autoload 'rainbow-mode "rainbow" "Highlight color literals"))
 
-;; Spacemacs' status bar.
-;; (use-package spaceline
-;;    :config
-;;    (require 'spaceline-config))
-;;   (spaceline-spacemacs-theme))
-
 ;; Highlight current line.
-;; TODO disable on very long lines
 (global-hl-line-mode 1)
 (set-face-background 'hl-line line-backcolor)
 (set-face-foreground 'hl-line line-forecolor)
@@ -107,9 +111,10 @@
   (add-hook 'prog-mode-hook setup-column-marker)))
 
 ;; Mark lines using output from git diff.
-;; (use-package git-gutter
-;;   :config
-;;   (global-git-gutter-mode +1)
-;;   (git-gutter:linum-setup))
+(use-package git-gutter
+  :defer 0.5
+  :config
+  (global-git-gutter-mode +1)
+  (git-gutter:linum-setup))
 
 ;;; ui.el ends here

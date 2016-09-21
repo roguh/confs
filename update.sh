@@ -36,6 +36,7 @@ echo TODO: may need to run 'ln -s ~/.vimrc ~/.config/nvim/init.vim'
 echo emacs.d
 mkdir_conf .emacs.d
 copy_conf .emacs.d/init.el
+copy_conf .emacs.d/ui.el
 
 echo i3
 mkdir_conf .config/i3
