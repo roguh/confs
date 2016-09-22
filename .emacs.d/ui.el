@@ -72,7 +72,6 @@
 
 (use-package linum-relative
   :config
-  (linum-relative-on)
   ;; Format numbers according to # of lines in file.
   (custom-set-variables
    '(linum-relative-current-symbol "")
