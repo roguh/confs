@@ -37,7 +37,7 @@ Plug 'LaTeX-Box-Team/LaTeX-Box'
 
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
-let g:airline_theme='serene'
+let g:airline_theme='silver'
 
 Plug 'plasticboy/vim-markdown'
 Plug 'godlygeek/tabular'
