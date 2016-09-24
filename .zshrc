@@ -4,15 +4,18 @@ export ZSH=$HOME/.oh-my-zsh
 # Look in ~/.oh-my-zsh/themes/
 ZSH_THEME="ys"
 
-# Uncomment the following line to use hyphen-insensitive completion. Case
+# Use hyphen-insensitive completion. Case
 # sensitive completion must be off. _ and - will be interchangeable.
 HYPHEN_INSENSITIVE="true"
 
-# Uncomment the following line to enable command auto-correction.
+# Enable command auto-correction.
 ENABLE_CORRECTION="true"
 
-# Uncomment the following line to display red dots whilst waiting for completion.
+# Display red dots whilst waiting for completion.
 COMPLETION_WAITING_DOTS="true"
+
+# No ls colors.
+DISABLE_LS_COLORS="true"
 
 # Plugins can be found in ~/.oh-my-zsh/plugins/*
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
@@ -26,8 +29,8 @@ alias m=mupdf-x11
 alias e=evince
 alias em='emacs -nw'
 alias emc='emacsclient -nw --alternate-editor=""'
-alias ll='ls -Fa --group-directories-first'
-alias l='ls -lFah --group-directories-first'
+alias l='ls -Fa --group-directories-first'
+alias ll='ls -lFah --group-directories-first'
 alias unison=$HOME/bin/unison
 
 export TERM='xterm-256color'
