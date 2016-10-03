@@ -72,7 +72,15 @@
   :config
   (evil-mode)
   ;; Bind ; to :
-  (define-key evil-normal-state-map (kbd ";") 'evil-ex))
+  (define-key evil-normal-state-map (kbd ";") 'evil-ex)
+  ;; Change cursor color depending on mode
+  (setq evil-emacs-state-cursor '("red" box))
+  (setq evil-normal-state-cursor '("green" box))
+  (setq evil-visual-state-cursor '("orange" box))
+  (setq evil-insert-state-cursor '("red" bar))
+  (setq evil-replace-state-cursor '("red" bar))
+  (setq evil-operator-state-cursor '("red" hollow))
+  )
 
 ;; Smart M-x enhancement built on top of IDO
 (use-package smex
@@ -112,6 +120,9 @@
 ;; JSON mode.
 ;; (use-package json-mode
 ;;   :defer 1)
+
+;; Julia mode.
+(use-package julia-mode)
 
 ;; Improved Haskell mode.
 (use-package intero

@@ -23,11 +23,17 @@
 (menu-bar-mode -1)
 (scroll-bar-mode -1)
 
-;; Neat status line
+;; Neat mode line
 (use-package smart-mode-line
   :config
   (setq sml/theme 'light)
-  (smart-mode-line-enable))
+  (smart-mode-line-enable)
+  )
+
+;; Smoother scroll
+(setq scroll-margin 5
+      scroll-conservatively 9999
+      scroll-step 1)
 
 ;; Theme
 ;; download and package-install-file:
@@ -72,6 +78,7 @@
 
 (use-package linum-relative
   :config
+  (linum-relative-global-mode)
   ;; Format numbers according to # of lines in file.
   (custom-set-variables
    '(linum-relative-current-symbol "")

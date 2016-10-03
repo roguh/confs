@@ -9,6 +9,9 @@ Plug 'tpope/vim-speeddating' | Plug 'jceb/vim-orgmode'
 " good settings
 Plug 'tpope/vim-sensible'
 
+" syntax highlighting for Julia
+Plug 'JuliaLang/julia-vim'
+
 " syntax highlighting for COOL
 Plug 'vim-scripts/cool.vim'
 au BufNewFile,BufRead *.cool setf cool 
