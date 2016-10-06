@@ -38,6 +38,9 @@ au filetype tex syntax region texZone start='\\begin{pyconcode}' end='\\end{pyco
 " LaTeX
 Plug 'LaTeX-Box-Team/LaTeX-Box'
 
+" C and Bison/Flex
+Plug 'justinmk/vim-syntax-extra'
+
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 let g:airline_theme='silver'
@@ -74,3 +77,6 @@ endif
 
 " reload a file if it's changed by another process
 set autoread
+
+set cursorcolumn
+set cursorline
