@@ -1,3 +1,36 @@
+# Colors
+export TERM='xterm-256color'
+
+# Save no history
+unset HISTFILE
+export HISTSIZE=100
+
+# Greeting
+message="$(whoami) @ $(hostname)"
+if type figlet >/dev/null 2>&1 ; then 
+    figlet -w $COLUMNS $message
+else
+    echo $message 
+fi
+echo
+if type fortune >/dev/null 2>&1 ; then 
+    fortune
+fi
+for i in {1..$COLUMNS} ; do echo -n _ ; done
+
+# Aliases
+alias m=mupdf-x11
+alias e=evince
+alias em='emacs -nw'
+alias emc='emacsclient -nw --alternate-editor=""'
+alias l='ls -Fa --group-directories-first'
+alias ll='ls -lFah --group-directories-first'
+alias unison=$HOME/bin/unison
+
+
+
+# oh-my-zsh Configuration
+
 # Path to oh-my-zsh installation.
 export ZSH=$HOME/.oh-my-zsh
 
@@ -23,28 +56,7 @@ plugins=(gitfast python)
 
 export PATH=$HOME/bin:/usr/local/bin:$PATH
 
+# Load oh-my-zsh
 source $ZSH/oh-my-zsh.sh
-
-alias m=mupdf-x11
-alias e=evince
-alias em='emacs -nw'
-alias emc='emacsclient -nw --alternate-editor=""'
-alias l='ls -Fa --group-directories-first'
-alias ll='ls -lFah --group-directories-first'
-alias unison=$HOME/bin/unison
-
-export TERM='xterm-256color'
-
-unset HISTFILE
-export HISTSIZE=100
-
-export columns=$COLUMNS
-
-figlet $(whoami) @ $(hostname) -w $columns 
-echo 
-if type fortune >/dev/null 2>&1 ; then 
-    fortune
-fi
-for i in {1..$columns} ; do echo -n _ ; done
 
 
