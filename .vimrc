@@ -75,8 +75,17 @@ if filereadable(".vim.custom")
     so .vim.custom
 endif
 
+if filereadable(".vimrc.local")
+    so .vimrc.local
+endif
+
 " reload a file if it's changed by another process
 set autoread
 
 set cursorcolumn
 set cursorline
+hi  CursorLine cterm=NONE ctermbg=black ctermfg=white guibg=black guifg=white
+hi  CursorColumn cterm=NONE ctermbg=black ctermfg=white guibg=black guifg=white
+
+" highlight
+set hls

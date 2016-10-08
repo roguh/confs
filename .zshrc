@@ -37,3 +37,14 @@ export TERM='xterm-256color'
 
 unset HISTFILE
 export HISTSIZE=100
+
+export columns=$COLUMNS
+
+figlet $(whoami) @ $(hostname) -w $columns 
+echo 
+if type fortune >/dev/null 2>&1 ; then 
+    fortune
+fi
+for i in {1..$columns} ; do echo -n _ ; done
+
+

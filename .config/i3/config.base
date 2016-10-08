@@ -133,6 +133,7 @@ bindsym $mod+r mode "resize"
 # start a terminal
 bindsym $mod+Return exec terminator
 bindsym $mod+x exec terminator
+bindsym $mod+z exec ~/bin/st -e tmux
 bindsym $mod+c exec firefox 
 
 # lock using slock

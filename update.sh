@@ -52,6 +52,9 @@ echo terminator
 mkdir_conf .config/terminator
 copy_conf .config/terminator/config
 
+echo tmux
+copy_conf .tmux.conf
+
 echo TODO: may need to run 'ln -s ~/.vim ~/.config/nvim'
 echo TODO: may need to run 'ln -s ~/.vimrc ~/.config/nvim/init.vim'
 
