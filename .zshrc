@@ -7,16 +7,20 @@ export HISTSIZE=100
 
 # Greeting
 message="$(whoami) @ $(hostname)"
-if type figlet >/dev/null 2>&1 ; then 
-    figlet -w $COLUMNS $message
-else
-    echo $message 
-fi
-echo
-if type fortune >/dev/null 2>&1 ; then 
-    fortune
-fi
-for i in {1..$COLUMNS} ; do echo -n _ ; done
+
+function printmessage {
+    if type figlet >/dev/null 2>&1 ; then 
+        figlet -w $COLUMNS $message
+    else
+        echo $message 
+    fi
+    echo
+    if type fortune >/dev/null 2>&1 ; then 
+        fortune
+    fi
+    for i in {1..$COLUMNS} ; do echo -n _ ; done
+}
+printmessage
 
 # Aliases
 alias m=mupdf-x11
