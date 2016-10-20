@@ -134,7 +134,7 @@ bindsym $mod+r mode "resize"
 bindsym $mod+Return exec terminator
 bindsym $mod+x exec terminator
 bindsym $mod+z exec ~/bin/st -e tmux
-bindsym $mod+c exec firefox 
+bindsym $mod+c exec chromium-browser 
 
 # lock using slock
 bindsym $mod+l exec slock 
@@ -143,28 +143,35 @@ bindsym $mod+l exec slock
 bar {
         status_command i3status
         tray_output primary
-        font pango: Ubuntu Mono, Icons 10
-        position bottom
+        font pango: Source Code Pro, Icons 9
+        position top
         separator_symbol " —————— "
 # load theme using j4-make-config solarized_mod
 # $i3-status
 colors {
-    background #073642
-    statusline #eee8d5
-    focused_workspace #cb4b16 #cb4b16 #eee8d5
-    active_workspace #cb4b16 #cb4b16 #eee8d5
-    inactive_workspace #b58900 #b58900 #eee8d5
+	background #000000
+	statusline #ffffff
+	separator #666666
+	focused_workspace #808090 #606070 #C0C0C5
+	active_workspace #5F5F5F #303030 #808080
+	inactive_workspace #5F5F5F #303030 #808080
+	urgent_workspace #2f343a #900000 #ffffff
 }
 }
 
 # draw background image
-exec_always "feh --image-bg black --bg-fill $HOME/Pictures/flipped_iceberg.jpg"
+exec_always "feh --image-bg black --bg-fill $HOME/Pictures/aeon_concious_exotica_Richard_Wilkinson.jpg"
 
 exec_always "$HOME/.config/i3/startup.sh"
 
 # load theme using j4-make-config
+new_window normal 0
 # class                 border  backgr. text    indicator
-client.focused          #859900 #859900 #fdf6e3 #2e9ef4
-client.focused_inactive #268bd2 #268bd2 #fdf6e3 #484e50
-client.unfocused        #333333 #93a1a1 #fdf6e3 #292d2e
-#client.urgent not defined yet
+client.focused          #808090 #606070 #C0C0C5 #2e9ef4
+client.focused_inactive #5F5F6F #303040 #707075 #484e50
+client.unfocused        #5F5F5F #303030 #808080 #292d2e
+# alternative colouring - the other way round
+#client.focused_inactive #5F5F5F #303030 #808080 #292d2e
+#client.unfocused        #5F5F6F #303040 #707075 #484e50
+client.urgent           #2f343a #900000 #ffffff #900000
+

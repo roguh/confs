@@ -134,7 +134,7 @@ bindsym $mod+r mode "resize"
 bindsym $mod+Return exec terminator
 bindsym $mod+x exec terminator
 bindsym $mod+z exec ~/bin/st -e tmux
-bindsym $mod+c exec firefox 
+bindsym $mod+c exec chromium-browser 
 
 # lock using slock
 bindsym $mod+l exec slock 
@@ -143,8 +143,8 @@ bindsym $mod+l exec slock
 bar {
         status_command i3status
         tray_output primary
-        font pango: Ubuntu Mono, Icons 10
-        position bottom
+        font pango: Source Code Pro, Icons 9
+        position top
         separator_symbol " —————— "
 # load theme using j4-make-config solarized_mod
 # $i3-status
@@ -152,7 +152,7 @@ bar {
 }
 
 # draw background image
-exec_always "feh --image-bg black --bg-fill $HOME/Pictures/flipped_iceberg.jpg"
+exec_always "feh --image-bg black --bg-fill $HOME/Pictures/aeon_concious_exotica_Richard_Wilkinson.jpg"
 
 exec_always "$HOME/.config/i3/startup.sh"
 
