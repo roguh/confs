@@ -7,13 +7,16 @@ export TERM='xterm-256color'
 unset HISTFILE
 export HISTSIZE=100
 
-export PREFERRED_SHELL=/bin/mksh
-if [[ "$SHELL" != $PREFERRED_SHELL ]] ; then
-    if type $PREFERRED_SHELL >/dev/null 2>&1 ; then 
-        if ! $PREFERRED_SHELL ; then
-            exit
+export PREFERRED_SHELL=/bin/tcsh
+case $- in
+    # check if running interactively
+    *i*)  
+        if [[ "$SHELL" != $PREFERRED_SHELL ]] ; then
+            if type $PREFERRED_SHELL >/dev/null 2>&1 ; then 
+                $PREFERRED_SHELL
+                exit
+            else
+                echo $PREFERRED_SHELL not found
+            fi
         fi
-    else
-        echo $PREFERRED_SHELL not found
-    fi
-fi
+esac
