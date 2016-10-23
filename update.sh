@@ -42,11 +42,12 @@ copy_conf .config/i3/config
 copy_conf .config/i3/config.base
 copy_conf .config/i3/startup.sh
 
-echo bash
+echo {ba,z,tc,c}sh
 copy_conf .bashrc
-
-echo zsh
 copy_conf .zshrc
+copy_conf .cshrc
+copy_conf .mk_alias
+copy_conf .aliases
 
 echo terminator
 mkdir_conf .config/terminator
@@ -61,5 +62,7 @@ echo TODO: may need to run 'ln -s ~/.vimrc ~/.config/nvim/init.vim'
 echo TODO: may need to run "git clone https://github.com/okraits/j4-make-config"
 
 echo TODO: may need to run "git clone https://github.com/robbyrussell/oh-my-zsh"
+
+echo TODO: may need to run 'ln -s ~/.bashrc ~/.mkshrc'
 
 echo Backups are located in $BACKUP_DIR

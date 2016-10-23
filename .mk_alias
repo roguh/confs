@@ -1,0 +1,11 @@
+function mk_alias() { 
+    name=$1
+    shift
+    for f in "$@" ; do
+        first_word=`echo $f | cut --delimiter=' ' -f1`
+        if type $first_word >/dev/null 2>&1 ; then 
+            alias $name="`echo $f`"
+            break
+        fi
+    done
+}

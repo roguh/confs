@@ -1,0 +1,48 @@
+# make bash not call itself
+# call tmux if not in screen
+# make csh never record history
+#
+# LOL they hate each other:
+# bash$ alias l
+# l='ls -Fa --group-directories-first --sort=extension --color=auto'
+# csh~> alias l
+# ls -Fa --group-directories-first --sort=extension --color=auto
+#
+#
+# if command -v tmux>/dev/null; then
+#  [[ ! $TERM =~ screen ]] && [ -z $TMUX ] && exec tmux
+# fi
+# .alias
+# .mk_alias
+# .cshrc
+# .dashrc
+
+# tcsh, csh, bash, zsh
+# configure csh to do fancy shit
+
+# % exit
+# % exit
+# % exit
+# % exit
+# % exit
+# % exit
+# % exit
+# % exit
+# % exit
+# % exit
+
+mk_alias em "emacs -nw"
+mk_alias emc "emacsclient -nw --alternate-editor=''"
+mk_alias mv "mv -i"
+mk_alias cp "cp -i"
+mk_alias rm "rm -i"
+
+mk_alias l "ls -Fa --group-directories-first --sort=extension --color=auto" 
+mk_alias ll "ls -lh -Fa --group-directories-first --sort=extension --color=auto"
+
+mk_alias unison $HOME/bin/unison
+
+mk_alias v vis nvim vim vi nano ed libreoffice openoffice 'wine MicrosoftOffice2003.exe'
+# habits...
+mk_alias vim vis nvim vim vi nano ed libreoffice openoffice 'wine MicrosoftOffice2003.exe'
+mk_alias e zathura evince mupdf mupdf-x11

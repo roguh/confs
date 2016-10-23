@@ -21,7 +21,7 @@ DISABLE_LS_COLORS="true"
 
 # Plugins can be found in ~/.oh-my-zsh/plugins/*
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
-plugins=(gitfast python)
+plugins=(gitfast python stack)
 
 export PATH=$HOME/bin:/usr/local/bin:$PATH
 
@@ -58,12 +58,6 @@ function printmessage {
 }
 printmessage
 
-# Aliases
-alias m=mupdf-x11
-alias e=evince
-alias em='emacs -nw'
-alias emc='emacsclient -nw --alternate-editor=""'
-alias l='ls -Fa --group-directories-first'
-alias ll='ls -lFah --group-directories-first'
-alias unison=$HOME/bin/unison
-
+# Load aliases
+source $HOME/.mk_alias
+source $HOME/.aliases
