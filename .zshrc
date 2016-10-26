@@ -4,7 +4,7 @@
 export ZSH=$HOME/.oh-my-zsh
 
 # Look in ~/.oh-my-zsh/themes/
-ZSH_THEME="ys"
+ZSH_THEME="fishy"
 
 # Use hyphen-insensitive completion. Case
 # sensitive completion must be off. _ and - will be interchangeable.
@@ -42,7 +42,7 @@ unset HISTFILE
 export HISTSIZE=100
 
 # Greeting
-message="$(whoami) @ $(hostname)"
+export message="$(whoami) @ $(hostname)"
 
 function printmessage {
     if type figlet >/dev/null 2>&1 ; then 
@@ -56,7 +56,6 @@ function printmessage {
     fi
     for i in {1..$COLUMNS} ; do echo -n _ ; done
 }
-printmessage
 
 # Load aliases
 source $HOME/.mk_alias
