@@ -7,7 +7,7 @@ export TERM='xterm-256color'
 unset HISTFILE
 export HISTSIZE=100
 
-export PREFERRED_SHELL=/bin/tcsh
+export PREFERRED_SHELL=/bin/zsh
 case $- in
     # check if running interactively
     *i*)  
