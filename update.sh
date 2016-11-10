@@ -63,6 +63,10 @@ echo TODO: may need to run "git clone https://github.com/okraits/j4-make-config"
 
 echo TODO: may need to run "git clone https://github.com/robbyrussell/oh-my-zsh"
 
+echo TODO: may need to run
+echo "add-apt-repository ppa:neovim-ppa/unstable"
+echo "apt install neovim python-dev python-pip python3-dev python3-pip"
+
 echo TODO: may need to run 'ln -s ~/.bashrc ~/.mkshrc'
 
 echo Backups are located in $BACKUP_DIR

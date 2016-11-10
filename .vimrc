@@ -19,9 +19,6 @@ au BufNewFile,BufRead *.cl setf cool
 
 " linters!!!!!
 Plug 'scrooloose/syntastic'
-set statusline+=%#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
-set statusline+=%*
 
 let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 1
@@ -30,21 +27,24 @@ let g:syntastic_check_on_wq = 0
 
 let g:syntastic_tex_checkers = ['chktex']
 
+let g:syntastic_cpp_compiler = 'clang++'
+let g:syntastic_cpp_compiler_options = ' -std=c++11'
+
+" treat contents of some tex environments as verbatim text
 au filetype tex syntax region texZone start='\\begin{lstlisting}' end='\\end{lstlisting}'
 au filetype tex syntax region texZone start='\\begin{python3code}' end='\\end{python3code}'
 au filetype tex syntax region texZone start='\\begin{bashcode}' end='\\end{bashcode}'
 au filetype tex syntax region texZone start='\\begin{pyconcode}' end='\\end{pyconcode}'
 
-" LaTeX
-Plug 'LaTeX-Box-Team/LaTeX-Box'
-
 " C and Bison/Flex
 Plug 'justinmk/vim-syntax-extra'
 
+" status line
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 let g:airline_theme='silver'
 
+" markdown
 Plug 'plasticboy/vim-markdown'
 Plug 'godlygeek/tabular'
 call plug#end()
@@ -63,14 +63,7 @@ filetype plugin indent on
 set number
 set relativenumber
 
-" killer status line
-set statusline=
-set statusline +=%5*%{&ff}%*            "file format
-set statusline +=%3*%y%*                "file type
-set statusline +=%1*%=%5l%*             "current line
-set statusline +=%2*/%L%*               "total lines
-set statusline +=%4*\ %<%F%*            "full path
-
+" load local vim settings
 if filereadable(".vim.custom")
     so .vim.custom
 endif
@@ -82,10 +75,19 @@ endif
 " reload a file if it's changed by another process
 set autoread
 
+" crosshairs
 set cursorcolumn
 set cursorline
 hi  CursorLine cterm=NONE ctermbg=black ctermfg=white guibg=black guifg=white
 hi  CursorColumn cterm=NONE ctermbg=black ctermfg=white guibg=black guifg=white
 
-" highlight
-set hls
+" highlight searches
+set hlsearch
+hi IncSearch
+set incsearch
+
+" unsets the "last search pattern" register by hitting return
+nnoremap <CR> :nohlsearch<CR><CR>
+
+" highlight column 79
+set colorcolumn=79

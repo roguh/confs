@@ -10,5 +10,5 @@ mk_alias ll "ls -lh -Fa --group-directories-first --sort=extension --color=auto"
 
 mk_alias unison $HOME/bin/unison
 
-mk_alias v vim vi vis nvim nano ed libreoffice openoffice 'wine MicrosoftOffice2003.exe'
+mk_alias v nvim vi vis vim nano ed libreoffice openoffice 'wine MicrosoftOffice2003.exe'
 mk_alias e zathura evince mupdf mupdf-x11

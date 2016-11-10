@@ -135,6 +135,7 @@ bindsym $mod+Return exec terminator
 bindsym $mod+x exec terminator
 bindsym $mod+z exec st -e tmux
 bindsym $mod+c exec chromium-browser 
+bindsym $Control+Shift+n exec chromium-browser 
 
 # lock using slock
 bindsym $mod+l exec slock 
@@ -144,9 +145,10 @@ bar {
         status_command i3status
         tray_output primary
         font pango: Source Code Pro, Icons 9
-        position top
+        position bottom
         separator_symbol " —————— "
 # load theme using j4-make-config solarized_mod
+# # tao
 # $i3-status
 colors {
 	background #000000
@@ -160,7 +162,7 @@ colors {
 }
 
 # draw background image
-exec_always "feh --image-bg black --bg-fill $HOME/Pictures/aeon_concious_exotica_Richard_Wilkinson.jpg"
+exec_always "feh --image-bg black --bg-center $HOME/Pictures/europa.png"
 
 exec_always "$HOME/.config/i3/startup.sh"
 
