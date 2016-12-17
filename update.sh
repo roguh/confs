@@ -26,9 +26,11 @@ copy_conf() {
 }
 
 echo vim
+mkdir_conf {.vim,.config/nvim,tmp}/{backup,swap,undo}
 mkdir_conf .vim/autoload
-copy_conf .vimrc
 copy_conf .vim/autoload/plug.vim
+copy_conf .vimrc
+copy_conf .vimrc.minimal
 
 echo emacs.d
 mkdir_conf .emacs.d
@@ -40,7 +42,7 @@ mkdir_conf .config/i3
 copy_conf .i3status.conf
 copy_conf .config/i3/config
 copy_conf .config/i3/config.base
-copy_conf .config/i3/startup.sh
+copy_conf .config/i3/config.apps
 
 echo {ba,z,tc,c}sh
 copy_conf .bashrc
@@ -62,10 +64,6 @@ echo TODO: may need to run 'ln -s ~/.vimrc ~/.config/nvim/init.vim'
 echo TODO: may need to run "git clone https://github.com/okraits/j4-make-config"
 
 echo TODO: may need to run "git clone https://github.com/robbyrussell/oh-my-zsh"
-
-echo TODO: may need to run
-echo "add-apt-repository ppa:neovim-ppa/unstable"
-echo "apt install neovim python-dev python-pip python3-dev python3-pip"
 
 echo TODO: may need to run 'ln -s ~/.bashrc ~/.mkshrc'
 
