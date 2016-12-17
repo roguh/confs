@@ -1,6 +1,0 @@
-#!/bin/sh
-# Start dropbox and emacs, if they exist.
-{ type dropbox >/dev/null 2>&1 && dropbox start& } || echo >&2 "dropbox not found"
-{ type emacs >/dev/null 2>&1 && emacs --daemon & } || echo >&2 "emacs not found"
-{ type xflux -l '-100' >/dev/null 2>&1 && fluxgui & }      || echo >&2 "xflux not found"
-{ type fluxgui >/dev/null 2>&1 && fluxgui & }      || echo >&2 "fluxgui not found"

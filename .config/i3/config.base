@@ -1,6 +1,6 @@
-# Please see http://i3wm.org/docs/userguide.html for a complete reference!
+# see http://i3wm.org/docs/userguide.html for a complete reference!
 
-# Alt+Control
+# modifier is Alt+Control
 set $mod Mod1+Control
 
 # Font for window titles. Will also be used by the bar unless a different font
@@ -17,16 +17,14 @@ bindsym $mod+Shift+q kill
 bindsym Alt+F4 kill
 bindsym F4 kill
 
-bindsym XF86AudioRaiseVolume exec "amixer -q sset Master 1%+"
-bindsym XF86AudioLowerVolume exec "amixer -q sset Master 1%-"
-# XF86MonBrightnessUp
-# XF86MonBrightnessDown
+# bindsym XF86AudioRaiseVolume exec "amixer -q sset Master 1%+"
+# bindsym XF86AudioLowerVolume exec "amixer -q sset Master 1%-"
 
 # start dmenu (a program launcher)
 bindsym $mod+d exec dmenu_run
 
 # change focus
-# HAHAHAHAHA no. bindsym $mod+j focus left
+# bindsym $mod+j focus left
 # bindsym $mod+k focus down
 # bindsym $mod+l focus up
 # bindsym $mod+semicolon focus right
@@ -72,9 +70,6 @@ bindsym $mod+space focus mode_toggle
 
 # focus the parent container
 bindsym $mod+a focus parent
-
-# focus the child container
-#bindsym $mod+d focus child
 
 # switch to workspace
 bindsym $mod+1 workspace 1
@@ -139,19 +134,13 @@ mode "resize" {
 
 bindsym $mod+r mode "resize"
 
-# start a terminal
-bindsym $mod+Return exec terminator
-bindsym $mod+x exec terminator
-bindsym F8 exec terminator
-bindsym $mod+z exec st -e tmux
-bindsym $mod+c exec chromium-browser 
-bindsym Control+n exec chromium-browser 
-bindsym Control+Shift+n exec "chromium-browser --incognito"
+# lock the session
+bindsym $mod+l exec i3lock 
 
-# lock using slock
-bindsym $mod+l exec slock 
+# draw background image
+# exec_always "feh --image-bg black --bg-center $HOME/Pictures/europa.png"
 
-# Start i3bar to display a workspace bar
+# i3bar to display a workspace bar
 bar {
         status_command i3status
         tray_output primary
@@ -164,17 +153,10 @@ bar {
         modifier Control 
 # load theme using j4-make-config solarized_mod
 # # tao
-# $i3-status
 # $i3-theme-bar
 }
 
-# Keep TODO.org on the TODO workspace
-assign [class="TODO.org"] TODO
-
-# draw background image
-exec_always "feh --image-bg black --bg-center $HOME/Pictures/europa.png"
-
-exec_always "$HOME/.config/i3/startup.sh"
-
 # load theme using j4-make-config
 # $i3-theme-window
+
+# $i3-load config.shortcuts

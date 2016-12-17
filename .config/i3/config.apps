@@ -1,0 +1,12 @@
+# start a terminal
+set $terminal lxterminal 
+set $browser firefox 
+
+bindsym $mod+Return exec $terminal
+bindsym $mod+x exec $terminal
+bindsym F8 exec $terminal
+bindsym $mod+z exec $terminal 
+bindsym $mod+c exec $browser 
+bindsym $mod+n exec $browser 
+
+
