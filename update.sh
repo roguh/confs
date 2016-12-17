@@ -58,13 +58,12 @@ copy_conf .config/terminator/config
 echo tmux
 copy_conf .tmux.conf
 
-echo TODO: may need to run 'ln -s ~/.vim ~/.config/nvim'
-echo TODO: may need to run 'ln -s ~/.vimrc ~/.config/nvim/init.vim'
+echo other
+mkdir_conf .config/lxterminal
+mkdir_conf .config/terminator
+copy_conf .config/lxterminal/lxterminal.conf
+copy_conf .config/terminator/config
 
 echo TODO: may need to run "git clone https://github.com/okraits/j4-make-config"
-
 echo TODO: may need to run "git clone https://github.com/robbyrussell/oh-my-zsh"
-
-echo TODO: may need to run 'ln -s ~/.bashrc ~/.mkshrc'
-
 echo Backups are located in $BACKUP_DIR
