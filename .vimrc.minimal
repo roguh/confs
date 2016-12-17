@@ -1,0 +1,90 @@
+" reload a file if it's changed by another process
+set autoread
+
+" don't run commands in opened files
+set nomodeline
+
+" use Vim defaults instead of Vi's
+set nocompatible
+
+" map semicolon to colon
+:nmap ; :
+
+" indentation
+set expandtab
+set shiftwidth=4
+set tabstop=4
+
+filetype plugin indent on
+
+" show line numbers
+set number
+set relativenumber
+
+" crosshairs
+set cursorcolumn
+set cursorline
+hi  CursorLine cterm=NONE ctermbg=black ctermfg=white guibg=black guifg=white
+hi  CursorColumn cterm=NONE ctermbg=black ctermfg=white guibg=black guifg=white
+
+" highlight searches
+set hlsearch
+hi IncSearch
+set incsearch
+
+" unsets the "last search pattern" register by hitting return
+nnoremap <CR> :nohlsearch<CR><CR>
+
+" highlight column 79
+set colorcolumn=79
+
+" keep swap files and backup files in a home folder
+" should run
+" mkdir -p ~/{.vim,.config/nvim,tmp}/{backup,swap,undo}
+set directory=$VIMRUNTIME/swap//,~/tmp/swap//,.
+set backupdir=$VIMRUNTIME/backup//,~/tmp/backup//,.
+set undodir=$VIMRUNTIME/undo//,~/tmp/undo//,.
+
+" save backups 
+set backup
+
+
+" Part of Fedora's /etc/vimrc
+" UTF 8
+if v:lang =~ "utf8$" || v:lang =~ "UTF-8$"
+   set fileencodings=ucs-bom,utf-8,latin1
+endif
+
+set nocompatible	" Use Vim defaults (much better!)
+set bs=indent,eol,start	" allow backspacing over everything in insert mode
+set viminfo='20,\"50	" read/write a .viminfo file, don't store more
+			" than 50 lines of registers
+set history=50		" keep 50 lines of command line history
+set ruler		" show the cursor position all the time
+
+if &term=="xterm"
+     set t_Co=8
+     set t_Sb=[4%dm
+     set t_Sf=[3%dm
+endif
+
+" Don't wake up system with blinking cursor:
+" http://www.linuxpowertop.org/known.php
+let &guicursor = &guicursor . ",a:blinkon0"
+" End Part of Fedora's /etc/vimrc
+
+
+
+
+
+
+
+
+" load local vim settings
+if filereadable(".vim.custom")
+    so .vim.custom
+endif
+
+if filereadable(".vimrc.local")
+    so .vimrc.local
+endif

@@ -49,45 +49,6 @@ Plug 'plasticboy/vim-markdown'
 Plug 'godlygeek/tabular'
 call plug#end()
 
-" map semicolon to colon
-:nmap ; :
-
-" indentation
-set expandtab
-set shiftwidth=4
-set tabstop=4
-
-filetype plugin indent on
-
-" show line numbers
-set number
-set relativenumber
-
-" load local vim settings
-if filereadable(".vim.custom")
-    so .vim.custom
+if filereadable("~/.vimrc.minimal")
+    so ~/.vimrc.minimal
 endif
-
-if filereadable(".vimrc.local")
-    so .vimrc.local
-endif
-
-" reload a file if it's changed by another process
-set autoread
-
-" crosshairs
-set cursorcolumn
-set cursorline
-hi  CursorLine cterm=NONE ctermbg=black ctermfg=white guibg=black guifg=white
-hi  CursorColumn cterm=NONE ctermbg=black ctermfg=white guibg=black guifg=white
-
-" highlight searches
-set hlsearch
-hi IncSearch
-set incsearch
-
-" unsets the "last search pattern" register by hitting return
-nnoremap <CR> :nohlsearch<CR><CR>
-
-" highlight column 79
-set colorcolumn=79
