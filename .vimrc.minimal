@@ -29,7 +29,6 @@ hi  CursorColumn cterm=NONE ctermbg=black ctermfg=white guibg=black guifg=white
 
 " highlight searches
 set hlsearch
-hi IncSearch
 set incsearch
 
 " unsets the "last search pattern" register by hitting return

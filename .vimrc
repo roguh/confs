@@ -49,6 +49,4 @@ Plug 'plasticboy/vim-markdown'
 Plug 'godlygeek/tabular'
 call plug#end()
 
-if filereadable("~/.vimrc.minimal")
-    so ~/.vimrc.minimal
-endif
+so ~/.vimrc.minimal
