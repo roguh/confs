@@ -25,40 +25,49 @@ copy_conf() {
     cp $SRC_DIR/$1 $DST_DIR/$1
 }
 
-echo vim
+section() {
+    echo
+    echo --------- $1 --------- 
+}
+
+section vim
 mkdir_conf {.vim,.config/nvim,tmp}/{backup,swap,undo}
 mkdir_conf .vim/autoload
 copy_conf .vim/autoload/plug.vim
 copy_conf .vimrc
 copy_conf .vimrc.minimal
 
-echo emacs.d
+section vis
+mkdir_conf .config/vis
+copy_conf .config/vis/visrc.lua
+
+section emacs.d
 mkdir_conf .emacs.d
 copy_conf .emacs.d/init.el
 copy_conf .emacs.d/ui.el
 
-echo i3
+section i3
 mkdir_conf .config/i3
 copy_conf .i3status.conf
 copy_conf .config/i3/config
 copy_conf .config/i3/config.base
 copy_conf .config/i3/config.apps
 
-echo {ba,z,tc,c}sh
+section {ba,z,tc,c}sh
 copy_conf .bashrc
 copy_conf .zshrc
 copy_conf .cshrc
 copy_conf .mk_alias
 copy_conf .aliases
 
-echo terminator
+section terminator
 mkdir_conf .config/terminator
 copy_conf .config/terminator/config
 
-echo tmux
+section tmux
 copy_conf .tmux.conf
 
-echo other
+section other
 mkdir_conf .config/lxterminal
 mkdir_conf .config/terminator
 copy_conf .config/lxterminal/lxterminal.conf
