@@ -88,10 +88,6 @@
 	  )) (format "%%%ds " max-width)))))
 
 
-;; Highlight color literals
-(use-package rainbow-mode
-  :config (autoload 'rainbow-mode "rainbow" "Highlight color literals"))
-
 ;; Highlight current line.
 (global-hl-line-mode 1)
 (set-face-background 'hl-line line-backcolor)

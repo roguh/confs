@@ -51,7 +51,7 @@
 (use-package whitespace-cleanup-mode)
 
 ;; LaTeX.
-(use-package tex-site :ensure auctex)
+;; (use-package tex-site :ensure auctex)
 
 ;; PDF preview for LaTeX.
 ;; (use-package latex-preview-pane)
