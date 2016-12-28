@@ -93,11 +93,11 @@
 (set-face-background 'hl-line line-backcolor)
 (set-face-foreground 'hl-line line-forecolor)
 
-;; Highlight current column and line.
-(use-package col-highlight
-  :config
-  (set-face-background 'col-highlight col-highlight-color)
-  (column-highlight-mode))
+;; Highlight current column.
+;; (use-package col-highlight
+;;   :config
+;;   (set-face-background 'col-highlight col-highlight-color)
+;;   (column-highlight-mode))
 
 ;; Highlight columns 79 and 80.
 ;; Test line: ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
