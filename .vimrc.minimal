@@ -37,15 +37,18 @@ nnoremap <CR> :nohlsearch<CR><CR>
 " highlight column 79
 set colorcolumn=79
 
+" save backups 
+set backup
+
 " keep swap files and backup files in a home folder
 " should run
 " mkdir -p ~/{.vim,.config/nvim,tmp}/{backup,swap,undo}
-set directory=$VIMRUNTIME/swap//,~/tmp/swap//,.
-set backupdir=$VIMRUNTIME/backup//,~/tmp/backup//,.
-set undodir=$VIMRUNTIME/undo//,~/tmp/undo//,.
+set directory=$VIMRUNTIME/swap//,~/tmp/swap//,~/tmp//
+set backupdir=$VIMRUNTIME/backup//,~/tmp/backup//,~/tmp//
+set undodir=$VIMRUNTIME/undo//,~/tmp/undo//,~/tmp//
 
-" save backups 
-set backup
+" save backups with a timestamp and directory info
+au BufWritePre * let &backupext = substitute(expand('%:p:h'), '/', '%', 'g') . '%' . strftime('%M:%S') . '~'
 
 
 " Part of Fedora's /etc/vimrc
