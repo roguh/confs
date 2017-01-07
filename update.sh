@@ -60,18 +60,15 @@ copy_conf .cshrc
 copy_conf .mk_alias
 copy_conf .aliases
 
-section terminator
-mkdir_conf .config/terminator
-copy_conf .config/terminator/config
-
-section tmux
-copy_conf .tmux.conf
-
-section other
+section cli
 mkdir_conf .config/lxterminal
 mkdir_conf .config/terminator
 copy_conf .config/lxterminal/lxterminal.conf
 copy_conf .config/terminator/config
+copy_conf .tmux.conf
+
+section git
+copy_conf .gitconfig
 
 echo TODO: may need to run "git clone https://github.com/okraits/j4-make-config"
 echo TODO: may need to run "git clone https://github.com/robbyrussell/oh-my-zsh"
