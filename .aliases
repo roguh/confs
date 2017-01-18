@@ -5,7 +5,7 @@ mk_alias cp "cp -i"
 mk_alias rm "rm -i"
 mk_alias please sudo
 
-mk_alias l "ls -Fa --group-directories-first --sort=extension --color=auto" 
+mk_alias l "ls -Fa --color=none"
 mk_alias ll "l -lh"
 
 mk_alias v nvim vis vi vim nano ed libreoffice openoffice 'wine MicrosoftOffice2003.exe'
