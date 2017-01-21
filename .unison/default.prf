@@ -1,0 +1,36 @@
+# Roots of the synchronization
+root = /storage/emulated/0/Download
+root = ssh://remote@XXX//home/remote
+
+# Unison binary on the server
+servercmd = /rw/home/remote/bin/unison
+
+# Paths to synchronize 
+path = sync
+
+# Extra argument to SSH.
+# Some routers are finnicky about the IP QoS value.
+sshargs = -o IPQoS=0
+
+# Some regexps specifying names and paths to ignore
+ignore = Name temp.*
+ignore = Name *~
+ignore = Name .*~
+ignore = Name *.o
+ignore = Name *.tmp
+ignore = Name .git
+
+# Keep a backup copy of every file in a central location
+backuplocation = central
+backup = Name *
+backupprefix = $VERSION.
+maxbackups = 5
+
+# Use this command for displaying diffs
+diff = diff -y -W 79 --suppress-common-lines
+
+# Log actions to the terminal
+log = true
+
+# DANGEROUS!
+ignorelocks = true

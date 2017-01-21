@@ -70,6 +70,10 @@ copy_conf .tmux.conf
 section git
 copy_conf .gitconfig
 
+section unison
+mkdir_conf .unison
+copy_conf .unison/default.prf
+
 echo TODO: may need to run "git clone https://github.com/okraits/j4-make-config"
 echo TODO: may need to run "git clone https://github.com/robbyrussell/oh-my-zsh"
 echo TODO: may need to run "git clone https://github.com/martanne/vis"
