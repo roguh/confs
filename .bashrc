@@ -1,6 +1,6 @@
 # Load system .bashrc
 if [ -f /etc/bashrc ]; then
-	. /etc/bashrc
+        . /etc/bashrc
 fi
 
 # Do not save history to a file
@@ -12,3 +12,7 @@ source $HOME/.mk_alias
 source $HOME/.aliases
 
 export PATH=$HOME/bin:$PATH
+
+case $- in *i*)
+    [ -z "$TMUX" ] && exec tmux
+esac
