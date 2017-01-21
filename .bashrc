@@ -12,3 +12,7 @@ export PATH=$HOME/bin:$PATH
 # Load aliases
 source $HOME/.mk_alias
 source $HOME/.aliases
+
+case $- in *i*)
+    [ -z "$TMUX" ] && exec tmux
+esac
