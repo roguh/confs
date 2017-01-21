@@ -10,3 +10,5 @@ export HISTSIZE=100
 # Load aliases
 source $HOME/.mk_alias
 source $HOME/.aliases
+
+export PATH=$HOME/bin:$PATH

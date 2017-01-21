@@ -75,4 +75,6 @@ copy_conf .config/terminator/config
 
 echo TODO: may need to run "git clone https://github.com/okraits/j4-make-config"
 echo TODO: may need to run "git clone https://github.com/robbyrussell/oh-my-zsh"
+echo TODO: may need to run "git clone https://github.com/martanne/vis"
+echo TODO: may need to symlink vis/lua to ~/.config/vis
 echo Backups are located in $BACKUP_DIR
