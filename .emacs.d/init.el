@@ -39,8 +39,8 @@
    (message "gc-cons-threshold restored to %S"
             gc-cons-threshold))))
 
-(use-package benchmark-init
-  :config (benchmark-init/activate))
+;; (use-package benchmark-init
+;;  :config (benchmark-init/activate))
 
 ;; Syntax checker for ~40 languages.
 (use-package flycheck
@@ -174,8 +174,16 @@
 ;; Org mode. Enable indent mode.
 (use-package org
   :defer 1
-  :no-require t)
-  ;; :config (add-hook 'org-mode-hook 'org-indent-mode))
+  :no-require t
+  :config
+  (setq org-agenda-custom-commands
+    '(("c" "Fortnight schedule" agenda "" (
+       (org-agenda-ndays 14)
+       (org-agenda-repeating-timestamp-show-all t)  ;; ensures that repeating events appear on all relevant dates
+       (org-deadline-warning-days 365)
+       ;; (org-agenda-time-grid t)
+       ))))
+  )
 
 ;; No splash screen. Show agenda on startup.
 (setq inhibit-splash-screen t)
@@ -188,9 +196,6 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(custom-safe-themes
-   (quote
-    ("a27c00821ccfd5a78b01e4f35dc056706dd9ede09a8b90c6955ae6a390eb1c1e" default)))
  '(linum-relative-current-symbol "")
  '(linum-relative-format
    (let
@@ -201,7 +206,7 @@
             (point-min)
             (point-max))))))
      (format "%%%ds " max-width)))
- '(org-agenda-files (quote ("~/TODO.org")))
+ '(org-agenda-files "~/sync/org/org-files")
  '(package-selected-packages
    (quote
     (android-mode whitespace-cleanup-mode use-package tao-theme smex rainbow-mode magit linum-relative langtool json-mode impatient-mode haskell-mode guide-key flycheck evil column-marker col-highlight coffee-mode benchmark-init auto-complete auctex))))
@@ -272,15 +277,15 @@
 (setq auto-save-list-file-prefix (concat autosave-dir ".saves-"))
 
 ;; Backup settings
-(setq make-backup-files t               ; backup of a file the first time it is saved.
-      backup-by-copying t               ; don't clobber symlinks
-      version-control t                 ; version numbers for backup files
-      delete-old-versions t             ; delete excess backup files silently
-      kept-old-versions 15              ; oldest versions to keep when a new numbered backup is made (default: 2)
-      kept-new-versions 15              ; newest versions to keep when a new numbered backup is made (default: 2)
-      auto-save-default t               ; auto-save every buffer that visits a file
-      auto-save-timeout 2              ; number of seconds idle time before auto-save (default: 30)
-      auto-save-interval 5             ; number of keystrokes between auto-saves (default: 300)
+(setq make-backup-files t    ; backup of a file the first time it is saved.
+      backup-by-copying t    ; don't clobber symlinks
+      version-control t      ; version numbers for backup files
+      delete-old-versions t  ; delete excess backup files silently
+      kept-old-versions 15   ; oldest versions to keep when a new numbered backup is made (default: 2)
+      kept-new-versions 15   ; newest versions to keep when a new numbered backup is made (default: 2)
+      auto-save-default t    ; auto-save every buffer that visits a file
+      auto-save-timeout 2    ; number of seconds idle time before auto-save (default: 30)
+      auto-save-interval 5   ; number of keystrokes between auto-saves (default: 300)
 )
 
 ;; Load UI configuration.
@@ -292,5 +297,3 @@
 ;; (load-file "~/.emacs.d/emacs-local-packages/proofgeneral-4.2/generic/proof-site.el")
 
 ;;; init.el ends here
-
-

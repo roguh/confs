@@ -21,14 +21,6 @@
 ;; Disable menus
 (tool-bar-mode -1)
 (menu-bar-mode -1)
-(scroll-bar-mode -1)
-
-;; Neat mode line
-(use-package smart-mode-line
-  :config
-  (setq sml/theme 'light)
-  (smart-mode-line-enable)
-  )
 
 ;; Smoother scroll
 (setq scroll-margin 5
