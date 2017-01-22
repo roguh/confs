@@ -13,6 +13,5 @@ source $HOME/.aliases
 
 export PATH=$HOME/bin:$PATH
 
-terminal="ps -p `ps -p $$ -o ppid=` -o args="
-
-[ -z "$DISPLAY" ] && exec tmux
+# Run tmux if there's no GUI
+[ -z "$DISPLAY" ] && [ -z "$TMUX" ] && exec tmux
