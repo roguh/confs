@@ -13,6 +13,6 @@ source $HOME/.aliases
 
 export PATH=$HOME/bin:$PATH
 
-case $- in *i*)
-    [ -z "$TMUX" ] && exec tmux
-esac
+terminal="ps -p `ps -p $$ -o ppid=` -o args="
+
+[ -z "$DISPLAY" ] && exec tmux
