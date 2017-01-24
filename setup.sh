@@ -1,4 +1,4 @@
-function link() {
+function link () {
 	if ! [ -f "$2" ]; then
 		ln -s $1 $2
 	else

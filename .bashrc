@@ -22,5 +22,5 @@ print(\"/\".join(\
     for w in d[:-1]] + d[-1:]))"
 export PS1="\u @ \H \`echo '\w' | python -c '$PS1_DIR_SIMPLIFIER'\` \$ "
 
-# Run tmux if there's no GUI
-[ -z "$DISPLAY" ] && [ -z "$TMUX" ] && exec tmux
+# Run tmux if there's no GUI but it's an interactive shell
+[[ $- == *i* ]] && [ -z "$DISPLAY" ] && [ -z "$TMUX" ] && exec tmux
