@@ -180,8 +180,8 @@
     '(("c" "Fortnight schedule" agenda "" (
        (org-agenda-ndays 14)
        (org-agenda-repeating-timestamp-show-all t)  ;; ensures that repeating events appear on all relevant dates
-       (org-deadline-warning-days 365)
-       ;; (org-agenda-time-grid t)
+       (org-deadline-warning-days 3)
+       (org-agenda-time-grid)
        ))))
   )
 
