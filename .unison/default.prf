@@ -13,6 +13,16 @@ ignore = Name *.o
 ignore = Name *.tmp
 ignore = Name .git
 
+# Ignore LaTeX intermediate files
+ignore = Name *.aux
+ignore = Name *.log
+ignore = Name *.idx
+ignore = Name *.ilg
+ignore = Name *.ind
+ignore = _minted-*/
+
+confirmbigdel = false
+
 # Keep a backup copy of every file in a central location
 backuplocation = central
 backup = Name *
@@ -28,6 +38,8 @@ log = true
 # DANGEROUS!
 ignorelocks = true
 
+# For termux.
+# Android does not allow termux to change permissions in the Downloads/ directory
 perms = 0
 owner = false
 dontchmod = true
