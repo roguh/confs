@@ -1,5 +1,5 @@
 # Roots of the synchronization
-root = XXX
+root = XXX 
 
 # Extra argument to SSH.
 # Some routers are finnicky about the IP QoS value.
@@ -19,7 +19,7 @@ ignore = Name *.log
 ignore = Name *.idx
 ignore = Name *.ilg
 ignore = Name *.ind
-ignore = _minted-*/
+ignore = Name _minted-*/
 
 confirmbigdel = false
 
