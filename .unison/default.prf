@@ -1,16 +1,9 @@
 # Roots of the synchronization
-root = /storage/emulated/0/Download
-root = ssh://XXX//home/remote
-
-# Unison binary on the server
-servercmd = /rw/home/remote/bin/unison
-
-# Paths to synchronize 
-path = sync
+root = XXX
 
 # Extra argument to SSH.
 # Some routers are finnicky about the IP QoS value.
-sshargs = -o IPQoS=0
+sshargs = -o IPQoS=0 -i ~/.ssh/id_ed25519 -i ~/.ssh/id3_ed25519 -i ~/.ssh/id2_ed25519
 
 # Some regexps specifying names and paths to ignore
 ignore = Name temp.*

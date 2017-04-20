@@ -20,7 +20,13 @@ d = sys.stdin.read().split(\"/\") ; \
 print(\"/\".join(\
    [w[0:2 if w.startswith(\".\") else 1] \
     for w in d[:-1]] + d[-1:]))"
-export PS1="\u @ \H \`echo '\w' | python -c '$PS1_DIR_SIMPLIFIER'\` \$ "
+
+# If it's installed, use Python to print an abbreviated $PWD
+if command -v python > /dev/null ; then
+    export PS1="\u @ \H \`echo '\w' | python -c '$PS1_DIR_SIMPLIFIER'\` \$ "
+else
+    export PS1="\u @ \H \w \$ "
+fi
 
 # Run tmux if there's no GUI but it's an interactive shell
 [[ $- == *i* ]] && [ -z "$DISPLAY" ] && [ -z "$TMUX" ] && exec tmux
