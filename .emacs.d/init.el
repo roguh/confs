@@ -254,6 +254,9 @@
 ;; .check <=> .c
 (add-to-list 'auto-mode-alist '("\\.check\\'" . c-mode))
 
+;; .m should enable octave mode
+(add-to-list 'auto-mode-alist '("\\.m\\'" . octave-mode))
+
 ;; Enable y/n answers.
 (fset 'yes-or-no-p 'y-or-n-p)
 

@@ -6,6 +6,7 @@ fi
 # Do not save history to a file
 unset HISTFILE
 export HISTSIZE=100
+export HISTCONTROL=ignoredups:ignorespace
 
 # Load aliases
 source $HOME/.mk_alias
@@ -30,3 +31,7 @@ fi
 
 # Run tmux if there's no GUI but it's an interactive shell
 [[ $- == *i* ]] && [ -z "$DISPLAY" ] && [ -z "$TMUX" ] && exec tmux
+
+if command -v most > /dev/null ; then
+    export MANPAGER=most
+fi
