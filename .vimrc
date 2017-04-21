@@ -31,10 +31,10 @@ let g:syntastic_cpp_compiler = 'clang++'
 let g:syntastic_cpp_compiler_options = ' -std=c++11'
 
 " treat contents of some tex environments as verbatim text
-au filetype tex syntax region texZone start='\\begin{lstlisting}' end='\\end{lstlisting}'
-au filetype tex syntax region texZone start='\\begin{python3code}' end='\\end{python3code}'
-au filetype tex syntax region texZone start='\\begin{bashcode}' end='\\end{bashcode}'
-au filetype tex syntax region texZone start='\\begin{pyconcode}' end='\\end{pyconcode}'
+" au filetype tex syntax region texZone start='\\begin{lstlisting}' end='\\end{lstlisting}'
+" au filetype tex syntax region texZone start='\\begin{python3code}' end='\\end{python3code}'
+" au filetype tex syntax region texZone start='\\begin{bashcode}' end='\\end{bashcode}'
+" au filetype tex syntax region texZone start='\\begin{pyconcode}' end='\\end{pyconcode}'
 
 " C and Bison/Flex
 Plug 'justinmk/vim-syntax-extra'
