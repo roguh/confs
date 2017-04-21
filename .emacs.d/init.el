@@ -122,7 +122,7 @@
 ;;   :defer 1)
 
 ;; Julia mode.
-(use-package julia-mode)
+;;(use-package julia-mode)
 
 ;; Improved Haskell mode.
 (use-package intero
@@ -291,7 +291,7 @@
 ;; Load UI configuration.
 (load "~/.emacs.d/ui.el")
 
-(load "~/.emacs.d/PG/generic/proof-site.el")
+;;(load "~/.emacs.d/PG/generic/proof-site.el")
 
 ;; Load manually installed packages.
 ;; (load-file "~/.emacs.d/emacs-local-packages/proofgeneral-4.2/generic/proof-site.el")
