@@ -26,8 +26,15 @@ print(\"/\".join(\
 
 # Set the primary prompt to a colored and bolded PS1
 # \u @ \H \w >
-PS1_BEGIN="\e[1m\e[36m\u \e[0m@\e[32m \H\e[0m"
-PS1_END="\e[1m>\e[0m "
+COLORED_PS1=true
+if [[ $COLORED_PS1 == "true" ]] ; then
+    PS1_BEGIN="\e[1m\e[36m\u \e[0m@\e[32m \H\e[0m"
+    PS1_END="\e[1m>\e[0m "
+else
+    PS1_BEGIN="\u @ \H"
+    PS1_END="> "
+fi
+
 if command -v python > /dev/null ; then
     # If it's installed, use Python to print an abbreviated $PWD
     export PS1="$PS1_BEGIN \`echo \w | python -c '$PS1_DIR_SIMPLIFIER'\` $PS1_END"
