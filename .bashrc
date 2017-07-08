@@ -14,19 +14,26 @@ source $HOME/.aliases
 
 export PATH=$HOME/bin:$PATH
 
-# Set the primary prompt.
+# 1. read stdin
+# 2. split by '/'
+# 3. replace all parent directory names with their 1st or 1st and 2nd characters
 export PS1_DIR_SIMPLIFIER="\
-import sys ; \
+import sys, string ; \
 d = sys.stdin.read().split(\"/\") ; \
 print(\"/\".join(\
-   [w[0:2 if w.startswith(\".\") else 1] \
-    for w in d[:-1]] + d[-1:]))"
+ [w[0:2 if w[0:1] in string.punctuation else 1] \
+ for w in d[:-1]] + d[-1:]))"
 
-# If it's installed, use Python to print an abbreviated $PWD
+# Set the primary prompt to a colored and bolded PS1
+# \u @ \H \w >
+PS1_BEGIN="\e[1m\e[36m\u \e[0m@\e[32m \H\e[0m"
+PS1_END="\e[1m>\e[0m "
 if command -v python > /dev/null ; then
-    export PS1="\u @ \H \`echo '\w' | python -c '$PS1_DIR_SIMPLIFIER'\` \$ "
+    # If it's installed, use Python to print an abbreviated $PWD
+    export PS1="$PS1_BEGIN \`echo \w | python -c '$PS1_DIR_SIMPLIFIER'\` $PS1_END"
+     
 else
-    export PS1="\u @ \H \w \$ "
+    export PS1="$PS1_BEGIN $PS1_END"
 fi
 
 # Run tmux if there's no GUI but it's an interactive shell
