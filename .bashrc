@@ -1,18 +1,18 @@
 # Load system .bashrc
 if [ -f /etc/bashrc ]; then
-        . /etc/bashrc
+    . /etc/bashrc
 fi
 
 # Do not save history to a file
 unset HISTFILE
-export HISTSIZE=100
+export HISTSIZE=10000
 export HISTCONTROL=ignoredups:ignorespace
 
 # Load aliases
 source $HOME/.mk_alias
 source $HOME/.aliases
 
-export PATH=$HOME/bin:$PATH
+export PATH=$HOME/bin:$PATH:$HOME/.local/bin
 
 # 1. read stdin
 # 2. split by '/'
@@ -28,8 +28,8 @@ print(\"/\".join(\
 # \u @ \H \w >
 COLORED_PS1=true
 if [[ $COLORED_PS1 == "true" ]] ; then
-    PS1_BEGIN="\e[1m\e[36m\u \e[0m@\e[32m \H\e[0m"
-    PS1_END="\e[1m>\e[0m "
+    PS1_BEGIN="\[\e[1m\e[36m\]\u \[\e[0m@\e[32m\] \H\[\e[0m\]"
+    PS1_END="\[\e[1m\]>\[\e[0m\] "
 else
     PS1_BEGIN="\u @ \H"
     PS1_END="> "
