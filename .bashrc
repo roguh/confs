@@ -37,10 +37,10 @@ fi
 
 if command -v python > /dev/null ; then
     # If it's installed, use Python to print an abbreviated $PWD
-    export PS1="$PS1_BEGIN \`echo \w | python -c '$PS1_DIR_SIMPLIFIER'\` $PS1_END"
+    export PS1="$PS1_BEGIN \`echo '\w' | python -c '$PS1_DIR_SIMPLIFIER'\` $PS1_END"
      
 else
-    export PS1="$PS1_BEGIN $PS1_END"
+    export PS1="$PS1_BEGIN \w $PS1_END"
 fi
 
 # Run tmux if there's no GUI but it's an interactive shell
