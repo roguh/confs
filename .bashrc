@@ -27,21 +27,34 @@ print(\"/\".join(\
 # Set the primary prompt to a colored and bolded PS1
 # \u @ \H \w >
 COLORED_PS1=true
+E="\["
+D="\]"
+INVERT="$E\e[7m$D"
+BOLD="$E\e[1m$D"
+COLOR_RED="$E\e[31m$D"
+END="$E\e[0m$D"
+
 if [[ $COLORED_PS1 == "true" ]] ; then
-    PS1_BEGIN="\[\e[1m\e[36m\]\u \[\e[0m@\e[32m\] \H\[\e[0m\]"
-    PS1_END="\[\e[1m\]>\[\e[0m\] "
+    PS1_BEGIN="${INVERT}${BOLD}${COLOR_RED}\u${END}${INVERT}${BOLD} @ \H${END} "
+    PS1_END="${BOLD}- ${END}"
 else
-    PS1_BEGIN="\u @ \H"
-    PS1_END="> "
+    PS1_BEGIN="\u @ \H "
+    PS1_END="- "
 fi
 
 if command -v python > /dev/null ; then
-    # If it's installed, use Python to print an abbreviated $PWD
-    export PS1="$PS1_BEGIN \`echo '\w' | python -c '$PS1_DIR_SIMPLIFIER'\` $PS1_END"
-     
+    PS1_PWD="\`echo '\w' | python -c '$PS1_DIR_SIMPLIFIER' 2>/dev/null\` "
 else
-    export PS1="$PS1_BEGIN \w $PS1_END"
+    PS1_PWD="\w "
 fi
+
+if command -v git > /dev/null ; then
+    PS1_GITBRANCH="${BOLD}\`git rev-parse --abbrev-ref HEAD 2>/dev/null \`${END} "
+else
+    PS1_GITBRANCH=" "
+fi
+
+export PS1="${PS1_BEGIN}${PS1_PWD}${PS1_GITBRANCH}${PS1_END}"
 
 # Run tmux if there's no GUI but it's an interactive shell
 [[ $- == *i* ]] && [ -z "$DISPLAY" ] && [ -z "$TMUX" ] && exec tmux
