@@ -70,12 +70,18 @@ copy_conf .tmux.conf
 section git
 copy_conf .gitconfig
 
+section xfce4
+mkdir_conf .config/xfce4/xfconf/xfce-perchannel-xml
+copy_conf .config/xfce4/xfconf/xfce-perchannel-xml/xfce4-keyboard-shortcuts.xml
+copy_conf .config/xfce4/xfconf/xfce-perchannel-xml/xfce4-panel.xml
+
+section qterminal
+mkdir_conf .config/qterminal.org
+copy_conf .config/qterminal.org/qterminal.ini
+
 section unison
 mkdir_conf .unison
 copy_conf .unison/default.prf
 
-echo TODO: may need to run "git clone https://github.com/okraits/j4-make-config"
-echo TODO: may need to run "git clone https://github.com/robbyrussell/oh-my-zsh"
 echo TODO: may need to run "git clone https://github.com/martanne/vis"
-echo TODO: may need to symlink vis/lua to ~/.config/vis
 echo Backups are located in $BACKUP_DIR
