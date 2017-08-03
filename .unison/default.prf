@@ -1,9 +1,8 @@
-# Roots of the synchronization
-root = XXX 
+links = true
 
 # Extra argument to SSH.
 # Some routers are finnicky about the IP QoS value.
-sshargs = -o IPQoS=0 -i ~/.ssh/id_ed25519 -i ~/.ssh/id3_ed25519 -i ~/.ssh/id2_ed25519
+sshargs = -o IPQoS=0
 
 # Some regexps specifying names and paths to ignore
 ignore = Name temp.*
@@ -35,10 +34,9 @@ diff = diff -y -W 79 --suppress-common-lines
 # Log actions to the terminal
 log = true
 
-# DANGEROUS!
+# For termux.
 ignorelocks = true
 
-# For termux.
 # Android does not allow termux to change permissions in the Downloads/ directory
 perms = 0
 owner = false
