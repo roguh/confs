@@ -35,3 +35,4 @@ diff = diff -y -W 79 --suppress-common-lines
 log = true
 
 owner = false
+perms = 0

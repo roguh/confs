@@ -57,7 +57,7 @@ fi
 export PS1="${PS1_BEGIN}${PS1_PWD}${PS1_GITBRANCH}${PS1_END}"
 
 # Run tmux if there's no GUI but it's an interactive shell
-[[ $- == *i* ]] && [ -z "$DISPLAY" ] && [ -z "$TMUX" ] && exec tmux
+# [[ $- == *i* ]] && [ -z "$DISPLAY" ] && [ -z "$TMUX" ] && exec tmux
 
 if command -v most > /dev/null ; then
     export MANPAGER=most
