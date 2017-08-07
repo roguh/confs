@@ -26,7 +26,7 @@ confirmbigdel = false
 backuplocation = central
 backup = Name *
 backupprefix = $VERSION.
-maxbackups = 5
+maxbackups = 10
 
 # Use this command for displaying diffs
 diff = diff -y -W 79 --suppress-common-lines
@@ -34,10 +34,4 @@ diff = diff -y -W 79 --suppress-common-lines
 # Log actions to the terminal
 log = true
 
-# For termux.
-ignorelocks = true
-
-# Android does not allow termux to change permissions in the Downloads/ directory
-perms = 0
 owner = false
-dontchmod = true
