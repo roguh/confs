@@ -1,4 +1,4 @@
-links = true
+fastcheck = false
 
 # Extra argument to SSH.
 # Some routers are finnicky about the IP QoS value.
