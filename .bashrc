@@ -12,7 +12,8 @@ export HISTCONTROL=ignoredups:ignorespace
 source $HOME/.mk_alias
 source $HOME/.aliases
 
-export PATH=$HOME/bin:$PATH:$HOME/.local/bin
+export PATH="$HOME/bin:$PATH:$HOME/.local/bin"
+export PATH="$HOME/.cargo/bin:$PATH"
 
 # 1. read stdin
 # 2. split by '/'

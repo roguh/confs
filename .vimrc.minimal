@@ -1,14 +1,22 @@
+" map semicolon to colon
+:nmap ; :
+
+" use Vim defaults instead of Vi's
+" warning: keep this near the top of the config file
+set nocompatible
+
 " reload a file if it's changed by another process
 set autoread
 
-" don't run commands in opened files
+" don't run modeline commands when opening files 
+" this would read code in any file and run it!
 set nomodeline
 
-" use Vim defaults instead of Vi's
-set nocompatible
+" no viminfo file
+set viminfo=
 
-" map semicolon to colon
-:nmap ; :
+" keep 5 lines of history
+set history=5
 
 " indentation
 set expandtab
@@ -27,9 +35,17 @@ set cursorline
 hi  CursorLine cterm=NONE ctermbg=black ctermfg=white guibg=black guifg=white
 hi  CursorColumn cterm=NONE ctermbg=black ctermfg=white guibg=black guifg=white
 
+" easier to see color for folds
+hi Folded guibg=white guifg=black ctermbg=white ctermfg=black
+
 " highlight searches
 set hlsearch
+
+" incremental search: search before hitting ENTER
 set incsearch
+
+" nicer chars for visible whitespace mode
+set listchars=tab:>\ ,trail:-,extends:>,precedes:<,nbsp:+
 
 " unsets the "last search pattern" register by hitting return
 nnoremap <CR> :nohlsearch<CR><CR>
@@ -57,11 +73,7 @@ if v:lang =~ "utf8$" || v:lang =~ "UTF-8$"
    set fileencodings=ucs-bom,utf-8,latin1
 endif
 
-set nocompatible	" Use Vim defaults (much better!)
 set bs=indent,eol,start	" allow backspacing over everything in insert mode
-set viminfo='20,\"50	" read/write a .viminfo file, don't store more
-			" than 50 lines of registers
-set history=50		" keep 50 lines of command line history
 set ruler		" show the cursor position all the time
 
 if &term=="xterm"
@@ -74,12 +86,6 @@ endif
 " http://www.linuxpowertop.org/known.php
 let &guicursor = &guicursor . ",a:blinkon0"
 " End Part of Fedora's /etc/vimrc
-
-
-
-
-
-
 
 
 " load local vim settings
