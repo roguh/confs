@@ -10,7 +10,7 @@ ignore = Name *~
 ignore = Name .*~
 ignore = Name *.o
 ignore = Name *.tmp
-ignore = Name .git
+ignore = Name *.git
 
 # Ignore LaTeX intermediate files
 ignore = Name *.aux
@@ -18,7 +18,8 @@ ignore = Name *.log
 ignore = Name *.idx
 ignore = Name *.ilg
 ignore = Name *.ind
-ignore = Name _minted-*/
+ignore = Name _minted-*
+ignore = Name .cargo-target
 
 confirmbigdel = false
 

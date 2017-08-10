@@ -3,6 +3,18 @@
 " call :PlugInstall to install and update
 call plug#begin()
 
+" Rust
+Plug 'rust-lang/rust.vim'
+let g:rustfmt_autosave = 1
+
+Plug 'neomake/neomake'
+highlight NeomakeMessage   guifg=red   guibg=white ctermfg=red   ctermbg=white
+highlight NeomakeError   guifg=red   guibg=white ctermfg=red   ctermbg=white
+highlight NeomakeWarning guifg=green guibg=white ctermfg=green ctermbg=white
+highlight NeomakeInfo    guifg=black guibg=white ctermfg=black ctermbg=white
+
+autocmd! BufWritePost,BufEnter *.rs Neomake cargo
+
 " org mode
 Plug 'tpope/vim-speeddating' | Plug 'jceb/vim-orgmode'
 
@@ -24,6 +36,9 @@ let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
+
+" cargo checker with Plug 'Nonius/cargo.vim'
+let g:syntastic_rust_checkers = []
 
 let g:syntastic_tex_checkers = ['chktex']
 
