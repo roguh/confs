@@ -3,15 +3,19 @@
 " call :PlugInstall to install and update
 call plug#begin()
 
+Plug 'mustache/vim-mustache-handlebars'
+Plug 'evidens/vim-twig'
+Plug 'lepture/vim-jinja'
+
 " Rust
 Plug 'rust-lang/rust.vim'
 let g:rustfmt_autosave = 1
 
 Plug 'neomake/neomake'
-highlight NeomakeMessage   guifg=red   guibg=white ctermfg=red   ctermbg=white
-highlight NeomakeError   guifg=red   guibg=white ctermfg=red   ctermbg=white
-highlight NeomakeWarning guifg=green guibg=white ctermfg=green ctermbg=white
-highlight NeomakeInfo    guifg=black guibg=white ctermfg=black ctermbg=white
+highlight NeomakeMessage guifg=red   guibg=white  cterm=underline ctermfg=red   ctermbg=white
+highlight NeomakeError   guifg=red   guibg=white  cterm=underline ctermfg=red   ctermbg=white
+highlight NeomakeWarning guifg=green guibg=white  cterm=underline ctermfg=green ctermbg=white
+highlight NeomakeInfo    guifg=black guibg=orange cterm=underline ctermfg=black ctermbg=white
 
 autocmd! BufWritePost,BufEnter *.rs Neomake cargo
 
