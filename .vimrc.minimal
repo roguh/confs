@@ -1,6 +1,9 @@
 " map semicolon to colon
 :nmap ; :
 
+" disable neovim mouse visual mode
+set mouse-=a
+
 " use Vim defaults instead of Vi's
 " warning: keep this near the top of the config file
 set nocompatible

@@ -20,6 +20,9 @@ ignore = Name *.ilg
 ignore = Name *.ind
 ignore = Name _minted-*
 ignore = Name .cargo-target
+ignore = Name elm-stuff 
+ignore = Name .git/
+ignore = Name .git
 
 confirmbigdel = false
 
@@ -37,3 +40,4 @@ log = true
 
 owner = false
 perms = 0
+

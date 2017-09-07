@@ -44,11 +44,13 @@
       <property name="show-frame" type="bool" value="false"/>
       <property name="size-max" type="uint" value="22"/>
       <property name="names-visible" type="array">
-        <value type="string" value="network"/>
-        <value type="string" value="networkmanager applet"/>
-        <value type="string" value="vlc"/>
-        <value type="string" value="blueman-applet"/>
         <value type="string" value="thunar"/>
+        <value type="string" value="vlc"/>
+        <value type="string" value="networkmanager applet"/>
+        <value type="string" value="discord"/>
+        <value type="string" value="network"/>
+        <value type="string" value="steam"/>
+        <value type="string" value="blueman-applet"/>
         <value type="string" value="update-notifier"/>
       </property>
     </property>

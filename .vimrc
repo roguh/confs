@@ -3,6 +3,17 @@
 " call :PlugInstall to install and update
 call plug#begin()
 
+" Elm
+Plug 'ElmCast/elm-vim'
+
+" Pandoc
+Plug 'vim-pandoc/vim-pandoc-syntax'
+au! BufRead,BufNewFile,BufFilePre *.md setf markdown.pandoc
+
+" handlebar and mustache templates
+Plug 'mustache/vim-mustache-handlebars'
+Plug 'evidens/vim-twig'
+
 " Rust
 Plug 'rust-lang/rust.vim'
 let g:rustfmt_autosave = 1
@@ -13,7 +24,7 @@ highlight NeomakeError   guifg=red   guibg=white ctermfg=red   ctermbg=white
 highlight NeomakeWarning guifg=green guibg=white ctermfg=green ctermbg=white
 highlight NeomakeInfo    guifg=black guibg=white ctermfg=black ctermbg=white
 
-autocmd! BufWritePost,BufEnter *.rs Neomake cargo
+" autocmd! BufWritePost,BufEnter *.rs Neomake cargo
 
 " org mode
 Plug 'tpope/vim-speeddating' | Plug 'jceb/vim-orgmode'
@@ -37,8 +48,10 @@ let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
 
-" cargo checker with Plug 'Nonius/cargo.vim'
-let g:syntastic_rust_checkers = []
+" cargo syntastic checker 
+Plug 'Nonius/cargo.vim'
+
+let g:syntastic_rust_checkers = ["cargo"]
 
 let g:syntastic_tex_checkers = ['chktex']
 
@@ -59,9 +72,6 @@ Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 let g:airline_theme='silver'
 
-" markdown
-Plug 'plasticboy/vim-markdown'
-Plug 'godlygeek/tabular'
 call plug#end()
 
 so ~/.vimrc.minimal
