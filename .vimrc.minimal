@@ -67,7 +67,7 @@ set backupdir=$VIMRUNTIME/backup//,~/tmp/backup//,~/tmp//
 set undodir=$VIMRUNTIME/undo//,~/tmp/undo//,~/tmp//
 
 " save backups with a timestamp and directory info
-au BufWritePre * let &backupext = substitute(expand('%:p:h'), '/', '%', 'g') . '%' . strftime('%M') . '~'
+au BufWritePre * let &backupext = substitute(expand('%:p:h'), '/', '%', 'g') . '%' . strftime('%Y-%m-%d-%H:%M') . '~'
 
 
 " Part of Fedora's /etc/vimrc
