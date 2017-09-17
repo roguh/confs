@@ -11,6 +11,8 @@ ignore = Name .*~
 ignore = Name *.o
 ignore = Name *.tmp
 ignore = Name *.git
+ignore = Name *.pyc
+ignore = Name *.pyo
 
 # Ignore LaTeX intermediate files
 ignore = Name *.aux
@@ -21,6 +23,7 @@ ignore = Name *.ind
 ignore = Name _minted-*
 ignore = Name .cargo-target
 ignore = Name elm-stuff 
+ignore = Name __pycache__/
 ignore = Name .git/
 ignore = Name .git
 

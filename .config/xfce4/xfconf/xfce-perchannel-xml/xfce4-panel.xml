@@ -63,7 +63,9 @@
       <property name="digital-format" type="string" value="%d %b, %H:%M"/>
       <property name="mode" type="uint" value="2"/>
     </property>
-    <property name="plugin-9" type="string" value="pager"/>
+    <property name="plugin-9" type="string" value="pager">
+      <property name="rows" type="uint" value="1"/>
+    </property>
     <property name="plugin-10" type="string" value="actions"/>
     <property name="plugin-11" type="string" value="launcher">
       <property name="items" type="array">
