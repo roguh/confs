@@ -3,6 +3,10 @@ if [ -f /etc/bashrc ]; then
     . /etc/bashrc
 fi
 
+if [ -f ~/.bashrc_extra ]; then
+    . ~/.bashrc_extra
+fi
+
 # Do not save history to a file
 unset HISTFILE
 export HISTSIZE=10000
@@ -13,7 +17,6 @@ source $HOME/.mk_alias
 source $HOME/.aliases
 
 export PATH="$HOME/bin:$PATH:$HOME/.local/bin"
-export PATH="$HOME/.cargo/bin:$PATH"
 
 # 1. read stdin
 # 2. split by '/'
@@ -55,7 +58,13 @@ else
     PS1_GITBRANCH=" "
 fi
 
-export PS1="${PS1_BEGIN}${PS1_PWD}${PS1_GITBRANCH}${PS1_END}"
+if [[ $COLORED_PS1 == "true" ]] ; then
+    PS1_TIME="${INVERT}${COLOR_RED}`date +%H:%M`${END} " 
+else
+    PS1_TIME="`date +%H:%M` " 
+fi
+
+export PS1="${PS1_BEGIN}${PS1_TIME}${PS1_PWD}${PS1_GITBRANCH}${PS1_END}"
 
 # Run tmux if there's no GUI but it's an interactive shell
 # [[ $- == *i* ]] && [ -z "$DISPLAY" ] && [ -z "$TMUX" ] && exec tmux
