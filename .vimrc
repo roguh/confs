@@ -53,6 +53,7 @@ let g:syntastic_check_on_wq = 0
 Plug 'Nonius/cargo.vim'
 
 let g:syntastic_rust_checkers = ["cargo"]
+let g:syntastic_python_checkers = ["python3"]
 
 let g:syntastic_tex_checkers = ['chktex']
 

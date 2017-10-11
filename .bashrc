@@ -59,9 +59,9 @@ else
 fi
 
 if [[ $COLORED_PS1 == "true" ]] ; then
-    PS1_TIME="${INVERT}${COLOR_RED}`date +%H:%M`${END} " 
+    PS1_TIME="${INVERT}${COLOR_RED}\`date +%H:%M\`${END} " 
 else
-    PS1_TIME="`date +%H:%M` " 
+    PS1_TIME="\`date +%H:%M\` " 
 fi
 
 export PS1="${PS1_BEGIN}${PS1_TIME}${PS1_PWD}${PS1_GITBRANCH}${PS1_END}"
