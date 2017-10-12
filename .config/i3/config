@@ -21,7 +21,7 @@ bindsym F4 kill
 # bindsym XF86AudioLowerVolume exec "amixer -q sset Master 1%-"
 
 # start dmenu (a program launcher)
-bindsym $mod+d exec dmenu_run
+bindsym $mod+d exec dmenu_run -b
 
 # change focus
 # bindsym $mod+j focus left

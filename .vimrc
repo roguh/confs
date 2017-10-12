@@ -3,7 +3,13 @@
 " call :PlugInstall to install and update
 call plug#begin()
 
-" Elm
+" JS React Native
+Plug 'pangloss/vim-javascript'
+Plug 'mxw/vim-jsx'
+Plug 'reasonml-editor/vim-reason'
+
+
+" JS Elm
 Plug 'ElmCast/elm-vim'
 
 " Pandoc
