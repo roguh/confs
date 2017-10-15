@@ -39,7 +39,9 @@ copy_conf .vimrc.minimal
 
 section vis
 mkdir_conf .config/vis
+mkdir_conf .config/vis/local-plugins
 copy_conf .config/vis/visrc.lua
+copy_conf .config/vis/prep.sh
 
 section emacs.d
 mkdir_conf .emacs.d
