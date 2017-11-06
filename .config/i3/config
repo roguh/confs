@@ -133,29 +133,29 @@ bindsym $mod+r mode "resize"
 bindsym $mod+l exec i3lock 
 
 # i3bar to display a workspace bar
-# bar {
-#         status_command i3status
-#         tray_output primary
-#         font pango: Source Code Pro, Icons 8
-#         position top
-#         separator_symbol " ——- "
-# 
-#         # Only show when modifier is pressed
-#         # mode hide
-#         modifier Control 
-# # load theme using j4-make-config solarized_mod
-# # # tao
-# # $i3-theme-bar
-# colors {
-#        background #000000
-#        statusline #ffffff
-#        separator #666666
-#        focused_workspace #808090 #606070 #C0C0C5
-#        active_workspace #5F5F5F #303030 #808080
-#        inactive_workspace #5F5F5F #303030 #808080
-#        urgent_workspace #2f343a #900000 #ffffff
-# }
-# }
+bar {
+        status_command i3status
+        tray_output primary
+        font pango: Source Code Pro 10
+        position bottom
+        separator_symbol " ——— "
+
+        # Only show when modifier is pressed
+        # mode hide
+        modifier Control 
+# load theme using j4-make-config solarized_mod
+# # tao
+# $i3-theme-bar
+colors {
+       background #000000
+       statusline #ffffff
+       separator #666666
+       focused_workspace #808090 #606070 #C0C0C5
+       active_workspace #5F5F5F #303030 #808080
+       inactive_workspace #5F5F5F #303030 #808080
+       urgent_workspace #2f343a #900000 #ffffff
+}
+}
 
 # load theme using j4-make-config
 new_window normal 0
@@ -178,6 +178,3 @@ bindsym F8 exec $terminal
 bindsym $mod+z exec $terminal 
 bindsym $mod+c exec $browser 
 bindsym $mod+n exec $browser 
-
-# USE XFCE4 panel
-exec --no-startup-id xfce4-panel --disable-wm-check
