@@ -1,6 +1,12 @@
 # see http://i3wm.org/docs/userguide.html for a complete reference!
 
-# modifier is Alt+Control
+# Control
+# set $mod Control
+# Alt
+# set $mod Mod1
+# Alt+Control
+# set $mod Mod1+Control
+# Super key
 set $mod Mod4
 
 # Font for window titles. Will also be used by the bar unless a different font
@@ -17,8 +23,8 @@ bindsym $mod+Shift+q kill
 bindsym Alt+F4 kill
 bindsym F4 kill
 
-# bindsym XF86AudioRaiseVolume exec "amixer -q sset Master 1%+"
-# bindsym XF86AudioLowerVolume exec "amixer -q sset Master 1%-"
+bindsym XF86AudioRaiseVolume exec "amixer -q sset Master 1%+"
+bindsym XF86AudioLowerVolume exec "amixer -q sset Master 1%-"
 
 # start dmenu (a program launcher)
 bindsym $mod+d exec dmenu_run -b
@@ -111,17 +117,6 @@ bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcu
 # resize window (you can also use the mouse for that)
 mode "resize" {
         # These bindings trigger as soon as you enter the resize mode
-
-        # Pressing left will shrink the window’s width.
-        # Pressing right will grow the window’s width.
-        # Pressing up will shrink the window’s height.
-        # Pressing down will grow the window’s height.
-        bindsym j resize shrink width 10 px or 10 ppt
-        bindsym k resize grow height 10 px or 10 ppt
-        bindsym l resize shrink height 10 px or 10 ppt
-        bindsym semicolon resize grow width 10 px or 10 ppt
-
-        # same bindings, but for the arrow keys
         bindsym Left resize shrink width 10 px or 10 ppt
         bindsym Down resize grow height 10 px or 10 ppt
         bindsym Up resize shrink height 10 px or 10 ppt
@@ -137,10 +132,6 @@ bindsym $mod+r mode "resize"
 # lock the session
 bindsym $mod+l exec i3lock 
 
-# draw background image
-# exec_always "feh --image-bg black --bg-center $HOME/Pictures/europa.png"
-
-# NO i3bar
 # i3bar to display a workspace bar
 # bar {
 #         status_command i3status
@@ -188,9 +179,5 @@ bindsym $mod+z exec $terminal
 bindsym $mod+c exec $browser 
 bindsym $mod+n exec $browser 
 
-
-#### USE XFCE4 panel
+# USE XFCE4 panel
 exec --no-startup-id xfce4-panel --disable-wm-check
-
-#### ROTATE VGA DISPLAY
-exec xrandr --output VGA-1 --rotate left
