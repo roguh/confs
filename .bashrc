@@ -12,11 +12,11 @@ unset HISTFILE
 export HISTSIZE=10000
 export HISTCONTROL=ignoredups:ignorespace
 
+export PATH="$HOME/bin:$PATH:$HOME/.local/bin"
+
 # Load aliases
 source $HOME/.mk_alias
 source $HOME/.aliases
-
-export PATH="$HOME/bin:$PATH:$HOME/.local/bin"
 
 # 1. read stdin
 # 2. split by '/'
