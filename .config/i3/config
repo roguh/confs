@@ -177,9 +177,12 @@ exec nm-applet &
 exec redshift &
 
 # lock the session
-bindsym $mod+l exec "scrot ~/tmp/s.png && mogrify -scale 5% -scale 2000% ~/tmp/s.png && i3lock --show-failed-attempts --show-failed-attempts --image=$HOME/tmp/s.png"
+# -sample is faster than -scale or -resize
+set $locker "scrot ~/tmp/s.png && mogrify -sample 5% -spread 1 -sample 2000% ~/tmp/s.png && i3lock --show-failed-attempts --show-failed-attempts --image=$HOME/tmp/s.png"
+
+bindsym $mod+l exec $locker
 
 # autolock
-exec xautolock -secure -time 5 -locker "scrot ~/tmp/s.png && mogrify -scale 5% -scale 2000% ~/tmp/s.png && i3lock --show-failed-attempts --show-failed-attempts --image=$HOME/tmp/s.png"
+exec xautolock -secure -time 1 -locker $locker
 
 # Requirements: nm-applet i3lock i3bar redshift scrot imagemagick
