@@ -129,15 +129,13 @@ mode "resize" {
 
 bindsym $mod+r mode "resize"
 
-# lock the session
-bindsym $mod+l exec i3lock 
-
 # i3bar to display a workspace bar
 bar {
         status_command i3status
         tray_output primary
         font pango: Source Code Pro 10
-        position bottom
+        position top
+        separator_symbol " ——— "
 
         colors {
                background #00586D
@@ -172,4 +170,16 @@ bindsym $mod+z exec $terminal
 bindsym $mod+c exec $browser 
 bindsym $mod+n exec $browser 
 
-exec --no-startup-id wicd-client --tray
+# Wifi widget
+exec nm-applet &
+
+# Aboid blue light at night
+exec redshift &
+
+# lock the session
+bindsym $mod+l exec "scrot ~/tmp/s.png && mogrify -scale 5% -scale 2000% ~/tmp/s.png && i3lock --show-failed-attempts --show-failed-attempts --image=$HOME/tmp/s.png"
+
+# autolock
+exec xautolock -secure -time 5 -locker "scrot ~/tmp/s.png && mogrify -scale 5% -scale 2000% ~/tmp/s.png && i3lock --show-failed-attempts --show-failed-attempts --image=$HOME/tmp/s.png"
+
+# Requirements: nm-applet i3lock i3bar redshift scrot imagemagick
