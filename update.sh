@@ -52,8 +52,6 @@ section i3
 mkdir_conf .config/i3
 copy_conf .i3status.conf
 copy_conf .config/i3/config
-copy_conf .config/i3/config.base
-copy_conf .config/i3/config.apps
 
 section {ba,z,tc,c}sh
 copy_conf .bashrc
