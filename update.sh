@@ -43,6 +43,10 @@ mkdir_conf .config/vis/local-plugins
 copy_conf .config/vis/visrc.lua
 copy_conf .config/vis/prep.sh
 
+section ipython
+mkdir_conf .ipython/profile_default/ipython_config.py
+copy_conf .ipython/profile_default/ipython_config.py
+
 section emacs.d
 mkdir_conf .emacs.d
 copy_conf .emacs.d/init.el
