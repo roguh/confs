@@ -183,6 +183,6 @@ set $locker "scrot ~/tmp/s.png && mogrify -sample 50% -spread 5 -sample 200% ~/t
 bindsym $mod+l exec $locker
 
 # autolock
-exec xautolock -secure -time 15 -locker $locker
+exec xautolock -detectsleep -secure -time 15 -locker $locker
 
 # Requirements: nm-applet i3lock i3bar redshift scrot imagemagick
