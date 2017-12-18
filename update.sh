@@ -1,33 +1,37 @@
-if [ "$#" != "2" ];
-then echo USAGE: $0 source_dir destination_dir
+if [ "$#" != "1" ];
+then echo USAGE: $0 destination_dir
      exit
 fi
 
-echo $1 to $2
-SRC_DIR=$1
-DST_DIR=$2
-BACKUP_DIR=./confs-backup
+SRC=$1
+DST=$PWD
+BACKUP=$PWD/confs-backup
 
-echo Backup directory in $BACKUP_DIR
+echo Backup directory in $BACKUP
+echo Kill script to cancel copy from source directory $SRC to $DST
+echo Press ENTER to continue
 
-echo Press ENTER to copy configuration files from source directory $SRC_DIR to $DST_DIR
 read changes_ok
 
 mkdir_conf() {
-    echo mkdir -p $DST_DIR/$1
-    mkdir -p $DST_DIR/$1
-    mkdir -p $BACKUP_DIR/$1
+    echo mkdir -p "$DST/$SECTION/$1"
+    mkdir -p "$BACKUP/$SECTION/$1"
+    mkdir -p "$DST/$SECTION/$1"
 }
 
 copy_conf() {
-    cp $SRC_DIR/$1 $BACKUP_DIR/$1
-    echo cp $SRC_DIR/$1 $DST_DIR/$1
-    cp $SRC_DIR/$1 $DST_DIR/$1
+    echo cp "$SRC/$1" "$DST/$SECTION/$1"
+    cp "$DST/$SECTION/$1" "$BACKUP/$SECTION/$1"
+    cp "$SRC/$1" "$DST/$SECTION/$1"
 }
+
+SECTION="none"
 
 section() {
     echo
     echo --------- $1 --------- 
+    mkdir -p "$BACKUP/$1"
+    SECTION=$1
 }
 
 section vim
@@ -44,7 +48,7 @@ copy_conf .config/vis/visrc.lua
 copy_conf .config/vis/prep.sh
 
 section ipython
-mkdir_conf .ipython/profile_default/ipython_config.py
+mkdir_conf .ipython/profile_default
 copy_conf .ipython/profile_default/ipython_config.py
 
 section emacs.d
@@ -57,7 +61,7 @@ mkdir_conf .config/i3
 copy_conf .i3status.conf
 copy_conf .config/i3/config
 
-section {ba,z,tc,c}sh
+section "{ba,z,tc,c}sh"
 copy_conf .bashrc
 copy_conf .zshrc
 copy_conf .cshrc
@@ -88,4 +92,4 @@ mkdir_conf .unison
 copy_conf .unison/default.prf
 
 echo TODO: may need to run "git clone https://github.com/martanne/vis"
-echo Backups are located in $BACKUP_DIR
+echo Backups are located in $BACKUP
