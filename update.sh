@@ -1,28 +1,52 @@
-if [ "$#" != "1" ];
-then echo USAGE: $0 destination_dir
+if [[ "$#" != "2" || ( "$1" != restore && "$1" != backup ) ]]
+then echo "USAGE: $0 [ backup | restore ] dir"
      exit
 fi
 
-SRC=$1
-DST=$PWD
+# "restore" or "backup"
+MODE=$1
+
+# store backups here
 BACKUP=$PWD/confs-backup
 
+if [ "$MODE" == backup ] ; then
+    SRC=$2
+    DST=$PWD
+else
+    SRC=$PWD
+    DST=$2
+fi
+
+echo Press ENTER to $MODE files from $SRC to $DST
 echo Backup directory in $BACKUP
-echo Kill script to cancel copy from source directory $SRC to $DST
-echo Press ENTER to continue
 
 read changes_ok
 
+if [[ "$changes_ok" != "" ]]
+then echo cancelled
+     exit
+fi
+
 mkdir_conf() {
     echo mkdir -p "$DST/$SECTION/$1"
-    mkdir -p "$BACKUP/$SECTION/$1"
-    mkdir -p "$DST/$SECTION/$1"
+    if [ "$MODE" == backup ] ; then
+        mkdir -p "$BACKUP/$SECTION/$1"
+        mkdir -p "$DST/$SECTION/$1"
+    else
+        mkdir -p "$BACKUP/$SECTION/$1"
+        mkdir -p "$DST/$1"
+    fi
 }
 
 copy_conf() {
     echo cp "$SRC/$1" "$DST/$SECTION/$1"
-    cp "$DST/$SECTION/$1" "$BACKUP/$SECTION/$1"
-    cp "$SRC/$1" "$DST/$SECTION/$1"
+    if [ "$MODE" == backup ] ; then
+        cp "$DST/$SECTION/$1" "$BACKUP/$SECTION/$1"
+        cp "$SRC/$1" "$DST/$SECTION/$1"
+    else
+        cp "$DST/$1" "$BACKUP/$SECTION/$1"
+        cp "$SRC/$SECTION/$1" "$DST/$1"
+    fi
 }
 
 SECTION="none"
