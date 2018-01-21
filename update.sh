@@ -80,6 +80,10 @@ mkdir_conf .emacs.d
 copy_conf .emacs.d/init.el
 copy_conf .emacs.d/ui.el
 
+section zathura
+mkdir_conf .config/zathura
+copy_conf .config/zathura/zathurarc
+
 section i3
 mkdir_conf .config/i3
 copy_conf .i3status.conf
