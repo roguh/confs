@@ -1,11 +1,11 @@
+load_file() {
+    if [ -f "$1" ] ; then
+        . "$1"
+    fi
+}
 # Load system .bashrc
-if [ -f /etc/bashrc ]; then
-    . /etc/bashrc
-fi
-
-if [ -f ~/.bashrc_extra ]; then
-    . ~/.bashrc_extra
-fi
+load_file /etc/bashrc
+load_file "$HOME/.bashrc_extra"
 
 # Do not save history to a file
 unset HISTFILE
@@ -15,8 +15,15 @@ export HISTCONTROL=ignoredups:ignorespace
 export PATH="$HOME/bin:$PATH:$HOME/.local/bin"
 
 # Load aliases
-source $HOME/.mk_alias
-source $HOME/.aliases
+load_file "$HOME/.mk_alias"
+load_file "$HOME/.aliases"
+
+# Sensible defaults 
+load_file "$HOME/.sensible.bash"
+PROMPT_DIRTRIM=0
+
+# Use , as an improved cd command
+load_file "$HOME/.commacd.bash"
 
 # 1. read stdin
 # 2. split by '/'
