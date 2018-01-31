@@ -21,10 +21,10 @@ else
     DST=$2
 fi
 
-echo Press ENTER to $MODE files from $SRC to $DST
-echo Backup directory in $BACKUP
+echo "Press ENTER to $MODE files from $SRC to $DST"
+echo "Backup directory in $BACKUP"
 
-read changes_ok
+read -r changes_ok
 
 if [[ "$changes_ok" != "" ]]
 then echo cancelled
@@ -50,10 +50,14 @@ loudcp() {
 
 copy_conf() {
     if [ "$MODE" == backup ] ; then
-        cp "$DST/$SECTION/$1" "$BACKUP/$SECTION/$1"
+        if [ -f "$DST/$SECTION/$1" ] ; then
+            cp "$DST/$SECTION/$1" "$BACKUP/$SECTION/$1"
+        fi
         loudcp "$SRC/$1" "$DST/$SECTION/$1"
     else
-        cp "$DST/$1" "$BACKUP/$SECTION/$1"
+        if [ -f "$DST/$1" ] ; then
+            cp "$DST/$1" "$BACKUP/$SECTION/$1"
+        fi
         loudcp "$SRC/$SECTION/$1" "$DST/$1"
     fi
 }
@@ -62,7 +66,7 @@ SECTION="none"
 
 section() {
     echo
-    echo --------- $1 --------- 
+    echo "--------- $1 --------- "
     mkdir -p "$BACKUP/$1"
     SECTION=$1
 }
@@ -131,11 +135,11 @@ copy_conf .unison/default.prf
 if [ "$MODE" == restore ] ; then
     echo --------- installing external confs --------- 
     EXT_DIR=$SRC/external
-    loudcp $EXT_DIR/bash-sensible/sensible.bash $DST/.sensible.bash
-    loudcp $EXT_DIR/commacd/commacd.bash $DST/.commacd.bash
+    loudcp "$EXT_DIR/bash-sensible/sensible.bash" "$DST/.sensible.bash"
+    loudcp "$EXT_DIR/commacd/commacd.bash" "$DST/.commacd.bash"
 
     echo
 fi
 
 echo TODO: may need to run "git clone https://github.com/martanne/vis"
-echo Backups are located in $BACKUP
+echo "Backups are located in $BACKUP"
