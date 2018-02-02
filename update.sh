@@ -1,10 +1,10 @@
 # Exit on error, undeclared variable reference, and set pipeline exit code 
 # to that of failing command.
-set -euo pipefail
+set -eu
 
 if [[ "$#" != "2" || ( "$1" != restore && "$1" != backup ) ]]
 then echo "USAGE: $0 [ backup | restore ] dir"
-     exit
+     exit 1
 fi
 
 # "restore" or "backup"
@@ -28,7 +28,7 @@ read -r changes_ok
 
 if [[ "$changes_ok" != "" ]]
 then echo cancelled
-     exit
+     exit 1
 fi
 
 mkdir_conf() {
