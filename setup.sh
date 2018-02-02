@@ -9,3 +9,4 @@ link ~/.bashrc ~/.mkshrc
 link ~/.vim ~/.config/nvim
 link ~/.vimrc ~/.config/nvim/init.vim
 mkdir -p ~/{.vim,.config/nvim,tmp}/{backup,swap,undo}
+git submodule update --init --recursive
