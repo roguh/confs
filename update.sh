@@ -2,9 +2,9 @@
 # to that of failing command.
 set -eu
 
-if [[ "$#" != "2" || ( "$1" != restore && "$1" != backup ) ]]
-then echo "USAGE: $0 [ backup | restore ] dir"
-     exit 1
+if [[ "$#" != "2" || ( "$1" != restore && "$1" != backup ) ]]; then
+  echo "USAGE: $0 [ backup | restore ] dir"
+  exit 1
 fi
 
 # "restore" or "backup"
@@ -26,20 +26,20 @@ echo "Backup directory in $BACKUP"
 
 read -r changes_ok
 
-if [[ "$changes_ok" != "" ]]
-then echo cancelled
-     exit 1
+if [[ "$changes_ok" != "" ]] ; then
+  echo cancelled
+  exit 1
 fi
 
 mkdir_conf() {
     if [ "$MODE" == backup ] ; then
-        mkdir -p "$BACKUP/$SECTION/$1"
-        echo mkdir -p "$DST/$SECTION/$1"
-        mkdir -p "$DST/$SECTION/$1"
+      mkdir -p "$BACKUP/$SECTION/$1"
+      echo mkdir -p "$DST/$SECTION/$1"
+      mkdir -p "$DST/$SECTION/$1"
     else
-        mkdir -p "$BACKUP/$SECTION/$1"
-        echo mkdir -p "$DST/$1"
-        mkdir -p "$DST/$1"
+      mkdir -p "$BACKUP/$SECTION/$1"
+      echo mkdir -p "$DST/$1"
+      mkdir -p "$DST/$1"
     fi
 }
 
@@ -50,15 +50,15 @@ loudcp() {
 
 copy_conf() {
     if [ "$MODE" == backup ] ; then
-        if [ -f "$DST/$SECTION/$1" ] ; then
-            cp "$DST/$SECTION/$1" "$BACKUP/$SECTION/$1"
-        fi
-        loudcp "$SRC/$1" "$DST/$SECTION/$1"
+      if [ -f "$DST/$SECTION/$1" ] ; then
+        cp "$DST/$SECTION/$1" "$BACKUP/$SECTION/$1"
+      fi
+      loudcp "$SRC/$1" "$DST/$SECTION/$1"
     else
-        if [ -f "$DST/$1" ] ; then
-            cp "$DST/$1" "$BACKUP/$SECTION/$1"
-        fi
-        loudcp "$SRC/$SECTION/$1" "$DST/$1"
+      if [ -f "$DST/$1" ] ; then
+        cp "$DST/$1" "$BACKUP/$SECTION/$1"
+      fi
+      loudcp "$SRC/$SECTION/$1" "$DST/$1"
     fi
 }
 
@@ -133,12 +133,12 @@ mkdir_conf .unison
 copy_conf .unison/default.prf
 
 if [ "$MODE" == restore ] ; then
-    echo --------- installing external confs --------- 
-    EXT_DIR=$SRC/external
-    loudcp "$EXT_DIR/bash-sensible/sensible.bash" "$DST/.sensible.bash"
-    loudcp "$EXT_DIR/commacd/commacd.bash" "$DST/.commacd.bash"
-
-    echo
+  echo
+  echo --------- installing external confs --------- 
+  EXT_DIR=$SRC/external
+  loudcp "$EXT_DIR/bash-sensible/sensible.bash" "$DST/.sensible.bash"
+  loudcp "$EXT_DIR/commacd/commacd.bash" "$DST/.commacd.bash"
+  echo
 fi
 
 echo TODO: may need to run "git clone https://github.com/martanne/vis"
