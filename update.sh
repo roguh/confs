@@ -1,3 +1,5 @@
+#!/usr/bin/env bash
+
 # Exit on error, undeclared variable reference, and set pipeline exit code 
 # to that of failing command.
 set -eu
