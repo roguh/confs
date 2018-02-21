@@ -1,7 +1,7 @@
 [credential]
 	helper = cache --timeout=7200
 [user]
-	email = hugo.rivera2319@gmail.com
+	email = 6373447+roguh@users.noreply.github.com
 	name = Hugo Rivera
 [push]
 	default = simple
