@@ -103,6 +103,9 @@ section i3
 mkdir_conf .config/i3
 copy_conf .i3status.conf
 copy_conf .config/i3/config
+mkdir_conf bin
+copy_conf bin/locker.sh
+copy_conf bin/launcher.sh
 
 section "{ba,z,tc,c}sh"
 copy_conf .bashrc
@@ -144,4 +147,6 @@ if [ "$MODE" == restore ] ; then
 fi
 
 echo TODO: may need to run "git clone https://github.com/martanne/vis"
+echo TODO: "https://the.exa.website/#installation"
+echo TODO: "apt install rofi"
 echo "Backups are located in $BACKUP"
