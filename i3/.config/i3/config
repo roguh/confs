@@ -1,4 +1,4 @@
-# see http://i3wm.org/docs/userguide.html for a complete reference!
+# http://i3wm.org/docs/userguide.html
 
 # Control
 # set $mod Control
@@ -9,75 +9,60 @@
 # Super key
 set $mod Mod4
 
-# Font for window titles. Will also be used by the bar unless a different font
-# is used in the bar {} block below.
+# Window title font
 # font pango:monospace 11 
-font pango: Source Code Pro 10 
 # font pango:DejaVu Sans Mono 10
+font pango: Source Code Pro 10 
 
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
 
-# kill focused window
+# Kill focused window
 bindsym $mod+Shift+q kill
 bindsym Alt+F4 kill
 bindsym F4 kill
 
-bindsym XF86AudioRaiseVolume exec "amixer -q sset Master 1%+"
-bindsym XF86AudioLowerVolume exec "amixer -q sset Master 1%-"
-
-# start dmenu (a program launcher)
-bindsym $mod+d exec dmenu_run -b
-
-# change focus
-# bindsym $mod+j focus left
-# bindsym $mod+k focus down
-# bindsym $mod+l focus up
-# bindsym $mod+semicolon focus right
-
-# alternatively, you can use the cursor keys:
+# Change focus
 bindsym $mod+Left focus left
 bindsym $mod+Down focus down
 bindsym $mod+Up focus up
 bindsym $mod+Right focus right
 
-# move focused window
+# Move focused window
 bindsym $mod+Shift+j move left
 bindsym $mod+Shift+k move down
 bindsym $mod+Shift+l move up
 bindsym $mod+Shift+semicolon move right
-
-# alternatively, you can use the cursor keys:
 bindsym $mod+Shift+Left move left
 bindsym $mod+Shift+Down move down
 bindsym $mod+Shift+Up move up
 bindsym $mod+Shift+Right move right
 
-# split in horizontal orientation
+# Split in horizontal orientation
 bindsym $mod+h split h
 
-# split in vertical orientation
+# Split in vertical orientation
 bindsym $mod+v split v
 
-# enter fullscreen mode for the focused container
+# Enter fullscreen mode for the focused container
 bindsym $mod+f fullscreen toggle
 bindsym F11 fullscreen toggle
 
-# change container layout (stacked, tabbed, toggle split)
+# Change container layout (stacked, tabbed, toggle split)
 bindsym $mod+s layout stacking
 bindsym $mod+w layout tabbed
 bindsym $mod+e layout toggle split
 
-# toggle tiling / floating
+# Toggle tiling / floating
 bindsym $mod+Shift+space floating toggle
 
-# change focus between tiling / floating windows
+# Change focus between tiling / floating windows
 bindsym $mod+space focus mode_toggle
 
-# focus the parent container
+# Focus the parent container
 bindsym $mod+a focus parent
 
-# switch to workspace
+# Switch to workspace
 bindsym $mod+1 workspace 1
 bindsym $mod+2 workspace 2
 bindsym $mod+3 workspace 3
@@ -88,10 +73,20 @@ bindsym $mod+7 workspace 7
 bindsym $mod+8 workspace 8
 bindsym $mod+9 workspace 9
 bindsym $mod+0 workspace 10
+bindsym $mod+F1 workspace 11
+bindsym $mod+F2 workspace 12
+bindsym $mod+F3 workspace 13
+bindsym $mod+F4 workspace 14
+bindsym $mod+F5 workspace 15
+bindsym $mod+F6 workspace 16
+bindsym $mod+F7 workspace 17
+bindsym $mod+F8 workspace 18
+bindsym $mod+F9 workspace 19
+bindsym $mod+F10 workspace 20
 bindsym $mod+p workspace fun
 bindsym $mod+o workspace TODO
 
-# move focused container to workspace
+# Move focused container to workspace
 bindsym $mod+Shift+1 move container to workspace 1
 bindsym $mod+Shift+2 move container to workspace 2
 bindsym $mod+Shift+3 move container to workspace 3
@@ -102,32 +97,46 @@ bindsym $mod+Shift+7 move container to workspace 7
 bindsym $mod+Shift+8 move container to workspace 8
 bindsym $mod+Shift+9 move container to workspace 9
 bindsym $mod+Shift+0 move container to workspace 10
+bindsym $mod+Shift+F1 move container to workspace 11
+bindsym $mod+Shift+F2 move container to workspace 12
+bindsym $mod+Shift+F3 move container to workspace 13
+bindsym $mod+Shift+F4 move container to workspace 14
+bindsym $mod+Shift+F5 move container to workspace 15
+bindsym $mod+Shift+F6 move container to workspace 16
+bindsym $mod+Shift+F7 move container to workspace 17
+bindsym $mod+Shift+F8 move container to workspace 18
+bindsym $mod+Shift+F9 move container to workspace 19
+bindsym $mod+Shift+F10 move container to workspace 20
 bindsym $mod+Shift+p move container to workspace fun
 bindsym $mod+Shift+o move container to workspace TODO
 
-# reload the configuration file
+# Reload the configuration file
 bindsym $mod+Shift+c reload
 
-# restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
+# Restart i3
 bindsym $mod+Shift+r restart
 
-# exit i3 (logs you out of your X session)
+# Exit session
 bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
 
-# resize window (you can also use the mouse for that)
+# Resize bindings
+bindsym $mod+r mode "resize"
+
 mode "resize" {
         # These bindings trigger as soon as you enter the resize mode
-        bindsym Left resize shrink width 10 px or 10 ppt
-        bindsym Down resize grow height 10 px or 10 ppt
-        bindsym Up resize shrink height 10 px or 10 ppt
+        bindsym Left  resize shrink width 10 px or 10 ppt
+        bindsym Down  resize grow height 10 px or 10 ppt
+        bindsym Up    resize shrink height 10 px or 10 ppt
         bindsym Right resize grow width 10 px or 10 ppt
+        bindsym Shift+Left  resize shrink width 1 px or 1 ppt
+        bindsym Shift+Down  resize grow height 1 px or 1 ppt
+        bindsym Shift+Up    resize shrink height 1 px or 1 ppt
+        bindsym Shift+Right resize grow width 1 px or 1 ppt
 
         # back to normal: Enter or Escape
         bindsym Return mode "default"
         bindsym Escape mode "default"
 }
-
-bindsym $mod+r mode "resize"
 
 # i3bar to display a workspace bar
 bar {
@@ -149,9 +158,12 @@ bar {
         }
 }
 
-# load theme using j4-make-config
-new_window normal 0
+new_window normal 5
 
+# Hide title for extremely common windows
+for_window [title="LXTerminal|Firefox|Chromium|Chrome$"] border pixel 1
+
+# Colors
 # class                 border  backgr. text    indicator
 client.focused          #E5E7E7 #E5E7E7 #00586D #2e9ef4
 client.focused_inactive #00586D #00A199 #E5E7E7 #484e50
@@ -159,7 +171,14 @@ client.unfocused        #00586D #00586D #E5E7E7 #484e50
 
 client.urgent           #2f343a #900000 #ffffff #900000
 
-# start a terminal
+# Volume control
+bindsym XF86AudioRaiseVolume exec "amixer -q sset Master 1%+"
+bindsym XF86AudioLowerVolume exec "amixer -q sset Master 1%-"
+
+# Program launcher
+bindsym $mod+d exec launcher.sh
+
+# Start a terminal or browser
 set $terminal lxterminal 
 set $browser firefox 
 
@@ -168,21 +187,15 @@ bindsym $mod+x exec $terminal
 bindsym F8 exec $terminal
 bindsym $mod+z exec $terminal 
 bindsym $mod+c exec $browser 
-bindsym $mod+n exec $browser 
+bindsym $mod+n exec $browser
 
-# Wifi widget
+# Autostart
 exec nm-applet &
-
-# Aboid blue light at night
 exec redshift &
+exec lxterminal -l -e 'bash -c u_hsync' &
 
-# lock the session
-# -sample is faster than -scale or -resize
-set $locker "scrot ~/tmp/s.png && mogrify -sample 50% -spread 5 -sample 200% ~/tmp/s.png && i3lock --show-failed-attempts --show-failed-attempts --image=$HOME/tmp/s.png"
+# Screen locker
+exec xautolock -detectsleep -secure -time 15 -locker locker.sh
+bindsym $mod+l exec locker.sh
 
-bindsym $mod+l exec $locker
-
-# autolock
-exec xautolock -detectsleep -secure -time 15 -locker $locker
-
-# Requirements: nm-applet i3lock i3bar redshift scrot imagemagick
+# Requirements: nm-applet i3lock i3bar redshift scrot imagemagick lxterminal unison polybar
