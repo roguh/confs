@@ -113,6 +113,8 @@ copy_conf .zshrc
 copy_conf .cshrc
 copy_conf .mk_alias
 copy_conf .aliases
+mkdir_conf bin
+copy_conf bin/trimdir
 
 section cli
 mkdir_conf .config/lxterminal
