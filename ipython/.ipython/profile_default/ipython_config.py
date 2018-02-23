@@ -1,1 +1,1 @@
-get_config().InteractiveShell.colors = 'LightBG'
+get_config().InteractiveShell.colors = 'Linux'

@@ -142,9 +142,9 @@ mode "resize" {
 bar {
         status_command i3status
         tray_output primary
-        font pango: Ubuntu Mono Bold 12
-        position top
-        separator_symbol "   ———   "
+        font pango: Ubuntu Mono 13
+        position bottom
+        separator_symbol "   "
 
         colors {
                background #00586D
@@ -158,7 +158,7 @@ bar {
         }
 }
 
-new_window normal 5
+new_window normal 1
 
 # Hide title for extremely common windows
 for_window [title="LXTerminal|Firefox|Chromium|Chrome$"] border pixel 1
