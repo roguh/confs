@@ -117,11 +117,14 @@ mkdir_conf bin
 copy_conf bin/trimdir
 
 section cli
-mkdir_conf .config/lxterminal
-mkdir_conf .config/terminator
-copy_conf .config/lxterminal/lxterminal.conf
-copy_conf .config/terminator/config
 copy_conf .tmux.conf
+mkdir_conf .config/lxterminal
+copy_conf .config/lxterminal/lxterminal.conf
+mkdir_conf .config/terminator
+copy_conf .config/terminator/config
+mkdir_conf .config/xfce4/terminal/
+copy_conf .config/xfce4/terminal/terminalrc
+
 
 section git
 copy_conf .gitconfig

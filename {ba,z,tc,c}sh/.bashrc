@@ -42,8 +42,8 @@ BOLD="$E\e[1m$D"
 COLOR_RED="$E\e[31m$D"
 END="$E\e[0m$D"
 
-PS1_BEGIN="\u @ \H "
-PS1_TIME='$(date +%H:%M:%S) ' 
+PS1_BEGIN="\u @ \H"
+PS1_TIME='$(date +%H:%M:%S)' 
 
 if [[ $(whoami) == root ]] ; then
     PS1_END="# "
@@ -52,7 +52,7 @@ else
 fi
 
 if [[ $COLORED_PS1 == "true" ]] ; then
-    PS1_BEGIN="${INVERT}${PS1_BEGIN}${END} "
+    PS1_BEGIN="${INVERT}${PS1_BEGIN}${END}"
     PS1_END="${BOLD}${PS1_END}${END}"
 fi
 
@@ -72,10 +72,10 @@ else
 fi
 
 if [[ $COLORED_PS1 == "true" ]] ; then
-    PS1_TIME="${INVERT}${COLOR_RED}${PS1_TIME}${END} " 
+    PS1_TIME="${INVERT}${COLOR_RED}${PS1_TIME}${END}" 
 fi
 
-export PS1="${PS1_BEGIN}${PS1_TIME}${PS1_PWD}${PS1_GITBRANCH}${PS1_END}"
+export PS1="${PS1_BEGIN} ${PS1_TIME} ${PS1_PWD}${PS1_GITBRANCH}${PS1_END}"
 
 # Run tmux if there's no GUI but it's an interactive shell
 # [[ $- == *i* ]] && [ -z "$DISPLAY" ] && [ -z "$TMUX" ] && exec tmux
