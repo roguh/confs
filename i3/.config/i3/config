@@ -189,13 +189,7 @@ bindsym $mod+z exec $terminal
 bindsym $mod+c exec $browser 
 bindsym $mod+n exec $browser
 
-# Autostart
-exec nm-applet &
-exec redshift &
-exec lxterminal -l -e 'bash -c u_hsync' &
-
-# Screen locker
-exec xautolock -detectsleep -secure -time 15 -locker locker.sh
+exec autostart.sh
 bindsym $mod+l exec locker.sh
 
 # Requirements: nm-applet i3lock i3bar redshift scrot imagemagick lxterminal unison polybar
