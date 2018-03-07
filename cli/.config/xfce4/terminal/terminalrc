@@ -1,10 +1,10 @@
 [Configuration]
 BackgroundMode=TERMINAL_BACKGROUND_IMAGE
 BackgroundDarkness=0.910000
-ColorForeground=#b7b7b7
+ColorForeground=#ffffffffffff
 ColorBackground=#151506062a2a
 ColorCursor=#0f4999
-ColorSelection=#163b59
+ColorSelection=#000000000000
 ColorSelectionUseDefault=FALSE
 ColorBoldUseDefault=FALSE
 ColorPalette=#000000;#aa0000;#44aa44;#aa5500;#0039aa;#aa22aa;#1a92aa;#aaaaaa;#777777;#ff8787;#4ce64c;#ded82c;#295fcc;#cc58cc;#4ccce6;#ffffff
@@ -38,8 +38,9 @@ ScrollingUnlimited=TRUE
 ScrollingOnOutput=FALSE
 TitleMode=TERMINAL_TITLE_HIDE
 TitleInitial=
-BackgroundImageFile=/home/ds/Pictures/great wave off kanagawa.jpg
-BackgroundImageStyle=TERMINAL_BACKGROUND_STYLE_SCALED
+BackgroundImageFile=/home/ds/Pictures/mt hope, antarctica.jpeg
+BackgroundImageStyle=TERMINAL_BACKGROUND_STYLE_CENTERED
 BackgroundImageShading=0.970000
 ScrollingBar=TERMINAL_SCROLLBAR_NONE
+ColorSelectionBackground=#f5f579790000
 
