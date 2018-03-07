@@ -104,6 +104,7 @@ mkdir_conf .config/i3
 copy_conf .i3status.conf
 copy_conf .config/i3/config
 mkdir_conf bin
+copy_conf bin/autostart.sh
 copy_conf bin/locker.sh
 copy_conf bin/launcher.sh
 
