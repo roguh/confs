@@ -70,6 +70,7 @@ section() {
     echo
     echo "--------- $1 --------- "
     mkdir -p "$BACKUP/$1"
+    mkdir -p "$1"
     SECTION=$1
 }
 
@@ -142,6 +143,9 @@ copy_conf .config/qterminal.org/qterminal.ini
 section unison
 mkdir_conf .unison
 copy_conf .unison/default.prf
+
+section osync
+copy_conf .osync.conf
 
 if [ "$MODE" == restore ] ; then
   echo

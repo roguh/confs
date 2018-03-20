@@ -17,8 +17,8 @@ end)
 
 vis.events.subscribe(vis.events.WIN_OPEN, function(win)
 	-- Per window configuration options.
-	vis:command('set relativenumber')
 	vis:command('set number')
+	vis:command('set relativenumber')
 	vis:command('set colorcolumn 79')
 	vis:command('set tabwidth 4')
 	vis:command('set expandtab on')
