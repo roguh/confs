@@ -1,12 +1,15 @@
 #!/usr/bin/env bash
 
 # Autostart
+feh --bg-fill "Pictures/mt hope, antarctica.jpeg" &
 backup-y580.sh &
+backup-common.sh &
 nm-applet &
 redshift &
-lxterminal -l -e 'bash -c u_hsync' &
-lxterminal -l -e 'bash -c u_local' &
-feh --bg-fill "Pictures/mt hope, antarctica.jpeg" &
+
+for CMD in {hsync,local}-{unison,osync} ; do
+    lxterminal -l -e "bash -c $CMD" &
+done
 
 # Screen locker
 xautolock -detectsleep -secure -time 15 -locker locker.sh &

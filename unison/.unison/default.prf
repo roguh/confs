@@ -21,8 +21,11 @@ ignore = Name *.idx
 ignore = Name *.ilg
 ignore = Name *.ind
 ignore = Name _minted-*
+
+
 ignore = Name .cargo-target
 ignore = Name cargo-target
+ignore = Name .osync_workdir
 ignore = Name elm-stuff 
 ignore = Name __pycache__/
 ignore = Name node_modules 
