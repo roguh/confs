@@ -10,7 +10,7 @@ backup = require('local-plugins/vis-backup/backup')
 vis.events.subscribe(vis.events.INIT, function()
 	-- Global configuration options.
 
-	backup.time_format = "%H-%M-%S-"
+	backup.time_format = "%H-%M-%S"
 	backup.directory = os.getenv("HOME") .. "/tmp/backup" 
 	backup.get_fname = backup.entire_path_with_timestamp
 end)

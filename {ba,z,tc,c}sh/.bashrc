@@ -43,6 +43,10 @@ COLOR_RED="$E\e[31m$D"
 END="$E\e[0m$D"
 
 PS1_BEGIN="\u @ \H"
+if [[ $(whoami) == root ]] ; then
+    PS1_BEGIN="${BOLD}${PS1_BEGIN}${END}"
+fi
+
 PS1_TIME='$(date +%H:%M:%S)' 
 
 if [[ $(whoami) == root ]] ; then
