@@ -44,7 +44,7 @@ END="$E\e[0m$D"
 
 PS1_BEGIN="\u @ \H"
 if [[ $(whoami) == root ]] ; then
-    PS1_BEGIN="${BOLD}${PS1_BEGIN}${END}"
+    PS1_BEGIN="${BOLD} ${PS1_BEGIN} ${END}"
 fi
 
 PS1_TIME='$(date +%H:%M:%S)' 
@@ -52,7 +52,7 @@ PS1_TIME='$(date +%H:%M:%S)'
 if [[ $(whoami) == root ]] ; then
     PS1_END="# "
 else
-    PS1_END="> "
+    PS1_END="$ "
 fi
 
 if [[ $COLORED_PS1 == "true" ]] ; then
@@ -72,7 +72,7 @@ if command -v git > /dev/null ; then
         PS1_GITBRANCH="${BOLD}${PS1_GITBRANCH}${END}"
     fi
 else
-    PS1_GITBRANCH=" "
+    PS1_GITBRANCH=""
 fi
 
 if [[ $COLORED_PS1 == "true" ]] ; then
