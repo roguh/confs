@@ -1,8 +1,6 @@
 fastcheck = false
 
 # Extra argument to SSH.
-# Some routers are finnicky about the IP QoS value.
-sshargs = -o IPQoS=0
 
 # Some regexps specifying names and paths to ignore
 ignore = Name temp.*
@@ -10,9 +8,8 @@ ignore = Name *~
 ignore = Name .*~
 ignore = Name *.o
 ignore = Name *.tmp
+
 ignore = Name *.git
-ignore = Name *.pyc
-ignore = Name *.pyo
 
 # Ignore LaTeX intermediate files
 ignore = Name *.aux
@@ -22,15 +19,27 @@ ignore = Name *.ilg
 ignore = Name *.ind
 ignore = Name _minted-*
 
+# Osync temp files
+ignore = Name osync.*
+ignore = Name .osync_workdir
 
+# Godot temp files
+ignore = Name .import
+
+# Rust temp files
 ignore = Name .cargo-target
 ignore = Name cargo-target
-ignore = Name .osync_workdir
-ignore = Name elm-stuff 
-ignore = Name __pycache__/
+
+# Nodejs
 ignore = Name node_modules 
-ignore = Name .git/
-ignore = Name .git
+
+# Elm
+ignore = Name elm-stuff 
+
+# Python
+ignore = Name __pycache__/
+ignore = Name *.pyc
+ignore = Name *.pyo
 
 confirmbigdel = false
 
