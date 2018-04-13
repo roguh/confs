@@ -11,5 +11,7 @@ for CMD in {hsync,local}-{unison,osync} ; do
     lxterminal -l -e "bash -c $CMD" &
 done
 
+xrandr-rotate-left.sh &
+
 # Screen locker
 xautolock -detectsleep -secure -time 15 -locker locker.sh &
