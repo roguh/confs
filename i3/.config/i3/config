@@ -142,9 +142,9 @@ mode "resize" {
 bar {
         status_command i3status | i3status.py
         tray_output primary
-        font pango: Ubuntu Mono 13
+        font pango: Ubuntu Mono 12
         position bottom
-        separator_symbol "   "
+        separator_symbol "  "
 
         colors {
                background #00586D
