@@ -140,7 +140,7 @@ mode "resize" {
 
 # i3bar to display a workspace bar
 bar {
-        status_command i3status
+        status_command i3status | i3status.py
         tray_output primary
         font pango: Ubuntu Mono 13
         position bottom
