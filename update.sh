@@ -108,6 +108,7 @@ mkdir_conf bin
 copy_conf bin/autostart.sh
 copy_conf bin/locker.sh
 copy_conf bin/launcher.sh
+copy_conf bin/i3status.py
 
 section "{ba,z,tc,c}sh"
 copy_conf .bashrc
