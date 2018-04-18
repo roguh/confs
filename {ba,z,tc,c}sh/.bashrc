@@ -44,7 +44,7 @@ END="$E\e[0m$D"
 
 PS1_BEGIN="\u @ \H"
 if [[ $(whoami) == root ]] ; then
-    PS1_BEGIN="${BOLD} ${PS1_BEGIN} ${END}"
+    PS1_BEGIN="${COLOR_RED}${INVERT} ${PS1_BEGIN} ${END}${END}"
 fi
 
 PS1_TIME='$(date +%H:%M:%S)' 

@@ -29,10 +29,6 @@ import sys
 import json
 import re
 
-def get_governor():
-    """ Get the current governor for cpu0, assuming all CPUs use the same. """
-    with open('/sys/devices/system/cpu/cpu0/cpufreq/scaling_governor') as fp:
-        return fp.readlines()[0].strip()
 
 def get_cpufreqs():
     """Returns CPU clock speed (min, max)"""
@@ -41,10 +37,12 @@ def get_cpufreqs():
         ms = (re.match('cpu MHz\t\t: (.*)$', l) for l in f.readlines())
         return sorted("{:.1f}".format(float(m.groups()[0]) / 1000) for m in ms if m is not None)
 
+
 def print_line(message):
     """ Non-buffered printing to stdout. """
     sys.stdout.write(message + '\n')
     sys.stdout.flush()
+
 
 def read_line():
     """ Interrupted respecting reader for stdin. """
@@ -59,6 +57,7 @@ def read_line():
     except KeyboardInterrupt:
         sys.exit()
 
+
 if __name__ == '__main__':
     # Skip the first line which contains the version header.
     print_line(read_line())
@@ -72,10 +71,9 @@ if __name__ == '__main__':
         if line.startswith(','):
             line, prefix = line[1:], ','
 
-        j = json.loads(line)
         # insert information into the start of the json, but could be anywhere
-        # CHANGE THIS LINE TO INSERT SOMETHING ELSE
-        j.insert(0, {'full_text' : '%s' % get_governor(), 'name' : 'gov'})
-        j.insert(0, {'full_text' : '%s' % ', '.join(get_cpufreqs()), 'name' : 'freqs'})
+        j = json.loads(line)
+        j.insert(0, {'full_text' : '%s' % ' '.join(get_cpufreqs()), 'name' : 'freqs'})
+
         # and echo back new encoded json
         print_line(prefix+json.dumps(j))
