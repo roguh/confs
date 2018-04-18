@@ -43,8 +43,8 @@ COLOR_RED="$E\e[31m$D"
 END="$E\e[0m$D"
 
 PS1_BEGIN="\u @ \H"
-if [[ $(whoami) == root ]] ; then
-    PS1_BEGIN="${COLOR_RED}${INVERT} ${PS1_BEGIN} ${END}${END}"
+if [[ $(whoami) == root && $COLORED_PS1 == "true" ]] ; then
+    PS1_BEGIN="${COLOR_RED}\u${END}${INVERT} @ \H${END}"
 fi
 
 PS1_TIME='$(date +%H:%M:%S)' 
