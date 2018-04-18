@@ -1,15 +1,13 @@
-# Configuration Files
+# Hugo's Linux Configuration Files
 
 To copy configuration files:
 
 ```
-./update.sh . ~ 
+./update.sh restore ..
 ```
 
 To backup configuration files:
 
 ```
-./update.sh ~ .
+./update.sh backup ..
 ```
-
-This script overwrites files without warning.
