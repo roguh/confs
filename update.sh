@@ -112,6 +112,7 @@ copy_conf bin/i3status.py
 
 section "{ba,z,tc,c}sh"
 copy_conf .bashrc
+copy_conf .bash_profile
 copy_conf .zshrc
 copy_conf .cshrc
 copy_conf .mk_alias
