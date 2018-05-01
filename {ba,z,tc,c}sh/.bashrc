@@ -63,8 +63,8 @@ if [[ $COLORED_PS1 == "true" ]] ; then
     PS1_END="${BOLD}${PS1_END}${END}"
 fi
 
-if command -v trimdir > /dev/null ; then
-    PS1_PWD='$(echo "\w" | trimdir) '
+if command -v trimdir.py > /dev/null && command -v python3 > /dev/null ; then
+    PS1_PWD='$(echo "\w" | trimdir.py) '
 else
     PS1_PWD="\w "
 fi
