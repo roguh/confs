@@ -118,7 +118,7 @@ copy_conf .cshrc
 copy_conf .mk_alias
 copy_conf .aliases
 mkdir_conf bin
-copy_conf bin/trimdir
+copy_conf bin/trimdir.py
 
 section cli
 copy_conf .tmux.conf

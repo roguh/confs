@@ -176,10 +176,11 @@ bindsym XF86AudioRaiseVolume exec "amixer -q sset Master 1%+"
 bindsym XF86AudioLowerVolume exec "amixer -q sset Master 1%-"
 
 # Program launcher
-bindsym $mod+d exec launcher.sh
+# bindsym $mod+d exec launcher.sh
+bindsym $mod+d exec dmenu 
 
 # Start a terminal or browser
-set $terminal xfce4-terminal 
+set $terminal terminal.sh 
 set $browser firefox 
 
 bindsym $mod+Return exec $terminal
