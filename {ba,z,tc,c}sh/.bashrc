@@ -7,6 +7,9 @@ load_file() {
 load_file /etc/bashrc
 load_file "$HOME/.bashrc_extra"
 
+export PKGFILE_PROMPT_INSTALL_MISSING=true
+load_file /usr/share/doc/pkgfile/command-not-found.bash
+
 # Do not save history to a file
 unset HISTFILE
 export HISTSIZE=10000
@@ -87,3 +90,4 @@ export PS1="${PS1_BEGIN} ${PS1_TIME} ${PS1_PWD}${PS1_GITBRANCH}${PS1_END}"
 if command -v most > /dev/null ; then
     export MANPAGER=most
 fi
+
