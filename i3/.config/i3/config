@@ -10,9 +10,10 @@
 set $mod Mod4
 
 # Window title font
+font pango: Ubuntu Mono 12
 # font pango:monospace 11 
 # font pango:DejaVu Sans Mono 10
-font pango: Source Code Pro 10 
+# font pango: Source Code Pro 10 
 
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
@@ -142,8 +143,8 @@ mode "resize" {
 bar {
         status_command i3status | i3status.py
         tray_output primary
-        font pango: Ubuntu Mono 12
-        position bottom
+        font pango: Source Code Pro Bold 10
+        position top
         separator_symbol "  "
 
         colors {
@@ -171,13 +172,8 @@ client.unfocused        #00586D #00586D #E5E7E7 #484e50
 
 client.urgent           #2f343a #900000 #ffffff #900000
 
-# Volume control
-bindsym XF86AudioRaiseVolume exec "amixer -q sset Master 1%+"
-bindsym XF86AudioLowerVolume exec "amixer -q sset Master 1%-"
-
 # Program launcher
-# bindsym $mod+d exec launcher.sh
-bindsym $mod+d exec dmenu 
+bindsym $mod+d exec launcher.sh
 
 # Start a terminal or browser
 set $terminal terminal.sh 
@@ -190,7 +186,7 @@ bindsym $mod+z exec $terminal
 bindsym $mod+c exec $browser 
 bindsym $mod+n exec $browser
 
-exec autostart.sh
 bindsym $mod+l exec locker.sh
+bindsym $mod+$Shift+l exec nobacklight.sh
 
-# Requirements: nm-applet i3lock i3bar redshift scrot imagemagick lxterminal unison polybar
+# Requirements: nm-applet i3lock i3bar redshift scrot imagemagick lxterminal unison feh

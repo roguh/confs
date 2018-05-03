@@ -1,36 +1,33 @@
+# Set path to binaries
+export PATH="$HOME/bin:$PATH:$HOME/.local/bin"
+
 load_file() {
     if [ -f "$1" ] ; then
         . "$1"
     fi
 }
-# Load system .bashrc
-load_file /etc/bashrc
+
+# Load aliases
+load_file "$HOME/.mk_alias"
+load_file "$HOME/.aliases"
+
+# Load extra .bashrc
 load_file "$HOME/.bashrc_extra"
 
+# Arch
 export PKGFILE_PROMPT_INSTALL_MISSING=true
 load_file /usr/share/doc/pkgfile/command-not-found.bash
+
+export VISUAL=vim
 
 # Do not save history to a file
 unset HISTFILE
 export HISTSIZE=10000
 export HISTCONTROL=ignoredups:ignorespace
 
-export PATH="$HOME/bin:$PATH:$HOME/.local/bin"
-
-# Load aliases
-load_file "$HOME/.mk_alias"
-load_file "$HOME/.aliases"
-
-# Sensible defaults 
-load_file "$HOME/.sensible.bash"
-PROMPT_DIRTRIM=0
-
-# Use , as an improved cd command
-load_file "$HOME/.commacd.bash"
-
-COLORED_PS1=false
-
+##### Set PS1
 # Check if colored output is supported
+COLORED_PS1=false
 if test -t 1; then
     ncolors=$(tput colors)
     if test -n "$ncolors" && test $ncolors -ge 8; then
@@ -57,6 +54,7 @@ if [[ $(whoami) == root ]] ; then
 else
     PS1_END="$ "
 fi
+PS1_END_PLAIN=$PS1_END
 
 if [[ $COLORED_PS1 == "true" ]] ; then
     PS1_BEGIN="${INVERT}${PS1_BEGIN}${END}"
@@ -89,5 +87,22 @@ export PS1="${PS1_BEGIN} ${PS1_TIME} ${PS1_PWD}${PS1_GITBRANCH}${PS1_END}"
 
 if command -v most > /dev/null ; then
     export MANPAGER=most
+fi
+
+##### Set commands in interactive mode
+if [[ $- == *i* ]]; then
+    # Use , as an improved cd command
+    load_file "$HOME/.commacd.bash"
+    
+    # Sensible defaults 
+    load_file "$HOME/.sensible.bash"
+    PROMPT_DIRTRIM=0
+    PROMPT_COMMAND=
+    
+    # Show man page with Alt+h
+    bind '"\eh": "\C-a\eb\ed\C-y\e#man \C-y\C-m\C-p\C-p\C-a\C-d\C-e"'
+    
+    # Set title. This should be the last command in .bashrc
+    trap 'printf "\033]0;%s\007" "$PS1_END_PLAIN${BASH_COMMAND//[^[:print:]]/} (on $HOSTNAME)" >&2' DEBUG
 fi
 

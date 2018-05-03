@@ -105,10 +105,16 @@ mkdir_conf .config/i3
 copy_conf .i3status.conf
 copy_conf .config/i3/config
 mkdir_conf bin
-copy_conf bin/autostart.sh
 copy_conf bin/locker.sh
+copy_conf bin/terminal.sh
 copy_conf bin/launcher.sh
 copy_conf bin/i3status.py
+
+section x11
+copy_conf .xinitrc 
+copy_conf .xbindkeysrc
+mkdir_conf bin
+copy_conf bin/autostart.sh
 
 section "{ba,z,tc,c}sh"
 copy_conf .bashrc
@@ -148,6 +154,9 @@ copy_conf .unison/default.prf
 
 section osync
 copy_conf .osync.conf
+
+section conky
+copy_conf .conkyrc
 
 if [ "$MODE" == restore ] ; then
   echo
