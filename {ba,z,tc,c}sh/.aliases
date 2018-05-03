@@ -5,9 +5,11 @@ mk_alias cp "cp -i"
 mk_alias rm "rm -i"
 mk_alias please sudo
 
-mk_alias ls "exa --git" ls
+mk_alias ls exa ls
 mk_alias l "ls -Fa"
 mk_alias ll "l -lh"
+mk_alias grep "grep --color"
 
-mk_alias v vis nvim vi vim nano ed libreoffice openoffice "wine MicrosoftOffice2003.exe"
+mk_alias v vis nvim vim vi nano ed libreoffice openoffice "wine MicrosoftOffice2003.exe"
 mk_alias e "zathura --fork" evince mupdf mupdf-x11 "wine READER10.exe"
+mk_alias sx startx
