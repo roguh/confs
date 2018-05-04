@@ -9,165 +9,143 @@ if [[ "$#" != "2" || ( "$1" != restore && "$1" != backup ) ]]; then
   exit 1
 fi
 
-# "restore" or "backup"
+VERBOSE=false
+
+# Either "restore" or "backup"
 MODE=$1
 
-# store backups here
-BACKUP=$PWD/confs-backup
+# The location of this script
+CONF_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+
+# Store backups here
+BACKUP_B_DIR=$CONF_DIR/backup-bak
+BACKUP_R_DIR=$CONF_DIR/restore-bak
 
 if [ "$MODE" == backup ] ; then
     SRC=$2
-    DST=$PWD
+    DST=$CONF_DIR
+    echo "Backups are located in $BACKUP_B_DIR"
+
 else 
-    SRC=$PWD
+    SRC=$CONF_DIR
     DST=$2
+    echo "Backups are located in $BACKUP_R_DIR"
 fi
 
+# Confirm changes
 echo "Press ENTER to $MODE files from $SRC to $DST"
-echo "Backup directory in $BACKUP"
-
 read -r changes_ok
 
 if [[ "$changes_ok" != "" ]] ; then
-  echo cancelled
   exit 1
 fi
 
-mkdir_conf() {
-    if [ "$MODE" == backup ] ; then
-      mkdir -p "$BACKUP/$SECTION/$1"
-      echo mkdir -p "$DST/$SECTION/$1"
-      mkdir -p "$DST/$SECTION/$1"
-    else
-      mkdir -p "$BACKUP/$SECTION/$1"
-      echo mkdir -p "$DST/$1"
-      mkdir -p "$DST/$1"
+RSYNC_OPTS="--human-readable --recursive"
+RSYNC_BAK="$RSYNC_OPTS"
+RSYNC_BACKUP="$RSYNC_OPTS --delete-after --relative"
+RSYNC_RESTORE="$RSYNC_OPTS --relative"
+
+log() {
+    if [[ "$VERBOSE" == true ]] ; then
+        echo $@
     fi
 }
 
-loudcp() {
-    echo cp "$1" "$2"
-    cp "$1" "$2"
-}
-
-copy_conf() {
-    if [ "$MODE" == backup ] ; then
-      if [ -f "$DST/$SECTION/$1" ] ; then
-        cp "$DST/$SECTION/$1" "$BACKUP/$SECTION/$1"
-      fi
-      loudcp "$SRC/$1" "$DST/$SECTION/$1"
-    else
-      if [ -f "$DST/$1" ] ; then
-        cp "$DST/$1" "$BACKUP/$SECTION/$1"
-      fi
-      loudcp "$SRC/$SECTION/$1" "$DST/$1"
-    fi
-}
-
-SECTION="none"
-
-section() {
-    echo
-    echo "--------- $1 --------- "
-    mkdir -p "$BACKUP/$1"
-    mkdir -p "$1"
+# USAGE: copy_confs_for section_name [file1 [file2 ...]] 
+#
+# Either copy all files from section_name to the destination
+# or copy all files to section_name, while preserving directory structure.
+# Make backups before copying.
+copy_confs_for() {
     SECTION=$1
+    shift
+    printf "\n--------- $SECTION ---------\n"
+    echo "$@"
+    mkdir -p "$CONF_DIR/$SECTION"
+
+    FILES=
+    if [ "$MODE" == backup ] ; then
+        mkdir -p "$BACKUP_B_DIR/$SECTION"
+        FROM="$SRC"
+    else
+        mkdir -p "$BACKUP_R_DIR/$SECTION"
+        FROM="$DST"
+    fi
+
+    for f in $@ ; do
+        FILES="$FILES $FROM/./$f"
+    done
+
+    if [ "$MODE" == backup ] ; then
+        log rsync $RSYNC_BAK "$DST/$SECTION" "$BACKUP_B_DIR"
+        rsync $RSYNC_BAK "$DST/$SECTION" "$BACKUP_B_DIR"
+        log rsync $RSYNC_BACKUP $FILES "$DST/$SECTION"
+        rsync $RSYNC_BACKUP $FILES "$DST/$SECTION"
+    else
+        log rsync $RSYNC_BAK --relative --ignore-missing-args $FILES "$BACKUP_R_DIR/$SECTION"
+        rsync $RSYNC_BAK --relative --ignore-missing-args $FILES "$BACKUP_R_DIR/$SECTION"
+        log rsync $RSYNC_RESTORE "$SRC/$SECTION/./" $DST 
+        rsync $RSYNC_RESTORE "$SRC/$SECTION/./" $DST 
+    fi
 }
 
-section vim
-mkdir_conf {.vim,.config/nvim,tmp}/{backup,swap,undo}
-mkdir_conf .vim/autoload
-copy_conf .vim/autoload/plug.vim
-copy_conf .vimrc
-copy_conf .vimrc.minimal
+copy_confs_for vim \
+  .vim/autoload/plug.vim \
+  .vimrc \
+  .vimrc.minimal
 
-section vis
-mkdir_conf .config/vis
-mkdir_conf .config/vis/local-plugins
-copy_conf .config/vis/visrc.lua
-copy_conf .config/vis/prep.sh
+copy_confs_for vis \
+  .config/vis/visrc.lua \
+  .config/vis/prep.sh
 
-section ipython
-mkdir_conf .ipython/profile_default
-copy_conf .ipython/profile_default/ipython_config.py
+copy_confs_for ipython \
+  .ipython/profile_default \
+  .ipython/profile_default/ipython_config.py
 
-section emacs.d
-mkdir_conf .emacs.d
-copy_conf .emacs.d/init.el
-copy_conf .emacs.d/ui.el
+copy_confs_for emacs.d \
+  .emacs.d \
+  .emacs.d/init.el \
+  .emacs.d/ui.el
 
-section zathura
-mkdir_conf .config/zathura
-copy_conf .config/zathura/zathurarc
+copy_confs_for zathura \
+  .config/zathura \
+  .config/zathura/zathurarc
 
-section i3
-mkdir_conf .config/i3
-copy_conf .i3status.conf
-copy_conf .config/i3/config
-mkdir_conf bin
-copy_conf bin/locker.sh
-copy_conf bin/terminal.sh
-copy_conf bin/launcher.sh
-copy_conf bin/i3status.py
+copy_confs_for i3 \
+  .i3status.conf \
+  .config/i3/config \
+  bin/locker.sh \
+  bin/terminal.sh \
+  bin/launcher.sh \
+  bin/i3status.py
 
-section x11
-copy_conf .xinitrc 
-copy_conf .xbindkeysrc
-mkdir_conf bin
-copy_conf bin/autostart.sh
+copy_confs_for x11 \
+  .xinitrc .xbindkeysrc bin/autostart.sh
 
-section "{ba,z,tc,c}sh"
-copy_conf .bashrc
-copy_conf .bash_profile
-copy_conf .zshrc
-copy_conf .cshrc
-copy_conf .mk_alias
-copy_conf .aliases
-mkdir_conf bin
-copy_conf bin/trimdir.py
+copy_confs_for dunst \
+  .config/dunst .config/dunst/dunstrc
 
-section cli
-copy_conf .tmux.conf
-mkdir_conf .config/lxterminal
-copy_conf .config/lxterminal/lxterminal.conf
-mkdir_conf .config/terminator
-copy_conf .config/terminator/config
-mkdir_conf .config/xfce4/terminal/
-copy_conf .config/xfce4/terminal/terminalrc
+copy_confs_for "{ba,z,tc,c}sh" \
+  .bashrc .bash_profile .zshrc .cshrc .mk_alias .aliases bin/trimdir.py
+
+copy_confs_for cli \
+  .tmux.conf \
+  .config/lxterminal/lxterminal.conf \
+  .config/terminator/config \
+  .config/xfce4/terminal/terminalrc
 
 
-section git
-copy_conf .gitconfig
+copy_confs_for git .gitconfig
 
-section xfce4
-mkdir_conf .config/xfce4/xfconf/xfce-perchannel-xml
-copy_conf .config/xfce4/xfconf/xfce-perchannel-xml/xfce4-keyboard-shortcuts.xml
-copy_conf .config/xfce4/xfconf/xfce-perchannel-xml/xfce4-panel.xml
+copy_confs_for qterminal \
+  .config/qterminal.org \
+  .config/qterminal.org/qterminal.ini
 
-section qterminal
-mkdir_conf .config/qterminal.org
-copy_conf .config/qterminal.org/qterminal.ini
+copy_confs_for unison \
+  .unison \
+  .unison/default.prf
 
-section unison
-mkdir_conf .unison
-copy_conf .unison/default.prf
+copy_confs_for osync .osync.conf
 
-section osync
-copy_conf .osync.conf
-
-section conky
-copy_conf .conkyrc
-
-if [ "$MODE" == restore ] ; then
-  echo
-  echo --------- installing external confs --------- 
-  EXT_DIR=$SRC/external
-  loudcp "$EXT_DIR/bash-sensible/sensible.bash" "$DST/.sensible.bash"
-  loudcp "$EXT_DIR/commacd/commacd.bash" "$DST/.commacd.bash"
-  echo
-fi
-
-echo TODO: may need to run "git clone https://github.com/martanne/vis"
-echo TODO: "https://the.exa.website/#installation"
-echo TODO: "apt install rofi"
-echo "Backups are located in $BACKUP"
+copy_confs_for conky \
+  .top_conkyrc .bot_conkyrc .clocks_conkyrc

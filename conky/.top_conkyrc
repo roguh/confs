@@ -1,0 +1,113 @@
+-- vim: ts=4 sw=4 noet ai cindent syntax=lua
+--[[
+Conky, a system monitor, based on torsmo
+
+Any original torsmo code is licensed under the BSD license
+
+All code written since the fork of torsmo is licensed under the GPL
+
+Please see COPYING for details
+
+Copyright (c) 2004, Hannu Saransaari and Lauri Hakkarainen
+Copyright (c) 2005-2012 Brenden Matthews, Philip Kovacs, et. al. (see AUTHORS)
+All rights reserved.
+
+This program is free software: you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation, either version 3 of the License, or
+(at your option) any later version.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+You should have received a copy of the GNU General Public License
+along with this program.  If not, see <http://www.gnu.org/licenses/>.
+]]
+
+w = 400
+imgsz = 128
+local function interp (s, t)
+    return s:gsub('(#%b{})', function (w)
+        return t[w:sub(3, -2)] or w
+    end)
+end
+
+conky.config = {
+    lua_load = '/home/user/conkyutil.lua',
+    alignment = 'top_middle',
+    background = true,
+    border_width = 0,
+    cpu_avg_samples = 10,
+	default_color = 'black',
+    default_outline_color = 'white',
+    default_shade_color = 'black',
+    double_buffer = true,
+    draw_borders = false,
+    draw_graph_borders = false,
+    draw_outline = false,
+    draw_shades = false,
+    use_xft = true,
+    font = 'Noto Sans:black:size=9',
+    gap_x = 5,
+    gap_y = w / 5,
+    minimum_height = 5,
+    net_avg_samples = 2,
+    no_buffers = true,
+    out_to_console = false,
+    out_to_stderr = false,
+    extra_newline = false,
+    own_window = true,
+    own_window_class = 'Conky',
+    own_window_type = 'override',
+    own_window_transparent = true,
+    stippled_borders = 0,
+    update_interval = 5.0,
+    update_interval_on_battery = 10.0,
+    uppercase = false,
+    use_spacer = 'none',
+    show_graph_scale = true,
+    show_graph_range = true,
+    top_cpu_separate = false,
+
+    maximum_width = w,
+    minimum_width = w,
+}
+
+conky.text = interp([[
+$alignc${font Noto Sans:black:size=18}$nodename $sysname $kernel on $machine${font}
+$alignc$uptime
+
+#{emph}BAT0#{normal} ${battery_percent BAT0}% ${color yellow}${battery_bar BAT0}$color
+#{emph}BAT1#{normal} ${battery_percent BAT1}% ${color yellow}${battery_bar BAT1}$color
+
+#{emph}CPU#{normal} $alignr ${freq_g}GHz ${cpu cpu0}%
+${cpubar cpu1 3,#{quartw}} ${cpubar cpu2 3,#{quartw}} $alignr ${cpubar cpu3 3,#{quartw}} ${cpubar cpu4 3,#{quartw}}
+${cpubar cpu5 3,#{quartw}} ${cpubar cpu6 3,#{quartw}} $alignr ${cpubar cpu7 3,#{quartw}} ${cpubar cpu8 3,#{quartw}}
+${cpugraph cpu0 #{gheight},${w} #{gcolors}}
+
+#{emph}RAM#{normal} $alignr $mem/$memmax $memperc%
+#{emph}Swap#{normal} $alignr $swap/$swapmax $swapperc% ${swapbar 6}
+${membar 6}
+${memgraph #{gheight},${w} #{gcolors}}
+
+#{emph}/ $alignr #{normal} ${fs_free /}/${fs_size /} ${fs_used_perc /}%
+${fs_bar 6 /}
+
+#{emph}Disk read + write $alignr #{normal} ${diskio_read} ${diskio_write}
+${diskiograph_read #{gheight},#{halfw} #{gcolors}} $alignr ${diskiograph_write #{gheight},#{halfw} #{gcolors}}
+
+${if_up wlp4s0}#{emph}Wireless up + down#{normal} $alignr ${upspeed wlp4s0} ${downspeed wlp4s0}${else}${color gray}WiFi down#{normal}$endif
+${if_up wlp4s0}${downspeedgraph wlp4s0 #{gheight},#{halfw} #{gcolors}} $alignr ${upspeedgraph wlp4s0 #{gheight},#{halfw} #{gcolors}}${endif}
+]], {
+    w = w,
+    imgsz = imgsz,
+    imgx = w / 2 - imgsz / 2,
+    imgy = 1080 / 2,
+    halfw = w * 0.49,
+    quartw = w * 0.245,
+    gheight = 25,
+    gcolors = "#FF0000 #FFFF00",
+    emph = '${font Noto Sans:size=9}',
+    normal = '$font',
+})

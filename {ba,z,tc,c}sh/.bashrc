@@ -39,14 +39,27 @@ E="\["
 D="\]"
 INVERT="$E\e[7m$D"
 BOLD="$E\e[1m$D"
-COLOR_RED="$E\e[31m$D"
+
+# These are all background colors
+COLOR_RED="$E\e[41m$D"
+COLOR_GREEN="$E\e[42m$D"
+COLOR_BLUE="$E\e[44m$D"
+COLOR_CYAN="$E\e[46m$D"
+FCOLOR_BLACK="$E\e[30m$D"
+COLOR_HIGHLIGHT=$FCOLOR_BLACK$COLOR_CYAN
 END="$E\e[0m$D"
 
+### Set beginning in PS1
 PS1_BEGIN="\u @ \H"
-if [[ $(whoami) == root && $COLORED_PS1 == "true" ]] ; then
-    PS1_BEGIN="${COLOR_RED}\u${END}${INVERT} @ \H${END}"
+if [[ $COLORED_PS1 == "true" ]] ; then
+if [[ $(whoami) == root ]] ; then
+    PS1_BEGIN="${INVERT}${COLOR_HIGHLIGHT}\u${END}${INVERT} @ \H${END}"
+else
+    PS1_BEGIN="${INVERT}\u @ \H${END}"
+fi
 fi
 
+### Set extra information in PS1
 PS1_TIME='$(date +%H:%M:%S)' 
 
 if [[ $(whoami) == root ]] ; then
@@ -57,10 +70,10 @@ fi
 PS1_END_PLAIN=$PS1_END
 
 if [[ $COLORED_PS1 == "true" ]] ; then
-    PS1_BEGIN="${INVERT}${PS1_BEGIN}${END}"
     PS1_END="${BOLD}${PS1_END}${END}"
 fi
 
+### PWD and git info in PS1
 if command -v trimdir.py > /dev/null && command -v python3 > /dev/null ; then
     PS1_PWD='$(echo "\w" | trimdir.py) '
 else
@@ -76,8 +89,9 @@ else
     PS1_GITBRANCH=""
 fi
 
+### Set end of PS1
 if [[ $COLORED_PS1 == "true" ]] ; then
-    PS1_TIME="${INVERT}${COLOR_RED}${PS1_TIME}${END}" 
+    PS1_TIME="${COLOR_HIGHLIGHT}${PS1_TIME}${END}" 
 fi
 
 export PS1="${PS1_BEGIN} ${PS1_TIME} ${PS1_PWD}${PS1_GITBRANCH}${PS1_END}"
@@ -86,7 +100,9 @@ export PS1="${PS1_BEGIN} ${PS1_TIME} ${PS1_PWD}${PS1_GITBRANCH}${PS1_END}"
 # [[ $- == *i* ]] && [ -z "$DISPLAY" ] && [ -z "$TMUX" ] && exec tmux
 
 if command -v most > /dev/null ; then
-    export MANPAGER=most
+    export PAGER=most
+    export MANPAGER=$PAGER
+    export SYSTEMD_PAGER=$PAGER
 fi
 
 ##### Set commands in interactive mode
@@ -105,4 +121,3 @@ if [[ $- == *i* ]]; then
     # Set title. This should be the last command in .bashrc
     trap 'printf "\033]0;%s\007" "$PS1_END_PLAIN${BASH_COMMAND//[^[:print:]]/} (on $HOSTNAME)" >&2' DEBUG
 fi
-
