@@ -1,26 +1,34 @@
 #!/usr/bin/env bash
 
-conky &
+# Backup config files
+backup-t580.sh &
+backup-common.sh &
 
+# Start graphical system monitor
+conky -c .top_conkyrc &
+conky -c .bot_conkyrc &
+
+# Enable key bindings
 xbindkeys &
 
 # Check for Arch package updates
 kalu &
 
-# Background
+# Set background
 # feh --bg-fill "Pictures/mt hope, antarctica.jpeg" &
-xsetroot -solid '#002b36' &
+xsetroot -solid '#f87b87' &
 
-backup-t580.sh &
-backup-common.sh &
-
+# Prevent eyestrain at 4AM
 redshift &
 
+# Start file synchronizers
 for CMD in {hsync,local}-{unison,osync} ; do
     lxterminal -l -e "bash -c $CMD" &
 done
 
-# Screen locker
-xautolock -detectsleep -secure -time 15 -locker locker.sh &
+# Lock screen after 5 minutes
+xautolock -detectsleep -secure -time 5 -locker locker.sh &
 
+# Start commonly used apps
 firefox &
+signal-desktop &
