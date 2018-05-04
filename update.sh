@@ -112,12 +112,9 @@ copy_confs_for zathura \
   .config/zathura/zathurarc
 
 copy_confs_for i3 \
-  .i3status.conf \
-  .config/i3/config \
-  bin/locker.sh \
-  bin/terminal.sh \
-  bin/launcher.sh \
-  bin/i3status.py
+  .i3status.conf .config/i3/config \
+  bin/locker.sh bin/terminal.sh bin/launcher.sh \
+  bin/i3status.py bin/i3txt.py
 
 copy_confs_for x11 \
   .xinitrc .xbindkeysrc bin/autostart.sh

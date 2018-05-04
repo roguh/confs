@@ -49,8 +49,8 @@ conky.config = {
     use_xft = true,
     font = 'Source Code Pro:black:size=14',
     gap_x = w / 2,
-    gap_y = 60,
-    minimum_height = 5,
+    gap_y = 0,
+    minimum_height = 0,
     net_avg_samples = 2,
     no_buffers = true,
     out_to_console = false,
@@ -77,7 +77,7 @@ conky.text = interp([[
 #{note}Tokyo#{normal} $alignr${tztime Asia/Tokyo %H:%M:%S %p}
 #{note}LA#{normal} $alignr${tztime America/Los_Angeles %H:%M:%S %p}
 #{note}NM#{normal} $alignr${tztime America/Denver %H:%M:%S %p}
-#{note}TX#{normal} $alignr${tztime America/Austin %H:%M:%S %p}
+#{note}TX#{normal} $alignr${tztime America/Dallas %H:%M:%S %p}
 #{note}NY#{normal} $alignr${tztime America/New_York %H:%M:%S %p}
 #{note}Paris#{normal} $alignr${tztime Europe/Paris %H:%M:%S %p}
 #{note}Amsterdam#{normal} $alignr${tztime Europe/Amsterdam %H:%M:%S %p}

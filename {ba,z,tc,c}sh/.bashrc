@@ -44,10 +44,29 @@ BOLD="$E\e[1m$D"
 COLOR_RED="$E\e[41m$D"
 COLOR_GREEN="$E\e[42m$D"
 COLOR_BLUE="$E\e[44m$D"
+COLOR_ORANGE="$E\e[48;5;208m$D"
 COLOR_CYAN="$E\e[46m$D"
 FCOLOR_BLACK="$E\e[30m$D"
-COLOR_HIGHLIGHT=$FCOLOR_BLACK$COLOR_CYAN
 END="$E\e[0m$D"
+
+RELEASE=
+if command -v python > /dev/null ; then
+    RELEASE=`python -mplatform`
+fi
+
+shopt -s nocasematch
+case "$RELEASE" in
+    *ubuntu*) COLOR_HIGHLIGHT="$FCOLOR_BLACK$COLOR_ORANGE"
+    ;;
+    *debian*) COLOR_HIGHLIGHT="$FCOLOR_BLACK$COLOR_RED"
+    ;;
+    *arch*) COLOR_HIGHLIGHT="$FCOLOR_BLACK$COLOR_CYAN"
+    ;;
+    *cent*) COLOR_HIGHLIGHT="$FCOLOR_BLACK$COLOR_GREEN"
+    ;;
+    *) COLOR_HIGHLIGHT="$FCOLOR_BLACK$COLOR_RED"
+    ;;
+esac
 
 ### Set beginning in PS1
 PS1_BEGIN="\u @ \H"
@@ -107,6 +126,9 @@ fi
 
 ##### Set commands in interactive mode
 if [[ $- == *i* ]]; then
+    # Keep aliases when running sudo
+    alias sudo='sudo '
+
     # Use , as an improved cd command
     load_file "$HOME/.commacd.bash"
     

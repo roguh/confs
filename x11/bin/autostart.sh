@@ -7,6 +7,7 @@ backup-common.sh &
 # Start graphical system monitor
 conky -c .top_conkyrc &
 conky -c .bot_conkyrc &
+conky -c .clocks_conkyrc &
 
 # Enable key bindings
 xbindkeys &
