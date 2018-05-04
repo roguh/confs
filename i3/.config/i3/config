@@ -30,10 +30,6 @@ bindsym $mod+Up focus up
 bindsym $mod+Right focus right
 
 # Move focused window
-bindsym $mod+Shift+j move left
-bindsym $mod+Shift+k move down
-bindsym $mod+Shift+l move up
-bindsym $mod+Shift+semicolon move right
 bindsym $mod+Shift+Left move left
 bindsym $mod+Shift+Down move down
 bindsym $mod+Shift+Up move up
@@ -189,6 +185,6 @@ bindsym $mod+c exec $browser
 bindsym $mod+n exec $browser
 
 bindsym $mod+l exec locker.sh
-bindsym $mod+$Shift+l exec nobacklight.sh
+bindsym $mod+Shift+l exec backlightoff.sh
 
 # Requirements: nm-applet i3lock i3bar redshift scrot imagemagick lxterminal unison feh

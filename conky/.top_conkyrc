@@ -87,12 +87,15 @@ ${cpubar cpu5 3,#{quartw}} ${cpubar cpu6 3,#{quartw}} $alignr ${cpubar cpu7 3,#{
 ${cpugraph cpu0 #{gheight},${w} #{gcolors}}
 
 #{emph}RAM#{normal} $alignr $mem/$memmax $memperc%
-#{emph}Swap#{normal} $alignr $swap/$swapmax $swapperc% ${swapbar 6}
+#{emph}Swap#{normal} $alignr $swap/$swapmax $swapperc%
 ${membar 6}
+${swapbar 6}
 ${memgraph #{gheight},${w} #{gcolors}}
 
-#{emph}/ $alignr #{normal} ${fs_free /}/${fs_size /} ${fs_used_perc /}%
+#{emph}/$alignr#{normal} ${fs_used /}/${fs_size /} ${fs_free_perc /}%
+#{emph}/boot$alignr#{normal} ${fs_used /boot}/${fs_size /boot} ${fs_free_perc /boot}%
 ${fs_bar 6 /}
+${fs_bar 6 /boot}
 
 #{emph}Disk read + write $alignr #{normal} ${diskio_read} ${diskio_write}
 ${diskiograph_read #{gheight},#{halfw} #{gcolors}} $alignr ${diskiograph_write #{gheight},#{halfw} #{gcolors}}
