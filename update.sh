@@ -124,6 +124,9 @@ copy_confs_for dunst \
 copy_confs_for "{ba,z,tc,c}sh" \
   .bashrc .bash_profile .zshrc .cshrc .mk_alias .aliases bin/trimdir.py
 
+copy_confs_for utils \
+    bin/cpufreq.sh bin/systemload.sh
+
 copy_confs_for cli \
   .tmux.conf \
   .config/lxterminal/lxterminal.conf \
