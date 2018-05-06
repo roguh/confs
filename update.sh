@@ -99,17 +99,16 @@ copy_confs_for vis \
   .config/vis/prep.sh
 
 copy_confs_for ipython \
-  .ipython/profile_default \
   .ipython/profile_default/ipython_config.py
 
 copy_confs_for emacs.d \
-  .emacs.d \
   .emacs.d/init.el \
   .emacs.d/ui.el
 
 copy_confs_for zathura \
-  .config/zathura \
   .config/zathura/zathurarc
+
+copy_confs_for polybar .config/polybar/config
 
 copy_confs_for i3 \
   .i3status.conf .config/i3/config \
@@ -135,7 +134,6 @@ copy_confs_for cli \
 copy_confs_for git .gitconfig
 
 copy_confs_for qterminal \
-  .config/qterminal.org \
   .config/qterminal.org/qterminal.ini
 
 copy_confs_for unison \

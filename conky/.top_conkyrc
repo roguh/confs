@@ -100,7 +100,7 @@ ${fs_bar 6 /boot}
 #{emph}Disk read + write $alignr #{normal} ${diskio_read} ${diskio_write}
 ${diskiograph_read #{gheight},#{halfw} #{gcolors}} $alignr ${diskiograph_write #{gheight},#{halfw} #{gcolors}}
 
-${if_up wlp4s0}#{emph}Wireless up + down#{normal} $alignr ${upspeed wlp4s0} ${downspeed wlp4s0}${else}${color gray}WiFi down#{normal}$endif
+${if_up wlp4s0}#{emph}Wireless up + down#{normal} $alignr ${upspeed wlp4s0} ${downspeed wlp4s0}${else}#{emph}WiFi down#{normal}$endif
 ${if_up wlp4s0}${downspeedgraph wlp4s0 #{gheight},#{halfw} #{gcolors}} $alignr ${upspeedgraph wlp4s0 #{gheight},#{halfw} #{gcolors}}${endif}
 ]], {
     w = w,
