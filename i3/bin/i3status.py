@@ -28,14 +28,19 @@
 import sys
 import json
 import re
+import glob
 
 
-def get_cpufreqs():
+def get_cpufreq():
     """Returns CPU clock speed (min, max)"""
     
     with open('/proc/cpuinfo') as f:
         ms = (re.match('cpu MHz\t\t: (.*)$', l) for l in f.readlines())
-        return sorted("{:.1f}".format(float(m.groups()[0]) / 1000) for m in ms if m is not None)
+        return "{:.1f} GHz".format(max(float(m.groups()[0]) / 1000 for m in ms if m is not None))
+
+
+def get_proc_count():
+    return len(glob.glob('/proc/[0-9]*'))
 
 
 def print_line(message):
@@ -73,7 +78,8 @@ if __name__ == '__main__':
 
         # insert information into the start of the json, but could be anywhere
         j = json.loads(line)
-        j.insert(0, {'full_text' : '%s' % ' '.join(get_cpufreqs()), 'name' : 'freqs'})
+        j.insert(0, {'full_text' : '%s' % get_cpufreq(), 'name' : 'freqs'})
+        j.insert(0, {'full_text' : '%s ps' % get_proc_count(), 'name': 'proccount'})
 
         # and echo back new encoded json
         print_line(prefix+json.dumps(j))
