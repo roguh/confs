@@ -137,7 +137,6 @@ copy_confs_for qterminal \
   .config/qterminal.org/qterminal.ini
 
 copy_confs_for unison \
-  .unison \
   .unison/default.prf
 
 copy_confs_for osync .osync.conf

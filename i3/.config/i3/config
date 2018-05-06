@@ -135,26 +135,29 @@ mode "resize" {
         bindsym Escape mode "default"
 }
 
-# i3bar to display a workspace bar
-bar {
-        status_command i3status | i3status.py
-        tray_output primary
-        font pango: Noto Sans Medium 10
-        position top
-        separator_symbol " "
+exec_always --no-startup-id ~/bin/polybar.sh &
 
-        colors {
-               background #1271A1
-               statusline #ffffff
-               separator  #ffffff
-               
-               focused_workspace  #1271A1 #E5E7E7 #000000
-               active_workspace   #1271A1 #E5E7E7 #808080
-               inactive_workspace #1271A1 #00A199 #000000
-               urgent_workspace   #2f343a #900000 #ffffff
-        }
-}
+# # i3bar to display a workspace bar
+# bar {
+#         status_command i3status | i3status.py
+#         tray_output primary
+#         font pango: Noto Sans Medium 10
+#         position top
+#         separator_symbol " "
+# 
+#         colors {
+#                background #1271A1
+#                statusline #ffffff
+#                separator  #ffffff
+#                
+#                focused_workspace  #1271A1 #E5E7E7 #000000
+#                active_workspace   #1271A1 #E5E7E7 #808080
+#                inactive_workspace #1271A1 #00A199 #000000
+#                urgent_workspace   #2f343a #900000 #ffffff
+#         }
+# }
 
+# Window border
 new_window normal 1
 
 # Hide title for extremely common windows

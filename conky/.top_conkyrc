@@ -50,7 +50,7 @@ conky.config = {
     use_xft = true,
     font = 'Noto Sans:black:size=9',
     gap_x = 5,
-    gap_y = w / 5,
+    gap_y = 80,
     minimum_height = 5,
     net_avg_samples = 2,
     no_buffers = true,
@@ -75,7 +75,7 @@ conky.config = {
 }
 
 conky.text = interp([[
-$alignc${font Noto Sans:black:size=18}$nodename $sysname $kernel on $machine${font}
+$alignc#{fonttitle}$nodename $sysname #{fontsubtitle}$kernel on $machine${font}
 $alignc$uptime
 
 #{emph}BAT0#{normal} ${battery_percent BAT0}% ${color yellow}${battery_bar BAT0}$color
@@ -112,5 +112,7 @@ ${if_up wlp4s0}${downspeedgraph wlp4s0 #{gheight},#{halfw} #{gcolors}} $alignr $
     gheight = 25,
     gcolors = "#FF0000 #FFFF00",
     emph = '${font Noto Sans:size=9}',
+    fonttitle = '${font Noto Sans:black:size=18}',
+    fontsubtitle = '${font Noto Sans:black:size=15}',
     normal = '$font',
 })

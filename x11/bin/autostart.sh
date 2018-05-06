@@ -5,9 +5,7 @@ backup-t580.sh &
 backup-common.sh &
 
 # Start graphical system monitor
-conky -c .top_conkyrc &
-conky -c .bot_conkyrc &
-conky -c .clocks_conkyrc &
+for c in ~/.*conkyrc ; do conky -c $c & done
 
 # Enable key bindings
 xbindkeys &
@@ -15,12 +13,11 @@ xbindkeys &
 # Check for Arch package updates
 kalu &
 
-# Set background
-# feh --bg-fill "Pictures/mt hope, antarctica.jpeg" &
-xsetroot -solid '#f87b87' &
-
 # Prevent eyestrain at 4AM
 redshift &
+
+# udisk tray icon
+udiskie --smart-tray &
 
 # Start file synchronizers
 for CMD in {hsync,local}-{unison,osync} ; do
@@ -33,3 +30,8 @@ xautolock -detectsleep -secure -time 5 -locker locker.sh &
 # Start commonly used apps
 firefox &
 signal-desktop &
+
+# Set background
+# feh --bg-fill "Pictures/mt hope, antarctica.jpeg" &
+(sleep 1 ; xsetroot -solid '#f87b87') &
+

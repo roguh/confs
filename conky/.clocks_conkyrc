@@ -34,7 +34,7 @@ local function interp (s, t)
 end
 
 conky.config = {
-    alignment = 'middle_right',
+    alignment = 'top_right',
     background = true,
     border_width = 0,
     cpu_avg_samples = 10,
@@ -49,7 +49,7 @@ conky.config = {
     use_xft = true,
     font = 'Source Code Pro:black:size=14',
     gap_x = w / 2,
-    gap_y = 0,
+    gap_y = 80,
     minimum_height = 0,
     net_avg_samples = 2,
     no_buffers = true,
