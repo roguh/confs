@@ -50,7 +50,7 @@ conky.config = {
     use_xft = true,
     font = 'Noto Sans:black:size=9',
     gap_x = 5,
-    gap_y = w / 5,
+    gap_y = 80,
     minimum_height = 5,
     net_avg_samples = 2,
     no_buffers = true,
