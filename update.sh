@@ -145,4 +145,4 @@ copy_confs_for unison \
 copy_confs_for osync .osync.conf
 
 copy_confs_for conky \
-  .top_conkyrc .bot_conkyrc .clocks_conkyrc
+  .conkyrc.d/top_conkyrc .conkyrc.d/bot_conkyrc .conkyrc.d/clocks_conkyrc

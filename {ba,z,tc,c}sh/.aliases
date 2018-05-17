@@ -12,4 +12,4 @@ mk_alias grep "grep --color"
 
 mk_alias v vis nvim vim vi nano ed libreoffice openoffice "wine MicrosoftOffice2003.exe"
 mk_alias e "zathura --fork" evince mupdf mupdf-x11 "wine READER10.exe"
-mk_alias sx startx
+mk_alias sx 'exec startx'

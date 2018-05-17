@@ -1,1 +1,1 @@
-lxterminal
+exec lxterminal
