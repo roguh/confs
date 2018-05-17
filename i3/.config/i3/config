@@ -119,6 +119,8 @@ bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcu
 # Resize bindings
 bindsym $mod+r mode "resize"
 
+floating_maximum_size 1860 x 1000
+
 mode "resize" {
         # These bindings trigger as soon as you enter the resize mode
         bindsym Left  resize shrink width 10 px or 10 ppt
@@ -163,13 +165,14 @@ new_window normal 1
 # Hide title for extremely common windows
 # for_window [title="LXTerminal|Firefox|Chromium|Chrome$"] border pixel 1
 for_window [title="Firefox|Chromium|Chrome$"] border pixel 1
+for_window [class="Docky"] floating enable
 
 # Colors
 # 1271A1 is slightly darker Arch blue
 # class                 border  backgr. text    indicator
 client.focused          #E5E7E7 #E5E7E7 #1271A1 #2e9ef4
 client.focused_inactive #1271A1 #00A199 #E5E7E7 #484e50
-client.unfocused        #1271A1 #1271A1 #E5E7E7 #484e50
+client.unfocused        #062636 #062636 #E5E7E7 #484e50
 
 client.urgent           #2f343a #900000 #ffffff #900000
 
