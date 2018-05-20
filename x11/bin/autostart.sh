@@ -35,7 +35,7 @@ for CMD in {hsync,local}-{unison,osync} ; do
 done
 
 # Lock screen after 5 minutes
-xautolock -detectsleep -secure -time 5 -locker locker.sh &
+xautolock -detectsleep -secure -time 10 -notify 120 -notifier backlightoff.sh -locker locker.sh &
 
 # Start commonly used apps
 firefox &

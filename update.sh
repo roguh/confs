@@ -122,7 +122,7 @@ copy_confs_for dunst \
   .config/dunst .config/dunst/dunstrc
 
 copy_confs_for "{ba,z,tc,c}sh" \
-  .bashrc .bash_profile .zshrc .cshrc .mk_alias .aliases bin/trimdir.py
+  .bashrc .bash_profile .zshrc .cshrc .mk_alias .aliases bin/trimdir.py bin/gitinfo.sh
 
 copy_confs_for utils \
     bin/cpufreq.sh bin/systemload.sh

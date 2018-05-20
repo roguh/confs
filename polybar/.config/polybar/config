@@ -111,6 +111,7 @@ wrapping-scroll = false
 
 ; Only show workspaces on the same output as the bar
 ;pin-workspaces = true
+strip-wsnumbers = true
 
 label-focused = %index%
 label-focused-background = ${colors.background-alt}
