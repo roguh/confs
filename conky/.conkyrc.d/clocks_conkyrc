@@ -76,7 +76,7 @@ conky.text = interp([[
 #{note}Tokyo#{normal} $alignr${tztime Asia/Tokyo %H:%M:%S %p}
 #{note}LA#{normal} $alignr${tztime America/Los_Angeles %H:%M:%S %p}
 #{note}NM#{normal} $alignr${tztime America/Denver %H:%M:%S %p}
-#{note}TX#{normal} $alignr${tztime America/Dallas %H:%M:%S %p}
+#{note}Cd. MX#{normal} $alignr${tztime America/Mexico_City %H:%M:%S %p}
 #{note}NY#{normal} $alignr${tztime America/New_York %H:%M:%S %p}
 #{note}Paris#{normal} $alignr${tztime Europe/Paris %H:%M:%S %p}
 #{note}Amsterdam#{normal} $alignr${tztime Europe/Amsterdam %H:%M:%S %p}

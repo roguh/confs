@@ -14,10 +14,6 @@ load_file "$HOME/.aliases"
 # Load extra .bashrc
 load_file "$HOME/.bashrc_extra"
 
-# Arch
-export PKGFILE_PROMPT_INSTALL_MISSING=true
-load_file /usr/share/doc/pkgfile/command-not-found.bash
-
 export VISUAL=vim
 
 # Do not save history to a file
@@ -60,9 +56,9 @@ case "$RELEASE" in
     ;;
     *debian*) COLOR_HIGHLIGHT="$FCOLOR_BLACK$COLOR_RED"
     ;;
-    *arch*) COLOR_HIGHLIGHT="$FCOLOR_BLACK$COLOR_CYAN"
-    ;;
     *cent*) COLOR_HIGHLIGHT="$FCOLOR_BLACK$COLOR_GREEN"
+    ;;
+    *arch*) COLOR_HIGHLIGHT="$FCOLOR_BLACK$COLOR_CYAN"
     ;;
     *) COLOR_HIGHLIGHT="$FCOLOR_BLACK$COLOR_RED"
     ;;
@@ -94,13 +90,13 @@ fi
 
 ### PWD and git info in PS1
 if command -v trimdir.py > /dev/null && command -v python3 > /dev/null ; then
-    PS1_PWD='$(echo "\w" | trimdir.py) '
+    PS1_PWD='$(echo "\w" | trimdir.py)'
 else
-    PS1_PWD="\w "
+    PS1_PWD="\w"
 fi
 
 if command -v git > /dev/null ; then
-    PS1_GITBRANCH='$(git rev-parse --abbrev-ref HEAD 2>/dev/null) '
+    PS1_GITBRANCH='$(gitinfo.sh)'
     if [[ $COLORED_PS1 == "true" ]] ; then
         PS1_GITBRANCH="${BOLD}${PS1_GITBRANCH}${END}"
     fi
@@ -113,7 +109,7 @@ if [[ $COLORED_PS1 == "true" ]] ; then
     PS1_TIME="${COLOR_HIGHLIGHT}${PS1_TIME}${END}" 
 fi
 
-export PS1="${PS1_BEGIN} ${PS1_TIME} ${PS1_PWD}${PS1_GITBRANCH}${PS1_END}"
+export PS1="${PS1_BEGIN} ${PS1_TIME} ${PS1_PWD} ${PS1_GITBRANCH}${PS1_END}"
 
 # Run tmux if there's no GUI but it's an interactive shell
 # [[ $- == *i* ]] && [ -z "$DISPLAY" ] && [ -z "$TMUX" ] && exec tmux
