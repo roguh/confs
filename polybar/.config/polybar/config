@@ -52,8 +52,11 @@ font-2 = "Font Awesome 5 Brands:pixelsize=10;1"
 font-3 = Weather Icons:size=12;1
 
 modules-left = i3
-modules-center = proc_count cpu_ghz temperature system_load cpu memory filesystem wlan eth batterypower batterypower1
-modules-right = weather xbacklight music alsa battery battery1 date
+modules-center = proc_count cpu_ghz temperature system_load cpu memory filesystem batterypower batterypower1 wlan eth
+modules-right = weather music xbacklight alsa battery battery1 date
+
+; Bottom of screen
+bottom = true
 
 tray-position = right
 tray-padding = 2
@@ -158,11 +161,13 @@ label-song-ellipsis = true
 [module/xbacklight]
 type = internal/xbacklight
 
+format-underline = #000000
+
 format = <label> <bar>
-label = BL
+label = 
 
 bar-width = 10
-bar-indicator = |
+bar-indicator = I
 bar-indicator-foreground = #ff
 bar-indicator-font = 2
 bar-fill = ─
@@ -223,9 +228,10 @@ format-connected = <ramp-signal> <label-connected>
 format-connected-underline = #9f78e1
 
 ramp-signal-0 = 
-ramp-signal-0-foreground = ${self.format-connected-underline}
+ramp-signal-foreground = ${self.format-connected-underline}
 
-label-connected = %essid% %local_ip%
+; label-connected = %essid% %local_ip%
+label-connected = %local_ip%
 
 format-disconnected =
 
@@ -290,6 +296,8 @@ format-volume = <label-volume> <bar-volume>
 label-volume =
 label-volume-foreground = ${root.foreground}
 
+format-underline = #000000
+
 format-muted-prefix = 🔇 
 format-muted-foreground = ${colors.foreground-alt}
 label-muted = muted
@@ -303,7 +311,7 @@ bar-volume-foreground-4 = #aa5555
 bar-volume-foreground-5 = #a7f50a
 bar-volume-foreground-6 = #55ff55
 bar-volume-gradient = false
-bar-volume-indicator = |
+bar-volume-indicator = I
 bar-volume-indicator-font = 2
 bar-volume-fill = ─
 bar-volume-fill-font = 2
