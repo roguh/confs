@@ -71,7 +71,7 @@
 "amixer -q sset Master 1%-"
   XF86AudioLowerVolume
 
-"amixer -q sset Headphone unmute && amixer -q sset Speaker unmute && amixer -q sset Master toggle"
+"amixer -q sset Headphone unmute ; amixer -q sset Speaker unmute ; amixer -q sset Master toggle"
   XF86AudioMute
 
 "xbacklight -inc 5"
