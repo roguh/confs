@@ -5,6 +5,8 @@ require('vis')
 require('plugins/filetype')
 require('plugins/textobject-lexer')
 require('local-plugins/vis-cursors/cursors')
+require('local-plugins/vis-paste-mode/paste')
+-- require('local-plugins/vis-whitespace-cleanup/whitespace')
 backup = require('local-plugins/vis-backup/backup')
 
 vis.events.subscribe(vis.events.INIT, function()
@@ -27,4 +29,7 @@ vis.events.subscribe(vis.events.WIN_OPEN, function(win)
 	-- vis:command('set theme base16-unikitty-dark')
 	vis:command('set show-tabs on')
 	vis:command('set show-newlines on')
+	if vis.option_get then
+	vis:info('option: ' .. tostring(vis:option_get("lol")))
+	end
 end)

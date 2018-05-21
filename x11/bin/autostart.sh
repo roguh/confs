@@ -30,9 +30,8 @@ redshift &
 udiskie --smart-tray &
 
 # Start file synchronizers
-for CMD in {hsync,local}-{unison,osync} ; do
-    lxterminal -l -e "sh -c $CMD" &
-done
+lxterminal -l -e "sh -c hsync-unison" &
+lxterminal -l -e "sh -c hsync-osync" &
 
 # Lock screen after 5 minutes
 xautolock -detectsleep -secure -time 10 -notify 120 -notifier backlightoff.sh -locker locker.sh &

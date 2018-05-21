@@ -80,7 +80,7 @@ bindsym $mod+F7 workspace 17
 bindsym $mod+F8 workspace 18
 bindsym $mod+F9 workspace 19
 bindsym $mod+F10 workspace 20
-bindsym $mod+p workspace 21:fun
+bindsym $mod+p workspace 21:music
 bindsym $mod+o workspace 22:TODO
 
 # Move focused container to workspace
@@ -104,7 +104,7 @@ bindsym $mod+Shift+F7 move container to workspace 17
 bindsym $mod+Shift+F8 move container to workspace 18
 bindsym $mod+Shift+F9 move container to workspace 19
 bindsym $mod+Shift+F10 move container to workspace 20
-bindsym $mod+Shift+p move container to workspace 21:fun
+bindsym $mod+Shift+p move container to workspace 21:music
 bindsym $mod+Shift+o move container to workspace 22:TODO
 
 bindsym $mod+u exec i3-input -F 'rename workspace to "%s"' -P 'New name: '

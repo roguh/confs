@@ -49,10 +49,11 @@ module-margin-right = 1
 font-0 = "Source Code Pro:style=Bold:pixelsize=9;1"
 font-1 = "Font Awesome 5 Free:style=Solid:pixelsize=10;1"
 font-2 = "Font Awesome 5 Brands:pixelsize=10;1"
+font-3 = Weather Icons:size=12;1
 
 modules-left = i3
 modules-center = proc_count cpu_ghz temperature system_load cpu memory filesystem wlan eth batterypower batterypower1
-modules-right = xbacklight alsa battery battery1 date
+modules-right = weather xbacklight music alsa battery battery1 date
 
 tray-position = right
 tray-padding = 2
@@ -108,6 +109,9 @@ type = internal/i3
 format = <label-state> <label-mode>
 index-sort = true
 wrapping-scroll = false
+
+show-icons = true
+icons-side = right
 
 ; Only show workspaces on the same output as the bar
 ;pin-workspaces = true
@@ -243,8 +247,8 @@ interval = 1
 date-alt = %a %Y-%m-%d
 date = %a
 
-time-alt = %H:%M:%S %Z%z
-time = %H:%M %Z
+time-alt = %k:%M:%S %Z%z
+time = %k:%M %Z
 
 format-prefix = 
 format-prefix-foreground = ${colors.foreground-alt}
@@ -256,7 +260,7 @@ label = %date% %time%
 type = internal/pulseaudio
 
 format-volume = <label-volume> <bar-volume>
-label-volume = VOL %percentage%%
+label-volume = %percentage%%
 label-volume-foreground = ${root.foreground}
 
 label-muted = 🔇 muted
@@ -283,21 +287,21 @@ bar-volume-empty-foreground = ${colors.foreground-alt}
 type = internal/alsa
 
 format-volume = <label-volume> <bar-volume>
-label-volume = VOL
+label-volume =
 label-volume-foreground = ${root.foreground}
 
-format-muted-prefix = 
+format-muted-prefix = 🔇 
 format-muted-foreground = ${colors.foreground-alt}
-label-muted = sound muted
+label-muted = muted
 
 bar-volume-width = 10
-bar-volume-foreground-0 = #55aa55
-bar-volume-foreground-1 = #55aa55
-bar-volume-foreground-2 = #55aa55
-bar-volume-foreground-3 = #55aa55
-bar-volume-foreground-4 = #55aa55
-bar-volume-foreground-5 = #f5a70a
-bar-volume-foreground-6 = #ff5555
+bar-volume-foreground-0 = #aa5555
+bar-volume-foreground-1 = #aa5555
+bar-volume-foreground-2 = #aa5555
+bar-volume-foreground-3 = #aa5555
+bar-volume-foreground-4 = #aa5555
+bar-volume-foreground-5 = #a7f50a
+bar-volume-foreground-6 = #55ff55
 bar-volume-gradient = false
 bar-volume-indicator = |
 bar-volume-indicator-font = 2
@@ -420,6 +424,22 @@ label = %temperature-c%
 label-warn = %temperature-c%
 label-warn-foreground = ${colors.warning}
 
+[module/music]
+type = custom/script
+exec = ~/.config/polybar/player-mpris-tail.py
+tail = true
+click-right = ~/.config/polybar/player-ctrl.sh previous
+click-left = ~/.config/polybar/player-ctrl.sh play-pause
+click-middle = ~/.config/polybar/player-ctrl.sh next
+format-underline = #ff5533
+
+[module/weather]
+type = custom/script
+exec = ~/.config/polybar/openweathermap-fullfeatured.sh
+interval = 600
+label-font = 4
+format-underline = #ffffff
+
 [settings]
 screenchange-reload = true
 ;compositing-background = xor
@@ -432,3 +452,4 @@ margin-top = 5
 margin-bottom = 5
 
 ; vim:ft=dosini
+
