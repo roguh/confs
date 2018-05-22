@@ -23,8 +23,9 @@ redshift &
 xautolock -detectsleep -secure -time 10 -notify 120 -notifier backlightoff.sh -locker locker.sh &
 
 # Set background
-# feh --bg-fill "Pictures/mt hope, antarctica.jpeg" &
-(sleep 1 ; xsetroot -solid "$BACKGROUND_COLOR") &
+# Photo by Thomas Kelley on Unsplash
+(sleep 1 ; feh --bg-scale "Photos/thomas-kelley-194243-unsplash.jpg")
+# (sleep 1 ; xsetroot -solid "$BACKGROUND_COLOR") &
 
 # Ctrl-Alt-Backspace to kill X server
 (sleep 1 ; setxkbmap -option terminate:ctrl_alt_bksp) &
