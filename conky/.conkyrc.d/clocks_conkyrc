@@ -25,7 +25,7 @@ You should have received a copy of the GNU General Public License
 along with this program.  If not, see <http://www.gnu.org/licenses/>.
 ]]
 
-w = 350
+w = 330
 
 local function interp (s, t)
     return s:gsub('(#%b{})', function (w)
@@ -71,7 +71,7 @@ conky.config = {
 }
 
 conky.text = interp([[
-#{note}Local#{normal} $alignr${time %H:%M:%S %p}
+$alignr#{main}${time %H:%M:%S} #{sub}${time %p %Z}
 
 #{note}Tokyo#{normal} $alignr${tztime Asia/Tokyo %H:%M:%S %p}
 #{note}LA#{normal} $alignr${tztime America/Los_Angeles %H:%M:%S %p}
@@ -80,7 +80,11 @@ conky.text = interp([[
 #{note}NY#{normal} $alignr${tztime America/New_York %H:%M:%S %p}
 #{note}Paris#{normal} $alignr${tztime Europe/Paris %H:%M:%S %p}
 #{note}Amsterdam#{normal} $alignr${tztime Europe/Amsterdam %H:%M:%S %p}
+
+
 ]], {
     normal = '$font',
+    main = '${font Noto Sans:thin:size=55}',
+    sub = '${font Noto Sans:thin:size=20}',
     note = '${font Noto Sans:thin:size=12}',
 })

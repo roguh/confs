@@ -6,6 +6,8 @@ require('plugins/filetype')
 require('plugins/textobject-lexer')
 require('local-plugins/vis-cursors/cursors')
 require('local-plugins/vis-paste-mode/paste')
+require('local-plugins/vis-modelines/vis-modelines')
+-- require('local-plugins/vis-editorconfig/editorconfig')
 -- require('local-plugins/vis-whitespace-cleanup/whitespace')
 backup = require('local-plugins/vis-backup/backup')
 
