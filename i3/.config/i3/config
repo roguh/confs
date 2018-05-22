@@ -179,8 +179,8 @@ for_window [class="Docky"] floating enable
 # Colors
 # 1271A1 is slightly darker Arch blue
 # class                 border  backgr. text    indicator
-client.focused          #E5E7E7 #E5E7E7 #1271A1 #2e9ef4
-client.focused_inactive #1271A1 #00A199 #E5E7E7 #484e50
+client.focused_inactive #E5E7E7 #E5E7E7 #1271A1 #2e9ef4
+client.focused          #1271A1 #00A199 #E5E7E7 #484e50
 client.unfocused        #062636 #062636 #E5E7E7 #484e50
 
 client.urgent           #2f343a #900000 #ffffff #900000
