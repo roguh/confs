@@ -32,4 +32,6 @@ PROMPT='%{$bg[white]$fg[black]%}%n @ %m%{$reset_color%} %{$bg[blue]$fg[black]%}%
 ZSH_THEME_GIT_PROMPT_PREFIX=" %{$fg[yellow]%}("
 ZSH_THEME_GIT_PROMPT_SUFFIX=")%{$reset_color%}"
 
-load_file $HOME/.zshrc_extra
+load_file "$HOME/.mk_alias"
+load_file "$HOME/.aliases"
+load_file "$HOME/.zshrc_extra"

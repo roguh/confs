@@ -1,4 +1,6 @@
 #!/bin/sh -
+backlightoff.sh &
+
 scrot $HOME/tmp/s.png
 
 # -sample is faster than -scale or -resize
