@@ -15,6 +15,9 @@ mk_alias gzip pigz gzip
 
 mk_alias yaourt 'trizen --flip-results=1' yaourt
 
+mk_alias py python3 python python2
+mk_alias ipy ipython3 ipython ipython2
+
 mk_alias v vis nvim vim vi nano ed libreoffice openoffice 'wine MicrosoftOffice2003.exe'
 mk_alias e 'zathura --fork' evince mupdf mupdf-x11 'wine READER10.exe'
 mk_alias sx 'exec startx'

@@ -33,11 +33,11 @@ local function interp (s, t)
 end
 
 conky.config = {
-    alignment = 'top_right',
+    alignment = 'bottom_right',
     background = true,
     border_width = 0,
     cpu_avg_samples = 10,
-	default_color = 'black',
+	default_color = 'white',
     default_outline_color = 'white',
     default_shade_color = 'black',
     double_buffer = true,
@@ -46,9 +46,9 @@ conky.config = {
     draw_outline = false,
     draw_shades = false,
     use_xft = true,
-    font = 'Source Code Pro:normal:size=15',
-    border_inner_margin = w / 2, -- TODO ????
-    gap_x = w / 2,
+    font = 'Noto Sans:normal:size=15',
+    border_inner_margin = w / 3, -- TODO ????
+    gap_x = w,
     gap_y = 80,
     net_avg_samples = 2,
     out_to_console = false,
@@ -64,20 +64,23 @@ conky.config = {
 }
 
 conky.text = interp([[
-$alignr#{main}${time %H:%M:%S}
-#{normal}${tztime Asia/Shanghai #{t}} $alignr #{note}Shenzen
+$alignc#{main}${time %H:%M:%S}#{normal}
+
+${tztime Asia/Shanghai #{t}} $alignr #{note}Shenzhen
 #{normal}${tztime Asia/Tokyo #{t}} $alignr #{note}Tokyo
 #{normal}${tztime Pacific/Honolulu #{t}} $alignr #{note}Honolulu
+
 #{normal}${tztime America/Los_Angeles #{t}} $alignr #{note}LA
 #{normal}${tztime America/Denver #{t}} $alignr #{note}NM
 #{normal}${tztime America/Mexico_City #{t}} $alignr #{note}Cd. MX
 #{normal}${tztime America/New_York #{t}} $alignr #{note}NY
+
 #{normal}${tztime Europe/Amsterdam #{t}} $alignr #{note}Amsterdam
 
 ]], {
     normal = '$font',
-    main = '${font Noto Sans:thin:size=45}',
+    main = '${font Noto Sans:thin:size=55}',
     sub = '${font Noto Sans:thin:size=20}',
-    note = '${font Noto Sans:thin:size=12}',
+    note = '${font Noto Sans:thin:size=10}',
     t = '%H:%M %p %Z'
 })

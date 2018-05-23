@@ -146,6 +146,8 @@ copy_confs_for osync .osync.conf
 
 copy_confs_for htop .config/htop/htoprc
 
+copy_confs_for compton .config/compton.conf
+
 copy_confs_for alacritty .config/alacritty/alacritty.yml bin/alacritty-cwd.sh
 
 copy_confs_for conky \

@@ -129,19 +129,19 @@ floating_maximum_size 1860 x 1000
 
 # Quickly shrink a window
 set $quicksize t
-bindsym $mod+$quicksize resize set 20 ppt 0 ppt
-bindsym $mod+Shift+$quicksize resize set 80 ppt 0 ppt
+bindsym $mod+$quicksize resize set 35 ppt 0 ppt
+bindsym $mod+Shift+$quicksize resize set 65 ppt 0 ppt
 
 mode "resize" {
         # These bindings trigger as soon as you enter the resize mode
-        bindsym Left  resize shrink width 10 px
-        bindsym Down  resize grow height 10 px
-        bindsym Up    resize shrink height 10 px
-        bindsym Right resize grow width 10 px
-        bindsym Shift+Left  resize shrink width 1 px
-        bindsym Shift+Down  resize grow height 1 px
-        bindsym Shift+Up    resize shrink height 1 px
-        bindsym Shift+Right resize grow width 1 px
+        bindsym Left  resize shrink width 10 px or 10 ppt
+        bindsym Down  resize grow height 10 px or 10 ppt
+        bindsym Up    resize shrink height 10 px or 10 ppt
+        bindsym Right resize grow width 10 px or 10 ppt
+        bindsym Shift+Left  resize shrink width 1 px or 1 ppt
+        bindsym Shift+Down  resize grow height 1 px or 1 ppt
+        bindsym Shift+Up    resize shrink height 1 px or 1 ppt
+        bindsym Shift+Right resize grow width 1 px or 1 ppt
 
         # back to normal: Enter or Escape
         bindsym Return mode "default"
@@ -173,11 +173,6 @@ exec_always --no-startup-id ~/bin/polybar.sh &
 # Window border
 new_window normal 1
 
-# Hide title for extremely common windows
-# for_window [title="LXTerminal|Firefox|Chromium|Chrome$"] border pixel 1
-for_window [title="Firefox|Chromium|Chrome$"] border pixel 1
-for_window [class="Docky"] floating enable
-
 # Colors
 # 1271A1 is slightly darker Arch blue
 # class                 border  backgr. text    indicator
@@ -192,12 +187,13 @@ bindsym $mod+d exec launcher.sh
 
 # Start a terminal or browser
 set $terminal terminal.sh 
+set $fastterminal fastterminal.sh 
 set $browser firefox 
 
 bindsym $mod+Return exec $terminal
 bindsym $mod+x exec $terminal
+bindsym $mod+z exec $fastterminal 
 bindsym F8 exec $terminal
-bindsym $mod+z exec $terminal 
 bindsym $mod+c exec $browser 
 bindsym $mod+n exec $browser
 
@@ -208,7 +204,10 @@ bindsym $mod+Shift+l exec backlightoff.sh
 for_window [class="^.*"] border pixel 0
 smart_gaps on
 gaps inner 10
-gaps outer 4
+gaps outer 0
 # gaps outer current plus 5
 
-# Requirements: nm-applet i3lock i3bar redshift scrot imagemagick lxterminal unison feh
+# Hide title for extremely common windows
+# for_window [title="LXTerminal|Firefox|Chromium|Chrome$"] border pixel 1
+for_window [title="Firefox|Chromium|Chrome$"] border pixel 0
+
