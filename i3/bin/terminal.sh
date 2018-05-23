@@ -1,1 +1,2 @@
-exec lxterminal
+#!/bin/sh
+exec alacritty

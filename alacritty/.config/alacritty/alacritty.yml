@@ -122,7 +122,7 @@ font:
   use_thin_strokes: true
 
 # Should display the render timer
-render_timer: true
+render_timer: false
 
 # Use custom cursor colors. If true, display the cursor in the cursor.foreground
 # and cursor.background colors, otherwise invert the colors of the cursor.
@@ -411,3 +411,4 @@ key_bindings:
   - { key: F10,      mods: Super,   chars: "\x1b[21;3~"                  }
   - { key: F11,      mods: Super,   chars: "\x1b[23;3~"                  }
   - { key: F12,      mods: Super,   chars: "\x1b[24;3~"                  }
+  - { key: N, mods: Control|Shift, command: { program: "alacritty-cwd.sh" } }

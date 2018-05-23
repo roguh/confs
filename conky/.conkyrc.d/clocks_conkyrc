@@ -25,8 +25,7 @@ You should have received a copy of the GNU General Public License
 along with this program.  If not, see <http://www.gnu.org/licenses/>.
 ]]
 
-w = 250
-
+w = 300
 local function interp (s, t)
     return s:gsub('(#%b{})', function (w)
         return t[w:sub(3, -2)] or w
@@ -47,12 +46,11 @@ conky.config = {
     draw_outline = false,
     draw_shades = false,
     use_xft = true,
-    font = 'Source Code Pro:black:size=15',
+    font = 'Source Code Pro:normal:size=15',
+    border_inner_margin = w / 2, -- TODO ????
     gap_x = w / 2,
     gap_y = 80,
-    minimum_height = 10,
     net_avg_samples = 2,
-    no_buffers = true,
     out_to_console = false,
     out_to_stderr = false,
     extra_newline = false,
@@ -60,31 +58,26 @@ conky.config = {
     own_window_class = 'Conky',
     own_window_type = 'override',
     own_window_transparent = true,
-    stippled_borders = 0,
     update_interval = 1.0,
-    uppercase = false,
-    use_spacer = 'none',
-    show_graph_scale = true,
-    show_graph_range = true,
-    top_cpu_separate = false,
+    
     minimum_width = w,
 }
 
 conky.text = interp([[
-$alignr#{main}${time %H:%M:%S} #{sub}${time %p %Z}
-
-#{note}Tokyo#{normal} $alignr${tztime Asia/Tokyo %H:%M:%S %p}
-#{note}LA#{normal} $alignr${tztime America/Los_Angeles %H:%M:%S %p}
-#{note}NM#{normal} $alignr${tztime America/Denver %H:%M:%S %p}
-#{note}Cd. MX#{normal} $alignr${tztime America/Mexico_City %H:%M:%S %p}
-#{note}NY#{normal} $alignr${tztime America/New_York %H:%M:%S %p}
-#{note}Paris#{normal} $alignr${tztime Europe/Paris %H:%M:%S %p}
-#{note}Amsterdam#{normal} $alignr${tztime Europe/Amsterdam %H:%M:%S %p}
-
+$alignr#{main}${time %H:%M:%S}
+#{normal}${tztime Asia/Shanghai #{t}} $alignr #{note}Shenzen
+#{normal}${tztime Asia/Tokyo #{t}} $alignr #{note}Tokyo
+#{normal}${tztime Pacific/Honolulu #{t}} $alignr #{note}Honolulu
+#{normal}${tztime America/Los_Angeles #{t}} $alignr #{note}LA
+#{normal}${tztime America/Denver #{t}} $alignr #{note}NM
+#{normal}${tztime America/Mexico_City #{t}} $alignr #{note}Cd. MX
+#{normal}${tztime America/New_York #{t}} $alignr #{note}NY
+#{normal}${tztime Europe/Amsterdam #{t}} $alignr #{note}Amsterdam
 
 ]], {
     normal = '$font',
-    main = '${font Noto Sans:thin:size=55}',
+    main = '${font Noto Sans:thin:size=45}',
     sub = '${font Noto Sans:thin:size=20}',
     note = '${font Noto Sans:thin:size=12}',
+    t = '%H:%M %p %Z'
 })

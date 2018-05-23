@@ -80,8 +80,9 @@ bindsym $mod+F7 workspace 17
 bindsym $mod+F8 workspace 18
 bindsym $mod+F9 workspace 19
 bindsym $mod+F10 workspace 20
-bindsym $mod+p workspace 21:music
+bindsym $mod+p workspace 23:music
 bindsym $mod+o workspace 22:TODO
+bindsym $mod+i workspace 21:comm
 
 # Move focused container to workspace
 bindsym $mod+Shift+1 move container to workspace 1
@@ -104,8 +105,9 @@ bindsym $mod+Shift+F7 move container to workspace 17
 bindsym $mod+Shift+F8 move container to workspace 18
 bindsym $mod+Shift+F9 move container to workspace 19
 bindsym $mod+Shift+F10 move container to workspace 20
-bindsym $mod+Shift+p move container to workspace 21:music
+bindsym $mod+Shift+p move container to workspace 23:music
 bindsym $mod+Shift+o move container to workspace 22:TODO
+bindsym $mod+Shift+i move container to workspace 21:comm
 
 bindsym $mod+u exec i3-input -F 'rename workspace to "%s"' -P 'New name: '
 bindsym $mod+` exec i3-input -F 'rename workspace to "%s"' -P 'New name: '
@@ -179,9 +181,9 @@ for_window [class="Docky"] floating enable
 # Colors
 # 1271A1 is slightly darker Arch blue
 # class                 border  backgr. text    indicator
-client.focused_inactive #E5E7E7 #E5E7E7 #1271A1 #2e9ef4
-client.focused          #1271A1 #00A199 #E5E7E7 #484e50
-client.unfocused        #062636 #062636 #E5E7E7 #484e50
+client.unfocused        #deebf7 #deebf7 #1271A1 #2e9ef4
+client.focused_inactive #9ecae1 #9ecae1 #202020 #484e50
+client.focused          #3182bd #3182bd #E5E7E7 #484e50
 
 client.urgent           #2f343a #900000 #ffffff #900000
 

@@ -26,7 +26,6 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 ]]
 
 w = 450
-imgsz = 128
 local function interp (s, t)
     return s:gsub('(#%b{})', function (w)
         return t[w:sub(3, -2)] or w
@@ -34,8 +33,7 @@ local function interp (s, t)
 end
 
 conky.config = {
-    lua_load = '/home/user/conkyutil.lua',
-    alignment = 'top_middle',
+    alignment = 'top_left',
     background = true,
     border_width = 0,
     cpu_avg_samples = 10,
@@ -49,8 +47,7 @@ conky.config = {
     draw_shades = false,
     use_xft = true,
     font = 'Noto Sans:black:size=8',
-    -- gap_x = w / 2,
-    gap_x = 0,
+    gap_x = w / 2,
     gap_y = 80,
     minimum_height = 5,
     net_avg_samples = 2,
@@ -62,39 +59,32 @@ conky.config = {
     own_window_class = 'Conky',
     own_window_type = 'override',
     own_window_transparent = true,
-    stippled_borders = 0,
-    update_interval = 10.0,
+    update_interval = 0.5,
     uppercase = false,
     use_spacer = 'none',
     show_graph_scale = true,
-    show_graph_range = true,
+    -- show_graph_range = true,
+    short_units = true,
     top_cpu_separate = false,
 
-    maximum_width = w,
     minimum_width = w,
 }
 
 conky.text = interp([[
-$alignc#{fonttitle}$nodename $sysname #{fontsubtitle}$kernel on $machine${font}
+#{fonttitle}$nodename $sysname $alignc #{fontsubtitle}$kernel on $machine${font}
 
-
-$alignc#{emph}CPU
+#{emph}CPU #{normal}${cpu cpu0}% $alignr ${loadavg}
 ${cpubar cpu1 3,#{quartw}}   ${cpubar cpu2 3,#{quartw}} $alignr ${cpubar cpu3 3,#{quartw}}   ${cpubar cpu4 3,#{quartw}}
 ${cpubar cpu5 3,#{quartw}}   ${cpubar cpu6 3,#{quartw}} $alignr ${cpubar cpu7 3,#{quartw}}   ${cpubar cpu8 3,#{quartw}}
 ${cpugraph cpu0 #{gheight},${w} #{gcolors}}#{emph}
 
-$alignc #{emph}RAM, Swap#{normal}
+#{emph}RAM #{normal}${mem} $alignr #{emph}Swap #{normal}$swap
 ${membar 6}
-${swapbar 6}
 #{emph}${memgraph #{gheight},${w} #{gcolors}}#{normal}
 
-
-$alignc#{emph}Disk R/W #{normal} ${diskio_read} ${diskio_write}
+#{emph}Disk R/W #{normal} ${diskio_read} ${diskio_write} $alignr ${if_up wlp4s0}#{emph}WiFi U/D (log)#{normal} ${upspeed wlp4s0} ${downspeed wlp4s0}${else}#{emph}WiFi down#{normal}$endif
 #{emph}${diskiograph_read #{gheight},#{halfw} #{gcolors}} $alignr ${diskiograph_write #{gheight},#{halfw} #{gcolors}}
-
-$alignc${if_up wlp4s0}#{emph}WiFi U/D#{normal} ${upspeed wlp4s0} ${downspeed wlp4s0}${else}#{emph}WiFi down#{normal}$endif
-#{emph}${if_up wlp4s0}${downspeedgraph wlp4s0 #{gheight},#{halfw} #{gcolors}} $alignr ${upspeedgraph wlp4s0 #{gheight},#{halfw} #{gcolors}}${endif}
-
+#{emph}${if_up wlp4s0}${downspeedgraph wlp4s0 #{gheight},#{halfw} #{gcolors} -l} $alignr ${upspeedgraph wlp4s0 #{gheight},#{halfw} #{gcolors} -l}${endif}
 
 $processes #{emph}processes $alignr PID         CPU        MEM#{normal}
 ${top name 1} $alignr ${top pid 1} ${top cpu 1} ${top mem 1}
@@ -113,20 +103,12 @@ ${top_io name 3} $alignr ${top_io io_read 3} ${top_io io_write 3} ${top_io pid 3
 ${top_io name 4} $alignr ${top_io io_read 4} ${top_io io_write 4} ${top_io pid 4} ${top_io cpu 4} ${top_io mem 4}
 ]], {
     w = w,
-    imgsz = imgsz,
-    imgx = w / 2 - imgsz / 2,
-    imgy = 1080 / 2,
     halfw = w * 0.49,
     quartw = w * 0.24,
     gheight = 22,
     gcolors = "#FF0000 #FFFF00",
     emph = '${font Noto Sans:italic:size=9}',
-    fonttitle = '${font Noto Sans:light:size=30}',
-    fontsubtitle = '${font Noto Sans:thin:size=16}',
+    fonttitle = '${font Noto Sans:light:size=35}',
+    fontsubtitle = '${font Noto Sans:thin:size=12}',
     normal = '$font',
 })
-
---[[
-#{emph}BAT0#{normal} ${battery_percent BAT0}% ${color yellow}${battery_bar BAT0}$color
-#{emph}BAT1#{normal} ${battery_percent BAT1}% ${color yellow}${battery_bar BAT1}$color
-]]
