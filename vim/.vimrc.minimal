@@ -35,8 +35,8 @@ set relativenumber
 " crosshairs
 set cursorcolumn
 set cursorline
-hi  CursorLine cterm=NONE ctermbg=black ctermfg=white guibg=black guifg=white
-hi  CursorColumn cterm=NONE ctermbg=black ctermfg=white guibg=black guifg=white
+hi  CursorLine cterm=NONE ctermbg=white ctermfg=black guibg=white guifg=black
+hi  CursorColumn cterm=NONE ctermbg=white ctermfg=black guibg=white guifg=black
 
 " easier to see color for folds
 hi Folded guibg=white guifg=black ctermbg=white ctermfg=black
