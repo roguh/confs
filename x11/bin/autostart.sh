@@ -1,5 +1,9 @@
 #!/bin/sh 
 
+AUTOSTART_TRAYAPPS=true
+AUTOSTART_PROGRAMS=false
+
+BACKGROUND_IMAGE="Photos/thomas-kelley-194243-unsplash.jpg"
 BACKGROUND_COLOR='#fff6f4'
 
 # Backup config files
@@ -24,19 +28,21 @@ xautolock -detectsleep -secure -time 10 -notify 120 -notifier backlightoff.sh -l
 
 # Set background
 # Photo by Thomas Kelley on Unsplash
-(sleep 1 ; feh --bg-scale "Photos/thomas-kelley-194243-unsplash.jpg")
+(sleep 1 ; feh --bg-scale "$BACKGROUND_IMAGE")
 # (sleep 1 ; xsetroot -solid "$BACKGROUND_COLOR") &
 
 # Ctrl-Alt-Backspace to kill X server
 (sleep 1 ; setxkbmap -option terminate:ctrl_alt_bksp) &
 
-if AUTOSTART_ALL ; then
+if $AUTOSTART_TRAYAPPS ; then
     # Check for Arch package updates
     kalu &
     
     # udisk tray icon
     udiskie --smart-tray &
-    
+fi
+
+if $AUTOSTART_PROGRAMS ; then
     # Start file synchronizers
     lxterminal -l -e "sh -c hsync-unison" &
     
