@@ -1,2 +1,3 @@
 #!/bin/sh
-exec alacritty
+# exec alacritty
+exec lxterminal

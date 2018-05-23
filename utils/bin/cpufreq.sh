@@ -1,1 +1,2 @@
-lscpu | grep 'CPU MHz' | awk '{printf("%.1f GHz", $3/1000)}'
+#!/bin/sh
+lscpu | grep 'CPU MHz' | awk '{printf("%.1fGHz", $3/1000)}'

@@ -128,7 +128,7 @@ if [[ $- == *i* ]]; then
 
     # Use , as an improved cd command
     load_file "$HOME/.commacd.bash"
-    
+
     # Sensible defaults 
     load_file "$HOME/.sensible.bash"
     PROMPT_DIRTRIM=0
@@ -139,4 +139,8 @@ if [[ $- == *i* ]]; then
     
     # Set title. This should be the last command in .bashrc
     trap 'printf "\033]0;%s\007" "$PS1_END_PLAIN${BASH_COMMAND//[^[:print:]]/} (on $HOSTNAME)" >&2' DEBUG
+    
+    # Load undistract-me
+    export LONG_RUNNING_COMMAND_TIMEOUT=3
+    load_file /etc/profile.d/undistract-me.sh
 fi

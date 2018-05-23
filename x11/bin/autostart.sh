@@ -4,7 +4,7 @@ AUTOSTART_TRAYAPPS=true
 AUTOSTART_COMPOSITOR=true
 AUTOSTART_PROGRAMS=false
 
-BACKGROUND_IMAGE="Photos/thomas-kelley-194243-unsplash.jpg"
+BACKGROUND_IMAGE="Photos/minimal-backgrounds/Rewoven (Final)_preview.png"
 BACKGROUND_COLOR='#fff6f4'
 
 # Backup config files
@@ -12,11 +12,11 @@ backup-t580.sh &
 backup-common.sh &
 
 if xrandr | grep "HDMI2 connected" > /dev/null ; then
-    ~/.screenlayout/eDPI1-HDMI2.sh &
+    ~/.screenlayout/eDPI1-HDMI2-rotated.sh &
 fi
 
 # Start graphical system monitor
-for c in ~/.conkyrc.d/*conkyrc ; do (sleep 1 ; conky -c $c) & done
+for c in ~/.conkyrc.d/*clock* ; do (sleep 1 ; conky -c $c) & done
 
 # Enable key bindings
 xbindkeys &
