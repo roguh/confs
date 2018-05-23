@@ -1,6 +1,7 @@
 #!/bin/sh 
 
 AUTOSTART_TRAYAPPS=true
+AUTOSTART_COMPOSITOR=true
 AUTOSTART_PROGRAMS=false
 
 BACKGROUND_IMAGE="Photos/thomas-kelley-194243-unsplash.jpg"
@@ -40,6 +41,10 @@ if $AUTOSTART_TRAYAPPS ; then
     
     # udisk tray icon
     udiskie --smart-tray &
+fi
+
+if $AUTOSTART_COMPOSITOR ; then
+    compton &
 fi
 
 if $AUTOSTART_PROGRAMS ; then

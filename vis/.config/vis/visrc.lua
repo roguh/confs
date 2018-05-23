@@ -17,6 +17,11 @@ vis.events.subscribe(vis.events.INIT, function()
 	backup.time_format = "%H-%M-%S"
 	backup.directory = os.getenv("HOME") .. "/tmp/backup" 
 	backup.get_fname = backup.entire_path_with_timestamp
+	-- vis:command('set theme base16-unikitty-dark')
+	vis:command('set theme base16-gruvbox-dark-pale')
+    vis.lexers.STYLE_CURSOR = 'reverse'
+    vis.lexers.STYLE_CURSOR_LINE = 'bold,underlined'
+    vis.lexers.STYLE_COLOR_COLUMN = 'reverse'
 end)
 
 vis.events.subscribe(vis.events.WIN_OPEN, function(win)
@@ -28,7 +33,6 @@ vis.events.subscribe(vis.events.WIN_OPEN, function(win)
 	vis:command('set expandtab on')
 	vis:command('set autoindent')
 	vis:command('set cursorline on')
-	-- vis:command('set theme base16-unikitty-dark')
 	vis:command('set show-tabs on')
 	vis:command('set show-newlines on')
 	if vis.option_get then
