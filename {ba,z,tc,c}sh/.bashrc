@@ -21,6 +21,13 @@ unset HISTFILE
 export HISTSIZE=10000
 export HISTCONTROL=ignoredups:ignorespace
 
+# COLORS
+BASE16_SHELL=$HOME/.base16-manager/chriskempson/base16-shell/
+if [ -n "$PS1" ] && [ -s $BASE16_SHELL/profile_helper.sh ] ; then
+    eval "$($BASE16_SHELL/profile_helper.sh)"
+    _base16 "$BASE16_SHELL/scripts/base16-$(cat ~/.base16_current_theme).sh"
+fi
+
 ##### Set PS1
 # Check if colored output is supported
 COLORED_PS1=false

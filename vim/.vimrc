@@ -3,6 +3,9 @@
 " call :PlugInstall to install and update
 call plug#begin()
 
+" Themes
+Plug 'chriskempson/base16-vim'
+
 " JS React Native
 Plug 'pangloss/vim-javascript'
 Plug 'mxw/vim-jsx'
@@ -82,4 +85,11 @@ let g:airline_theme='silver'
 
 call plug#end()
 
-so ~/.vimrc.minimal
+if filereadable(expand("~/.vim/colorscheme.vim"))
+    let base16colorspace=256
+    so ~/.vim/colorscheme.vim
+endif
+
+if filereadable(expand("~/.vimrc.minimal"))
+    so ~/.vimrc.minimal
+endif

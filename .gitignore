@@ -1,3 +1,5 @@
+*.bac
+*.bak
 confs-backup
 backup-bak
 restore-bak

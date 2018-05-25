@@ -111,9 +111,9 @@ copy_confs_for zathura \
 copy_confs_for polybar .config/polybar/config
 
 copy_confs_for i3 \
-  .i3status.conf .config/i3/config \
+  .i3status.conf .config/i3/base .config/i3/colors  .config/i3/config \
   bin/locker.sh bin/terminal.sh bin/launcher.sh \
-  bin/i3status.py bin/i3txt.py
+  bin/i3statustxt bin/i3status.py bin/i3txt.py
 
 copy_confs_for x11 \
   .xinitrc .xbindkeysrc bin/autostart.sh
@@ -133,11 +133,6 @@ copy_confs_for cli \
   .config/terminator/config \
   .config/xfce4/terminal/terminalrc
 
-
-copy_confs_for git .gitconfig
-
-copy_confs_for qterminal \
-  .config/qterminal.org/qterminal.ini
 
 copy_confs_for unison \
   .unison/default.prf

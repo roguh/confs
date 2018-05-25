@@ -18,7 +18,7 @@ vis.events.subscribe(vis.events.INIT, function()
 	backup.directory = os.getenv("HOME") .. "/tmp/backup" 
 	backup.get_fname = backup.entire_path_with_timestamp
 	-- vis:command('set theme base16-unikitty-dark')
-	vis:command('set theme base16-gruvbox-dark-pale')
+	vis:command('set theme vistheme')
     vis.lexers.STYLE_CURSOR = 'reverse'
     vis.lexers.STYLE_CURSOR_LINE = 'bold,underlined'
     vis.lexers.STYLE_COLOR_COLUMN = 'reverse'

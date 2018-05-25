@@ -35,3 +35,9 @@ ZSH_THEME_GIT_PROMPT_SUFFIX=")%{$reset_color%}"
 load_file "$HOME/.mk_alias"
 load_file "$HOME/.aliases"
 load_file "$HOME/.zshrc_extra"
+
+BASE16_SHELL=$HOME/.base16-manager/chriskempson/base16-shell/
+if [ -n "$PS1" ] && [ -s $BASE16_SHELL/profile_helper.sh ] ; then
+    eval "$($BASE16_SHELL/profile_helper.sh)"
+    _base16 "$BASE16_SHELL/scripts/base16-$(cat ~/.base16_current_theme).sh"
+fi

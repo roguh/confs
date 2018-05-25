@@ -5,7 +5,7 @@ usermodmap=$HOME/.Xmodmap
 sysresources=/etc/X11/xinit/.Xresources
 sysmodmap=/etc/X11/xinit/.Xmodmap
 
-# merge in defaults and keymaps
+merge in defaults and keymaps
 
 if [ -f $sysresources ]; then
     xrdb -merge $sysresources
@@ -29,7 +29,6 @@ if [ -d /etc/X11/xinit/xinitrc.d ] ; then
   [ -x "$f" ] && . "$f"
  done
 fi
-
 f=$HOME/bin/autostart.sh
 if [ -f $f ] && [ -x $f ]; then
     . "$f" &
@@ -42,6 +41,7 @@ case $session in
     i3|i3wm             ) exec i3;;
     # Start i3 with 25M RAM for debug logs
     i3-debug|i3wm-debug ) exec i3 --shmlog-size=26214400;;
+    rio                 ) exec 9 rio -virtuals 12 -term lxterminal;;
     kde                 ) exec startkde;;
     xfce|xfce4          ) exec startxfce4;;
     # No known session, try to run it as command

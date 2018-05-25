@@ -33,11 +33,11 @@ local function interp (s, t)
 end
 
 conky.config = {
-    alignment = 'bottom_right',
+    alignment = 'top_right',
     background = true,
     border_width = 0,
     cpu_avg_samples = 10,
-	default_color = 'white',
+	default_color = '#7c7c7c',
     default_outline_color = 'white',
     default_shade_color = 'black',
     double_buffer = true,
@@ -49,7 +49,7 @@ conky.config = {
     font = 'Noto Sans:normal:size=15',
     border_inner_margin = w / 3, -- TODO ????
     gap_x = w,
-    gap_y = 80,
+    gap_y = 30,
     net_avg_samples = 2,
     out_to_console = false,
     out_to_stderr = false,

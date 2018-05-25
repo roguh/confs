@@ -32,12 +32,6 @@ filetype plugin indent on
 set number
 set relativenumber
 
-" crosshairs
-set cursorcolumn
-set cursorline
-hi  CursorLine cterm=NONE ctermbg=white ctermfg=black guibg=white guifg=black
-hi  CursorColumn cterm=NONE ctermbg=white ctermfg=black guibg=white guifg=black
-
 " easier to see color for folds
 hi Folded guibg=white guifg=black ctermbg=white ctermfg=black
 
@@ -90,6 +84,15 @@ endif
 let &guicursor = &guicursor . ",a:blinkon0"
 " End Part of Fedora's /etc/vimrc
 
+
+" crosshairs
+set cursorcolumn
+set cursorline
+"hi  CursorLine cterm=NONE cterm=reverse gui=reverse 
+"hi  CursorColumn cterm=NONE cterm=reverse gui=reverse 
+"hi  CursorColumn cterm=underline gui=underline 
+hi CursorLine ctermbg=none cterm=bold,underline gui=bold,underline 
+hi CursorColumn ctermbg=none cterm=bold gui=bold 
 
 " load local vim settings
 if filereadable(".vim.custom")
