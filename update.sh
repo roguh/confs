@@ -108,7 +108,13 @@ copy_confs_for emacs.d \
 copy_confs_for zathura \
   .config/zathura/zathurarc
 
-copy_confs_for polybar .config/polybar/config
+copy_confs_for polybar .config/polybar/config \
+  bin/mem.sh \
+  .config/polybar/config \
+  .config/polybar/openweathermap-fullfeatured.sh \
+  .config/polybar/player-ctrl.sh \
+  .config/polybar/player-mpris-tail.py \
+  .config/polybar/system-nvidia-smi.sh
 
 copy_confs_for i3 \
   .i3status.conf .config/i3/base .config/i3/colors  .config/i3/config \

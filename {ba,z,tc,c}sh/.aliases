@@ -5,8 +5,7 @@ mk_alias cp 'cp -i'
 mk_alias rm 'rm -i'
 mk_alias please sudo
 
-mk_alias cat ccat cat
-mk_alias c cat
+mk_alias c ccat
 mk_alias ls exa ls
 mk_alias l 'ls -Fa'
 mk_alias ll 'l -lh'
@@ -19,6 +18,6 @@ mk_alias yaourt trizen yaourt
 mk_alias py python3 python python2
 mk_alias ipy ipython3 ipython ipython2
 
-mk_alias v nvim vis vim vi nano ed libreoffice openoffice 'wine MicrosoftOffice2003.exe'
+mk_alias v vim vis nvim vim vi nano ed libreoffice openoffice 'wine MicrosoftOffice2003.exe'
 mk_alias e 'zathura --fork' evince mupdf mupdf-x11 'wine READER10.exe'
 mk_alias sx 'exec startx'

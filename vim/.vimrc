@@ -4,7 +4,7 @@
 call plug#begin()
 
 " Themes
-Plug 'chriskempson/base16-vim'
+Plug 'dylanaraps/wal.vim'
 
 " JS React Native
 Plug 'pangloss/vim-javascript'
@@ -85,10 +85,7 @@ let g:airline_theme='silver'
 
 call plug#end()
 
-if filereadable(expand("~/.vim/colorscheme.vim"))
-    let base16colorspace=256
-    so ~/.vim/colorscheme.vim
-endif
+colorscheme wal
 
 if filereadable(expand("~/.vimrc.minimal"))
     so ~/.vimrc.minimal

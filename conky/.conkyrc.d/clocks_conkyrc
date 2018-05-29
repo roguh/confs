@@ -32,12 +32,16 @@ local function interp (s, t)
     end)
 end
 
+function xrdb(c)
+    return io.popen("xrdb -query | grep " .. c .. " | head -n1 | awk '{print $2}'"):read()
+end
+
 conky.config = {
     alignment = 'top_right',
     background = true,
     border_width = 0,
     cpu_avg_samples = 10,
-	default_color = '#7c7c7c',
+	default_color = xrdb('background'),
     default_outline_color = 'white',
     default_shade_color = 'black',
     double_buffer = true,
@@ -48,7 +52,7 @@ conky.config = {
     use_xft = true,
     font = 'Noto Sans:normal:size=15',
     border_inner_margin = w / 3, -- TODO ????
-    gap_x = w,
+    gap_x = w / 2,
     gap_y = 30,
     net_avg_samples = 2,
     out_to_console = false,
