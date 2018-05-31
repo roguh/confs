@@ -8,7 +8,7 @@ load_file() {
 }
 
 # Load aliases
-load_file "$HOME/.mk_alias"
+load_file "$HOME/.tryalias"
 load_file "$HOME/.aliases"
 
 # Load extra .bashrc

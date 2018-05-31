@@ -1,23 +1,23 @@
-mk_alias em 'emacs -nw'
-mk_alias emc 'emacsclient -nw --alternate-editor='''
-mk_alias mv 'mv -i'
-mk_alias cp 'cp -i'
-mk_alias rm 'rm -i'
-mk_alias please sudo
+tryalias em 'emacs -nw'
+tryalias emc 'emacsclient -nw --alternate-editor='''
+tryalias mv 'mv -i'
+tryalias cp 'cp -i'
+tryalias rm 'rm -i'
+tryalias please sudo
 
-mk_alias c ccat
-mk_alias ls exa ls
-mk_alias l 'ls -Fa'
-mk_alias ll 'l -lh'
-mk_alias grep 'grep --color -n'
-mk_alias gzip pigz gzip
+tryalias c ccat
+tryalias ls exa ls
+tryalias l 'ls -Fa'
+tryalias ll 'l -lh'
+tryalias grep 'grep --color -n'
+tryalias gzip pigz gzip
 
-mk_alias trizen 'trizen --flip-results=1'
-mk_alias yaourt trizen yaourt
+tryalias trizen 'trizen --flip-results=1'
+tryalias yaourt trizen yaourt
 
-mk_alias py python3 python python2
-mk_alias ipy ipython3 ipython ipython2
+tryalias py python3 python python2
+tryalias ipy ipython3 ipython ipython2
 
-mk_alias v vim vis nvim vim vi nano ed libreoffice openoffice 'wine MicrosoftOffice2003.exe'
-mk_alias e 'zathura --fork' evince mupdf mupdf-x11 'wine READER10.exe'
-mk_alias sx 'exec startx'
+tryalias v vim vis nvim vim vi nano ed libreoffice openoffice 'wine MicrosoftOffice2003.exe'
+tryalias e 'zathura --fork' evince mupdf mupdf-x11 'wine READER10.exe'
+tryalias sx 'exec startx'
