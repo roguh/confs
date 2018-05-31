@@ -10,14 +10,14 @@
 
 [colors]
 ;background = ${xrdb:color0:#222}
-background = #00000000
-background-alt = #cc000000
-background-alt-sub = #99737373
+background = #00ffdcb6
+background-alt = #cc253845
+background-alt-sub = #998b3f31
 ;foreground = ${xrdb:color7:#222}
-foreground = #ffffff
-foreground-alt = #ffffff
-primary = #252525
-secondary = #525252
+foreground = #eeffffff
+foreground-alt = #eeffffff
+primary = #e7ad9d
+secondary = #66756e
 alert = #ff0000
 alert-fore = #000
 great = #2cbd40
@@ -28,8 +28,8 @@ warn-fore = #000
 [bar/primary]
 monitor = ${env:MONITOR:eDP1:HMDI1}
 
-height = 32
-line-size = 5
+height = 25
+line-size = 6
 
 width = 100%
 ;offset-x = 5%
@@ -106,16 +106,16 @@ interval = 25
 mount-0 = /
 mount-1 = /boot
 
-format-mounted-underline = #525252
+format-mounted-underline = #cc5f27
 format-unmounted-underline = #0d2bde
 
 ;label-mounted = %{F${self.format-mounted-underline}}%mountpoint%%{F-} %percentage_used%%
-label-mounted = %{F#525252}%mountpoint%%{F-} %percentage_used%%
+label-mounted = %{F#cc5f27}%mountpoint%%{F-} %percentage_used%%
 label-unmounted = 
 label-unmounted-foreground = ${colors.foreground-alt}
 format-background = #fface8
-format-mounted-background = #c93d3d3d
-format-mounted-foreground = #e9e9e9
+format-mounted-background = #c9662f13
+format-mounted-foreground = #faebe3
 
 [module/i3]
 type = internal/i3
@@ -170,7 +170,7 @@ label-song-ellipsis = true
 type = internal/xbacklight
 
 format = <label> <bar>
-format-underline = #000000
+format-underline = #eeae65
 label = 
 
 bar-width = 7
@@ -183,8 +183,8 @@ bar-fill-foreground = #99ffff
 bar-empty = ─
 bar-empty-font = 2
 bar-empty-foreground = ${colors.foreground-alt}
-format-background = #c9666666
-format-foreground = #dfdfdf
+format-background = #c9995911
+format-foreground = #fdf5ec
 
 [module/backlight-acpi]
 inherit = module/xbacklight
@@ -211,30 +211,30 @@ format-background = #bbf7f9fc
 
 [module/cpu_ghz]
 type = custom/script
-format-underline = #252525
+format-underline = #481313
 
 interval = 10
 exec = cpufreq.sh
-format-background = #c9535353
-format-foreground = #e4e4e4
+format-background = #c9240909
+format-foreground = #f4d6d6
 
 [module/system_load]
 type = custom/script
-format-underline = #000000
+format-underline = #fb4f55
 
 interval = 10
 exec = systemload.sh
-format-background = #c9666666
-format-foreground = #dfdfdf
+format-background = #c9a10409
+format-foreground = #fee9ea
 
 [module/mem]
 type = custom/script
-format-underline = #252525
+format-underline = #fb4f55
 
 interval = 5
 exec = mem.sh
-format-background = #c9535353
-format-foreground = #e4e4e4
+format-background = #c9a10409
+format-foreground = #fee9ea
 
 [module/memory]
 type = internal/memory
@@ -251,7 +251,7 @@ interface = wlp4s0
 interval = 1.0
 
 format-connected = <ramp-signal> <label-connected>
-format-connected-underline = #737373
+format-connected-underline = #fb4f55
 
 ramp-signal-0 = 
 ramp-signal-foreground = ${self.format-connected-underline}
@@ -261,22 +261,22 @@ label-connected = %local_ip%
 
 format-disconnected = 
 format-background = #e09aff
-format-connected-background = #c92c2c2c
-format-connected-foreground = #ededed
+format-connected-background = #c9a10409
+format-connected-foreground = #fee9ea
 
 [module/eth]
 type = internal/network
 interface = enp0s31f6
 interval = 3.0
 
-format-connected-underline = #737373
+format-connected-underline = #fb4f55
 format-connected-prefix-foreground = ${colors.foreground-alt}
 label-connected = %local_ip%
 
 format-disconnected = 
 format-background = #e09aff
-format-connected-background = #c92c2c2c
-format-connected-foreground = #ededed
+format-connected-background = #c9a10409
+format-connected-foreground = #fee9ea
 
 [module/date]
 type = internal/date
@@ -290,11 +290,11 @@ time = %k:%M %Z
 
 format-prefix = 
 format-prefix-foreground = ${colors.foreground-alt}
-format-underline = #969696
+format-underline = #cc5f27
 
 label = %date% %time%
-format-background = #c91b1b1b
-format-foreground = #f2f2f2
+format-background = #c9662f13
+format-foreground = #faebe3
 
 [module/pulseaudio]
 type = internal/pulseaudio
@@ -325,8 +325,8 @@ bar-volume-empty-foreground = ${colors.foreground-alt}
 [module/alsa]
 type = internal/alsa
 
-format-volume-underline = #000000
-format-volume-background = #c9666666
+format-volume-underline = #eeae65
+format-volume-background = #c9995911
 format-volume = <label-volume> <bar-volume>
 label-volume = 
 label-volume-foreground = ${root.foreground}
@@ -346,7 +346,7 @@ bar-volume-fill-font = 2
 bar-volume-empty = ─
 bar-volume-empty-font = 2
 bar-volume-empty-foreground = ${colors.foreground-alt}
-format-volume-foreground = #dfdfdf
+format-volume-foreground = #fdf5ec
 
 [module/batterypower1]
 type = internal/battery
@@ -358,16 +358,16 @@ label-charging = %consumption%W
 label-discharging = %consumption%W
 label-full = %consumption%W
 
-format-charging-underline = #525252
+format-charging-underline = #eeae65
 
-format-discharging-underline = #525252
+format-discharging-underline = #eeae65
 
 format-full-underline = ${colors.great}
 format-background = #fe9ffc
-format-discharging-background = #c93d3d3d
-format-discharging-foreground = #e9e9e9
-format-charging-background = #c93d3d3d
-format-charging-foreground = #e9e9e9
+format-discharging-background = #c9995911
+format-discharging-foreground = #fdf5ec
+format-charging-background = #c9995911
+format-charging-foreground = #fdf5ec
 
 
 [module/batterypower]
@@ -380,16 +380,16 @@ label-charging = %consumption%W
 label-discharging = %consumption%W
 label-full = %consumption%W
 
-format-charging-underline = #525252
+format-charging-underline = #eeae65
 
-format-discharging-underline = #525252
+format-discharging-underline = #eeae65
 
 format-full-underline = ${colors.great}
 format-background = #fe9ffc
-format-discharging-background = #c93d3d3d
-format-discharging-foreground = #e9e9e9
-format-charging-background = #c93d3d3d
-format-charging-foreground = #e9e9e9
+format-discharging-background = #c9995911
+format-discharging-foreground = #fdf5ec
+format-charging-background = #c9995911
+format-charging-foreground = #fdf5ec
 
 [module/battery1]
 type = internal/battery
@@ -398,10 +398,10 @@ adapter = AC
 full-at = 94
 
 format-charging = <animation-charging> <label-charging>
-format-charging-underline = #969696
+format-charging-underline = #481313
 
 format-discharging = <ramp-capacity> <label-discharging>
-format-discharging-underline = #969696
+format-discharging-underline = #481313
 
 format-full-prefix =  
 format-full-prefix-foreground = ${colors.great}
@@ -424,10 +424,10 @@ animation-charging-2 = 
 animation-charging-3 = 
 animation-charging-foreground = ${colors.foreground-alt}
 animation-charging-framerate = 500
-format-charging-background = #c91b1b1b
-format-discharging-background = #c91b1b1b
-format-charging-foreground = #f2f2f2
-format-discharging-foreground = #f2f2f2
+format-charging-background = #c9240909
+format-discharging-background = #c9240909
+format-charging-foreground = #f4d6d6
+format-discharging-foreground = #f4d6d6
 
 [module/battery]
 type = internal/battery
@@ -436,10 +436,10 @@ adapter = AC
 full-at = 94
 
 format-charging = <animation-charging> <label-charging>
-format-charging-underline = #737373
+format-charging-underline = #481313
 
 format-discharging = <ramp-capacity> <label-discharging>
-format-discharging-underline = #737373
+format-discharging-underline = #481313
 
 format-full-prefix =  
 format-full-prefix-foreground = ${colors.great}
@@ -461,10 +461,10 @@ animation-charging-2 = 
 animation-charging-3 = 
 animation-charging-foreground = ${colors.foreground-alt}
 animation-charging-framerate = 500
-format-discharging-background = #c92c2c2c
-format-discharging-foreground = #ededed
-format-charging-background = #c92c2c2c
-format-charging-foreground = #ededed
+format-discharging-background = #c9240909
+format-discharging-foreground = #f4d6d6
+format-charging-background = #c9240909
+format-charging-foreground = #f4d6d6
 
 [module/temperature]
 type = internal/temperature
@@ -472,7 +472,7 @@ thermal-zone = 0
 warn-temperature = 50
 
 format = <label>
-format-underline = #252525
+format-underline = #481313
 format-warn = <label-warn>
 format-warn-underline = ${colors.warn}
 format-warn-background = ${colors.warn}
@@ -480,8 +480,8 @@ format-warn-foreground = ${colors.warn-fore}
 
 label = %temperature-c%
 label-warn = %temperature-c%
-format-background = #c9535353
-format-foreground = #e4e4e4
+format-background = #c9240909
+format-foreground = #f4d6d6
 
 [module/music]
 type = custom/script
@@ -490,18 +490,18 @@ tail = true
 click-right = ~/.config/polybar/player-ctrl.sh previous
 click-left = ~/.config/polybar/player-ctrl.sh play-pause
 click-middle = ~/.config/polybar/player-ctrl.sh next
-format-underline = #000000
-format-background = #c9666666
-format-foreground = #dfdfdf
+format-underline = #966d35
+format-background = #c94b361a
+format-foreground = #f5ede3
 
 [module/weather]
 type = custom/script
 exec = ~/.config/polybar/openweathermap-fullfeatured.sh
 interval = 600
 label-font = 4
-format-underline = #525252
-format-background = #c93d3d3d
-format-foreground = #e9e9e9
+format-underline = #e7ad9d
+format-background = #c98f3b23
+format-foreground = #fcf5f3
 
 [module/nvidia]
 type = custom/script

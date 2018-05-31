@@ -1,2 +1,2 @@
 #!/bin/sh
-free -h | grep 'Mem:' | awk '{print $3}'
+free | grep 'Mem:' | awk '{printf("%.1fGi", ($3 + $5) / 1000000)}'

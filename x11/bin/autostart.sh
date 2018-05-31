@@ -25,7 +25,7 @@ xbindkeys &
 redshift &
 
 # Lock screen after 5 minutes
-xautolock -detectsleep -secure -time 10 -notify 120 -notifier backlightoff.sh -locker locker.sh &
+xautolock -detectsleep -time 10 -notify 120 -notifier backlightoff.sh -locker locker.sh &
 
 # Set background
 # Photo by Thomas Kelley on Unsplash

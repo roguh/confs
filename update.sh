@@ -117,7 +117,7 @@ copy_confs_for polybar .config/polybar/config \
   .config/polybar/system-nvidia-smi.sh
 
 copy_confs_for i3 \
-  .i3status.conf .config/i3/base .config/i3/colors  .config/i3/config \
+  .i3status.conf .config/i3/config \
   bin/locker.sh bin/terminal.sh bin/launcher.sh \
   bin/i3statustxt bin/i3status.py bin/i3txt.py
 
