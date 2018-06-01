@@ -20,6 +20,7 @@ export VISUAL=vim
 unset HISTFILE
 export HISTSIZE=10000
 export HISTCONTROL=ignoredups:ignorespace
+export HISTTIMEFORMAT="$(echo -e\ '\r\e[K\')"
 
 # COLORS
 load_file .cache/wal/colors-tty.sh
@@ -141,10 +142,11 @@ if [[ $- == *i* ]]; then
     # Show man page with Alt+h
     bind '"\eh": "\C-a\eb\ed\C-y\e#man \C-y\C-m\C-p\C-p\C-a\C-d\C-e"'
     
-    # Set title. This should be the last command in .bashrc
-    trap 'printf "\033]0;%s\007" "$PS1_END_PLAIN${BASH_COMMAND//[^[:print:]]/} (on $HOSTNAME)" >&2' DEBUG
-    
+    # Set window title.
+    # PROMPT_COMMAND="echo -ne \"\033]0;${PS1_END_PLAIN}\"${BASH_COMMAND}\" (on $HOSTNAME)\007\""
+
     # Load undistract-me
+    export LONG_RUNNING_COMMAND='echo lol'
     export LONG_RUNNING_COMMAND_TIMEOUT=3
-    load_file /etc/profile.d/undistract-me.sh
+    load_file /etc/profile.d/undistract-me.sh 2>/dev/null
 fi

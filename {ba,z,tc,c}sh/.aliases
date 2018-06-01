@@ -6,6 +6,7 @@ tryalias rm 'rm -i'
 tryalias please sudo
 
 tryalias c ccat
+tryalias exa 'exa --git'
 tryalias ls exa ls
 tryalias l 'ls -Fa'
 tryalias ll 'l -lh'

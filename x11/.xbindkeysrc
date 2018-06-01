@@ -86,6 +86,9 @@
 "lxterminal -l -e 'bash -c ipython3'"
   XF86Calculator
 
+"screenshot.sh"
+  Print
+
 ##################################
 # End of xbindkeys configuration #
 ##################################
