@@ -24,7 +24,9 @@ export HISTTIMEFORMAT="$(echo -e\ '\r\e[K\')"
 
 # COLORS
 load_file .cache/wal/colors-tty.sh
-(cat ~/.cache/wal/sequences &)
+if [ -f ~/.cache/wal/sequences ] ; then
+    (cat ~/.cache/wal/sequences &)
+fi
 
 ##### Set PS1
 # Check if colored output is supported
@@ -148,5 +150,5 @@ if [[ $- == *i* ]]; then
     # Load undistract-me
     export LONG_RUNNING_COMMAND='echo lol'
     export LONG_RUNNING_COMMAND_TIMEOUT=3
-    load_file /etc/profile.d/undistract-me.sh 2>/dev/null
+    load_file /etc/profile.d/undistract-me.sh >/dev/null 2>/dev/null
 fi

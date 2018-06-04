@@ -26,7 +26,7 @@ warn = #ffff00
 warn-fore = #000
 
 [bar/primary]
-monitor = ${env:MONITOR:eDP1:HMDI1}
+monitor = ${env:MONITOR:eDP1}
 
 height = 25
 line-size = 6

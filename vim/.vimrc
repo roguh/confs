@@ -85,8 +85,6 @@ let g:airline_theme='silver'
 
 call plug#end()
 
-colorscheme wal
-
 if filereadable(expand("~/.vimrc.minimal"))
     so ~/.vimrc.minimal
 endif

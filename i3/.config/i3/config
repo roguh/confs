@@ -82,7 +82,7 @@ bindsym $mod+F7 workspace 17
 bindsym $mod+F8 workspace 18
 bindsym $mod+F9 workspace 19
 bindsym $mod+F10 workspace 20
-bindsym $mod+p workspace 23:music
+bindsym $mod+p workspace 23:fun
 bindsym $mod+o workspace 22:TODO
 bindsym $mod+i workspace 21:comm
 
@@ -107,7 +107,7 @@ bindsym $mod+Shift+F7 move container to workspace 17; workspace 17
 bindsym $mod+Shift+F8 move container to workspace 18; workspace 18
 bindsym $mod+Shift+F9 move container to workspace 19; workspace 19
 bindsym $mod+Shift+F10 move container to workspace 20; workspace 20
-bindsym $mod+Shift+p move container to workspace 23:music; workspace 23:music
+bindsym $mod+Shift+p move container to workspace 23:fun; workspace 23:fun
 bindsym $mod+Shift+o move container to workspace 22:TODO; workspace 22:TODO
 bindsym $mod+Shift+i move container to workspace 21:comm; workspace 21:comm
 
@@ -128,10 +128,17 @@ bindsym $mod+Ctrl+Right exec --no-startup-id i3empty.py next
 bindsym $mod+Shift+Ctrl+Left exec --no-startup-id i3empty.py --move prev
 bindsym $mod+Shift+Ctrl+Right exec --no-startup-id i3empty.py --move next
 
-bindsym $mod+Ctrl+Mod1+Left workspace prev
-bindsym $mod+Ctrl+Mod1+Right workspace prev
 bindsym $mod+Mod1+Left workspace prev 
 bindsym $mod+Mod1+Right workspace next 
+
+bindsym Ctrl+Mod1+Left workspace prev 
+bindsym Ctrl+Mod1+Right workspace next 
+
+bindsym $mod+Shift+Mod1+Left move container to workspace prev; workspace prev
+bindsym $mod+Shift+Mod1+Right move container to workspace next; workspace next
+
+bindsym Ctrl+Shift+Mod1+Left move container to workspace prev; workspace prev
+bindsym Ctrl+Shift+Mod1+Right move container to workspace next; workspace next
 
 # Rename current workspace
 bindsym $mod+u exec i3-input -F 'rename workspace to "%s"' -P 'New name: '
@@ -189,12 +196,12 @@ bindsym $mod+d exec launcher.sh
 
 # Start a terminal or browser
 set $terminal terminal.sh 
-set $fastterminal fastterminal.sh 
+set $terminal2 terminal2.sh 
 set $browser firefox 
 
 bindsym $mod+Return exec $terminal
 bindsym $mod+x exec $terminal
-bindsym $mod+z exec $fastterminal 
+bindsym $mod+z exec $terminal2
 bindsym F8 exec $terminal
 bindsym $mod+c exec $browser 
 bindsym $mod+n exec $browser

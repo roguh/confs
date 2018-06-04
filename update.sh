@@ -109,16 +109,16 @@ copy_confs_for zathura \
   .config/zathura/zathurarc
 
 copy_confs_for polybar .config/polybar/config \
-  bin/mem.sh \
   .config/polybar/config \
   .config/polybar/openweathermap-fullfeatured.sh \
   .config/polybar/player-ctrl.sh \
   .config/polybar/player-mpris-tail.py \
-  .config/polybar/system-nvidia-smi.sh
+  .config/polybar/system-nvidia-smi.sh \
+  bin/polybar.sh
 
 copy_confs_for i3 \
   .i3status.conf .config/i3/config \
-  bin/locker.sh bin/terminal.sh bin/launcher.sh \
+  bin/locker.sh bin/terminal2.sh bin/terminal.sh bin/launcher.sh \
   bin/i3statustxt bin/i3status.py bin/i3txt.py
 
 copy_confs_for x11 \

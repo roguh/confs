@@ -4,7 +4,7 @@ AUTOSTART_TRAYAPPS=false
 AUTOSTART_COMPOSITOR=true
 AUTOSTART_PROGRAMS=false
 
-BACKGROUND_IMAGE="Photos/night-park-palette-knife-by-leonid-afremov.jpeg"
+BACKGROUND_IMAGE="$HOME/Photos/night-park-palette-knife-by-leonid-afremov.jpeg"
 BACKGROUND_COLOR='#fff6f4'
 
 # Backup config files

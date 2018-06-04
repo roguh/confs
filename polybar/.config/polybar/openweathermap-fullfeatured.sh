@@ -38,6 +38,8 @@ get_duration() {
 TIMEFORMAT="%l:%M %p"
 UNITS="Imperial"
 # Set KEY and CITYID
+# CITYID from http://openweathermap.org/help/city_list.txt
+# KEY from account on openweathermap.org
 . ~/.config/polybar/secrets
 # SYMBOL="°"
 SYMBOL=""
@@ -86,9 +88,12 @@ if [ ! -z "$current" ] && [ ! -z "$forecast" ]; then
         daytime=" $(get_duration "$((sun_rise-now))")"
     fi
 
-    # Convert meters per second (mps) to mph
-    wind_speed=$(echo $current | jq ".wind.speed" | awk '{printf("%.1f", $1 * 2.23694)}')
+    # MPH
+    wind_speed=$(echo $current | jq ".wind.speed")
+
+    # Degrees
     wind_dir=$(echo $current | jq ".wind.deg")
+
     wind="$wind_speed mph"
     echo "$daytime $wind  $(get_icon \"$current_icon\") $current_temp$SYMBOL  $trend  $(get_icon \"$forecast_icon\") $forecast_temp$SYMBOL"
 fi
