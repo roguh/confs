@@ -1,8 +1,10 @@
 #!/bin/sh 
 
-AUTOSTART_TRAYAPPS=false
+cd $HOME
+
+AUTOSTART_TRAYAPPS=true
 AUTOSTART_COMPOSITOR=true
-AUTOSTART_PROGRAMS=false
+AUTOSTART_PROGRAMS=true
 
 BACKGROUND_IMAGE="$HOME/Photos/night-park-palette-knife-by-leonid-afremov.jpeg"
 BACKGROUND_COLOR='#fff6f4'
@@ -50,12 +52,17 @@ if $AUTOSTART_COMPOSITOR ; then
 fi
 
 if $AUTOSTART_PROGRAMS ; then
-    # Start file synchronizers
-    lxterminal -l -e "sh -c hsync-unison" &
-    
-    # Start commonly used apps
-    firefox &
-    signal-desktop &
-fi
+    # Start file synchronizer and commonly used apps
 
-killall i3bar &
+    (sleep 1 ; 
+        i3-msg "workspace 21:comm; append_layout .config/i3/workspace-comm.json" &
+        signal-desktop-beta --use-tray-icon &
+        nheko &
+    )
+
+    (sleep 1 ; 
+        i3-msg "workspace 1 ; append_layout .config/i3/workspace-firefox.json" &
+        lxterminal -l -e "sh -c hsync-unison" &
+        firefox &
+    )
+fi

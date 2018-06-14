@@ -56,10 +56,10 @@ font-2 = "Font Awesome 5 Brands:pixelsize=11;1"
 font-3 = Weather Icons:size=12;1
 
 modules-left = i3
-; modules-center = nvidia proc_count system_load cpu_ghz cpu memory temperature filesystem batterypower batterypower1 wlan eth
+; modules-center = nvidia proc_count system_load cpu_ghz cpu memory temperature filesystem wlan eth
 ; modules-right = weather music battery battery1 date xbacklight alsa 
 modules-center = music weather 
-modules-right = xbacklight alsa system_load mem cpu_ghz temperature filesystem batterypower batterypower1 wlan eth battery battery1 date 
+modules-right = xbacklight alsa system_load mem cpu_ghz temperature filesystem wlan eth battery battery1 date 
 
 ; Bottom of screen
 bottom = true
@@ -348,27 +348,6 @@ bar-volume-empty-font = 2
 bar-volume-empty-foreground = ${colors.foreground-alt}
 format-volume-foreground = #fdf5ec
 
-[module/batterypower1]
-type = internal/battery
-battery = BAT1
-adapter = AC
-full-at = 94
-
-label-charging = %consumption%W
-label-discharging = %consumption%W
-label-full = %consumption%W
-
-format-charging-underline = #eeae65
-
-format-discharging-underline = #eeae65
-
-format-full-underline = ${colors.great}
-format-background = #fe9ffc
-format-discharging-background = #c9995911
-format-discharging-foreground = #fdf5ec
-format-charging-background = #c9995911
-format-charging-foreground = #fdf5ec
-
 
 [module/batterypower]
 type = internal/battery
@@ -396,6 +375,10 @@ type = internal/battery
 battery = BAT1
 adapter = AC
 full-at = 94
+
+label-charging = %percentage%% %consumption%W
+label-discharging = %percentage%% %consumption%W
+label-full = %percentage%% %consumption%W
 
 format-charging = <animation-charging> <label-charging>
 format-charging-underline = #481313
@@ -434,6 +417,10 @@ type = internal/battery
 battery = BAT0
 adapter = AC
 full-at = 94
+
+label-charging = %percentage%% %consumption%W
+label-discharging = %percentage%% %consumption%W
+label-full = %percentage%% %consumption%W
 
 format-charging = <animation-charging> <label-charging>
 format-charging-underline = #481313

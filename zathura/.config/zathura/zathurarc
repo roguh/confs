@@ -1,7 +1,8 @@
 set window-title-basename true
 set window-title-page true
-set zoom-step 3
-set zoom-max 3000
-set zoom-min 3
+set zoom-step 0.5
+set zoom-max 2000
+set zoom-min 2
 set selection-clipboard clipboard
-
+set scroll-step 50
+set smooth-scroll true

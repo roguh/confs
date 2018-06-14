@@ -85,6 +85,6 @@ ${tztime Asia/Shanghai #{t}} $alignr #{note}Shenzhen
     normal = '$font',
     main = '${font Noto Sans:thin:size=55}',
     sub = '${font Noto Sans:thin:size=20}',
-    note = '${font Noto Sans:thin:size=10}',
+    note = '${font Noto Sans:thin:size=15}',
     t = '%H:%M %p %Z'
 })
