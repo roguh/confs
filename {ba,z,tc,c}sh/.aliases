@@ -5,13 +5,14 @@ tryalias cp 'cp -i'
 tryalias rm 'rm -i'
 tryalias please sudo
 
-tryalias c ccat
-tryalias exa 'exa --git'
 tryalias ls exa ls
 tryalias l 'ls -Fa'
 tryalias ll 'l -lh'
 tryalias grep 'grep --color -n'
 tryalias gzip pigz gzip
+
+tryalias c ccat
+tryalias exa 'exa --git'
 
 tryalias trizen 'trizen --flip-results=1'
 tryalias yaourt trizen yaourt
