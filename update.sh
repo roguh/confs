@@ -122,7 +122,7 @@ copy_confs_for i3 \
   bin/i3statustxt bin/i3status.py bin/i3txt.py
 
 copy_confs_for x11 \
-  .xinitrc .xbindkeysrc bin/autostart.sh
+  .xinitrc .xbindkeysrc bin/autostart.sh bin/signal.sh
 
 copy_confs_for dunst \
   .config/dunst .config/dunst/dunstrc

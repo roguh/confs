@@ -6,7 +6,7 @@ AUTOSTART_TRAYAPPS=true
 AUTOSTART_COMPOSITOR=true
 AUTOSTART_PROGRAMS=true
 
-BACKGROUND_IMAGE="$HOME/Photos/night-park-palette-knife-by-leonid-afremov.jpeg"
+BACKGROUND_IMAGE="$HOME/Photos/John Bramblitt/Stroll in the Rain.jpg"
 BACKGROUND_COLOR='#fff6f4'
 
 # Backup config files
@@ -30,8 +30,7 @@ redshift &
 xautolock -detectsleep -time 10 -notify 120 -notifier backlightoff.sh -locker locker.sh &
 
 # Set background
-# Photo by Thomas Kelley on Unsplash
-(sleep 1 ; feh --bg-scale "$BACKGROUND_IMAGE") &
+(sleep 1 ; feh --bg-center "$BACKGROUND_IMAGE") &
 # (sleep 1 ; xsetroot -solid "$BACKGROUND_COLOR") &
 
 # Ctrl-Alt-Backspace to kill X server
@@ -56,12 +55,12 @@ if $AUTOSTART_PROGRAMS ; then
 
     (sleep 1 ; 
         i3-msg "workspace 21:comm; append_layout .config/i3/workspace-comm.json" &
-        signal-desktop-beta --use-tray-icon &
+        signal.sh & 
         nheko &
     )
 
     (sleep 1 ; 
-        i3-msg "workspace 1 ; append_layout .config/i3/workspace-firefox.json" &
+        i3-msg "workspace 1; append_layout .config/i3/workspace-firefox.json" &
         lxterminal -l -e "sh -c hsync-unison" &
         firefox &
     )
