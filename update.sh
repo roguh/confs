@@ -53,8 +53,8 @@ log() {
 
 # USAGE: copy_confs_for section_name [file1 [file2 ...]] 
 #
-# Either copy all files from section_name to the destination
-# or copy all files to section_name, while preserving directory structure.
+# Either copy all files from section_name/ to the destination
+# or copy all files to section_name/, while preserving directory structure.
 # Make backups before copying.
 copy_confs_for() {
     SECTION=$1
@@ -146,6 +146,8 @@ copy_confs_for unison \
 copy_confs_for osync .osync.conf
 
 copy_confs_for htop .config/htop/htoprc
+
+copy_confs_for top .config/procps/toprc 
 
 copy_confs_for compton .config/compton.conf
 

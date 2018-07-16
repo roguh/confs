@@ -10,7 +10,7 @@ from gi.repository import Playerctl, GLib
 
 MUSIC_ICON = ''
 PAUSE_ICON = ''
-MAXLENGTHEACH = 15
+MAX_LENGTH = 15
 PLAYER_CLOSED_ICON = ''
 
 def listPlayers():
@@ -101,7 +101,7 @@ class PlayerStatus:
 
     def _print_song(self):
         self._print_flush(
-            '{} {} - {}'.format(self._icon, self._artist[:MAXLENGTHEACH], self._title[:MAXLENGTHEACH]))
+            '{} {} - {}'.format(self._icon, self._artist[:MAX_LENGTH], self._title[:MAX_LENGTH]))
 
     """
     Seems to assure print() actually prints when no terminal is connected

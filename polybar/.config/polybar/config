@@ -59,7 +59,7 @@ modules-left = i3
 ; modules-center = nvidia proc_count system_load cpu_ghz cpu memory temperature filesystem wlan eth
 ; modules-right = weather music battery battery1 date xbacklight alsa 
 modules-center = music weather 
-modules-right = xbacklight alsa system_load mem cpu_ghz temperature filesystem wlan eth battery battery1 date 
+modules-right = xbacklight alsa nvidia system_load mem cpu_ghz temperature filesystem wlan eth battery battery1 date 
 
 ; Bottom of screen
 bottom = true
@@ -135,7 +135,7 @@ label-unfocused-background = ${colors.background-alt-sub}
 label-unfocused-underline = ${colors.secondary} 
 label-unfocused-padding = ${self.label-focused-padding}
 
-label-visible-background = ${colors.background-alt}
+label-visible-background = ${colors.background}
 label-visible-underline = ${colors.primary} 
 label-visible-padding = ${self.label-focused-padding}
 
@@ -495,8 +495,9 @@ type = custom/script
 tail = true
 exec-if = nvidia-smi
 exec = ~/.config/polybar/system-nvidia-smi.sh
-format-underline = #4d004b
-format-background = #bbffc9fe
+format-underline = #e7ad9d
+format-background = #c98f3b23
+format-foreground = #fcf5f3
 
 [settings]
 screenchange-reload = true

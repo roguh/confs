@@ -60,7 +60,7 @@ if $AUTOSTART_PROGRAMS ; then
     )
 
     (sleep 1 ; 
-        i3-msg "workspace 1; append_layout .config/i3/workspace-firefox.json" &
+        i3-msg "workspace 22:TODO; append_layout .config/i3/workspace-firefox.json" &
         lxterminal -l -e "sh -c hsync-unison" &
         firefox &
     )
