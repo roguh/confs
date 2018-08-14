@@ -29,6 +29,7 @@ if [ -d /etc/X11/xinit/xinitrc.d ] ; then
   [ -x "$f" ] && . "$f"
  done
 fi
+
 f=$HOME/bin/autostart.sh
 if [ -f $f ] && [ -x $f ]; then
     . "$f" &
@@ -36,6 +37,7 @@ fi
 unset f
 
 session=${1:-i3}
+session=flux
 
 case $session in
     i3|i3wm             ) exec i3;;
@@ -44,6 +46,7 @@ case $session in
     rio                 ) exec 9 rio -virtuals 12 -term lxterminal;;
     kde                 ) exec startkde;;
     xfce|xfce4          ) exec startxfce4;;
+    flux|fluxbox        ) exec fluxbox;;
     # No known session, try to run it as command
     *                   ) exec $1;;
 esac

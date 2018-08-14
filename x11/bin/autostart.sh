@@ -2,11 +2,18 @@
 
 cd $HOME
 
-AUTOSTART_TRAYAPPS=true
+AUTOSTART_TRAYAPPS=false
 AUTOSTART_COMPOSITOR=true
-AUTOSTART_PROGRAMS=true
+AUTOSTART_PROGRAMS=false
 
-BACKGROUND_IMAGE="$HOME/Photos/John Bramblitt/Stroll in the Rain.jpg"
+MINIMAL=true
+if $MINIMAL ; then
+    AUTOSTART_TRAYAPPS=false
+    AUTOSTART_COMPOSITOR=false
+    AUTOSTART_PROGRAMS=false
+fi
+
+BACKGROUND_IMAGE="$HOME/Photos/minimal-backgrounds/Intuition 2.png"
 BACKGROUND_COLOR='#fff6f4'
 
 # Backup config files
@@ -14,7 +21,7 @@ backup-t580.sh &
 backup-common.sh &
 
 if xrandr | grep "HDMI2 connected" > /dev/null ; then
-    ~/.screenlayout/eDPI1-HDMI2-rotated.sh &
+    ~/bin/xrandr-hdmi2-right-vertical
 fi
 
 # Start graphical system monitor
@@ -27,7 +34,7 @@ xbindkeys &
 redshift &
 
 # Lock screen after 5 minutes
-xautolock -detectsleep -time 10 -notify 120 -notifier backlightoff.sh -locker locker.sh &
+xautolock -detectsleep -time 5 -notify 240 -notifier backlightoff.sh -locker locker.sh &
 
 # Set background
 (sleep 1 ; feh --bg-center "$BACKGROUND_IMAGE") &

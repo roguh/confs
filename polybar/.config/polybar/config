@@ -28,7 +28,7 @@ warn-fore = #000
 [bar/primary]
 monitor = ${env:MONITOR:eDP1}
 
-height = 25
+height = 22
 line-size = 6
 
 width = 100%
@@ -58,8 +58,8 @@ font-3 = Weather Icons:size=12;1
 modules-left = i3
 ; modules-center = nvidia proc_count system_load cpu_ghz cpu memory temperature filesystem wlan eth
 ; modules-right = weather music battery battery1 date xbacklight alsa 
-modules-center = music weather 
-modules-right = xbacklight alsa nvidia system_load mem cpu_ghz temperature filesystem wlan eth battery battery1 date 
+modules-right = xbacklight alsa music weather date
+modules-center = nvidia system_load mem cpu_ghz temperature filesystem wlan eth battery battery1 
 
 ; Bottom of screen
 bottom = true

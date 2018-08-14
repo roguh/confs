@@ -1,0 +1,13 @@
+[begin] (Fluxbox)
+[encoding] {UTF-8}
+      [exec] (terminal) {terminal.sh}
+      [exec] (firefox) {firefox}
+      [exec] (Run command) {launcher.sh}
+
+      [reconfig] (Reconfig)
+      [restart] (Restart)
+      [exit] (Log off) {exit}
+      [exec] (Reboot) {gksudo shutdown -r now}
+      [exec] (Shut Down) {gksudo shutdown -h now}
+[endencoding]
+[end]

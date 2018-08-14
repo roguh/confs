@@ -153,5 +153,7 @@ copy_confs_for compton .config/compton.conf
 
 copy_confs_for alacritty .config/alacritty/alacritty.yml bin/alacritty-cwd.sh
 
+copy_confs_for fluxbox .fluxbox/menu .fluxbox/keys
+
 copy_confs_for conky \
   .conkyrc.d/conkyrc .conkyrc.d/clocks_conkyrc

@@ -22,12 +22,6 @@ export HISTSIZE=10000
 export HISTCONTROL=ignoredups:ignorespace
 export HISTTIMEFORMAT="$(echo -e\ '\r\e[K\')"
 
-# COLORS
-load_file .cache/wal/colors-tty.sh
-if [ -f ~/.cache/wal/sequences ] ; then
-    (cat ~/.cache/wal/sequences &)
-fi
-
 ##### Set PS1
 # Check if colored output is supported
 COLORED_PS1=false

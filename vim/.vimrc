@@ -78,11 +78,6 @@ let g:syntastic_cpp_compiler_options = ' -std=c++11'
 " C and Bison/Flex
 Plug 'justinmk/vim-syntax-extra'
 
-" status line
-Plug 'vim-airline/vim-airline'
-Plug 'vim-airline/vim-airline-themes'
-let g:airline_theme='silver'
-
 call plug#end()
 
 if filereadable(expand("~/.vimrc.minimal"))
