@@ -1,7 +1,8 @@
 [begin] (Fluxbox)
 [encoding] {UTF-8}
-      [exec] (terminal) {terminal.sh}
-      [exec] (firefox) {firefox}
+      [exec] (Terminal) {terminal.sh}
+      [exec] (Firefox) {firefox}
+      [exec] (Steam) {steam.sh}
       [exec] (Run command) {launcher.sh}
 
       [reconfig] (Reconfig)

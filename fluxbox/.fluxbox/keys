@@ -1,5 +1,5 @@
-Mod4 :RootMenu
 Mod4 Mouse3 :RootMenu
+Mod4 Z :RootMenu
 Mod4 space :WindowMenu
 Mod4 T :Exec terminal.sh
 Mod4 X :Exec terminal.sh 

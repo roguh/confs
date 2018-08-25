@@ -37,7 +37,6 @@ fi
 unset f
 
 session=${1:-i3}
-session=flux
 
 case $session in
     i3|i3wm             ) exec i3;;

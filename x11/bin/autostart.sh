@@ -2,11 +2,12 @@
 
 cd $HOME
 
-AUTOSTART_TRAYAPPS=false
-AUTOSTART_COMPOSITOR=true
-AUTOSTART_PROGRAMS=false
+MINIMAL=false
 
-MINIMAL=true
+AUTOSTART_TRAYAPPS=true
+AUTOSTART_COMPOSITOR=true
+AUTOSTART_PROGRAMS=true
+
 if $MINIMAL ; then
     AUTOSTART_TRAYAPPS=false
     AUTOSTART_COMPOSITOR=false
@@ -69,6 +70,7 @@ if $AUTOSTART_PROGRAMS ; then
     (sleep 1 ; 
         i3-msg "workspace 22:TODO; append_layout .config/i3/workspace-firefox.json" &
         lxterminal -l -e "sh -c hsync-unison" &
+        steam.sh &
         firefox &
     )
 fi
