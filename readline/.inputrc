@@ -1,0 +1,136 @@
+set editing-mode vi
+
+# Block cursor in insert mode, pipe cursor in command mode
+set show-mode-in-prompt on
+set vi-ins-mode-string \1\e[2 q\2
+set vi-cmd-mode-string \1\e[6 q\2
+
+# # A <TAB> partially completes and shows all remainning completions if ambiguous
+# Colorized completion
+# Color files by types
+set colored-stats On
+# Append char to indicate type
+set visible-stats On
+# Mark symlinked directories
+set mark-symlinked-directories On
+# Color the common prefix
+set colored-completion-prefix On
+# Color the common prefix in menu-complete
+set menu-complete-display-prefix On
+
+
+# Do not echo control characters. Ctrl+C should not print ^C
+set echo-control-characters off
+
+# Hybrid mode: use both vim and emacs keybindings. UNITY IS POWER
+set keymap vi-insert
+"\el": downcase-word
+"\C-b": backward-char
+"\e\C-i": dynamic-complete-history
+"\C-x\C-e": edit-and-execute-command
+"\C-x)": end-kbd-macro
+"\e>": end-of-history
+"\C-e": end-of-line
+"\eOF": end-of-line
+"\e[F": end-of-line
+"\eOD": backward-char
+"\C-x\C-x": exchange-point-and-mark
+"\C-f": forward-char
+"\eOC": forward-char
+"\e[C": forward-char
+"\C-s": forward-search-history
+"\ef": forward-word
+"\eg": glob-complete-word
+"\C-x*": glob-expand-word
+"\e[D": backward-char
+"\C-xg": glob-list-expansions
+"\e^": history-expand-line
+"\e#": insert-comment
+"\e*": insert-completions
+"\e.": insert-last-argument
+"\C-h": backward-delete-char
+"\e_": insert-last-argument
+"\C-k": kill-line
+"\ed": kill-word
+"\C-n": next-history
+"\eOB": next-history
+"\C-?": backward-delete-char
+"\e[B": next-history
+"\en": non-incremental-forward-search-history
+"\ep": non-incremental-reverse-search-history
+"\C-o": operate-and-get-next
+"\C-x!": possible-command-completions
+"\e=": possible-completions
+"\C-x\C-?": backward-kill-line
+"\e?": possible-completions
+"\C-x/": possible-filename-completions
+"\C-x@": possible-hostname-completions
+"\C-x~": possible-username-completions
+"\C-x$": possible-variable-completions
+"\C-p": previous-history
+"\eOA": previous-history
+"\e[A": previous-history
+"\C-q": quoted-insert
+"\e\C-h": backward-kill-word
+"\C-v": quoted-insert
+"\C-x\C-r": re-read-init-file
+"\C-r": reverse-search-history
+"\e\C-r": revert-line
+"\er": revert-line
+"\e\C-?": backward-kill-word
+"\eb": backward-word
+"\e<": beginning-of-history
+"\C-a": beginning-of-line
+"\eOH": beginning-of-line
+"\e[H": beginning-of-line
+"\e[200~": bracketed-paste-begin
+"\C-xe": call-last-kbd-macro
+"\ec": capitalize-word
+"\C-]": character-search
+"\e\C-]": character-search-backward
+"\C-l": clear-screen
+"\C-i": complete
+"\C-g": abort
+"\e\e": complete
+"\e!": complete-command
+"\e/": complete-filename
+"\e@": complete-hostname
+"\e{": complete-into-braces
+"\e~": complete-username
+"\e$": complete-variable
+"\C-@": set-mark
+"\C-x\C-g": abort
+"\e ": set-mark
+"\e\C-e": shell-expand-line
+"\C-x(": start-kbd-macro
+"\e&": tilde-expand
+"\C-t": transpose-chars
+"\et": transpose-words
+"\C-x\C-u": undo
+"\C-_": undo
+"\C-u": unix-line-discard
+"\C-w": unix-word-rubout
+"\eu": upcase-word
+"\C-d": delete-char
+"\e[3~": delete-char
+"\e\\": delete-horizontal-space
+"\e-": digit-argument
+"\e0": digit-argument
+"\C-y": yank
+"\e.": yank-last-arg
+"\e_": yank-last-arg
+"\e\C-y": yank-nth-arg
+"\ey": yank-pop
+"\e1": digit-argument
+"\e2": digit-argument
+"\e3": digit-argument
+"\e\C-g": abort
+"\e4": digit-argument
+"\e5": digit-argument
+"\e6": digit-argument
+"\e7": digit-argument
+"\e8": digit-argument
+"\e9": digit-argument
+"\C-x\C-v": display-shell-version
+"\C-j": accept-line
+"\C-m": accept-line

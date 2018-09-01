@@ -155,5 +155,7 @@ copy_confs_for alacritty .config/alacritty/alacritty.yml bin/alacritty-cwd.sh
 
 copy_confs_for fluxbox .fluxbox/menu .fluxbox/keys
 
+copy_confs_for readline .inputrc
+
 copy_confs_for conky \
   .conkyrc.d/conkyrc .conkyrc.d/clocks_conkyrc
