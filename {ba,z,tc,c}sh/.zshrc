@@ -1,5 +1,4 @@
 # oh-my-zsh Configuration
-
 load_file() {
     if [ -f "$1" ] ; then
         . "$1"
@@ -32,4 +31,13 @@ load_file $ZSH/oh-my-zsh.sh
 load_file "$HOME/.tryalias"
 load_file "$HOME/.aliases"
 load_file "$HOME/.zshrc_extra"
+
+if command -v fzf > /dev/null; then
+    load_file /usr/share/fzf/key-bindings.zsh
+    load_file /usr/share/fzf/completion.zsh
+fi
+
+unset HISTFILE
+export HISTSIZE=99999
+export HISTCONTROL=ignoredups:ignorespace
 
