@@ -1,5 +1,11 @@
 set editing-mode vi
 
+set completion-ignore-case On
+set completion-prefix-display-length 3
+
+# Put / in front of symlink directories
+set mark-symlinked-directories On
+
 # Block cursor in insert mode, pipe cursor in command mode
 set show-mode-in-prompt on
 set vi-ins-mode-string \1\e[2 q\2
