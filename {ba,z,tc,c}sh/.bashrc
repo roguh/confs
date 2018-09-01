@@ -14,6 +14,9 @@ load_file "$HOME/.aliases"
 # Load extra .bashrc
 load_file "$HOME/.bashrc_extra"
 
+# Load ocaml config
+load_file $HOME/.opam/opam-init/init.sh > /dev/null 2> /dev/null
+
 export VISUAL=vim
 
 # Do not save history to a file
@@ -126,6 +129,9 @@ fi
 if [[ $- == *i* ]]; then
     # Keep aliases when running sudo
     alias sudo='sudo '
+
+    # Globally enable bash completion for Python scripts using argcomplete
+    load_file "$HOME/.bash_completion.d/python-argcomplete.sh"
 
     # Use , as an improved cd command
     load_file "$HOME/.commacd.bash"

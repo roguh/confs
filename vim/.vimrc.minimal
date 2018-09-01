@@ -63,6 +63,7 @@ set undodir=$VIMRUNTIME/undo//,~/tmp/undo//,~/tmp//
 " save backups with a timestamp and directory info
 au BufWritePre * let &backupext = substitute(expand('%:p:h'), '/', '%', 'g') . '%' . strftime('%Y-%m-%d-%H:%M') . '~'
 
+set encoding=utf-8
 
 " Part of Fedora's /etc/vimrc
 " UTF 8
@@ -93,6 +94,18 @@ set cursorline
 "hi  CursorColumn cterm=underline gui=underline 
 hi CursorLine ctermbg=none cterm=bold,underline gui=bold,underline 
 hi CursorColumn ctermbg=none cterm=bold gui=bold 
+
+" Python indentation
+au BufNewFile,BufRead *.py
+    \ set tabstop=4
+    \ set softtabstop=4
+    \ set shiftwidth=4
+    \ set textwidth=79
+    \ set expandtab
+    \ set autoindent
+    \ set fileformat=unix
+
+au BufRead,BufNewFile *.py,*.pyw,*.c,*.h,*.ml,*.mli,*.hs,*.rs match BadWhitespace /\s\+$/
 
 " load local vim settings
 if filereadable(".vim.custom")
