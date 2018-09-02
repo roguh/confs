@@ -30,12 +30,7 @@ if command -v fzf > /dev/null ; then
     load_file "/usr/share/fzf/completions.bash"
     load_file "$HOME/.fzf.bash"
 
-    # Use fzf for CTRL-R
-    fzf_cmd() {
-        [ -n "$TMUX_PANE" ] && echo "fzf-tmux -d${FZF_TMUX_HEIGHT:-40%}" || echo "fzf"
-    }
-
-    bind '"\C-r": "\C-ahistory | $(__fzfcmd)\C-j"'
+    # bind '"\C-r": " \C-e\C-u\C-y\ey\C-u`__fzf_history__`\e\C-e\er\e^"'
 fi
 
 # Set pager command

@@ -1,3 +1,2 @@
 #!/bin/sh
-# exec alacritty
-exec lxterminal
+( optirun alacritty || alacritty )

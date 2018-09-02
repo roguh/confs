@@ -105,7 +105,12 @@ au BufNewFile,BufRead *.py
     \ set autoindent
     \ set fileformat=unix
 
-au BufRead,BufNewFile *.py,*.pyw,*.c,*.h,*.ml,*.mli,*.hs,*.rs match BadWhitespace /\s\+$/
+au BufRead,BufNewFile *.py,*.pyw,*.c,*.h match BadWhitespace /\s\+$/
+
+
+" Personal OCaml indentation rules
+au BufNewFile,BufRead *.ml
+    \ set tabstop=2 softtabstop=2 shiftwidth=2 textwidth=80 expandtab autoindent fileformat=unix
 
 " load local vim settings
 if filereadable(".vim.custom")

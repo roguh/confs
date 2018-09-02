@@ -74,3 +74,7 @@ if $AUTOSTART_PROGRAMS ; then
         firefox &
     )
 fi
+
+if command -v fortune.sh ; then
+    notify-osd 'Welcome!' $(fortune.sh)
+fi
