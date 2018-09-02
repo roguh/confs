@@ -1,2 +1,2 @@
 #!/bin/sh
-( optirun alacritty || alacritty )
+exec alacritty
