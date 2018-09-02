@@ -32,7 +32,7 @@ for c in ~/.conkyrc.d/*clock* ; do (sleep 1 ; conky -c $c) & done
 xbindkeys &
 
 # Prevent eyestrain at 4AM
-redshift &
+redshift.sh &
 
 # Lock screen after 5 minutes
 xautolock -detectsleep -time 5 -notify 240 -notifier backlightoff.sh -locker locker.sh &
@@ -76,5 +76,5 @@ if $AUTOSTART_PROGRAMS ; then
 fi
 
 if command -v fortune.sh ; then
-    notify-osd 'Welcome!' $(fortune.sh)
+    notify-send -u low 'Welcome!' "$(fortune.sh)"
 fi

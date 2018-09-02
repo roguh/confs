@@ -28,9 +28,6 @@ if command -v fzf > /dev/null ; then
     # Load fuzzy finder settings
     load_file "/usr/share/fzf/key-bindings.bash"
     load_file "/usr/share/fzf/completions.bash"
-    load_file "$HOME/.fzf.bash"
-
-    # bind '"\C-r": " \C-e\C-u\C-y\ey\C-u`__fzf_history__`\e\C-e\er\e^"'
 fi
 
 # Set pager command
@@ -45,7 +42,7 @@ elif command -v most > /dev/null ; then
 fi
 
 # Load aliases
-load_file "$HOME/.tryalias"
+load_file "$HOME/.tryalias.sh"
 load_file "$HOME/.aliases"
 
 # Load extra .bashrc

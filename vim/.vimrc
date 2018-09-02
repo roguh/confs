@@ -3,6 +3,9 @@
 " call :PlugInstall to install and update
 call plug#begin()
 
+" Various language syntax definitions, includes fish
+Plug 'sheerun/vim-polyglot'
+
 " Completion
 Plug 'ervandew/supertab'
 
