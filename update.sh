@@ -128,7 +128,9 @@ copy_confs_for dunst \
   .config/dunst .config/dunst/dunstrc
 
 copy_confs_for "{ba,z,tc,c}sh" \
-  .bashrc .bashrc_ps1 .bash_profile .zshrc .cshrc .tryalias .aliases bin/trimdir.py bin/gitinfo.sh
+  .bashrc .bashrc_ps1 .bash_profile .zshrc .cshrc .tryalias.sh .aliases bin/trimdir.py bin/gitinfo.sh
+
+copy_confs_for fish_the_best_sh .config/fish/{config,functions/{tryalias,fish_prompt,fisher}}.fish .aliases
 
 copy_confs_for git \
     .gitconfig bin/gitdiff.sh
