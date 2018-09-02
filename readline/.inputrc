@@ -29,6 +29,7 @@ set menu-complete-display-prefix On
 set echo-control-characters off
 
 # Hybrid mode: use both vim and emacs keybindings. UNITY IS POWER
+# 
 set keymap vi-insert
 "\el": downcase-word
 "\C-b": backward-char

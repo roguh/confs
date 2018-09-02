@@ -83,7 +83,7 @@ fi
 
 ### Set end of PS1
 if [[ $COLORED_PS1 == "true" ]] ; then
-    PS1_TIME="${COLOR_HIGHLIGHT}${PS1_TIME}${END}" 
+    PS1_TIME="${PS1_TIME}" 
 fi
 
 export PS1="${PS1_BEGIN} ${PS1_TIME} ${PS1_PWD} ${PS1_GITBRANCH}${PS1_END}"
