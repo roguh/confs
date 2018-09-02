@@ -11,6 +11,10 @@ set -U VISUAL vim
 
 if command -v vimpager > /dev/null
     set -U PAGER vimpager
+    set -U pager vimpager
+    set -U MANPAGER vimpager
+    set -U SYSTEMD_PAGER vimpager
+    alias less=vimpager
 end
 
 # Load aliases
@@ -18,6 +22,9 @@ load_file $HOME/.aliases
 
 # Load OCaml
 load_file $HOME/.opam/opam-init/init.fish
+
+# Load pywal theme
+load_theme
 
 function plugin_install
     fisher install done

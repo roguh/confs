@@ -130,7 +130,7 @@ copy_confs_for dunst \
 copy_confs_for "{ba,z,tc,c}sh" \
   .bashrc .bashrc_ps1 .bash_profile .zshrc .cshrc .tryalias.sh .aliases bin/trimdir.py bin/gitinfo.sh
 
-copy_confs_for fish_the_best_sh .config/fish/{config,functions/{tryalias,fish_prompt,fisher}}.fish .aliases
+copy_confs_for fish_the_best_sh .config/fish/{config,functions/{tryalias,load_theme,fish_prompt,fisher}}.fish .aliases
 
 copy_confs_for git \
     .gitconfig bin/gitdiff.sh
@@ -161,6 +161,9 @@ copy_confs_for alacritty .config/alacritty/alacritty.yml bin/alacritty-cwd.sh
 copy_confs_for fluxbox .fluxbox/menu .fluxbox/keys
 
 copy_confs_for readline .inputrc
+
+copy_confs_for pywal \
+    bin/wal-set-theme.sh .cache/wal/{sequences,wal,colors.*}
 
 copy_confs_for conky \
   .conkyrc.d/conkyrc .conkyrc.d/clocks_conkyrc
