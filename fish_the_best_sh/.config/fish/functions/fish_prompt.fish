@@ -27,7 +27,7 @@ function fish_prompt
 
     set st ""
     if [ $last_status -ne 0 ]
-        set st "[$last_status] "
+        set st "[$last_status]"
     end
 
     function clean

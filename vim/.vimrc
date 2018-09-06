@@ -18,9 +18,6 @@ au FileType ocaml call SuperTabSetDefaultCompletionType("<c-x><c-o>")
 Plug 'davidhalter/jedi-vim'
 Plug 'nvie/vim-flake8'
 
-" Themes
-Plug 'dylanaraps/wal.vim'
-
 " JS React Native
 Plug 'pangloss/vim-javascript'
 Plug 'mxw/vim-jsx'
@@ -73,6 +70,8 @@ let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
 
+Plug 'dylanaraps/wal.vim'
+
 " cargo syntastic checker 
 Plug 'Nonius/cargo.vim'
 
@@ -102,5 +101,10 @@ if filereadable(expand("~/.vimrc.minimal"))
     so ~/.vimrc.minimal
 endif
 
-" let g:opamshare = substitute(system('opam config var share'),'\n$','','''')
+let g:opamshare = substitute(system('opam config var share'),'\n$','','''')
 " execute "set rtp+=" . g:opamshare . "/merlin/vim"
+execute "set rtp+=" . g:opamshare . "/ocp-indent/vim"
+
+if filereadable(expand("~/.cache/wal/colors.json"))
+    execute "colorscheme wal"
+endif

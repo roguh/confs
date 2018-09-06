@@ -14,7 +14,7 @@ if $MINIMAL ; then
     AUTOSTART_PROGRAMS=false
 fi
 
-BACKGROUND_IMAGE="$HOME/Photos/minimal-backgrounds/Intuition 2.png"
+BACKGROUND_IMAGE="$HOME/Photos/Forest-Interior-1857-Theodore-Rousseau-Oil-Painting-1.jpg"
 BACKGROUND_COLOR='#fff6f4'
 
 # Backup config files

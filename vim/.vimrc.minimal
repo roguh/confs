@@ -87,13 +87,11 @@ let &guicursor = &guicursor . ",a:blinkon0"
 
 
 " crosshairs
-set cursorcolumn
+" set cursorcolumn
 set cursorline
 "hi  CursorLine cterm=NONE cterm=reverse gui=reverse 
 "hi  CursorColumn cterm=NONE cterm=reverse gui=reverse 
 "hi  CursorColumn cterm=underline gui=underline 
-hi CursorLine ctermbg=none cterm=bold,underline gui=bold,underline 
-hi CursorColumn ctermbg=none cterm=bold gui=bold 
 
 " Python indentation
 au BufNewFile,BufRead *.py 
