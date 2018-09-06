@@ -167,3 +167,5 @@ copy_confs_for pywal \
 
 copy_confs_for conky \
   .conkyrc.d/conkyrc .conkyrc.d/clocks_conkyrc
+
+copy_confs_for kitty .config/kitty/kitty.conf
