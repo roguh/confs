@@ -52,8 +52,8 @@ conky.config = {
     use_xft = true,
     font = 'Noto Sans:normal:size=15',
     border_inner_margin = w / 3, -- TODO ????
-    gap_x = w / 2,
-    gap_y = 30,
+    gap_x = 0.3 * w,
+    gap_y = 0.1 * w,
     net_avg_samples = 2,
     out_to_console = false,
     out_to_stderr = false,

@@ -26,7 +26,7 @@ if xrandr | grep "HDMI2 connected" > /dev/null ; then
 fi
 
 # Start graphical system monitor
-for c in ~/.conkyrc.d/*clock* ; do (sleep 1 ; conky -c $c) & done
+conky.sh
 
 # Enable key bindings
 xbindkeys &
@@ -38,7 +38,7 @@ redshift.sh &
 xautolock -detectsleep -time 5 -notify 240 -notifier backlightoff.sh -locker locker.sh &
 
 # Set background
-(sleep 1 ; feh --bg-center "$BACKGROUND_IMAGE") &
+(sleep 1 ; feh --bg-fill "$BACKGROUND_IMAGE") &
 # (sleep 1 ; xsetroot -solid "$BACKGROUND_COLOR") &
 
 # Ctrl-Alt-Backspace to kill X server
@@ -71,7 +71,7 @@ if $AUTOSTART_PROGRAMS ; then
         i3-msg "workspace 22:TODO; append_layout .config/i3/workspace-firefox.json" &
         lxterminal -l -e "sh -c hsync-unison" &
         steam.sh &
-        firefox &
+        torbrowser.sh &
     )
 fi
 

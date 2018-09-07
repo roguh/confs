@@ -105,6 +105,6 @@ let g:opamshare = substitute(system('opam config var share'),'\n$','','''')
 " execute "set rtp+=" . g:opamshare . "/merlin/vim"
 execute "set rtp+=" . g:opamshare . "/ocp-indent/vim"
 
-if filereadable(expand("~/.cache/wal/colors.json"))
-    execute "colorscheme wal"
+if filereadable(expand("~/.vim/plugged/wal.vim/colors/wal.vim"))
+    execute "silent colorscheme wal"
 endif

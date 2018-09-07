@@ -43,6 +43,8 @@ function plugin_install
     echo Alt-o,Shift-o - recursive cd into subdirs, or include hidden subdirs
 end
 
+set -gx MANPATH $MANPATH /usr/share/man /usr/local/share/man/
+
 # Fish does lots of things by default:
 # ignore dups and blank lines in history
 # interactive cd and autocompletion

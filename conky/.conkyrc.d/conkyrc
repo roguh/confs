@@ -46,7 +46,7 @@ conky.config = {
     draw_shades = false,
     use_xft = true,
     font = 'Noto Sans:black:size=8',
-    gap_x = w,
+    gap_x = 0.3 * w,
     gap_y = 80,
     minimum_height = 5,
     net_avg_samples = 2,

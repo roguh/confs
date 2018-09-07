@@ -6,8 +6,8 @@ tryalias rm 'rm -i'
 tryalias please sudo
 
 tryalias ping 'prettyping --nolegend' ping
-tryalias less "$PAGER"
-tryalias more "$PAGER"
+tryalias less "$PAGER" less
+tryalias more "$PAGER" more
 
 tryalias ls exa ls
 tryalias l 'ls -Fa'

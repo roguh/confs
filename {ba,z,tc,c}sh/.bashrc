@@ -6,6 +6,9 @@ load_file() {
     [ -f "$1" ] && . "$1"
 }
 
+# Load extra .bashrc
+load_file "$HOME/.bashrc_extra"
+
 # Load ocaml config
 load_file $HOME/.opam/opam-init/init.sh > /dev/null 2> /dev/null
 
@@ -33,20 +36,17 @@ fi
 # Set pager command
 if command -v vimpager > /dev/null ; then
     export PAGER=vimpager
-    export MANPAGER=$PAGER
-    export SYSTEMD_PAGER=$PAGER
 elif command -v most > /dev/null ; then
     export PAGER=most
-    export MANPAGER=$PAGER
-    export SYSTEMD_PAGER=$PAGER
+else
+    export PAGER=less
 fi
+export MANPAGER="$PAGER"
+export SYSTEMD_PAGER="$PAGER"
 
 # Load aliases
 load_file "$HOME/.tryalias.sh"
 load_file "$HOME/.aliases"
-
-# Load extra .bashrc
-load_file "$HOME/.bashrc_extra"
 
 ##### Set commands in interactive mode
 if [[ $- == *i* ]]; then

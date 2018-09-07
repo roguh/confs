@@ -198,12 +198,13 @@ bindsym $mod+d exec launcher.sh
 set $terminal terminal.sh 
 set $terminal2 terminal2.sh 
 set $browser firefox 
+set $browser2 torbrowser.sh 
 
 bindsym $mod+Return exec $terminal
 bindsym $mod+x exec $terminal
 bindsym $mod+z exec $terminal2
 bindsym F8 exec $terminal
-bindsym $mod+c exec $browser 
+bindsym $mod+c exec $browser2
 bindsym $mod+n exec $browser
 
 bindsym $mod+l exec locker.sh
@@ -219,6 +220,11 @@ gaps outer 5
 # Hide title for extremely common windows
 for_window [title="LXTerminal|Firefox|Chromium|Chrome$"] border pixel 1
 # for_window [title="Firefox|Chromium|Chrome$"] border pixel 0
+
+# Popups should float
+for_window [window_role="pop-up"] floating enable
+
+for_window [class="Tor Browser"] floating enable
 
 # Reload the configuration file
 # bindsym $mod+Shift+c reload
