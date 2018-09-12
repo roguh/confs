@@ -41,7 +41,7 @@ conky.config = {
     background = true,
     border_width = 0,
     cpu_avg_samples = 10,
-	default_color = xrdb('background'),
+	default_color = xrdb('foreground'),
     default_outline_color = 'white',
     default_shade_color = 'black',
     double_buffer = true,
@@ -68,7 +68,7 @@ conky.config = {
 }
 
 conky.text = interp([[
-$alignc#{main}${time %H:%M:%S}#{normal}
+#{main}${time %H:%M:%S}#{normal}
 
 ${tztime Asia/Shanghai #{t}} $alignr #{note}Shenzhen
 #{normal}${tztime Asia/Tokyo #{t}} $alignr #{note}Tokyo
@@ -83,7 +83,7 @@ ${tztime Asia/Shanghai #{t}} $alignr #{note}Shenzhen
 
 ]], {
     normal = '$font',
-    main = '${font Noto Sans:thin:size=55}',
+    main = '${font Noto Sans:thin:size=50}',
     sub = '${font Noto Sans:thin:size=20}',
     note = '${font Noto Sans:thin:size=15}',
     t = '%H:%M %p %Z'

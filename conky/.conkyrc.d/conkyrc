@@ -25,18 +25,22 @@ You should have received a copy of the GNU General Public License
 along with this program.  If not, see <http://www.gnu.org/licenses/>.
 ]]
 
-w = 400
+w = 300
 local function interp (s, t)
     return s:gsub('(#%b{})', function (w)
         return t[w:sub(3, -2)] or w
     end)
 end
 
+function xrdb(c)
+    return io.popen("xrdb -query | grep " .. c .. " | head -n1 | awk '{print $2}'"):read()
+end
+
 conky.config = {
     alignment = 'bottom_left',
     border_width = 0,
     cpu_avg_samples = 10,
-	default_color = 'white',
+	default_color = xrdb('foreground'),
     default_outline_color = 'white',
     default_shade_color = 'black',
     double_buffer = true,
