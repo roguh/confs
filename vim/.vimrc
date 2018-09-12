@@ -13,6 +13,7 @@ Plug 'ervandew/supertab'
 " install merline with
 " opam install merlin
 au FileType ocaml call SuperTabSetDefaultCompletionType("<c-x><c-o>")
+Plug 'reasonml-editor/vim-reason-plus'
 
 " PYTHON MAGIC
 Plug 'davidhalter/jedi-vim'

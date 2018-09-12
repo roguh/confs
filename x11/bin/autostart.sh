@@ -5,7 +5,7 @@ cd $HOME
 MINIMAL=false
 
 AUTOSTART_TRAYAPPS=true
-AUTOSTART_COMPOSITOR=true
+AUTOSTART_COMPOSITOR=false
 AUTOSTART_PROGRAMS=true
 
 if $MINIMAL ; then
@@ -14,7 +14,7 @@ if $MINIMAL ; then
     AUTOSTART_PROGRAMS=false
 fi
 
-BACKGROUND_IMAGE="$HOME/Photos/Forest-Interior-1857-Theodore-Rousseau-Oil-Painting-1.jpg"
+BACKGROUND_IMAGE="$HOME/Photos/Forest-Interior-1857-Theodore-Rousseau_enhanced.jpg"
 BACKGROUND_COLOR='#fff6f4'
 
 # Backup config files
@@ -48,7 +48,7 @@ xautolock -detectsleep -time 5 -notify 240 -notifier backlightoff.sh -locker loc
 
 if $AUTOSTART_TRAYAPPS ; then
     # Check for Arch package updates
-    kalu &
+    # kalu &
     
     # udisk tray icon
     udiskie --smart-tray &
@@ -71,7 +71,7 @@ if $AUTOSTART_PROGRAMS ; then
         i3-msg "workspace 22:TODO; append_layout .config/i3/workspace-firefox.json" &
         lxterminal -l -e "sh -c hsync-unison" &
         steam.sh &
-        torbrowser.sh &
+        firefox & 
     )
 fi
 
