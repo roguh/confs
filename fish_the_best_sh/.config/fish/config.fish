@@ -28,7 +28,6 @@ load_theme
 
 function plugin_install
     fisher install done
-    fisher install laughedelic/pisces
     fisher install shark
     fisher install spin
     fisher install fzf

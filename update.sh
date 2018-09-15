@@ -165,7 +165,6 @@ copy_confs_for readline .inputrc
 copy_confs_for pywal \
     bin/wal-set-theme.sh .cache/wal/{sequences,wal,colors.*}
 
-copy_confs_for conky \
-  .conkyrc.d/conkyrc .conkyrc.d/clocks_conkyrc bin/conky.sh
+copy_confs_for conky bin/conky.sh .conkyrc.d/
 
 copy_confs_for kitty .config/kitty/kitty.conf

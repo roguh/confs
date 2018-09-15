@@ -38,7 +38,7 @@ end
 w = 300
 
 conky.config = {
-    alignment = 'bottom_left',
+    alignment = 'bottom_right',
     border_width = 0,
     cpu_avg_samples = 10,
 	default_color = xrdb('foreground'),
@@ -51,8 +51,8 @@ conky.config = {
     draw_shades = false,
     use_xft = true,
     font = 'Noto Sans:black:size=8',
-    gap_x = 0.3 * w,
-    gap_y = 80,
+    gap_x = -2.7 * w,
+    gap_y = 0,
     minimum_height = 5,
     net_avg_samples = 2,
     no_buffers = true,
@@ -77,7 +77,6 @@ conky.config = {
 }
 
 conky.text = interp([[
-#{fonttitle}$nodename $sysname #{fontsubtitle}
 $kernel on $machine${font}
 
 #{emph}CPU #{normal}${cpu cpu0}% $alignr ${loadavg}
