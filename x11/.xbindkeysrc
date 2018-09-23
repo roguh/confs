@@ -89,6 +89,15 @@
 "screenshot.sh"
   Print
 
+"playerctl next"
+  XF86AudioNext
+
+"playerctl prev"
+  XF86AudioPrev
+
+"playerctl play-pause"
+  XF86AudioPause
+
 ##################################
 # End of xbindkeys configuration #
 ##################################

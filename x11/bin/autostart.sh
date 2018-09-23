@@ -14,7 +14,7 @@ if $MINIMAL ; then
     AUTOSTART_PROGRAMS=false
 fi
 
-BACKGROUND_IMAGE="$HOME/Photos/Forest-Interior-1857-Theodore-Rousseau_enhanced.jpg"
+BACKGROUND_IMAGE="$HOME/Photos/savoring summer by  kadir nelson.png"
 BACKGROUND_COLOR='#fff6f4'
 
 # Backup config files
@@ -38,8 +38,8 @@ redshift.sh &
 xautolock -detectsleep -time 5 -notify 240 -notifier backlightoff.sh -locker locker.sh &
 
 # Set background
-(sleep 1 ; feh --bg-fill "$BACKGROUND_IMAGE") &
-# (sleep 1 ; xsetroot -solid "$BACKGROUND_COLOR") &
+(sleep 1 ; xsetroot -solid "$BACKGROUND_COLOR") &
+(sleep 1 ; feh --bg-max "$BACKGROUND_IMAGE") &
 
 # Ctrl-Alt-Backspace to kill X server
 (sleep 1 ; setxkbmap -option terminate:ctrl_alt_bksp) &
@@ -75,6 +75,6 @@ if $AUTOSTART_PROGRAMS ; then
     )
 fi
 
-if command -v fortune.sh ; then
-    notify-send -u low 'Welcome!' "$(fortune.sh)"
+if command -v fortune-notify.sh ; then
+    fortune-notify.sh
 fi

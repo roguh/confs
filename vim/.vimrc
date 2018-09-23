@@ -11,10 +11,16 @@ Plug 'sheerun/vim-polyglot'
 " Completion
 Plug 'ervandew/supertab'
 
+
+" merlin, autocomplete for ocaml
+let g:opamshare = substitute(system('opam config var share'),'\n$','','''')
+" execute "set rtp+=" . g:opamshare . "/merlin/vim"
+execute "set rtp+=" . g:opamshare . "/ocp-indent/vim"
 " Completion for ocaml using merlin
 " install merline with
 " opam install merlin
 au FileType ocaml call SuperTabSetDefaultCompletionType("<c-x><c-o>")
+
 Plug 'reasonml-editor/vim-reason-plus'
 
 " PYTHON MAGIC
@@ -52,30 +58,32 @@ Plug 'vim-scripts/cool.vim'
 au BufNewFile,BufRead *.cool setf cool 
 au BufNewFile,BufRead *.cl setf cool 
 
+" Theme
+Plug 'dylanaraps/wal.vim'
+
+" cargo, rust checker 
+Plug 'Nonius/cargo.vim'
+
 " linters!!!!!
 Plug 'scrooloose/syntastic'
 
 let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 1
-let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_open = 0
 let g:syntastic_check_on_wq = 0
-
-" Theme
-Plug 'dylanaraps/wal.vim'
-
-" cargo syntastic checker 
-Plug 'Nonius/cargo.vim'
 
 let g:syntastic_rust_checkers = ["cargo"]
 
 let g:syntastic_python_checkers = ["python3"]
 
-let g:syntastic_ocaml_checkers = ['merlin']
+" let g:syntastic_ocaml_checkers = ['merlin']
 
 let g:syntastic_tex_checkers = ['chktex']
 
 let g:syntastic_cpp_compiler = 'clang++'
 let g:syntastic_cpp_compiler_options = ' -std=c++11'
+
+let g:syntastic_ocaml_checkers = ['merlin']
 
 " treat contents of some tex environments as verbatim text
 au filetype tex syntax region texZone start='\\begin{lstlisting}' end='\\end{lstlisting}'
@@ -91,10 +99,6 @@ call plug#end()
 if filereadable(expand("~/.vimrc.minimal"))
     so ~/.vimrc.minimal
 endif
-
-let g:opamshare = substitute(system('opam config var share'),'\n$','','''')
-" execute "set rtp+=" . g:opamshare . "/merlin/vim"
-execute "set rtp+=" . g:opamshare . "/ocp-indent/vim"
 
 if filereadable(expand("~/.vim/plugged/wal.vim/colors/wal.vim"))
     execute "silent colorscheme wal"

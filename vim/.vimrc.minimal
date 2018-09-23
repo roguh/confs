@@ -56,12 +56,12 @@ set backup
 " keep swap files and backup files in a home folder
 " should run
 " mkdir -p ~/{.vim,.config/nvim,tmp}/{backup,swap,undo}
-set directory=$VIMRUNTIME/swap//,~/tmp/swap//,~/tmp//
-set backupdir=$VIMRUNTIME/backup//,~/tmp/backup//,~/tmp//
-set undodir=$VIMRUNTIME/undo//,~/tmp/undo//,~/tmp//
+set directory=~/tmp/swap//,~/tmp//
+set backupdir=~/tmp/backup//,~/tmp//
+set undodir=~/tmp/undo//,~/tmp//
 
 " save backups with a timestamp and directory info
-au BufWritePre * let &backupext = substitute(expand('%:p:h'), '/', '%', 'g') . '%' . strftime('%Y-%m-%d-%H:%M') . '~'
+au BufWritePre * let &backupext = '%' . strftime('%m-%d-%H:%M')
 
 set encoding=utf-8
 

@@ -29,7 +29,7 @@
     # the top and down respectively.
     # The width can be negative.  In this case the actual width is the
     # screen width minus the width defined in within the geometry option.
-    geometry = "-20+10-30"
+    geometry = "0x-20+10-30"
 
     # Show how many messages are currently hidden (because of geometry).
     indicate_hidden = yes
@@ -57,7 +57,7 @@
     padding = 4
 
     # Horizontal padding.
-    horizontal_padding = 128
+    horizontal_padding = 64
 
     # Defines width in pixels of frame around the notification window.
     # Set to 0 to disable.
@@ -162,7 +162,7 @@
     icon_position = right
 
     # Scale larger icons down to this size, set to 0 to disable
-    max_icon_size = 128
+    max_icon_size = 64
 
     # Paths to default icons.
     icon_path = /usr/share/icons/gnome/16x16/status/:/usr/share/icons/gnome/16x16/devices/
