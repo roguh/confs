@@ -90,7 +90,6 @@ copy_confs_for() {
 }
 
 copy_confs_for vim \
-  .vim/autoload/plug.vim \
   .vimrc \
   .vimrc.minimal
 

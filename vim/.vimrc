@@ -3,66 +3,66 @@
 " call :PlugInstall to install and update
 call plug#begin()
 
+" Theme
+Plug 'dylanaraps/wal.vim'
+
+" good default settings
+Plug 'tpope/vim-sensible'
+
 " Various language syntax definitions, includes fish
+" LOADS MUCH FASTER THAN INVIDUAL PLUGINS
 " as of 09 2018:
 " ansible, apiblueprint, applescript, arduino, asciidoc, autohotkey, blade, c++11, c/c++, caddyfile, carp, cjsx, clojure, cmake, coffee-script, cql, cryptol, crystal, cucumber, dart, dockerfile, elixir, elm, emberscript, emblem, erlang, ferm, fish, fsharp, git, glsl, gmpl, gnuplot, go, graphql, groovy, haml, handlebars, haproxy, haskell, haxe, html5, i3, jasmine, javascript, jenkins, json5, json, jst, jsx, julia, kotlin, latex, less, liquid, livescript, lua, mako, markdown, mathematica, nginx, nim, nix, objc, ocaml, octave, opencl, perl, pgsql, php, plantuml, powershell, protobuf, pug, puppet, purescript, python-compiler, python-ident, python, qml, r-lang, racket, ragel, raml, rspec, ruby, rust, sbt, scala, scss, slim, slime, solidity, stylus, swift, sxhkd, systemd, terraform, textile, thrift, tmux, tomdoc, toml, twig, typescript, vala, vbnet, vcl, vifm, vm, vue, xls, yaml, yard
 Plug 'sheerun/vim-polyglot'
+let g:polyglot_disabled = ['python', 'ocaml']
 
 " Completion
 Plug 'ervandew/supertab'
-
 
 " merlin, autocomplete for ocaml
 let g:opamshare = substitute(system('opam config var share'),'\n$','','''')
 " execute "set rtp+=" . g:opamshare . "/merlin/vim"
 execute "set rtp+=" . g:opamshare . "/ocp-indent/vim"
 " Completion for ocaml using merlin
-" install merline with
+" install merline with:
 " opam install merlin
 au FileType ocaml call SuperTabSetDefaultCompletionType("<c-x><c-o>")
+
+Plug 'rgrinberg/vim-ocaml', { 'for': 'ocaml' }
 
 Plug 'reasonml-editor/vim-reason-plus'
 
 " PYTHON MAGIC
-Plug 'davidhalter/jedi-vim'
-Plug 'nvie/vim-flake8'
+Plug 'davidhalter/jedi-vim', { 'for': 'python' }
 
 " J, APL derivative
 Plug 'guersam/vim-j'
 
-" JS React Native
-Plug 'pangloss/vim-javascript'
-Plug 'mxw/vim-jsx'
-Plug 'reasonml-editor/vim-reason'
+" JS, React Native
+Plug 'pangloss/vim-javascript', { 'for': 'javascript' }
 
 " JS Elm
-Plug 'ElmCast/elm-vim'
+" Plug 'ElmCast/elm-vim'
 
 " Pandoc
+Plug 'vim-pandoc/vim-pandoc'
 Plug 'vim-pandoc/vim-pandoc-syntax'
-au! BufRead,BufNewFile,BufFilePre *.md setf markdown.pandoc
 
 " handlebar and mustache templates
-Plug 'mustache/vim-mustache-handlebars'
-Plug 'evidens/vim-twig'
-Plug 'lepture/vim-jinja'
+" Plug 'mustache/vim-mustache-handlebars'
+" Plug 'evidens/vim-twig'
+" Plug 'lepture/vim-jinja'
+
+" ++ or -- dates/times/more using Ctrl-A Ctrl-X
+" Plug 'tpope/vim-speeddating' 
 
 " org mode
-Plug 'tpope/vim-speeddating' | Plug 'jceb/vim-orgmode'
-
-" good settings
-Plug 'tpope/vim-sensible'
+Plug 'jceb/vim-orgmode', { 'for': 'org' }
 
 " syntax highlighting for COOL
-Plug 'vim-scripts/cool.vim'
 au BufNewFile,BufRead *.cool setf cool 
 au BufNewFile,BufRead *.cl setf cool 
-
-" Theme
-Plug 'dylanaraps/wal.vim'
-
-" cargo, rust checker 
-Plug 'Nonius/cargo.vim'
+Plug 'vim-scripts/cool.vim', { 'for': 'cool' }
 
 " linters!!!!!
 Plug 'scrooloose/syntastic'
@@ -74,9 +74,7 @@ let g:syntastic_check_on_wq = 0
 
 let g:syntastic_rust_checkers = ["cargo"]
 
-let g:syntastic_python_checkers = ["python3"]
-
-" let g:syntastic_ocaml_checkers = ['merlin']
+let g:syntastic_python_checkers = ["python3", "flake8"]
 
 let g:syntastic_tex_checkers = ['chktex']
 
@@ -91,7 +89,7 @@ au filetype tex syntax region texZone start='\\begin{python3code}' end='\\end{py
 au filetype tex syntax region texZone start='\\begin{bashcode}' end='\\end{bashcode}'
 au filetype tex syntax region texZone start='\\begin{pyconcode}' end='\\end{pyconcode}'
 
-" SYntax highlighting for C, Bison/Flex
+" Syntax highlighting for C (improved), Bison, and Flex
 Plug 'justinmk/vim-syntax-extra'
 
 call plug#end()
