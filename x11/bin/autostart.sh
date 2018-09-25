@@ -31,6 +31,8 @@ conky.sh
 # Enable key bindings
 xbindkeys &
 
+dunst.sh &
+
 # Prevent eyestrain at 4AM
 redshift.sh &
 
@@ -52,6 +54,9 @@ if $AUTOSTART_TRAYAPPS ; then
     
     # udisk tray icon
     udiskie --smart-tray &
+
+    # connect android phone to linux
+    kdeconnect-indicator &
 fi
 
 if $AUTOSTART_COMPOSITOR ; then

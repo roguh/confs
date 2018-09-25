@@ -1,3 +1,6 @@
+set -U LC_ALL en_US.UTF-8  
+set -U LANG en_US.UTF-8
+
 set -U fish_user_paths $HOME/bin $HOME/.local/bin
 
 function load_file

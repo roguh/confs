@@ -1,6 +1,9 @@
 # Set path to binaries
 export PATH="$HOME/bin:$PATH:$HOME/.local/bin"
 
+export LC_ALL=en_US.UTF-8  
+export LANG=en_US.UTF-8
+
 # Source file if it exists
 load_file() {
     [ -f "$1" ] && . "$1"
