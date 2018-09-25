@@ -1,12 +1,15 @@
-" map semicolon to colon
-:nmap ; :
-
-" disable neovim mouse visual mode
-set mouse-=a
-
 " use Vim defaults instead of Vi's
 " warning: keep this near the top of the config file
 set nocompatible
+
+" map semicolon to colon
+:nmap ; :
+
+" spellcheck
+set spell spelllang=en_us
+
+" disable neovim mouse visual mode
+set mouse-=a
 
 " reload a file if it's changed by another process
 set autoread
@@ -33,10 +36,15 @@ set number
 set relativenumber
 
 " easier to see color for folds
-hi Folded guibg=white guifg=black ctermbg=white ctermfg=black
+" hi Folded guibg=white guifg=black ctermbg=white ctermfg=black
 
 " highlight searches
 set hlsearch
+
+" neovim only: highlight replacements when running :s/ command
+if has('nvim')
+  set inccommand=nosplit
+end
 
 " incremental search: search before hitting ENTER
 set incsearch
@@ -88,10 +96,18 @@ let &guicursor = &guicursor . ",a:blinkon0"
 
 " crosshairs
 " set cursorcolumn
-" set cursorline
-"hi  CursorLine cterm=NONE cterm=reverse gui=reverse 
-"hi  CursorColumn cterm=NONE cterm=reverse gui=reverse 
-"hi  CursorColumn cterm=underline gui=underline 
+set cursorline
+hi  cursorlin term=NONE
+" hi  CursorColumn cterm=NONE cterm=reverse gui=reverse 
+" hi  CursorColumn cterm=underline gui=underline 
+
+" set terminal emulator window title
+let &titlestring = expand("%") . " " . $USER . "@" . hostname() . " " . expand("%:p:h")
+if &term == "screen"
+  set t_ts=^[k
+  set t_fs=^[\
+endif
+set title
 
 " Python indentation
 au BufNewFile,BufRead *.py 
@@ -101,7 +117,7 @@ au BufNewFile,BufRead *.py
 au BufNewFile,BufRead *.ml
     \ set tabstop=2 softtabstop=2 shiftwidth=2 textwidth=80 expandtab autoindent fileformat=unix
 
-" load local vim settings
+" load project-specific local vim settings at $PWD/.vim.{custom,local}
 if filereadable(".vim.custom")
     so .vim.custom
 endif

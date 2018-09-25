@@ -10,7 +10,7 @@ Plug 'dylanaraps/wal.vim'
 Plug 'tpope/vim-sensible'
 
 " Various language syntax definitions, includes fish
-" LOADS MUCH FASTER THAN INVIDUAL PLUGINS
+" LOADS MUCH FASTER THAN INDIVIDUAL PLUGINS
 " as of 09 2018:
 " ansible, apiblueprint, applescript, arduino, asciidoc, autohotkey, blade, c++11, c/c++, caddyfile, carp, cjsx, clojure, cmake, coffee-script, cql, cryptol, crystal, cucumber, dart, dockerfile, elixir, elm, emberscript, emblem, erlang, ferm, fish, fsharp, git, glsl, gmpl, gnuplot, go, graphql, groovy, haml, handlebars, haproxy, haskell, haxe, html5, i3, jasmine, javascript, jenkins, json5, json, jst, jsx, julia, kotlin, latex, less, liquid, livescript, lua, mako, markdown, mathematica, nginx, nim, nix, objc, ocaml, octave, opencl, perl, pgsql, php, plantuml, powershell, protobuf, pug, puppet, purescript, python-compiler, python-ident, python, qml, r-lang, racket, ragel, raml, rspec, ruby, rust, sbt, scala, scss, slim, slime, solidity, stylus, swift, sxhkd, systemd, terraform, textile, thrift, tmux, tomdoc, toml, twig, typescript, vala, vbnet, vcl, vifm, vm, vue, xls, yaml, yard
 Plug 'sheerun/vim-polyglot'
@@ -94,10 +94,12 @@ Plug 'justinmk/vim-syntax-extra'
 
 call plug#end()
 
+" read the real vim config
 if filereadable(expand("~/.vimrc.minimal"))
     so ~/.vimrc.minimal
 endif
 
+" switch to wal colorscheme if wal theme exists 
 if filereadable(expand("~/.vim/plugged/wal.vim/colors/wal.vim"))
     execute "silent colorscheme wal"
 endif
