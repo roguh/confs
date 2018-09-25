@@ -3,12 +3,12 @@
 # THEME=base16-zenburn
 
 # warm
-# THEME=sexy-sweetlove
+THEME=sexy-sweetlove
 # THEME=base16-embers
 # THEME=dkeg-novmbr
 # THEME=dkeg-bark
 ## metallic
-THEME=base16-black-metal-nile
+# THEME=base16-black-metal-nile
 # THEME=dkeg-urban
 
 # cool
