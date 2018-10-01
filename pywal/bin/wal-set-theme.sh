@@ -3,7 +3,7 @@
 # THEME=base16-zenburn
 
 # warm
-THEME=sexy-sweetlove
+# THEME=sexy-sweetlove
 # THEME=base16-embers
 # THEME=dkeg-novmbr
 # THEME=dkeg-bark
@@ -12,7 +12,7 @@ THEME=sexy-sweetlove
 # THEME=dkeg-urban
 
 # cool
-# THEME=base16-flat
+THEME=base16-flat
 # THEME=base16-atelier-lakeside
 # THEME=hybrid-material
 # THEME=sexy-navy-and-ivory
