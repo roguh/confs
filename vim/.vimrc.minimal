@@ -73,7 +73,6 @@ au BufWritePre * let &backupext = '%' . strftime('%m-%d-%H:%M')
 
 set encoding=utf-8
 
-" Part of Fedora's /etc/vimrc
 " UTF 8
 if v:lang =~ "utf8$" || v:lang =~ "UTF-8$"
    set fileencodings=ucs-bom,utf-8,latin1
@@ -82,17 +81,9 @@ endif
 set bs=indent,eol,start	" allow backspacing over everything in insert mode
 set ruler		" show the cursor position all the time
 
-if &term=="xterm"
-     set t_Co=8
-     set t_Sb=[4%dm
-     set t_Sf=[3%dm
-endif
-
 " Don't wake up system with blinking cursor:
 " http://www.linuxpowertop.org/known.php
 let &guicursor = &guicursor . ",a:blinkon0"
-" End Part of Fedora's /etc/vimrc
-
 
 " crosshairs
 " set cursorcolumn

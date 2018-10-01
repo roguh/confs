@@ -1,3 +1,7 @@
+" use Vim defaults instead of Vi's
+" warning: keep this near the top of the config file
+set nocompatible
+
 " junnegunn/vim-plug
 " need .vim/autoload/plug.vim
 " call :PlugInstall to install and update
@@ -7,16 +11,35 @@ call plug#begin()
 Plug 'dylanaraps/wal.vim'
 
 " good default settings
+" "one step above the nocompatible setting"
+" A taste of its features:
+"   'backspace': Backspace through anything in insert mode.
+"   'incsearch': Start searching before pressing enter.
+"   'listchars': Makes :set list (visible whitespace) prettier.
+"   'scrolloff': Always show at least one line above/below the cursor.
+"   'autoread': Autoload file changes. You can undo by pressing u.
+"   runtime! macros/matchit.vim: Load the version of matchit.vim that ships with Vim.
 Plug 'tpope/vim-sensible'
 
-" Various language syntax definitions, includes fish
-" LOADS MUCH FASTER THAN INDIVIDUAL PLUGINS
-" as of 09 2018:
-" ansible, apiblueprint, applescript, arduino, asciidoc, autohotkey, blade, c++11, c/c++, caddyfile, carp, cjsx, clojure, cmake, coffee-script, cql, cryptol, crystal, cucumber, dart, dockerfile, elixir, elm, emberscript, emblem, erlang, ferm, fish, fsharp, git, glsl, gmpl, gnuplot, go, graphql, groovy, haml, handlebars, haproxy, haskell, haxe, html5, i3, jasmine, javascript, jenkins, json5, json, jst, jsx, julia, kotlin, latex, less, liquid, livescript, lua, mako, markdown, mathematica, nginx, nim, nix, objc, ocaml, octave, opencl, perl, pgsql, php, plantuml, powershell, protobuf, pug, puppet, purescript, python-compiler, python-ident, python, qml, r-lang, racket, ragel, raml, rspec, ruby, rust, sbt, scala, scss, slim, slime, solidity, stylus, swift, sxhkd, systemd, terraform, textile, thrift, tmux, tomdoc, toml, twig, typescript, vala, vbnet, vcl, vifm, vm, vue, xls, yaml, yard
+" Various language syntax definitions. Loads much faster than individual plugins.
+" Languages supported as of 09/2018:
+" ansible, apiblueprint, applescript, arduino, asciidoc, autohotkey, blade,
+" c++11, c/c++, caddyfile, carp, cjsx, clojure, cmake, coffee-script, cql,
+" cryptol, crystal, cucumber, dart, dockerfile, elixir, elm, emberscript,
+" emblem, erlang, ferm, fish, fsharp, git, glsl, gmpl, gnuplot, go, graphql,
+" groovy, haml, handlebars, haproxy, haskell, haxe, html5, i3, jasmine,
+" javascript, jenkins, json5, json, jst, jsx, julia, kotlin, latex, less,
+" liquid, livescript, lua, mako, markdown, mathematica, nginx, nim, nix,
+" objc, ocaml, octave, opencl, perl, pgsql, php, plantuml, powershell,
+" protobuf, pug, puppet, purescript, python-compiler, python-ident, python,
+" qml, r-lang, racket, ragel, raml, rspec, ruby, rust, sbt, scala, scss,
+" slim, slime, solidity, stylus, swift, sxhkd, systemd, terraform, textile,
+" thrift, tmux, tomdoc, toml, twig, typescript, vala, vbnet, vcl, vifm, vm,
+" vue, xls, yaml, yard
 Plug 'sheerun/vim-polyglot'
 let g:polyglot_disabled = ['python', 'ocaml']
 
-" Completion
+" Press TAB to start code-completion
 Plug 'ervandew/supertab'
 
 " merlin, autocomplete for ocaml
@@ -32,7 +55,7 @@ Plug 'rgrinberg/vim-ocaml', { 'for': 'ocaml' }
 
 Plug 'reasonml-editor/vim-reason-plus'
 
-" PYTHON MAGIC
+" Python code-completion, many other features
 Plug 'davidhalter/jedi-vim', { 'for': 'python' }
 
 " J, APL derivative
@@ -54,7 +77,7 @@ Plug 'vim-pandoc/vim-pandoc-syntax'
 " Plug 'lepture/vim-jinja'
 
 " ++ or -- dates/times/more using Ctrl-A Ctrl-X
-" Plug 'tpope/vim-speeddating' 
+Plug 'tpope/vim-speeddating' 
 
 " org mode
 Plug 'jceb/vim-orgmode', { 'for': 'org' }
@@ -64,7 +87,7 @@ au BufNewFile,BufRead *.cool setf cool
 au BufNewFile,BufRead *.cl setf cool 
 Plug 'vim-scripts/cool.vim', { 'for': 'cool' }
 
-" linters!!!!!
+" linters (syntax checkers, other code checkers)
 Plug 'scrooloose/syntastic'
 
 let g:syntastic_always_populate_loc_list = 1
@@ -89,7 +112,7 @@ au filetype tex syntax region texZone start='\\begin{python3code}' end='\\end{py
 au filetype tex syntax region texZone start='\\begin{bashcode}' end='\\end{bashcode}'
 au filetype tex syntax region texZone start='\\begin{pyconcode}' end='\\end{pyconcode}'
 
-" Syntax highlighting for C (improved), Bison, and Flex
+" Improved syntax highlighting for C, add syntax highlighting for Bison, and Flex
 Plug 'justinmk/vim-syntax-extra'
 
 call plug#end()
