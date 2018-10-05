@@ -162,7 +162,7 @@ copy_confs_for fluxbox .fluxbox/menu .fluxbox/keys
 copy_confs_for readline .inputrc
 
 copy_confs_for pywal \
-    bin/wal-set-theme.sh .cache/wal/{sequences,wal,colors.*}
+    bin/wal-set-theme.sh .cache/wal/{sequences,colors.*}
 
 copy_confs_for conky bin/conky.sh .conkyrc.d/
 

@@ -1,5 +1,9 @@
 #!/bin/sh 
 
+function pause {
+    sleep 0.1 || sleep 1
+}
+
 cd $HOME
 
 MINIMAL=false
@@ -16,6 +20,9 @@ fi
 
 BACKGROUND_IMAGE="$HOME/Photos/savoring summer by  kadir nelson.png"
 BACKGROUND_COLOR='#fff6f4'
+
+eval $(/usr/bin/gnome-keyring-daemon --start --components=pkcs11,secrets,ssh)
+export SSH_AUTH_SOCK
 
 # Backup config files
 backup-t580.sh &
@@ -40,13 +47,15 @@ redshift.sh &
 xautolock -detectsleep -time 5 -notify 240 -notifier backlightoff.sh -locker locker.sh &
 
 # Set background
-(sleep 1 ; xsetroot -solid "$BACKGROUND_COLOR") &
-(sleep 1 ; feh --bg-max "$BACKGROUND_IMAGE") &
+(pause ; xsetroot -solid "$BACKGROUND_COLOR") &
+(pause ; feh --bg-max "$BACKGROUND_IMAGE") &
 
 # Ctrl-Alt-Backspace to kill X server
-(sleep 1 ; setxkbmap -option terminate:ctrl_alt_bksp) &
+(pause ; setxkbmap -option terminate:ctrl_alt_bksp) &
 
-# polybar.sh
+if command -v fortune-notify.sh ; then
+    fortune-notify.sh
+fi
 
 if $AUTOSTART_TRAYAPPS ; then
     # Check for Arch package updates
@@ -66,20 +75,14 @@ fi
 if $AUTOSTART_PROGRAMS ; then
     # Start file synchronizer and commonly used apps
 
-    (sleep 1 ; 
+    (pause ;
         i3-msg "workspace 21:comm; append_layout .config/i3/workspace-comm.json" &
-        signal.sh & 
-        nheko &
+        evolution &
     )
 
-    (sleep 1 ; 
+    (pause ;
         i3-msg "workspace 22:TODO" ;
-        lxterminal -l -e "sh -c hsync-unison" &
+        kitty hsync-unison &
         firefox & 
-        thunderbird &
     )
-fi
-
-if command -v fortune-notify.sh ; then
-    fortune-notify.sh
 fi

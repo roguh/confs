@@ -32,6 +32,8 @@ ignore = Name .import
 ignore = Name .cargo-target
 ignore = Name cargo-target
 
+ignore = Name MathJax
+
 # Nodejs
 ignore = Name node_modules
 
