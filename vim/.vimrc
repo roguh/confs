@@ -2,6 +2,8 @@
 " warning: keep this near the top of the config file
 set nocompatible
 
+set shell=/bin/bash
+
 " junnegunn/vim-plug
 " need .vim/autoload/plug.vim
 " call :PlugInstall to install and update
@@ -39,17 +41,26 @@ Plug 'tpope/vim-sensible'
 Plug 'sheerun/vim-polyglot'
 let g:polyglot_disabled = ['python', 'ocaml']
 
+" YouCompleteMe code completion framework
+" .config/nvim/plugged/YouCompleteMe/
+" don't forget to run python3 install.py --all
+" TODO compile ycm for c and c++ support
+Plug 'Valloric/YouCompleteMe', { 'for': ['rust', 'javascript', 'go'] }
+let g:ycm_keep_logfiles = 1
+let g:ycm_log_level = 'debug'
+
 " Press TAB to start code-completion
 Plug 'ervandew/supertab'
 
 " merlin, autocomplete for ocaml
 let g:opamshare = substitute(system('opam config var share'),'\n$','','''')
-" execute "set rtp+=" . g:opamshare . "/merlin/vim"
-execute "set rtp+=" . g:opamshare . "/ocp-indent/vim"
+execute 'set rtp+=' . g:opamshare . '/merlin/vim'
+execute 'set rtp+=' . g:opamshare . '/ocp-indent/vim'
+
 " Completion for ocaml using merlin
 " install merline with:
 " opam install merlin
-au FileType ocaml call SuperTabSetDefaultCompletionType("<c-x><c-o>")
+au FileType ocaml call SuperTabSetDefaultCompletionType('<c-x><c-o>')
 
 Plug 'rgrinberg/vim-ocaml', { 'for': 'ocaml' }
 
@@ -61,8 +72,14 @@ Plug 'davidhalter/jedi-vim', { 'for': 'python' }
 " J, APL derivative
 Plug 'guersam/vim-j'
 
-" JS, React Native
+" HTML, CSS
+Plug 'othree/html5.vim'
+Plug 'ap/vim-css-color'
+
+" JS, libraries 
 Plug 'pangloss/vim-javascript', { 'for': 'javascript' }
+Plug 'othree/javascript-libraries-syntax.vim', { 'for': 'javascript' }
+
 
 " JS Elm
 " Plug 'ElmCast/elm-vim'
@@ -94,15 +111,30 @@ let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 0
 let g:syntastic_check_on_wq = 0
+" show warnings AND errors
+let g:syntastic_quiet_messages = {'level': 'none'} 
 
-let g:syntastic_rust_checkers = ["cargo"]
+let g:syntastic_rust_checkers = ['cargo']
 
-let g:syntastic_python_checkers = ["python3", "flake8"]
+let g:syntastic_python_checkers = ['python', 'flake8', 'pycodestyle', 'pylint']
+let g:syntastic_python_pylint_exe = 'pylint'
 
 let g:syntastic_tex_checkers = ['chktex']
 
+let g:syntastic_javascript_checkers = ['eslint']
+let g:syntastic_javascript_eslint_exe = '$(npm bin)/eslint --'
+
+let g:syntastic_html_checkers = ['tidy', 'jshint']
+
+let g:syntastic_css_checkers = ['csslint', 'stylelint']
+
+let g:syntastic_typescript_checkers = ['tslint']
+
 let g:syntastic_cpp_compiler = 'clang++'
 let g:syntastic_cpp_compiler_options = ' -std=c++11'
+
+let g:syntastic_c_checkers = ['clang_check', 'gcc', 'splint', 'clang_tidy']
+let g:syntastic_cpp_checkers = ['clang_check', 'gcc', 'splint', 'clang_tidy']
 
 let g:syntastic_ocaml_checkers = ['merlin']
 
@@ -118,11 +150,11 @@ Plug 'justinmk/vim-syntax-extra'
 call plug#end()
 
 " read the real vim config
-if filereadable(expand("~/.vimrc.minimal"))
+if filereadable(expand('~/.vimrc.minimal'))
     so ~/.vimrc.minimal
 endif
 
 " switch to wal colorscheme if wal theme exists 
-if filereadable(expand("~/.vim/plugged/wal.vim/colors/wal.vim"))
-    execute "silent colorscheme wal"
+if filereadable(expand('~/.vim/plugged/wal.vim/colors/wal.vim'))
+    execute 'silent colorscheme wal'
 endif

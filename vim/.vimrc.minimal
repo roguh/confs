@@ -52,7 +52,7 @@ set incsearch
 " nicer chars for visible whitespace mode
 set listchars=tab:>\ ,trail:-,extends:>,precedes:<,nbsp:+
 
-" unsets the "last search pattern" register by hitting return
+" unsets the 'last search pattern' register by hitting return
 nnoremap <CR> :nohlsearch<CR><CR>
 
 " highlight column 79
@@ -74,7 +74,7 @@ au BufWritePre * let &backupext = '%' . strftime('%m-%d-%H:%M')
 set encoding=utf-8
 
 " UTF 8
-if v:lang =~ "utf8$" || v:lang =~ "UTF-8$"
+if v:lang =~ 'utf8$' || v:lang =~ 'UTF-8$'
    set fileencodings=ucs-bom,utf-8,latin1
 endif
 
@@ -83,7 +83,7 @@ set ruler		" show the cursor position all the time
 
 " Don't wake up system with blinking cursor:
 " http://www.linuxpowertop.org/known.php
-let &guicursor = &guicursor . ",a:blinkon0"
+let &guicursor = &guicursor . ',a:blinkon0'
 
 " crosshairs
 " set cursorcolumn
@@ -93,8 +93,8 @@ hi  cursorlin term=NONE
 " hi  CursorColumn cterm=underline gui=underline 
 
 " set terminal emulator window title
-let &titlestring = expand("%") . " " . $USER . "@" . hostname() . " " . expand("%:p:h")
-if &term == "screen"
+let &titlestring = expand('%') . ' ' . $USER . '@' . hostname() . ' ' . expand('%:p:h')
+if &term == 'screen'
   set t_ts=^[k
   set t_fs=^[\
 endif
@@ -109,10 +109,10 @@ au BufNewFile,BufRead *.ml
     \ set tabstop=2 softtabstop=2 shiftwidth=2 textwidth=80 expandtab autoindent fileformat=unix
 
 " load project-specific local vim settings at $PWD/.vim.{custom,local}
-if filereadable(".vim.custom")
+if filereadable('.vim.custom')
     so .vim.custom
 endif
 
-if filereadable(".vimrc.local")
+if filereadable('.vimrc.local')
     so .vimrc.local
 endif
