@@ -2,8 +2,6 @@
 " warning: keep this near the top of the config file
 set nocompatible
 
-set shell=/bin/bash
-
 " junnegunn/vim-plug
 " need .vim/autoload/plug.vim
 " call :PlugInstall to install and update
@@ -41,18 +39,28 @@ Plug 'tpope/vim-sensible'
 Plug 'sheerun/vim-polyglot'
 let g:polyglot_disabled = ['python', 'ocaml']
 
-" YouCompleteMe code completion framework
-" .config/nvim/plugged/YouCompleteMe/
-" don't forget to run python3 install.py --all
-" TODO compile ycm for c and c++ support
-Plug 'Valloric/YouCompleteMe', { 'for': ['rust', 'javascript', 'go'] }
-let g:ycm_keep_logfiles = 1
-let g:ycm_log_level = 'debug'
+" Deoplete code completion framework
+" https://github.com/Shougo/deoplete.nvim/wiki/Completion-Sources
+if has('nvim')
+  Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+else
+  Plug 'Shougo/deoplete.nvim'
+  Plug 'roxma/nvim-yarp'
+  Plug 'roxma/vim-hug-neovim-rpc'
+endif
 
-" Press TAB to start code-completion
-Plug 'ervandew/supertab'
+let g:deoplete#enable_at_startup = 1
+let g:deoplete#complete_method = "complete" " merlin compat?
+let g:deoplete#auto_complete_delay = 0
+
+" USE TAB!!!!!!
+inoremap <expr><tab> pumvisible() ? "\<c-n>" : "\<tab>"
+
+" Completion based on syntax
+Plug 'Shougo/neco-syntax'
 
 " merlin, autocomplete for ocaml
+" TODO only load for ocaml
 let g:opamshare = substitute(system('opam config var share'),'\n$','','''')
 execute 'set rtp+=' . g:opamshare . '/merlin/vim'
 execute 'set rtp+=' . g:opamshare . '/ocp-indent/vim'
@@ -60,14 +68,24 @@ execute 'set rtp+=' . g:opamshare . '/ocp-indent/vim'
 " Completion for ocaml using merlin
 " install merline with:
 " opam install merlin
-au FileType ocaml call SuperTabSetDefaultCompletionType('<c-x><c-o>')
 
 Plug 'rgrinberg/vim-ocaml', { 'for': 'ocaml' }
 
+" deoplete and ocaml
+Plug 'copy/deoplete-ocaml', { 'for': 'ocaml' }
+
+" Reason
 Plug 'reasonml-editor/vim-reason-plus'
+
+" Haskell
+" needs ghc-mod
+Plug 'eagletmt/neco-ghc', { 'for': 'haskell' }
+let g:haskellmode_completion_ghc = 0
+autocmd FileType haskell setlocal omnifunc=necoghc#omnifunc
 
 " Python code-completion, many other features
 Plug 'davidhalter/jedi-vim', { 'for': 'python' }
+Plug 'zchee/deoplete-jedi'
 
 " J, APL derivative
 Plug 'guersam/vim-j'
@@ -79,7 +97,10 @@ Plug 'ap/vim-css-color'
 " JS, libraries 
 Plug 'pangloss/vim-javascript', { 'for': 'javascript' }
 Plug 'othree/javascript-libraries-syntax.vim', { 'for': 'javascript' }
+Plug 'wokalski/autocomplete-flow', { 'for': 'javascript' }
 
+" Rust
+Plug 'racer-rust/vim-racer', { 'for': 'rust' }
 
 " JS Elm
 " Plug 'ElmCast/elm-vim'
@@ -92,9 +113,6 @@ Plug 'vim-pandoc/vim-pandoc-syntax'
 " Plug 'mustache/vim-mustache-handlebars'
 " Plug 'evidens/vim-twig'
 " Plug 'lepture/vim-jinja'
-
-" ++ or -- dates/times/more using Ctrl-A Ctrl-X
-Plug 'tpope/vim-speeddating' 
 
 " org mode
 Plug 'jceb/vim-orgmode', { 'for': 'org' }
@@ -121,12 +139,11 @@ let g:syntastic_python_pylint_exe = 'pylint'
 
 let g:syntastic_tex_checkers = ['chktex']
 
-let g:syntastic_javascript_checkers = ['eslint']
-let g:syntastic_javascript_eslint_exe = '$(npm bin)/eslint --'
+let g:syntastic_javascript_checkers = ['eslint', 'flow']
 
 let g:syntastic_html_checkers = ['tidy', 'jshint']
 
-let g:syntastic_css_checkers = ['csslint', 'stylelint']
+" let g:syntastic_css_checkers = ['csslint', 'stylelint']
 
 let g:syntastic_typescript_checkers = ['tslint']
 
@@ -145,7 +162,7 @@ au filetype tex syntax region texZone start='\\begin{bashcode}' end='\\end{bashc
 au filetype tex syntax region texZone start='\\begin{pyconcode}' end='\\end{pyconcode}'
 
 " Improved syntax highlighting for C, add syntax highlighting for Bison, and Flex
-Plug 'justinmk/vim-syntax-extra'
+Plug 'justinmk/vim-syntax-extra', { 'for': [ 'c', 'cpp', 'y', 'l' ] }
 
 call plug#end()
 

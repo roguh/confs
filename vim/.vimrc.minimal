@@ -2,14 +2,16 @@
 " warning: keep this near the top of the config file
 set nocompatible
 
+set shell=/bin/bash
+
 " map semicolon to colon
 :nmap ; :
 
 " spellcheck
 set spell spelllang=en_us
 
-" disable neovim mouse visual mode
-set mouse-=a
+" enable mouse control in neovim for normal mode and visual mode 
+set mouse=nv
 
 " reload a file if it's changed by another process
 set autoread
@@ -106,6 +108,9 @@ au BufNewFile,BufRead *.py
 
 " Personal OCaml indentation rules
 au BufNewFile,BufRead *.ml
+    \ set tabstop=2 softtabstop=2 shiftwidth=2 textwidth=80 expandtab autoindent fileformat=unix
+
+au BufNewFile,BufRead *.js
     \ set tabstop=2 softtabstop=2 shiftwidth=2 textwidth=80 expandtab autoindent fileformat=unix
 
 " load project-specific local vim settings at $PWD/.vim.{custom,local}
