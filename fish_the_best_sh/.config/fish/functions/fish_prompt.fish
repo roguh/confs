@@ -54,7 +54,7 @@ function fish_prompt
     set_color --bold
     printf "%s" (prompt_pwd)
 
-    clean no_space 
+    clean no_space ""
     printf "%s" (__fish_git_prompt)$st
 
     clean

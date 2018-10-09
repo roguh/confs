@@ -19,11 +19,10 @@ tryalias c ccat
 tryalias exa 'exa --git'
 
 tryalias trizen 'trizen --flip-results=1'
-tryalias yaourt trizen yaourt
 
-tryalias py python3 python python2
-tryalias ipy ipython3 ipython ipython2
+tryalias py python3 python
+tryalias ipy ipython3 ipython
 
-tryalias v nvim vim vis vi nano ed libreoffice openoffice 'wine MicrosoftOffice2003.exe'
+tryalias v nvim vim vis vi nano ed libreoffice openoffice 'wine MicrosoftOffice2003.exe' vim
 tryalias e 'zathura --fork' evince mupdf mupdf-x11 'wine READER10.exe'
 tryalias sx 'exec startx'

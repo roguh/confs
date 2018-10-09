@@ -1,11 +1,13 @@
 function tryalias
     # Make sure command is valid
     # If so, set the alias
+    if type string > /dev/null
     for cmd in $argv[2..-2]
         if command -v (string split " " $cmd)[1] > /dev/null
             alias $argv[1]="$cmd"
             return 0
         end
+    end
     end
 
     # Define as last element if all others failed
