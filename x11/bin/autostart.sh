@@ -44,7 +44,7 @@ dunst.sh &
 redshift.sh &
 
 # Lock screen after 5 minutes
-xautolock -detectsleep -time 5 -notify 240 -notifier backlightoff.sh -locker locker.sh &
+xautolock -detectsleep -time 5 -notify 60 -notifier backlightoff.sh -locker locker.sh &
 
 # Set background
 (pause ; xsetroot -solid "$BACKGROUND_COLOR") &

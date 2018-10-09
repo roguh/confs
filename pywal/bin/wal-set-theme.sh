@@ -2,8 +2,13 @@
 # THEME=base16-greenscreen
 # THEME=base16-zenburn
 
+# light
+# THEME=base16-atelier-savanna
+# THEME= base16-github
+
 # warm
-THEME=sexy-sweetlove
+# THEME=tempus_autumn #good
+# THEME=sexy-sweetlove
 # THEME=base16-embers
 # THEME=dkeg-novmbr
 # THEME=dkeg-bark
@@ -13,6 +18,8 @@ THEME=sexy-sweetlove
 # THEME=dkeg-urban
 
 # cool
+THEME="$HOME/sync/technical/roguh-base16-flat.json"
+# THEME=dkeg-skigh #good with saturate=0.8
 # THEME=sexy-thwump # pale
 # THEME=base16-oceanicnext
 # THEME=sexy-vacuous2
@@ -28,4 +35,6 @@ THEME=sexy-sweetlove
 ## metallic
 # THEME=base16-black-metal-burzum
 # THEME=dkeg-blumune
-wal -o theme-post.sh --theme ${THEME:-random}
+# THEME=dkeg-owl #good
+# generate oomox theme, also run theme-post.sh
+wal -g --saturate 1.0 -o theme-post.sh --theme ${THEME:-random}
