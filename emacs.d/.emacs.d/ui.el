@@ -4,12 +4,7 @@
 ;;;
 ;;; Code:
 
-;; Color for lines, indentation and column
-(setq line-backcolor "#eff")
-(setq line-forecolor "#000")
-(setq col-highlight-color "#ddd")
-(setq comment-background-color "#222")
-(setq comment-color "#fff")
+(use-package xresources-theme)
 
 ;; Color for long lines.
 (setq warning-color "#f00")
@@ -48,10 +43,17 @@
 ;;    :config
 ;;    (load-theme 'zenburn t))
 
+;; Color for lines, indentation and column
+(setq line-backcolor "#eff")
+(setq line-forecolor "#000")
+; (setq col-highlight-color "#ddd")
+; (setq comment-background-color "#222")
+; (setq comment-color "#fff")
+
 ;; Comment colors
-(set-face-background 'font-lock-comment-face comment-background-color)
-(set-face-background 'font-lock-comment-delimiter-face comment-background-color)
-(set-face-foreground 'font-lock-comment-face comment-color)
+; (set-face-background 'font-lock-comment-face comment-background-color)
+; (set-face-background 'font-lock-comment-delimiter-face comment-background-color)
+; (set-face-foreground 'font-lock-comment-face comment-color)
 
 ;; Mode line settings.
 (line-number-mode t)

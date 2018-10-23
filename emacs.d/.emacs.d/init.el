@@ -39,6 +39,9 @@
    (message "gc-cons-threshold restored to %S"
             gc-cons-threshold))))
 
+;; Mouse mode
+(xterm-mouse-mode 1)
+
 ;; (use-package benchmark-init
 ;;  :config (benchmark-init/activate))
 

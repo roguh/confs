@@ -9,7 +9,7 @@ cd $HOME
 MINIMAL=false
 
 AUTOSTART_TRAYAPPS=true
-AUTOSTART_COMPOSITOR=false
+AUTOSTART_COMPOSITOR=true
 AUTOSTART_PROGRAMS=true
 
 if $MINIMAL ; then
@@ -60,6 +60,9 @@ fi
 if $AUTOSTART_TRAYAPPS ; then
     # Check for Arch package updates
     # kalu &
+
+    # Wifi menu
+    nm-applet &
     
     # udisk tray icon
     udiskie --smart-tray &
@@ -83,6 +86,11 @@ if $AUTOSTART_PROGRAMS ; then
     (pause ;
         i3-msg "workspace 22:TODO" ;
         kitty hsync-unison &
-        firefox & 
     )
 fi
+
+( pause ;
+  if [ -f ~/.cache/wal/sequences ]; then
+      cat ~/.cache/wal/sequences
+  fi
+)
