@@ -89,8 +89,8 @@ let &guicursor = &guicursor . ',a:blinkon0'
 
 " crosshairs
 " set cursorcolumn
-set cursorline
-hi  cursorlin term=NONE
+" set cursorline
+" hi  cursorline cterm=NONE gui=NONE term=NONE
 " hi  CursorColumn cterm=NONE cterm=reverse gui=reverse 
 " hi  CursorColumn cterm=underline gui=underline 
 

@@ -77,4 +77,8 @@ if [[ $- == *i* ]]; then
     export LONG_RUNNING_COMMAND='echo lol'
     export LONG_RUNNING_COMMAND_TIMEOUT=3
     load_file /etc/profile.d/undistract-me.sh >/dev/null 2>/dev/null
+
+    export N_PREFIX="$HOME/n"; [[ :$PATH: == *":$N_PREFIX/bin:"* ]] || PATH+=":$N_PREFIX/bin"  # Added by n-install (see http://git.io/n-install-repo).
 fi
+
+[ -f ~/.fzf.bash ] && source ~/.fzf.bash
