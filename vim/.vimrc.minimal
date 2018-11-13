@@ -106,12 +106,18 @@ set title
 au BufNewFile,BufRead *.py 
     \ set tabstop=4 softtabstop=4 shiftwidth=4 textwidth=79 expandtab autoindent fileformat=unix
 
-" Personal OCaml indentation rules
+" Personal indentation rules
 au BufNewFile,BufRead *.ml
     \ set tabstop=2 softtabstop=2 shiftwidth=2 textwidth=80 expandtab autoindent fileformat=unix
 
 au BufNewFile,BufRead *.js
     \ set tabstop=2 softtabstop=2 shiftwidth=2 textwidth=80 expandtab autoindent fileformat=unix
+
+" Copy and paste with Ctrl-C and Ctrl-V
+vmap <C-c> "+yi
+vmap <C-x> "+c
+vmap <C-v> c<ESC>"+p
+imap <C-v> <C-r><C-o>+
 
 " load project-specific local vim settings at $PWD/.vim.{custom,local}
 if filereadable('.vim.custom')
