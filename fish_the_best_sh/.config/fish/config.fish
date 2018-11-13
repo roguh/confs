@@ -1,7 +1,16 @@
 set -U LC_ALL en_US.UTF-8  
 set -U LANG en_US.UTF-8
 
-set -U fish_user_paths $HOME/bin $HOME/.local/bin $HOME/.fzf/bin
+function addpath
+    if test -e $argv[1]
+        echo setting $argv[1]
+        set -U fish_user_paths $fish_user_paths $argv[1]
+    end
+end
+
+addpath $HOME/bin
+addpath $HOME/.local/bin
+addpath $HOME/.fzf/bin
 
 function load_file
     if test -e $argv[1]
