@@ -38,10 +38,10 @@ ${tztime Asia/Shanghai #{t}} $alignr #{note}Shenzhen
 #{normal}${tztime Asia/Tokyo #{t}} $alignr #{note}Tokyo
 #{normal}${tztime Pacific/Honolulu #{t}} $alignr #{note}Honolulu
 
-#{normal}${tztime America/Los_Angeles #{t}} $alignr #{note}LA
-#{normal}${tztime America/Denver #{t}} $alignr #{note}NM
-#{normal}${tztime America/Mexico_City #{t}} $alignr #{note}Cd. MX
-#{normal}${tztime America/New_York #{t}} $alignr #{note}NY
+#{normal}${tztime America/Los_Angeles #{t}}
+#{normal}${tztime America/Denver #{t}}
+#{normal}${tztime America/Mexico_City #{t}}
+#{normal}${tztime America/New_York #{t}}
 
 #{normal}${tztime Europe/Amsterdam #{t}} $alignr #{note}Amsterdam
 

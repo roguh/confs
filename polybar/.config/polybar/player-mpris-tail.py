@@ -83,10 +83,15 @@ class PlayerStatus:
                 time.sleep(2)
 
     def _on_metadata(self, player, e):
-        if 'xesam:artist' in e.keys() and 'xesam:title' in e.keys():
-            self._artist = e['xesam:artist'][0]
+        if 'xesam:artist' in e.keys():
+            self._artist = ', '.join(e['xesam:artist'])
+        else:
+            self._artist = ''
+        if 'xesam:title' in e.keys():
             self._title = e['xesam:title']
-            self._print_song()
+        else:
+            self._title = ''
+        self._print_song()
 
     def _on_play(self, player):
         self._icon = MUSIC_ICON
@@ -101,7 +106,8 @@ class PlayerStatus:
 
     def _print_song(self):
         self._print_flush(
-            '{} {} - {}'.format(self._icon, self._artist[:MAX_LENGTH], self._title[:MAX_LENGTH]))
+            ' '.join([self._icon,
+                      self._artist[:MAX_LENGTH], self._title[:MAX_LENGTH]]))
 
     """
     Seems to assure print() actually prints when no terminal is connected

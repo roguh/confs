@@ -1,7 +1,7 @@
 #!/bin/sh 
 
 function pause {
-    sleep 0.1 || sleep 1
+    sleep 0.2 || sleep 1
 }
 
 cd $HOME
@@ -79,13 +79,16 @@ if $AUTOSTART_PROGRAMS ; then
     # Start file synchronizer and commonly used apps
 
     (pause ;
-        i3-msg "workspace 21:comm; append_layout .config/i3/workspace-comm.json" &
-        evolution &
+        i3-msg "workspace 21:comm; append_layout .config/i3/workspace-comm.json" ;
+        (sleep 10; evolution) &
+        firefox &
     )
 
     (pause ;
         i3-msg "workspace 22:TODO" ;
-        kitty hsync-unison &
+        for CMD in ssh-socks5-proxy hsync-unison masterpassword.sh ; do
+            kitty -e fish -c "$CMD; fish" &
+        done
     )
 fi
 

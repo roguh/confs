@@ -115,8 +115,8 @@ Plug 'vim-pandoc/vim-pandoc-syntax'
 " Plug 'lepture/vim-jinja'
 
 " org mode
-" Plug 'jceb/vim-orgmode', { 'for': 'org' }
-Plug 'jwiegley/org-mode', { 'for': 'org' }
+Plug 'jceb/vim-orgmode', { 'for': 'org' }
+" Plug 'jwiegley/org-mode', { 'for': 'org' }
 
 " syntax highlighting for COOL
 au BufNewFile,BufRead *.cool setf cool 
