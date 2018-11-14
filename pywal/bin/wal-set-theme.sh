@@ -18,7 +18,7 @@
 # THEME=dkeg-urban
 
 # cool
-THEME="$HOME/sync/technical/roguh-base16-flat.json"
+# THEME="$HOME/sync/technical/roguh-base16-flat.json"
 # THEME=dkeg-skigh #good with saturate=0.8
 # THEME=sexy-thwump # pale
 # THEME=base16-oceanicnext
@@ -33,7 +33,7 @@ THEME="$HOME/sync/technical/roguh-base16-flat.json"
 # THEME=sexy-jasonwryan
 # THEME=dkeg-prevail
 ## metallic
-# THEME=base16-black-metal-burzum
+THEME=base16-black-metal-burzum
 # THEME=dkeg-blumune
 # THEME=dkeg-owl #good
 # generate oomox theme, also run theme-post.sh

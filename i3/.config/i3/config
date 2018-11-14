@@ -193,6 +193,7 @@ new_window normal 1
 
 # Program launcher
 bindsym $mod+d exec launcher.sh
+bindsym $mod+Tab exec launcher.sh window
 
 # Start a terminal or browser
 set $terminal terminal.sh 
@@ -211,10 +212,10 @@ bindsym $mod+l exec locker.sh
 bindsym $mod+Shift+l exec backlightoff.sh
 
 #### i3 gaps
-for_window [class="^.*"] border pixel 0
-smart_gaps on
-gaps inner 5
-gaps outer 5
+# for_window [class="^.*"] border pixel 0
+# smart_gaps on
+# gaps inner 5
+# gaps outer 5
 # gaps outer current plus 5
 
 # Hide title for extremely common windows
@@ -260,3 +261,5 @@ client.unfocused        $base01 $base00 $base05 $base01 $base01
 client.urgent           $base08 $base08 $base00 $base08 $base08
 client.placeholder      $base00 $base00 $base05 $base00 $base00
 client.background       $base07
+
+exec --no-startup-id autostart.sh

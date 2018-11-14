@@ -3,7 +3,6 @@ set -U LANG en_US.UTF-8
 
 function addpath
     if test -e $argv[1]
-        echo setting $argv[1]
         set -U fish_user_paths $fish_user_paths $argv[1]
     end
 end
@@ -64,6 +63,10 @@ end
 
 if type --quiet "fzf_key_bindings"
     fzf_key_bindings
+end
+
+if command keychain > /dev/null
+    keychain --eval --quick --quiet id_ed25519 | source
 end
 
 # Fish does lots of things by default:
