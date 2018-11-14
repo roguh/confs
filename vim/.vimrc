@@ -10,6 +10,9 @@ call plug#begin()
 " Theme
 Plug 'dylanaraps/wal.vim'
 
+" Git gutter
+Plug 'airblade/vim-gitgutter'
+
 " good default settings
 " "one step above the nocompatible setting"
 " A taste of its features:
@@ -37,6 +40,7 @@ Plug 'tpope/vim-sensible'
 " thrift, tmux, tomdoc, toml, twig, typescript, vala, vbnet, vcl, vifm, vm,
 " vue, xls, yaml, yard
 Plug 'sheerun/vim-polyglot'
+let g:jsx_ext_required = 1
 let g:polyglot_disabled = ['python', 'ocaml']
 
 " Deoplete code completion framework
@@ -61,10 +65,11 @@ Plug 'Shougo/neco-syntax'
 
 " merlin, autocomplete for ocaml
 " TODO only load for ocaml
-let g:opamshare = substitute(system('opam config var share'),'\n$','','''')
-execute 'set rtp+=' . g:opamshare . '/merlin/vim'
-execute 'set rtp+=' . g:opamshare . '/ocp-indent/vim'
-
+" TODO only load if opam exists
+""  let g:opamshare = substitute(system('opam config var share'),'\n$','','''')
+""  execute 'set rtp+=' . g:opamshare . '/merlin/vim'
+""  execute 'set rtp+=' . g:opamshare . '/ocp-indent/vim'
+""
 " Completion for ocaml using merlin
 " install merline with:
 " opam install merlin
@@ -123,6 +128,18 @@ au BufNewFile,BufRead *.cool setf cool
 au BufNewFile,BufRead *.cl setf cool 
 Plug 'vim-scripts/cool.vim', { 'for': 'cool' }
 
+" file browser
+Plug 'scrooloose/nerdtree'
+Plug 'Xuyuanp/nerdtree-git-plugin'
+
+" open nerdtree when opening directory
+autocmd StdinReadPre * let s:std_in=1
+autocmd VimEnter * if argc() == 1 && isdirectory(argv()[0]) && !exists("s:std_in") | exe 'NERDTree' argv()[0] | wincmd p | ene | endif
+
+" use Ctrl-N to open nerdtree
+map <C-n> :NERDTreeToggle<CR>
+
+
 " linters (syntax checkers, other code checkers)
 Plug 'scrooloose/syntastic'
 
@@ -142,9 +159,21 @@ let g:syntastic_tex_checkers = ['chktex']
 
 let g:syntastic_javascript_checkers = ['eslint', 'flow']
 
+" Prefer local node_modules instead of global
+Plug 'mtscout6/syntastic-local-eslint.vim'
+" if executable('node_modules/.bin/eslint')
+"       let b:syntastic_javascript_eslint_exec = 'node_modules/.bin/eslint'
+" endif
+
+" TODO debug this
+if executable('node_modules/.bin/flow')
+      let b:syntastic_javascript_flow_exec = 'node_modules/.bin/flow'
+endif
+
 let g:syntastic_html_checkers = ['tidy', 'jshint']
 
-" let g:syntastic_css_checkers = ['csslint', 'stylelint']
+let g:syntastic_css_checkers = ['csslint', 'stylelint', 'scss_lint']
+let g:syntastic_scss_checkers = ['scss_lint']
 
 let g:syntastic_typescript_checkers = ['tslint']
 
@@ -173,6 +202,7 @@ if filereadable(expand('~/.vimrc.minimal'))
 endif
 
 " switch to wal colorscheme if wal theme exists 
-if filereadable(expand('~/.vim/plugged/wal.vim/colors/wal.vim'))
+" TODO make this neovim compatible
+" if filereadable(expand('~/.vim/plugged/wal.vim/colors/wal.vim'))
     execute 'silent colorscheme wal'
-endif
+" endif

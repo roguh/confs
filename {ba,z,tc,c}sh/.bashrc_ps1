@@ -45,7 +45,7 @@ PS1_BEGIN="\u @ $PS1_H"
 PS1_H='$(hostname | cut -d. -f1)'
 if [[ $COLORED_PS1 == "true" ]] ; then
 if [[ $(whoami) == root ]] ; then
-    PS1_BEGIN="${INVERT}${COLOR_HIGHLIGHT}\u${END}${INVERT} @ $PS1_H${END}"
+    PS1_BEGIN="${INVERT}${COLOR_HIGHLIGHT}\u${END} @ ${INVERT}$PS1_H${END}"
 else
     PS1_BEGIN="${INVERT}\u @ $PS1_H${END}"
 fi

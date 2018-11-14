@@ -14,3 +14,6 @@
 
 [merge]
 	tool = meld
+
+[core]
+	editor = vim

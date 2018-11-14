@@ -1,7 +1,16 @@
 set -U LC_ALL en_US.UTF-8  
 set -U LANG en_US.UTF-8
 
-set -U fish_user_paths $HOME/bin $HOME/.local/bin
+function addpath
+    if test -e $argv[1]
+        echo setting $argv[1]
+        set -U fish_user_paths $fish_user_paths $argv[1]
+    end
+end
+
+addpath $HOME/bin
+addpath $HOME/.local/bin
+addpath $HOME/.fzf/bin
 
 function load_file
     if test -e $argv[1]
@@ -29,23 +38,33 @@ load_file $HOME/.opam/opam-init/init.fish
 # Load pywal theme
 load_theme
 
-function plugin_install
-    fisher install done
-    fisher install shark
-    fisher install spin
-    fisher install fzf
-    fisher install edc/bass
-
-    echo
-    echo use bass by prefixing bash command with bass
-    echo bass export X=3
-    echo
-    echo Ctrl-r,f - search history, find file
-    echo Ctrl-o,g - open with EDITOR, or with xdg-open
-    echo Alt-o,Shift-o - recursive cd into subdirs, or include hidden subdirs
+function install_plugins
+    fisher add jorgebucaran/fnm
+    fisher add done
+    fisher add shark
+    fisher add spin
+    fisher add fzf
+    fisher add edc/bass
 end
 
+# use bass by prefixing bash command with bass
+# bass export X=3
+#
+# Ctrl-r,f - search history, find file
+# Ctrl-o,g - open with EDITOR, or with xdg-open
+# Alt-o,Shift-o - recursive cd into subdirs, or include hidden subdirs
+
 set -gx MANPATH $MANPATH /usr/share/man /usr/local/share/man/
+
+if not functions -q fisher
+    set -q XDG_CONFIG_HOME; or set XDG_CONFIG_HOME ~/.config
+    curl https://git.io/fisher --create-dirs -sLo $XDG_CONFIG_HOME/fish/functions/fisher.fish
+    fish -c fisher
+end
+
+if type --quiet "fzf_key_bindings"
+    fzf_key_bindings
+end
 
 # Fish does lots of things by default:
 # ignore dups and blank lines in history
