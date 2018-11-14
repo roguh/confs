@@ -81,6 +81,10 @@ if [[ $- == *i* ]]; then
     if test -e "$HOME/n" > /dev/null ; then
         export N_PREFIX="$HOME/n"; [[ :$PATH: == *":$N_PREFIX/bin:"* ]] || PATH+=":$N_PREFIX/bin"  # Added by n-install (see http://git.io/n-install-repo).
     fi
+
+    if command -v keychain > /dev/null ; then
+        $(keychain --eval --quick --quiet id_ed25519)
+    fi
 fi
 
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash

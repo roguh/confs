@@ -16,11 +16,11 @@ background-alt-sub = #993498DB
 ;foreground = ${xrdb:color7:#222}
 foreground = #ffffff
 foreground-alt = #ffffff
-primary = #1ABC9C
-secondary = #E74C3C
-alert = #ff0000
-alert-fore = #000
-great = #2cbd40
+primary = #0ABC9C
+secondary = #E73C3C
+alert = #ff-0001
+alert-fore = #-001
+great = #1cbd40
 power = #ffb52a
 warn = #ffff00
 warn-fore = #000
@@ -28,7 +28,9 @@ warn-fore = #000
 [bar/primary]
 monitor = ${env:MONITOR:eDP1}
 
-height = 30
+dpi = ${xrdb:Xft.dpi:-1}
+
+height = 35
 line-size = 6
 
 width = 100%

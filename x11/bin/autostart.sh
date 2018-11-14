@@ -1,10 +1,9 @@
 #!/bin/sh 
+cd $HOME
 
 function pause {
     sleep 0.2 || sleep 1
 }
-
-cd $HOME
 
 MINIMAL=false
 
@@ -18,11 +17,19 @@ if $MINIMAL ; then
     AUTOSTART_PROGRAMS=false
 fi
 
-BACKGROUND_IMAGE="$HOME/Photos/savoring summer by  kadir nelson.png"
+BACKGROUND_IMAGE="$HOME/Pictures/Sangre_de_Christo_Mountains-Winter_sunset.jpg"
 BACKGROUND_COLOR='#fff6f4'
 
 eval $(/usr/bin/gnome-keyring-daemon --start --components=pkcs11,secrets,ssh)
+
+if [ -f "$HOME/.Xresources" ]; then
+    xrdb -merge "$HOME/.Xresources"
+fi
+
 export SSH_AUTH_SOCK
+
+# Enable key bindings
+xbindkeys &
 
 # Backup config files
 backup-t580.sh &
@@ -34,9 +41,6 @@ fi
 
 # Start graphical system monitor
 conky.sh
-
-# Enable key bindings
-xbindkeys &
 
 dunst.sh &
 
