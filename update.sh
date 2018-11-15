@@ -125,7 +125,7 @@ copy_confs_for x11 \
   .xinitrc .xbindkeysrc bin/autostart.sh bin/signal.sh
 
 copy_confs_for dunst \
-  .config/dunst .config/dunst/dunstrc
+  .config/dunst .config/dunst/dunstrc bin/dunst.sh
 
 copy_confs_for "{ba,z,tc,c}sh" \
   .bashrc .bashrc_ps1 .bash_profile .zshrc .cshrc .tryalias.sh .aliases bin/trimdir.py bin/gitinfo.sh
@@ -163,7 +163,7 @@ copy_confs_for fluxbox .fluxbox/menu .fluxbox/keys
 copy_confs_for readline .inputrc
 
 copy_confs_for pywal \
-    bin/wal-set-theme.sh .cache/wal/{sequences,colors.*}
+    bin/wal-set-theme.sh bin/theme-post.sh .cache/wal/{sequences,colors.*}
 
 copy_confs_for conky bin/conky.sh .conkyrc.d/
 
