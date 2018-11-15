@@ -118,6 +118,7 @@ copy_confs_for polybar .config/polybar/config \
 copy_confs_for i3 \
   .i3status.conf .config/i3/config \
   bin/locker.sh bin/terminal2.sh bin/terminal.sh bin/launcher.sh \
+  bin/backlightoff.sh \
   bin/i3statustxt bin/i3status.py bin/i3txt.py
 
 copy_confs_for x11 \

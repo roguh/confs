@@ -13,6 +13,10 @@ Plug 'dylanaraps/wal.vim'
 " Git gutter
 Plug 'airblade/vim-gitgutter'
 
+" Strip trailing whitespace on changed lines only
+" Use :WStrip to clean all trailing whitespace
+Plug 'tweekmonster/wstrip.vim'
+
 " good default settings
 " "one step above the nocompatible setting"
 " A taste of its features:
@@ -101,6 +105,12 @@ Plug 'ap/vim-css-color'
 
 " JS, libraries 
 Plug 'pangloss/vim-javascript', { 'for': 'javascript' }
+augroup javascript_folding
+    au!
+    au FileType javascript setlocal foldmethod=syntax
+augroup END
+let g:javascript_plugin_flow = 1
+
 Plug 'othree/javascript-libraries-syntax.vim', { 'for': 'javascript' }
 Plug 'wokalski/autocomplete-flow', { 'for': 'javascript' }
 

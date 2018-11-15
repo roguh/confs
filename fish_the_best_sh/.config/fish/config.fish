@@ -10,6 +10,7 @@ end
 addpath $HOME/bin
 addpath $HOME/.local/bin
 addpath $HOME/.fzf/bin
+addpath $HOME/.gem/ruby/2.5.0/bin
 
 function load_file
     if test -e $argv[1]

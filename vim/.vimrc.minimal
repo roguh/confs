@@ -26,13 +26,6 @@ set viminfo=
 " keep 5 lines of history
 set history=5
 
-" indentation
-set expandtab
-set shiftwidth=4
-set tabstop=4
-
-filetype plugin indent on
-
 " show line numbers
 set number
 set relativenumber
@@ -88,8 +81,8 @@ set ruler		" show the cursor position all the time
 let &guicursor = &guicursor . ',a:blinkon0'
 
 " crosshairs
-" set cursorcolumn
-" set cursorline
+set cursorcolumn
+set cursorline
 " hi  cursorline cterm=NONE gui=NONE term=NONE
 " hi  CursorColumn cterm=NONE cterm=reverse gui=reverse 
 " hi  CursorColumn cterm=underline gui=underline 
@@ -102,8 +95,13 @@ if &term == 'screen'
 endif
 set title
 
+" indentation
+set tabstop=2 shiftwidth=2 tabstop=2 expandtab 
+
+filetype plugin indent on
+
 " Python indentation
-au BufNewFile,BufRead *.py 
+au BufNewFile,BufRead *.py
     \ set tabstop=4 softtabstop=4 shiftwidth=4 textwidth=79 expandtab autoindent fileformat=unix
 
 " Personal indentation rules

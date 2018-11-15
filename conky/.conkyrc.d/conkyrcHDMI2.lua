@@ -1,4 +1,4 @@
-w = 300
+w = 450
 
 conky.config = {
     alignment = 'bottom_right',
@@ -40,7 +40,9 @@ conky.config = {
 }
 
 conky.text = interp([[
-$kernel on $machine${font}
+#{fonttitle}$nodename
+$sysname
+#{fontsubtitle}$kernel on $machine${font}
 
 #{emph}CPU #{normal}${cpu cpu0}% $alignr ${loadavg}
 ${cpubar cpu1 3,#{quartw}}   ${cpubar cpu2 3,#{quartw}} $alignr ${cpubar cpu3 3,#{quartw}}   ${cpubar cpu4 3,#{quartw}}

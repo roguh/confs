@@ -17,7 +17,7 @@ if $MINIMAL ; then
     AUTOSTART_PROGRAMS=false
 fi
 
-BACKGROUND_IMAGE="$HOME/Pictures/Sangre_de_Christo_Mountains-Winter_sunset.jpg"
+BACKGROUND_IMAGE="$HOME/Pictures/Jupiter_from_Voyager_1.jpg"
 BACKGROUND_COLOR='#fff6f4'
 
 eval $(/usr/bin/gnome-keyring-daemon --start --components=pkcs11,secrets,ssh)
@@ -57,26 +57,29 @@ xautolock -detectsleep -time 5 -notify 60 -notifier backlightoff.sh -locker lock
 # Ctrl-Alt-Backspace to kill X server
 (pause ; setxkbmap -option terminate:ctrl_alt_bksp) &
 
-if command -v fortune-notify.sh ; then
-    fortune-notify.sh
-fi
+function start {
+    if command -v "$1" ; then
+        "$@"
+    fi
+}
+start fortune-notify.sh
 
 if $AUTOSTART_TRAYAPPS ; then
     # Check for Arch package updates
     # kalu &
 
     # Wifi menu
-    nm-applet &
+    start nm-applet &
     
     # udisk tray icon
-    udiskie --smart-tray &
+    start udiskie --smart-tray &
 
     # connect android phone to linux
-    kdeconnect-indicator &
+    start kdeconnect-indicator &
 fi
 
 if $AUTOSTART_COMPOSITOR ; then
-    compton &
+    start compton &
 fi
 
 if $AUTOSTART_PROGRAMS ; then
@@ -84,15 +87,9 @@ if $AUTOSTART_PROGRAMS ; then
 
     (pause ;
         i3-msg "workspace 21:comm; append_layout .config/i3/workspace-comm.json" ;
-        (sleep 10; evolution) &
-        firefox &
-    )
-
-    (pause ;
-        i3-msg "workspace 22:TODO" ;
-        for CMD in ssh-socks5-proxy hsync-unison masterpassword.sh ; do
-            kitty -e fish -c "$CMD; fish" &
-        done
+        (sleep 5; start evolution) &
+        start firefox &
+        start keybase &
     )
 fi
 
