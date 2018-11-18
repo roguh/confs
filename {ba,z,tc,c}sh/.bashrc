@@ -82,8 +82,9 @@ if [[ $- == *i* ]]; then
         export N_PREFIX="$HOME/n"; [[ :$PATH: == *":$N_PREFIX/bin:"* ]] || PATH+=":$N_PREFIX/bin"  # Added by n-install (see http://git.io/n-install-repo).
     fi
 
-    if command -v keychain > /dev/null ; then
-        $(keychain --eval --quick --quiet id_ed25519)
+    tty -s
+    if command -v keychain > /dev/null && [ "$0" == "$?" ] ; then
+        eval $(keychain --eval --quick --quiet id_ed25519)
     fi
 fi
 

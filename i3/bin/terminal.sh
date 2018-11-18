@@ -1,2 +1,2 @@
 #!/bin/sh
-exec kitty || exec alacritty || exec terminal2.sh || exec xterm
+exec gnome-terminal || exec alacritty || exec kitty || exec terminal2.sh || exec xterm

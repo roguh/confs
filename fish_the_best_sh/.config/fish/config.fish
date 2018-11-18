@@ -66,7 +66,7 @@ if type --quiet "fzf_key_bindings"
     fzf_key_bindings
 end
 
-if command keychain > /dev/null
+if command keychain > /dev/null; and status is-interactive
     keychain --eval --quick --quiet id_ed25519 | source
 end
 
