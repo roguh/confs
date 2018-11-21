@@ -90,13 +90,10 @@ if $AUTOSTART_PROGRAMS ; then
         (sleep 5; start evolution) &
         start firefox &
         start keybase &
-        for CMD in ssh-socks5-proxy hsync-unison masterpassword.sh ; do
-            start kitty -e fish -c "$CMD; fish" &
-        done
     )
 fi
 
-(pause ;
+( pause ;
   if [ -f ~/.cache/wal/sequences ]; then
       cat ~/.cache/wal/sequences
   fi

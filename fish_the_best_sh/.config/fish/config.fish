@@ -48,39 +48,26 @@ function install_plugins
     # notifications when commands are done
     fisher add franciscolourenco/done
 
-    # fuzzy search with Ctrl-{R, F,O,G} and Alt{, -Shift}-O
-    #
-    # Ctrl-t 	Find a file.
-    # Ctrl-r 	Search through command history.
-    # Alt-o 	cd into sub-directories (recursively searched).
-    # Alt-Shift-o 	cd into sub-directories, including hidden ones.
-    # Ctrl-o 	Open a file/dir using default editor ($EDITOR)
-    # Ctrl-g 	Open a file/dir using xdg-open or open command
-    fisher add jethrokuan/fzf
-
     # bash like syntax
     # bass export X=4
     fisher add edc/bass
 end
 
-# use bass by prefixing bash command with bass
-# bass export X=3
-#
-# Ctrl-r,f - search history, find file
-# Ctrl-o,g - open with EDITOR, or with xdg-open
-# Alt-o,Shift-o - recursive cd into subdirs, or include hidden subdirs
-
 set -gx MANPATH $MANPATH /usr/share/man /usr/local/share/man/
-
-if not functions -q fisher
-    set -q XDG_CONFIG_HOME; or set XDG_CONFIG_HOME ~/.config
-    curl https://git.io/fisher --create-dirs -sLo $XDG_CONFIG_HOME/fish/functions/fisher.fish
-    fish -c fisher
-end
 
 if status is-interactive
     if command keychain > /dev/null; 
         keychain --eval --quick --quiet id_ed25519 | source
+    end
+
+    if not functions -q fisher
+        set -q XDG_CONFIG_HOME; or set XDG_CONFIG_HOME ~/.config
+        curl https://git.io/fisher --create-dirs -sLo $XDG_CONFIG_HOME/fish/functions/fisher.fish
+        fish -c fisher
+    end
+
+    function fish_user_key_bindings
+        fzf_key_bindings
     end
 end
 
