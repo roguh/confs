@@ -39,11 +39,27 @@ load_file $HOME/.opam/opam-init/init.fish
 load_theme
 
 function install_plugins
+    # manage node and npm versions
     fisher add jorgebucaran/fnm
-    fisher add done
-    fisher add shark
-    fisher add spin
-    fisher add fzf
+
+    # "frecency" aware directory switching z
+    fisher add jethrokuan/z
+
+    # notifications when commands are done
+    fisher add franciscolourenco/done
+
+    # fuzzy search with Ctrl-{R, F,O,G} and Alt{, -Shift}-O
+    #
+    # Ctrl-t 	Find a file.
+    # Ctrl-r 	Search through command history.
+    # Alt-o 	cd into sub-directories (recursively searched).
+    # Alt-Shift-o 	cd into sub-directories, including hidden ones.
+    # Ctrl-o 	Open a file/dir using default editor ($EDITOR)
+    # Ctrl-g 	Open a file/dir using xdg-open or open command
+    fisher add jethrokuan/fzf
+
+    # bash like syntax
+    # bass export X=4
     fisher add edc/bass
 end
 
@@ -62,12 +78,10 @@ if not functions -q fisher
     fish -c fisher
 end
 
-if type --quiet "fzf_key_bindings"
-    fzf_key_bindings
-end
-
-if command keychain > /dev/null; and status is-interactive
-    keychain --eval --quick --quiet id_ed25519 | source
+if status is-interactive
+    if command keychain > /dev/null; 
+        keychain --eval --quick --quiet id_ed25519 | source
+    end
 end
 
 # Fish does lots of things by default:

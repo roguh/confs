@@ -113,6 +113,7 @@ let g:javascript_plugin_flow = 1
 
 Plug 'othree/javascript-libraries-syntax.vim', { 'for': 'javascript' }
 Plug 'wokalski/autocomplete-flow', { 'for': 'javascript' }
+Plug 'moll/vim-node', { 'for': 'javascript' }
 
 " Rust
 Plug 'racer-rust/vim-racer', { 'for': 'rust' }

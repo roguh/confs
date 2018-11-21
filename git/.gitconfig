@@ -6,8 +6,8 @@
 	helper = cache --timeout=3600
 
 [diff]
-	tool = icdiff
-    external = gitdiff.sh 
+  tool = icdiff
+  external = gitdiff.sh 
 
 [color]
 	pager = false
