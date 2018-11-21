@@ -37,4 +37,4 @@ THEME=base16-black-metal-burzum
 # THEME=dkeg-blumune
 # THEME=dkeg-owl #good
 # generate oomox theme, also run theme-post.sh
-wal -g --saturate 1.0 -o theme-post.sh --theme ${THEME:-random}
+wal -g --saturate 0.2 -o theme-post.sh -i ~/Pictures/Jupiter_from_Voyager_1.jpg # --theme ${THEME:-random}
