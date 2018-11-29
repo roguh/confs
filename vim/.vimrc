@@ -7,6 +7,8 @@ set nocompatible
 " call :PlugInstall to install and update
 call plug#begin()
 
+Plug 'wmvanvliet/jupyter-vim'
+
 " Theme
 Plug 'dylanaraps/wal.vim'
 
@@ -104,7 +106,7 @@ Plug 'othree/html5.vim'
 Plug 'ap/vim-css-color'
 
 " JS, libraries 
-Plug 'pangloss/vim-javascript', { 'for': 'javascript' }
+Plug 'pangloss/vim-javascript', { 'for': [ 'javascript', 'javascript.jsx' ] }
 augroup javascript_folding
     au!
     au FileType javascript setlocal foldmethod=syntax
@@ -113,7 +115,7 @@ let g:javascript_plugin_flow = 1
 
 Plug 'othree/javascript-libraries-syntax.vim', { 'for': 'javascript' }
 Plug 'wokalski/autocomplete-flow', { 'for': 'javascript' }
-Plug 'moll/vim-node', { 'for': 'javascript' }
+Plug 'moll/vim-node', { 'for': [ 'javascript', 'javascript.jsx' ] }
 
 " Rust
 Plug 'racer-rust/vim-racer', { 'for': 'rust' }
@@ -139,17 +141,39 @@ au BufNewFile,BufRead *.cool setf cool
 au BufNewFile,BufRead *.cl setf cool 
 Plug 'vim-scripts/cool.vim', { 'for': 'cool' }
 
+" fuzzy file finding
+Plug 'junegunn/fzf.vim'
+
+" if using git, find files in project, not just cwd
+function! s:find_git_root()
+  return system('git rev-parse --show-toplevel 2> /dev/null')[:-2]
+endfunction
+
+command! ProjectFiles execute 'Files' s:find_git_root()
+
+" use ctrl-p to find files
+map <C-p> :ProjectFiles<CR>
+
 " file browser
-Plug 'scrooloose/nerdtree'
-Plug 'Xuyuanp/nerdtree-git-plugin'
+Plug 'francoiscabrol/ranger.vim'
+if has('nvim')
+  Plug 'rbgrouleff/bclose.vim'
+end
 
-" open nerdtree when opening directory
-autocmd StdinReadPre * let s:std_in=1
-autocmd VimEnter * if argc() == 1 && isdirectory(argv()[0]) && !exists("s:std_in") | exe 'NERDTree' argv()[0] | wincmd p | ene | endif
+let g:ranger_replace_netrw = 1
 
-" use Ctrl-N to open nerdtree
-map <C-n> :NERDTreeToggle<CR>
+let g:ranger_map_keys = 0
+map <C-n> :Ranger<CR>
 
+" async linting. lints as you type
+Plug 'w0rp/ale'
+" open window
+" let g:ale_open_list = 1
+let b:ale_linters = {'javascript': ['eslint']}
+
+" C-k and C-j to move between ALE errors
+nmap <silent> <C-k> <Plug>(ale_previous_wrap)
+nmap <silent> <C-j> <Plug>(ale_next_wrap)
 
 " linters (syntax checkers, other code checkers)
 Plug 'scrooloose/syntastic'
@@ -168,7 +192,8 @@ let g:syntastic_python_pylint_exe = 'pylint'
 
 let g:syntastic_tex_checkers = ['chktex']
 
-let g:syntastic_javascript_checkers = ['eslint', 'flow']
+" ['eslint', 'flow']
+let g:syntastic_javascript_checkers = []
 
 " Prefer local node_modules instead of global
 Plug 'mtscout6/syntastic-local-eslint.vim'

@@ -2,7 +2,20 @@
 " warning: keep this near the top of the config file
 set nocompatible
 
+" use bash instead of $SHELL
 set shell=/bin/bash
+
+" change dir to that of the current file
+" benefits:
+"   - easier to navigate to nearby files
+"   - gf works better (with some plugins)
+" possible alternative 1: set autochdir
+" possible alternative 2: nnoremap <leader>cd :cd %:p:h<CR>:pwd<CR>
+autocmd BufEnter * silent! lcd %:p:h
+
+" when searching, ignore case unless there's an uppercase letter in query
+set ignorecase
+set smartcase
 
 " map semicolon to colon
 :nmap ; :
@@ -88,7 +101,7 @@ hi  CursorColumn cterm=reverse cterm=reverse gui=reverse
 " hi  CursorLine term=underline cterm=underline gui=underline 
 
 " set terminal emulator window title
-let &titlestring = expand('%') . ' ' . $USER . '@' . hostname() . ' ' . expand('%:p:h')
+autocmd BufEnter * let &titlestring = expand('%') . ' ' . $USER . '@' . hostname() . ' ' . expand('%:p:h')
 if &term == 'screen'
   set t_ts=^[k
   set t_fs=^[\
@@ -116,6 +129,14 @@ vmap <C-c> "+yi
 vmap <C-x> "+c
 vmap <C-v> c<ESC>"+p
 imap <C-v> <C-r><C-o>+
+
+" nicer netrw (default file browser)
+let g:netrw_banner = 0
+let g:netrw_liststyle = 3
+let g:netrw_browse_split = 4
+let g:netrw_altv = 1
+
+set wildignore+=*/tmp/*,*.so,*.swp,*.zip,*/node_modules/*
 
 " load project-specific local vim settings at $PWD/.vim.{custom,local}
 if filereadable('.vim.custom')
