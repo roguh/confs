@@ -168,3 +168,5 @@ copy_confs_for pywal \
 copy_confs_for conky bin/conky.sh .conkyrc.d/
 
 copy_confs_for kitty .config/kitty/kitty.conf
+
+copy_confs_for ranger .config/ranger/rc.conf
