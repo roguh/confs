@@ -1,16 +1,14 @@
-set -U LC_ALL en_US.UTF-8  
+set -U LC_ALL en_US.UTF-8
 set -U LANG en_US.UTF-8
 
-function addpath
-    if test -e $argv[1]
-        set -U fish_user_paths $fish_user_paths $argv[1]
-    end
+function addpaths
+    contains -- $argv $fish_user_paths
+       or set -U fish_user_paths $fish_user_paths $argv
 end
 
-addpath $HOME/bin
-addpath $HOME/.local/bin
-addpath $HOME/.fzf/bin
-addpath $HOME/.gem/ruby/2.5.0/bin
+addpaths $HOME/bin
+addpaths $HOME/.local/bin
+addpaths $HOME/.gem/ruby/2.5.0/bin
 
 function load_file
     if test -e $argv[1]
@@ -21,7 +19,7 @@ end
 set -U EDITOR vim
 set -U VISUAL vim
 
-if command -v vimpager > /dev/null
+if type vimpager > /dev/null 2>&1
     set -U PAGER vimpager
     set -U pager vimpager
     set -U MANPAGER vimpager
@@ -56,7 +54,7 @@ end
 set -gx MANPATH $MANPATH /usr/share/man /usr/local/share/man/
 
 if status is-interactive
-    if command keychain > /dev/null; 
+    if type keychain > /dev/null 2>&1
         keychain --eval --quick --quiet id_ed25519 | source
     end
 
@@ -67,8 +65,22 @@ if status is-interactive
     end
 
     function fish_user_key_bindings
+        # Use Ctrl-R to find command in history
         fzf_key_bindings
+
+        # Use Ctrl-P to find files
+        bind \cp fzf-file-widget
+        if bind -M insert > /dev/null 2>&1 2>&1
+            bind -M insert \cp fzf-file-widget
+        end
     end
+
+end
+
+# Have fzf use ag to find files
+if type ag > /dev/null 2>&1
+    set -gx FZF_DEFAULT_COMMAND 'ag -g ""'
+    set -gx FZF_CTRL_T_COMMAND "$FZF_DEFAULT_COMMAND"
 end
 
 # Fish does lots of things by default:

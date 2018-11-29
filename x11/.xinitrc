@@ -30,11 +30,14 @@ if [ -d /etc/X11/xinit/xinitrc.d ] ; then
  done
 fi
 
-f=$HOME/bin/autostart.sh
-if [ -f $f ] && [ -x $f ]; then
-    . "$f" &
-fi
-unset f
+# f=$HOME/bin/autostart.sh
+# if [ -f $f ] && [ -x $f ]; then
+#     . "$f" &
+# fi
+# unset f
+
+xrandr --setprovideroutputsource modesetting NVIDIA-0
+xrandr --auto
 
 session=${1:-i3}
 

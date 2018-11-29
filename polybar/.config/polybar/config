@@ -457,7 +457,7 @@ format-charging-foreground = #eaedf1
 
 [module/temperature]
 type = internal/temperature
-thermal-zone = 0
+thermal-zone = 1
 warn-temperature = 50
 
 format = <label>

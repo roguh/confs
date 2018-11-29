@@ -34,6 +34,21 @@ if command -v fzf > /dev/null ; then
     # Load fuzzy finder settings
     load_file "/usr/share/fzf/key-bindings.bash"
     load_file "/usr/share/fzf/completions.bash"
+
+    if command -v ag > /dev/null ; then
+        export FZF_DEFAULT_COMMAND='ag -g ""'
+        export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
+    fi
+
+    # Use ctrl-p to find files. (Same as ctrl-t)
+    if [ $BASH_VERSINFO -gt 3 ]; then
+        bind -x '"\C-p": "fzf-file-widget"'
+    elif __fzf_use_tmux__; then
+        bind '"\C-p": "\C-x\C-a$a \C-x\C-addi`__fzf_select_tmux__`\C-x\C-e\C-x\C-a0P$xa"'
+    else
+        bind '"\C-p": "\C-x\C-a$a \C-x\C-addi`__fzf_select__`\C-x\C-e\C-x\C-a0Px$a \C-x\C-r\C-x\C-axa "'
+    fi
+    bind -m vi-command '"\C-p": "i\C-p"'
 fi
 
 # Set pager command
@@ -66,10 +81,10 @@ if [[ $- == *i* ]]; then
     load_file "$HOME/.sensible.bash"
     PROMPT_DIRTRIM=0
     PROMPT_COMMAND=
-    
+
     # Show man page with Alt+h
     bind '"\eh": "\C-a\eb\ed\C-y\e#man \C-y\C-m\C-p\C-p\C-a\C-d\C-e"'
-    
+
     # Set window title.
     # PROMPT_COMMAND="echo -ne \"\033]0;${PS1_END_PLAIN}\"${BASH_COMMAND}\" (on $HOSTNAME)\007\""
 

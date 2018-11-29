@@ -1,15 +1,16 @@
-#!/bin/sh 
+#!/bin/sh
 cd $HOME
 
 function pause {
     sleep 0.2 || sleep 1
 }
 
-MINIMAL=false
+MINIMAL=true
 
 AUTOSTART_TRAYAPPS=true
-AUTOSTART_COMPOSITOR=false
 AUTOSTART_PROGRAMS=true
+
+AUTOSTART_COMPOSITOR=false
 
 if $MINIMAL ; then
     AUTOSTART_TRAYAPPS=false
@@ -51,8 +52,8 @@ redshift.sh &
 xautolock -detectsleep -time 5 -notify 60 -notifier backlightoff.sh -locker locker.sh &
 
 # Set background
-(pause ; xsetroot -solid "$BACKGROUND_COLOR") &
-(pause ; feh --bg-max "$BACKGROUND_IMAGE") &
+(xsetroot -solid "$BACKGROUND_COLOR") &
+(feh --bg-max "$BACKGROUND_IMAGE") &
 
 # Ctrl-Alt-Backspace to kill X server
 (pause ; setxkbmap -option terminate:ctrl_alt_bksp) &
@@ -70,7 +71,7 @@ if $AUTOSTART_TRAYAPPS ; then
 
     # Wifi menu
     start nm-applet &
-    
+
     # udisk tray icon
     start udiskie --smart-tray &
 
@@ -87,7 +88,7 @@ if $AUTOSTART_PROGRAMS ; then
 
     (pause ;
         i3-msg "workspace 21:comm; append_layout .config/i3/workspace-comm.json" ;
-        (sleep 5; start evolution) &
+        (sleep 15; start evolution) &
         start firefox &
         start keybase &
     )
