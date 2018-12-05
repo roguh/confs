@@ -5,7 +5,7 @@ function pause {
     sleep 0.2 || sleep 1
 }
 
-MINIMAL=true
+MINIMAL=false
 
 AUTOSTART_TRAYAPPS=true
 AUTOSTART_PROGRAMS=true
@@ -90,7 +90,7 @@ if $AUTOSTART_PROGRAMS ; then
         i3-msg "workspace 21:comm; append_layout .config/i3/workspace-comm.json" ;
         (sleep 15; start evolution) &
         start firefox &
-        start keybase &
+        start keybase-gui &
     )
 fi
 

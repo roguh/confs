@@ -12,7 +12,7 @@ tryalias more "$PAGER" more
 tryalias ls exa ls
 tryalias l 'ls -Fa'
 tryalias ll 'l -lh'
-tryalias grep 'grep --color -n'
+tryalias grep 'grep --color'
 tryalias gzip pigz gzip
 
 tryalias c ccat
