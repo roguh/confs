@@ -9,9 +9,10 @@ set shell=/bin/bash
 " benefits:
 "   - easier to navigate to nearby files
 "   - gf works better (with some plugins)
-" possible alternative 1: set autochdir
-" possible alternative 2: nnoremap <leader>cd :cd %:p:h<CR>:pwd<CR>
-autocmd BufEnter * silent! lcd %:p:h
+" alternative 1: set autochdir
+" alternative 2: nnoremap <leader>cd :cd %:p:h<CR>:pwd<CR>
+" alternative 3: autocmd BufReadPost,BufWinEnter * silent! lcd %:p:h
+set autochdir
 
 " when searching, ignore case unless there's an uppercase letter in query
 set ignorecase
@@ -23,8 +24,8 @@ set smartcase
 " spellcheck
 set spell spelllang=en_us
 
-" enable mouse control in neovim for normal mode and visual mode 
-set mouse=nv
+" enable mouse control in neovim for normal mode, visual mode, and insert mode
+set mouse=nva
 
 " reload a file if it's changed by another process
 set autoread
@@ -137,6 +138,9 @@ let g:netrw_browse_split = 4
 let g:netrw_altv = 1
 
 set wildignore+=*/tmp/*,*.so,*.swp,*.zip,*/node_modules/*
+
+" do not fold by default
+set nofoldenable
 
 " load project-specific local vim settings at $PWD/.vim.{custom,local}
 if filereadable('.vim.custom')
