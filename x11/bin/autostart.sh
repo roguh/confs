@@ -18,9 +18,6 @@ if $MINIMAL ; then
     AUTOSTART_PROGRAMS=false
 fi
 
-BACKGROUND_IMAGE="$HOME/Pictures/Jupiter_from_Voyager_1.jpg"
-BACKGROUND_COLOR='#fff6f4'
-
 eval $(/usr/bin/gnome-keyring-daemon --start --components=pkcs11,secrets,ssh)
 
 if [ -f "$HOME/.Xresources" ]; then
@@ -41,7 +38,7 @@ if xrandr | grep "HDMI2 connected" > /dev/null ; then
 fi
 
 # Start graphical system monitor
-conky.sh
+# conky.sh
 
 dunst.sh &
 
@@ -52,8 +49,7 @@ redshift.sh &
 xautolock -detectsleep -time 5 -notify 60 -notifier backlightoff.sh -locker locker.sh &
 
 # Set background
-(xsetroot -solid "$BACKGROUND_COLOR") &
-(feh --bg-max "$BACKGROUND_IMAGE") &
+background.sh
 
 # Ctrl-Alt-Backspace to kill X server
 (pause ; setxkbmap -option terminate:ctrl_alt_bksp) &
