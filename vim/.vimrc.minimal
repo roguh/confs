@@ -103,7 +103,12 @@ hi  CursorColumn cterm=reverse cterm=reverse gui=reverse
 " hi  CursorLine term=underline cterm=underline gui=underline
 
 " set terminal emulator window title
-autocmd BufEnter * let &titlestring = expand('%') . ' ' . system('trimdir.py', expand('%:p:h')) . ' ' . $USER . '@' . hostname()
+" filename, basename of git root or an extra space, shortened PWD, user@host
+autocmd BufEnter * let &titlestring = expand('%') . ' ' . 
+  \ system('basename $(git rev-parse --show-toplevel 2> /dev/null) ""') . ' ' . 
+  \ system('trimdir.py', expand('%:p:h')) . ' ' . 
+  \ $USER . '@' . hostname()
+  
 if &term == 'screen'
   set t_ts=^[k
   set t_fs=^[\
