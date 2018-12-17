@@ -13,6 +13,7 @@ set shell=/bin/bash
 " alternative 2: nnoremap <leader>cd :cd %:p:h<CR>:pwd<CR>
 " alternative 3: autocmd BufReadPost,BufWinEnter * silent! lcd %:p:h
 set autochdir
+autocmd BufReadPost,BufWinEnter * silent! lcd %:p:h
 
 " when searching, ignore case unless there's an uppercase letter in query
 set ignorecase
@@ -30,7 +31,7 @@ set mouse=nva
 " reload a file if it's changed by another process
 set autoread
 
-" don't run modeline commands when opening files 
+" don't run modeline commands when opening files
 " this would read code in any file and run it!
 set nomodeline
 
@@ -67,7 +68,7 @@ nnoremap <CR> :nohlsearch<CR><CR>
 " highlight column 79
 set colorcolumn=79
 
-" save backups 
+" save backups
 set backup
 
 " keep swap files and backup files in a home folder
@@ -99,10 +100,10 @@ let &guicursor = &guicursor . ',a:blinkon0'
 " set cursorline
 " hi  cursorline cterm=NONE gui=NONE term=NONE
 hi  CursorColumn cterm=reverse cterm=reverse gui=reverse
-" hi  CursorLine term=underline cterm=underline gui=underline 
+" hi  CursorLine term=underline cterm=underline gui=underline
 
 " set terminal emulator window title
-autocmd BufEnter * let &titlestring = expand('%') . ' ' . $USER . '@' . hostname() . ' ' . expand('%:p:h')
+autocmd BufEnter * let &titlestring = expand('%') . ' ' . system('trimdir.py', expand('%:p:h')) . ' ' . $USER . '@' . hostname()
 if &term == 'screen'
   set t_ts=^[k
   set t_fs=^[\
@@ -110,7 +111,7 @@ endif
 set title
 
 " indentation
-set tabstop=2 shiftwidth=2 tabstop=2 expandtab 
+set tabstop=2 shiftwidth=2 tabstop=2 expandtab
 
 filetype plugin indent on
 

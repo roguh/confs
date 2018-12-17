@@ -7,10 +7,12 @@ set nocompatible
 " call :PlugInstall to install and update
 call plug#begin()
 
-Plug 'wmvanvliet/jupyter-vim'
-
 " Theme
 Plug 'dylanaraps/wal.vim'
+
+" Support opening filename:line:column
+" vim, gF, :e[dit] /path/to/file:100:12
+Plug 'wsdjeg/vim-fetch'
 
 " Git gutter
 Plug 'airblade/vim-gitgutter'
@@ -105,7 +107,7 @@ Plug 'guersam/vim-j'
 Plug 'othree/html5.vim'
 Plug 'ap/vim-css-color'
 
-" JS, libraries 
+" JS, libraries
 Plug 'pangloss/vim-javascript', { 'for': [ 'javascript', 'javascript.jsx' ] }
 augroup javascript_folding
     au!
@@ -137,22 +139,41 @@ Plug 'jceb/vim-orgmode', { 'for': 'org' }
 " Plug 'jwiegley/org-mode', { 'for': 'org' }
 
 " syntax highlighting for COOL
-au BufNewFile,BufRead *.cool setf cool 
-au BufNewFile,BufRead *.cl setf cool 
+au BufNewFile,BufRead *.cool setf cool
+au BufNewFile,BufRead *.cl setf cool
 Plug 'vim-scripts/cool.vim', { 'for': 'cool' }
 
 " fuzzy file finding
 Plug 'junegunn/fzf.vim'
 
 " if using git, find files in project, not just cwd
-function! s:find_git_root()
+function! s:find_project_root()
   return system('git rev-parse --show-toplevel 2> /dev/null')[:-2]
 endfunction
 
-command! ProjectFiles execute 'Files' s:find_git_root()
+command! ProjectFiles execute 'Files' s:find_project_root()
 
 " use ctrl-p to find files
 map <C-p> :ProjectFiles<CR>
+
+" use ag or ack to search for text in files
+" use the :Ack command instead of :grep
+Plug 'mileszs/ack.vim'
+
+if executable('ag')
+  let g:ackprg = 'ag --vimgrep'
+endif
+
+" asynchronous grep results
+" default search tool is whatever is available first from ag, ack, grep, findstr, rg, pt, git
+" leave an empty query to search for word under the cursor
+Plug 'mhinz/vim-grepper'
+
+" search from project root
+" let g:grepper.repo = ['.project', '.git', '.SVN', 'node-packages.json']
+
+command! ProjectGrepper execute 'Grepper -dir repo'
+map <C-f> :ProjectGrepper<CR>
 
 " file browser
 Plug 'francoiscabrol/ranger.vim'
@@ -165,7 +186,7 @@ let g:ranger_map_keys = 0
 map <C-n> :Ranger<CR>
 
 " async linting. lints as you type
-Plug 'w0rp/ale'
+Plug 'w0rp/ale', { 'for': 'javascript' }
 
 " open window
 " let g:ale_open_list = 1
@@ -183,14 +204,14 @@ nmap <silent> <C-k> <Plug>(ale_previous_wrap)
 nmap <silent> <C-j> <Plug>(ale_next_wrap)
 
 " linters (syntax checkers, other code checkers)
-Plug 'scrooloose/syntastic'
+Plug 'scrooloose/syntastic', { 'for': ['html', 'python', 'rust', 'css', 'scss', 'typescript', 'cpp', 'c', 'ocaml', 'java'] }
 
 let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 0
 let g:syntastic_check_on_wq = 0
 " show warnings AND errors
-let g:syntastic_quiet_messages = {'level': 'none'} 
+let g:syntastic_quiet_messages = {'level': 'none'}
 
 let g:syntastic_rust_checkers = ['cargo']
 
@@ -244,7 +265,7 @@ if filereadable(expand('~/.vimrc.minimal'))
     so ~/.vimrc.minimal
 endif
 
-" switch to wal colorscheme if wal theme exists 
+" switch to wal colorscheme if wal theme exists
 " TODO make this neovim compatible
 " if filereadable(expand('~/.vim/plugged/wal.vim/colors/wal.vim'))
     execute 'silent colorscheme wal'
