@@ -4,17 +4,30 @@
 require('vis')
 require('plugins/filetype')
 require('plugins/textobject-lexer')
-require('local-plugins/vis-cursors/cursors')
-require('local-plugins/vis-modelines/vis-modelines')
+
+function file_exists(name)
+   local f=io.open(name,"r")
+   if f~=nil then io.close(f) return true else return false end
+end
+
+function require_if_exists(name)
+  if file_exists(name) then
+    require(name)
+  end
+end
+
+require_if_exists('local-plugins/vis-cursors/cursors')
+require_if_exists('local-plugins/vis-modelines/vis-modelines')
+
 -- require('local-plugins/vis-editorconfig/editorconfig')
 -- require('local-plugins/vis-whitespace-cleanup/whitespace')
-backup = require('local-plugins/vis-backup/backup')
+backup = require_if_exists('local-plugins/vis-backup/backup') or {}
 
 vis.events.subscribe(vis.events.INIT, function()
 	-- Global configuration options.
 
 	backup.time_format = "%H-%M-%S"
-	backup.directory = os.getenv("HOME") .. "/tmp/backup" 
+	backup.directory = os.getenv("HOME") .. "/tmp/backup"
 	backup.get_fname = backup.entire_path_with_timestamp
 	-- vis:command('set theme base16-unikitty-dark')
 	-- vis:command('set theme vistheme')
