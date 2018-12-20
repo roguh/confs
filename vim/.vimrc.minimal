@@ -104,7 +104,7 @@ hi  CursorColumn cterm=reverse cterm=reverse gui=reverse
 
 " set terminal emulator window title
 " filename, basename of git root or an extra space, shortened PWD, user@host
-autocmd BufEnter * let &titlestring = expand('%') . ' ' . 
+autocmd BufEnter * let &titlestring = 'v ' . expand('%') . ' ' . 
   \ system('basename $(git rev-parse --show-toplevel 2> /dev/null) ""') . ' ' . 
   \ system('trimdir.py', expand('%:p:h')) . ' ' . 
   \ $USER . '@' . hostname()

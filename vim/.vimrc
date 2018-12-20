@@ -10,6 +10,10 @@ call plug#begin()
 " Theme
 Plug 'dylanaraps/wal.vim'
 
+" Good statusline
+Plug 'vim-airline/vim-airline'
+let g:airline#extensions#ale#enabled = 1
+
 " Support opening filename:line:column
 " vim, gF, :e[dit] /path/to/file:100:12
 Plug 'wsdjeg/vim-fetch'
