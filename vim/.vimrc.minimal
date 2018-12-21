@@ -104,11 +104,11 @@ hi  CursorColumn cterm=reverse cterm=reverse gui=reverse
 
 " set terminal emulator window title
 " filename, basename of git root or an extra space, shortened PWD, user@host
-autocmd BufEnter * let &titlestring = 'v ' . expand('%') . ' ' . 
-  \ system('basename $(git rev-parse --show-toplevel 2> /dev/null) ""') . ' ' . 
-  \ system('trimdir.py', expand('%:p:h')) . ' ' . 
+autocmd BufEnter * let &titlestring = 'v ' . expand('%') . ' ' .
+  \ system('basename $(git rev-parse --show-toplevel 2> /dev/null) ""') . ' ' .
+  \ system('trimdir.py', expand('%:p:h')) . ' ' .
   \ $USER . '@' . hostname()
-  
+
 if &term == 'screen'
   set t_ts=^[k
   set t_fs=^[\
@@ -147,6 +147,16 @@ set wildignore+=*/tmp/*,*.so,*.swp,*.zip,*/node_modules/*
 
 " do not fold by default
 set nofoldenable
+
+" vim-ish tab navigation
+nnoremap th  :tabfirst<CR>
+nnoremap tk  :tabnext<CR>
+nnoremap tj  :tabprev<CR>
+nnoremap tl  :tablast<CR>
+nnoremap tt  :tabedit<Space>
+nnoremap tm  :tabm<Space>
+nnoremap td  :tabclose<CR>
+nnoremap tn :tabnew<CR>
 
 " load project-specific local vim settings at $PWD/.vim.{custom,local}
 if filereadable('.vim.custom')
