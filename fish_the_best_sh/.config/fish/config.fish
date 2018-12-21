@@ -38,7 +38,9 @@ load_theme
 
 function install_plugins
     # manage node and npm versions
-    fisher add jorgebucaran/fnm
+    # make sure to install nvm:
+    # git clone https://github.com/creationix/nvm ~/.nvm
+    fisher add FabioAntunes/fish-nvm
 
     # "frecency" aware directory switching z
     fisher add jethrokuan/z
