@@ -1,28 +1,28 @@
 {
-    "wallpaper": "/home/hugo/Pictures/Jupiter_from_Voyager_1.jpg",
+    "wallpaper": "None",
     "alpha": "100",
 
     "special": {
-        "background": "#17131c",
-        "foreground": "#c1c4c6",
-        "cursor": "#c1c4c6"
+        "background": "#ecf4ee",
+        "foreground": "#526057",
+        "cursor": "#526057"
     },
     "colors": {
-        "color0": "#17131c",
-        "color1": "#88745b",
-        "color2": "#769765",
-        "color3": "#9c886a",
-        "color4": "#ad9b84",
-        "color5": "#5e728e",
-        "color6": "#758ba3",
-        "color7": "#c1c4c6",
-        "color8": "#87898a",
-        "color9": "#88745b",
-        "color10": "#769765",
-        "color11": "#9c886a",
-        "color12": "#ad9b84",
-        "color13": "#5e728e",
-        "color14": "#758ba3",
-        "color15": "#c1c4c6"
+        "color0": "#ecf4ee",
+        "color1": "#b16139",
+        "color2": "#489963",
+        "color3": "#a07e3b",
+        "color4": "#478c90",
+        "color5": "#55859b",
+        "color6": "#1c9aa0",
+        "color7": "#526057",
+        "color8": "#78877d",
+        "color9": "#b16139",
+        "color10": "#489963",
+        "color11": "#a07e3b",
+        "color12": "#478c90",
+        "color13": "#55859b",
+        "color14": "#1c9aa0",
+        "color15": "#171c19"
     }
 }

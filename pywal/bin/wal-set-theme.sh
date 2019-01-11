@@ -3,8 +3,8 @@
 # THEME=base16-zenburn
 
 # light
-# THEME=base16-atelier-savanna
-# THEME= base16-github
+THEME=base16-atelier-savanna
+# THEME=base16-github
 
 # warm
 # THEME=tempus_autumn #good
@@ -33,8 +33,9 @@
 # THEME=sexy-jasonwryan
 # THEME=dkeg-prevail
 ## metallic
-THEME=base16-black-metal-burzum
+# THEME=base16-black-metal-burzum
 # THEME=dkeg-blumune
 # THEME=dkeg-owl #good
 # generate oomox theme, also run theme-post.sh
-wal -g --saturate 0.2 -o theme-post.sh -i ~/Pictures/Jupiter_from_Voyager_1.jpg # --theme ${THEME:-random}
+# wal -g --saturate 0.2 -o theme-post.sh -i ~/Pictures/Jupiter_from_Voyager_1.jpg
+wal -s -g -o theme-post.sh -l --theme ${THEME:-random}

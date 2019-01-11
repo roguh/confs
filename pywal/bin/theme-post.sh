@@ -6,3 +6,5 @@ launcher.sh &
 dunst.sh &
 polybar.sh &
 conky.sh &
+xrdb -merge $HOME/.Xresources &
+xrdb -merge $HOME/.cache/wal/colors.Xresources &
