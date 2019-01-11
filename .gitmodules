@@ -4,3 +4,6 @@
 [submodule "external/commacd"]
 	path = external/commacd
 	url = https://github.com/shyiko/commacd
+[submodule "external/nord-gnome-terminal"]
+	path = external/nord-gnome-terminal
+	url = https://github.com/arcticicestudio/nord-gnome-terminal

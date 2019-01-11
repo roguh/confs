@@ -8,7 +8,33 @@ set nocompatible
 call plug#begin()
 
 " Theme
-Plug 'dylanaraps/wal.vim'
+" Plug 'dylanaraps/wal.vim'
+" execute 'silent colorscheme wal'
+
+" Plug 'sonph/onehalf', { 'rtp': 'vim' }
+" execute 'silent colorscheme onehalfdark'
+" let g:airline_theme='onehalfdark'
+
+" Plug 'drewtempelmeyer/palenight.vim'
+" set background=dark
+" colorscheme palenight
+
+" Plug 'ayu-theme/ayu-vim'
+" colorscheme ayu
+
+Plug 'arcticicestudio/nord-vim'
+let g:nord_italic = 1
+let g:nord_underline = 1
+let g:nord_italic_comments = 1
+let g:nord_comment_brightness = 20
+let g:nord_cursor_line_number_background = 1
+augroup nord
+  autocmd!
+  autocmd ColorScheme nord highlight shDerefSimple ctermfg=6 guifg=#88C0D0
+  autocmd ColorScheme nord highlight shDerefVar ctermfg=6 guifg=#88C0D0
+  autocmd ColorScheme nord highlight shVariable ctermfg=6 guifg=#88C0D0
+augroup END
+autocmd VimEnter * execute 'silent colorscheme nord'
 
 " Good statusline
 Plug 'vim-airline/vim-airline'
@@ -20,6 +46,9 @@ Plug 'wsdjeg/vim-fetch'
 
 " Git gutter
 Plug 'airblade/vim-gitgutter'
+
+" THE BEST GIT PORCELAIN IN THE VIM WORLD
+Plug 'tpope/vim-fugitive'
 
 " Strip trailing whitespace on changed lines only
 " Use :WStrip to clean all trailing whitespace
@@ -34,7 +63,7 @@ Plug 'tweekmonster/wstrip.vim'
 "   'scrolloff': Always show at least one line above/below the cursor.
 "   'autoread': Autoload file changes. You can undo by pressing u.
 "   runtime! macros/matchit.vim: Load the version of matchit.vim that ships with Vim.
-Plug 'tpope/vim-sensible'
+" Plug 'tpope/vim-sensible'
 
 " Various language syntax definitions. Loads much faster than individual plugins.
 " Languages supported as of 09/2018:
@@ -52,7 +81,7 @@ Plug 'tpope/vim-sensible'
 " thrift, tmux, tomdoc, toml, twig, typescript, vala, vbnet, vcl, vifm, vm,
 " vue, xls, yaml, yard
 Plug 'sheerun/vim-polyglot'
-let g:jsx_ext_required = 1
+let g:jsx_ext_required = 0
 let g:polyglot_disabled = ['python', 'ocaml']
 
 " Deoplete code completion framework
@@ -190,7 +219,7 @@ let g:ranger_map_keys = 0
 map <C-n> :Ranger<CR>
 
 " async linting. lints as you type
-Plug 'w0rp/ale', { 'for': 'javascript' }
+Plug 'w0rp/ale', { 'for': ['javascript', 'python'] }
 
 " open window
 " let g:ale_open_list = 1
@@ -201,6 +230,7 @@ let g:ale_fix_on_save = 1
 let g:ale_fixers = {
 \   '*': ['remove_trailing_lines', 'trim_whitespace'],
 \   'javascript': ['eslint'],
+\   'python': ['autopep8'],
 \}
 
 " C-k and C-j to move between ALE errors
@@ -268,9 +298,3 @@ call plug#end()
 if filereadable(expand('~/.vimrc.minimal'))
     so ~/.vimrc.minimal
 endif
-
-" switch to wal colorscheme if wal theme exists
-" TODO make this neovim compatible
-" if filereadable(expand('~/.vim/plugged/wal.vim/colors/wal.vim'))
-    execute 'silent colorscheme wal'
-" endif
