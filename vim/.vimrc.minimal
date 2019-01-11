@@ -2,6 +2,14 @@
 " warning: keep this near the top of the config file
 set nocompatible
 
+if exists('+termguicolors')
+  let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
+  let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
+  set termguicolors
+endif
+
+set t_Co=256
+
 " use bash instead of $SHELL
 set shell=/bin/bash
 
@@ -24,9 +32,6 @@ set smartcase
 
 " spellcheck
 set spell spelllang=en_us
-
-" enable mouse control in neovim for normal mode, visual mode, and insert mode
-set mouse=nva
 
 " reload a file if it's changed by another process
 set autoread
@@ -96,18 +101,21 @@ set ruler		" show the cursor position all the time
 let &guicursor = &guicursor . ',a:blinkon0'
 
 " crosshairs
-" set cursorcolumn
-" set cursorline
-" hi  cursorline cterm=NONE gui=NONE term=NONE
-hi  CursorColumn cterm=reverse cterm=reverse gui=reverse
-" hi  CursorLine term=underline cterm=underline gui=underline
+set cursorcolumn
+set cursorline
+" hi  CursorColumn cterm=reverse cterm=reverse gui=reverse
+hi  CursorLine term=underline cterm=underline gui=underline
 
 " set terminal emulator window title
 " filename, basename of git root or an extra space, shortened PWD, user@host
-autocmd BufEnter * let &titlestring = 'v ' . expand('%') . ' ' .
+function SetTitleString()
+  let &titlestring = 'v ' . expand('%') . ' ' .
   \ system('basename $(git rev-parse --show-toplevel 2> /dev/null) ""') . ' ' .
   \ system('trimdir.py', expand('%:p:h')) . ' ' .
   \ $USER . '@' . hostname()
+endfunction
+
+autocmd BufEnter * exe "call SetTitleString()"
 
 if &term == 'screen'
   set t_ts=^[k
@@ -131,12 +139,6 @@ au BufNewFile,BufRead *.ml
 au BufNewFile,BufRead *.js
     \ set tabstop=2 softtabstop=2 shiftwidth=2 textwidth=80 expandtab autoindent fileformat=unix
 
-" Copy and paste with Ctrl-C and Ctrl-V
-vmap <C-c> "+yi
-vmap <C-x> "+c
-vmap <C-v> c<ESC>"+p
-imap <C-v> <C-r><C-o>+
-
 " nicer netrw (default file browser)
 let g:netrw_banner = 0
 let g:netrw_liststyle = 3
@@ -150,6 +152,7 @@ set nofoldenable
 
 " vim-ish tab navigation
 nnoremap th  :tabfirst<CR>
+
 nnoremap tk  :tabnext<CR>
 nnoremap tj  :tabprev<CR>
 nnoremap tl  :tablast<CR>
@@ -157,6 +160,40 @@ nnoremap tt  :tabedit<Space>
 nnoremap tm  :tabm<Space>
 nnoremap td  :tabclose<CR>
 nnoremap tn :tabnew<CR>
+
+" Tab navigation like Firefox.
+nnoremap <C-S-tab> :tabprevious<CR>
+nnoremap <C-tab>   :tabnext<CR>
+nnoremap <C-t>     :tabnew<CR>
+inoremap <C-S-tab> <Esc>:tabprevious<CR>i
+inoremap <C-tab>   <Esc>:tabnext<CR>i
+inoremap <C-t>     <Esc>:tabnew<CR>
+
+
+nnoremap <C-S-Tab> :tabprevious<CR>
+nnoremap <C-Tab>   :tabnext<CR>
+nnoremap <C-T>     :tabnew<CR>
+inoremap <C-S-Tab> <Esc>:tabprevious<CR>i
+inoremap <C-Tab>   <Esc>:tabnext<CR>i
+inoremap <C-T>     <Esc>:tabnew<CR>
+
+" Copy and paste with Ctrl-C and Ctrl-V
+vmap <C-c> "+yi
+vmap <C-x> "+c
+vmap <C-v> c<ESC>"+p
+imap <C-v> <C-r><C-o>+
+
+" enable mouse control in neovim for normal mode, visual mode, and insert mode
+set mouse=nva
+
+" backspace over everything
+set backspace=2
+
+" <Left> and <Right> wrap around line breaks
+set whichwrap+=<,>,[,]
+
+" gvim options
+:set guioptions-=T  "remove toolbar
 
 " load project-specific local vim settings at $PWD/.vim.{custom,local}
 if filereadable('.vim.custom')

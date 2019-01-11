@@ -34,7 +34,7 @@ load_file $HOME/.aliases
 load_file $HOME/.opam/opam-init/init.fish
 
 # Load pywal theme
-load_theme
+# load_theme
 
 function install_plugins
     # manage node and npm versions

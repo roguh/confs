@@ -64,7 +64,7 @@ modules-right = xbacklight alsa music date
 modules-center = nvidia system_load mem cpu_ghz temperature filesystem wlan wlan2 eth battery battery1 
 
 ; Bottom of screen
-bottom = true
+; bottom = true
 
 tray-position = right
 tray-padding = 1

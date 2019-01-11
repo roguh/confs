@@ -17,7 +17,7 @@ set __fish_git_prompt_char_upstream_behind "-"
 
 
 function fish_prompt
-    set last_status $status 
+    set last_status $status
 
     if [ (whoami) = "root" ]
         set end \#
@@ -25,39 +25,41 @@ function fish_prompt
         set end \$
     end
 
-    set st ""
-    if [ $last_status -ne 0 ]
-        set st "[$last_status]"
+    set status_message ""
+    if test ! $last_status -eq 0
+        set status_message " [ $last_status ]"
     end
 
     function clean
         set_color -b normal
         set_color normal
-        if [ "$argv[1]" = "no_space" ]
-            printf "%s" $argv[2]
-        else
-            printf " "
-        end
+    end
+
+    function clean_and_space
+      clean
+      printf " "
     end
 
     set_color --italics -b white
     set_color black
-    printf "%s" (whoami)@(hostname) 
+    printf "%s" (whoami)@(hostname)
 
-    clean
-
+    clean_and_space
     set_color --dim
-    printf "%s" (date +%H:%M:%S) 
+    printf "%s" (date +%H:%M:%S)
 
-    clean
-
+    clean_and_space
     set_color --bold
     printf "%s" (prompt_pwd)
 
-    clean no_space ""
-    printf "%s" (__fish_git_prompt)$st
+    clean
+    printf "%s" (__fish_git_prompt)
 
     clean
+    printf "%s" $status_message
+
+    clean_and_space
     printf "%s" $end
-    clean
+
+    clean_and_space
 end
