@@ -1,2 +1,3 @@
 #!/bin/sh
-exec gnome-terminal
+exec xterm
+
