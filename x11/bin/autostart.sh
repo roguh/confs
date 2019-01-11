@@ -84,9 +84,10 @@ if $AUTOSTART_PROGRAMS ; then
 
     (pause ;
         i3-msg "workspace 21:comm; append_layout .config/i3/workspace-comm.json" ;
-        (sleep 15; start evolution) &
         start firefox &
         start keybase-gui &
+        start syncthing-gtk &
+        (sleep 15; start evolution) &
     )
 fi
 

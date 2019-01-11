@@ -1,9 +1,11 @@
-set -U LC_ALL en_US.UTF-8
-set -U LANG en_US.UTF-8
+set -gx LC_ALL en_US.UTF-8
+set -gx LANG en_US.UTF-8
 
 function addpaths
-    contains -- $argv $fish_user_paths
-       or set -U fish_user_paths $fish_user_paths $argv
+  if test -d $argv[1]
+    contains -- $argv[1] $fish_user_paths
+       or set -U fish_user_paths $fish_user_paths $argv[1]
+  end
 end
 
 addpaths $HOME/bin
@@ -16,14 +18,14 @@ function load_file
     end
 end
 
-set -U EDITOR vim
-set -U VISUAL vim
+set -gx EDITOR vim
+set -gx VISUAL vim
 
 if type vimpager > /dev/null 2>&1
-    set -U PAGER vimpager
-    set -U pager vimpager
-    set -U MANPAGER vimpager
-    set -U SYSTEMD_PAGER vimpager
+    set -gx PAGER vimpager
+    set -gx pager vimpager
+    set -gx MANPAGER vimpager
+    set -gx SYSTEMD_PAGER vimpager
     alias less=vimpager
 end
 
@@ -59,7 +61,7 @@ if status is-interactive
     end
 
     if not functions -q fisher
-        set -q XDG_CONFIG_HOME; or set XDG_CONFIG_HOME ~/.config
+        set -qx XDG_CONFIG_HOME; or set XDG_CONFIG_HOME ~/.config
         curl https://git.io/fisher --create-dirs -sLo $XDG_CONFIG_HOME/fish/functions/fisher.fish
         fish -c fisher
     end

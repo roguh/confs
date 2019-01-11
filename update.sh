@@ -170,3 +170,5 @@ copy_confs_for conky bin/conky.sh .conkyrc.d/
 copy_confs_for kitty .config/kitty/kitty.conf
 
 copy_confs_for ranger .config/ranger/rc.conf
+
+copy_confs_for gocryptfs bin/gocryptfs_mount.sh bin/gocryptfs_umount.sh
