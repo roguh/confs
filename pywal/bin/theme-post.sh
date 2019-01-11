@@ -6,3 +6,4 @@ launcher.sh &
 dunst.sh &
 polybar.sh &
 conky.sh &
+xrdb -merge .Xresources &
