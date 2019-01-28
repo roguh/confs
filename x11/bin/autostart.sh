@@ -37,6 +37,10 @@ if xrandr | grep "HDMI2 connected" > /dev/null ; then
     ~/bin/xrandr-hdmi2-right-vertical
 fi
 
+if xrandr | grep "DP-1.3 connected" > /dev/null ; then
+    ~/bin/xrandr-edp13-right-vertical
+fi
+
 # Start graphical system monitor
 # conky.sh
 
