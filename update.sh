@@ -97,13 +97,6 @@ copy_confs_for vis \
   .config/vis/visrc.lua \
   .config/vis/prep.sh
 
-copy_confs_for ipython \
-  .ipython/profile_default/ipython_config.py
-
-copy_confs_for emacs.d \
-  .emacs.d/init.el \
-  .emacs.d/ui.el
-
 copy_confs_for zathura \
   .config/zathura/zathurarc
 
@@ -115,22 +108,11 @@ copy_confs_for polybar .config/polybar/config \
   .config/polybar/system-nvidia-smi.sh \
   bin/polybar.sh
 
-copy_confs_for i3 \
-  .i3status.conf .config/i3/config \
-  bin/locker.sh bin/terminal2.sh bin/terminal.sh bin/launcher.sh \
-  bin/backlightoff.sh \
-  bin/i3statustxt bin/i3status.py bin/i3txt.py
-
 copy_confs_for x11 \
   .xinitrc .xbindkeysrc bin/autostart.sh bin/signal.sh
 
-copy_confs_for dunst \
-  .config/dunst .config/dunst/dunstrc bin/dunst.sh
-
 copy_confs_for "{ba,z,tc,c}sh" \
   .bashrc .bashrc_ps1 .bash_profile .zshrc .cshrc .tryalias.sh .aliases bin/trimdir.py bin/gitinfo.sh
-
-copy_confs_for fish_the_best_sh .config/fish/{config,functions/{tryalias,load_theme,fish_title,fish_prompt,fisher}}.fish .aliases
 
 copy_confs_for git \
     .gitconfig bin/gitdiff.sh
@@ -138,39 +120,59 @@ copy_confs_for git \
 copy_confs_for utils \
     bin/cpufreq.sh bin/systemload.sh bin/mem.sh bin/screenshot.sh bin/screenshot-select.sh
 
+copy_confs_for alacritty .config/alacritty/alacritty.yml bin/alacritty-cwd.sh
+
 copy_confs_for cli \
   .tmux.conf \
   .config/lxterminal/lxterminal.conf \
   .config/terminator/config \
   .config/xfce4/terminal/terminalrc
 
+copy_confs_for compton .config/compton.conf
 
-copy_confs_for unison \
-  .unison/default.prf
+copy_confs_for conky bin/conky.sh .conkyrc.d/
 
-copy_confs_for osync .osync.conf
+copy_confs_for dunst \
+  .config/dunst .config/dunst/dunstrc bin/dunst.sh
+
+copy_confs_for emacs.d \
+  .emacs.d/init.el \
+  .emacs.d/ui.el
+
+copy_confs_for fish_the_best_sh .config/fish/{config,functions/{tryalias,load_theme,fish_title,fish_prompt,fisher}}.fish .aliases
+
+copy_confs_for fluxbox .fluxbox/menu .fluxbox/keys
+
+copy_confs_for gocryptfs bin/gocryptfs_mount.sh bin/gocryptfs_umount.sh
 
 copy_confs_for htop .config/htop/htoprc
 
+copy_confs_for i3 \
+  .i3status.conf .config/i3/config \
+  bin/locker.sh bin/terminal2.sh bin/terminal.sh bin/launcher.sh \
+  bin/backlightoff.sh \
+  bin/i3statustxt bin/i3status.py bin/i3txt.py
+
+copy_confs_for ipython \
+  .ipython/profile_default/ipython_config.py
+
+copy_confs_for kitty .config/kitty/kitty.conf
+
+copy_confs_for nvm .nvm/default-packages
+
+copy_confs_for org bin/open_howtos.sh bin/open_todays_org_journal.sh bin/todays_org_journal.sh
+
 copy_confs_for top .config/procps/toprc 
-
-copy_confs_for compton .config/compton.conf
-
-copy_confs_for alacritty .config/alacritty/alacritty.yml bin/alacritty-cwd.sh
-
-copy_confs_for fluxbox .fluxbox/menu .fluxbox/keys
 
 copy_confs_for readline .inputrc
 
 copy_confs_for pywal \
     bin/wal-set-theme.sh bin/theme-post.sh .cache/wal/{sequences,colors.*}
 
-copy_confs_for conky bin/conky.sh .conkyrc.d/
-
-copy_confs_for kitty .config/kitty/kitty.conf
-
 copy_confs_for ranger .config/ranger/rc.conf
 
-copy_confs_for gocryptfs bin/gocryptfs_mount.sh bin/gocryptfs_umount.sh
+copy_confs_for unison \
+  .unison/default.prf
 
-copy_confs_for nvm .nvm/default-packages
+copy_confs_for osync .osync.conf
+
