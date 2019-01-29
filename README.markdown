@@ -1,4 +1,4 @@
-# Hugo's Linux Configuration Files
+# Hugo's Configuration Files
 
 To copy configuration files:
 
