@@ -292,6 +292,16 @@ au filetype tex syntax region texZone start='\\begin{pyconcode}' end='\\end{pyco
 " Improved syntax highlighting for C, add syntax highlighting for Bison, and Flex
 Plug 'justinmk/vim-syntax-extra', { 'for': [ 'c', 'cpp', 'y', 'l' ] }
 
+Plug 'reedes/vim-pencil'
+set nocompatible
+filetype plugin on       " may already be in your .vimrc
+
+augroup pencil
+  autocmd!
+  autocmd FileType markdown,mkd call pencil#init()
+  autocmd FileType text         call pencil#init()
+augroup END
+
 call plug#end()
 
 " read the real vim config

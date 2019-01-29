@@ -87,6 +87,7 @@ if $AUTOSTART_PROGRAMS ; then
         start firefox &
         start keybase-gui &
         start syncthing-gtk &
+        start blueman-applet &
         (sleep 15; start evolution) &
     )
 fi

@@ -4,7 +4,14 @@
 ;;;
 ;;; Code:
 
-(use-package xresources-theme)
+
+(use-package ample-theme
+  :init (progn (load-theme 'ample t t)
+               (load-theme 'ample-flat t t)
+               (load-theme 'ample-light t t)
+               (enable-theme 'ample-flat))
+  :defer t
+  :ensure t)
 
 ;; Color for long lines.
 (setq warning-color "#f00")
@@ -92,19 +99,6 @@
 ;;   :config
 ;;   (set-face-background 'col-highlight col-highlight-color)
 ;;   (column-highlight-mode))
-
-;; Highlight columns 79 and 80.
-;; Test line: ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-(use-package column-marker
-  :config
-  (set-face-background 'column-marker-1 warning-color)
-  (set-face-background 'column-marker-2 warning-color)
-  (let ((setup-column-marker
-	(lambda () (interactive)
-		(column-marker-1 79)
-		(column-marker-2 80))))
-  (add-hook 'LaTeX-mode-hook setup-column-marker)
-  (add-hook 'prog-mode-hook setup-column-marker)))
 
 ;; Mark lines using output from git diff.
 (use-package git-gutter
