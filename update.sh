@@ -162,6 +162,8 @@ copy_confs_for nvm .nvm/default-packages
 
 copy_confs_for work bin/open_work_howtos.sh bin/open_todays_work_journal.sh bin/todays_work_journal.sh
 
+copy_confs_for org bin/open_todays_org_journal.sh bin/todays_org_journal.sh
+
 copy_confs_for top .config/procps/toprc 
 
 copy_confs_for readline .inputrc
