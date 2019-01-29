@@ -10,5 +10,5 @@ name=$(basename $dir)
 mountpoint="$PREFIX_DEST/$name"
 echo $dir
 echo $mountpoint
-mkdir $mountpoint
+mkdir -p $mountpoint
 gocryptfs $dir $mountpoint
