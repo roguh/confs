@@ -108,7 +108,7 @@ hi  CursorLine term=underline cterm=underline gui=underline
 
 " set terminal emulator window title
 " filename, basename of git root or an extra space, shortened PWD, user@host
-function SetTitleString()
+function! SetTitleString()
   let &titlestring = '🇻 ' . expand('%') . ' ' .
   \ system('basename $(git rev-parse --show-toplevel 2> /dev/null) ""') . ' ' .
   \ system('trimdir.py', expand('%:p:h')) . ' ' .

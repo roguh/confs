@@ -78,14 +78,14 @@ copy_confs_for() {
 
     if [ "$MODE" == backup ] ; then
         log rsync $RSYNC_BAK "$DST/$SECTION" "$BACKUP_B_DIR"
-        rsync $RSYNC_BAK "$DST/$SECTION" "$BACKUP_B_DIR"
+        rsync $RSYNC_BAK "$DST/$SECTION" "$BACKUP_B_DIR" || true
         log rsync $RSYNC_BACKUP $FILES "$DST/$SECTION"
-        rsync $RSYNC_BACKUP $FILES "$DST/$SECTION"
+        rsync $RSYNC_BACKUP $FILES "$DST/$SECTION" || true
     else
         log rsync $RSYNC_BAK --relative --ignore-missing-args $FILES "$BACKUP_R_DIR/$SECTION"
-        rsync $RSYNC_BAK --relative --ignore-missing-args $FILES "$BACKUP_R_DIR/$SECTION"
+        rsync $RSYNC_BAK --relative --ignore-missing-args $FILES "$BACKUP_R_DIR/$SECTION" || true
         log rsync $RSYNC_RESTORE "$SRC/$SECTION/./" $DST 
-        rsync $RSYNC_RESTORE "$SRC/$SECTION/./" $DST 
+        rsync $RSYNC_RESTORE "$SRC/$SECTION/./" $DST || true
     fi
 }
 
@@ -160,7 +160,7 @@ copy_confs_for kitty .config/kitty/kitty.conf
 
 copy_confs_for nvm .nvm/default-packages
 
-copy_confs_for work bin/open_work_howtos.sh bin/open_todays_work_journal.sh bin/todays_work_journal.sh
+copy_confs_for work bin/open_work_howtos.sh bin/open_todays_work_journal.sh bin/todays_work_journal.sh bin/borg-backup-work.sh
 
 copy_confs_for org bin/open_todays_org_journal.sh bin/todays_org_journal.sh
 
@@ -177,4 +177,3 @@ copy_confs_for unison \
   .unison/default.prf
 
 copy_confs_for osync .osync.conf
-

@@ -98,6 +98,12 @@ let g:deoplete#enable_at_startup = 1
 let g:deoplete#complete_method = "complete" " merlin compat?
 let g:deoplete#auto_complete_delay = 0
 
+Plug 'carlitux/deoplete-ternjs', { 'do': 'echo run npm install -g tern' }
+
+" Use tern_for_vim.
+let g:tern#command = ["tern"]
+let g:tern#arguments = ["--persistent"]
+
 " USE TAB!!!!!!
 inoremap <expr><tab> pumvisible() ? "\<c-n>" : "\<tab>"
 
@@ -194,7 +200,7 @@ map <C-p> :ProjectFiles<CR>
 Plug 'mileszs/ack.vim'
 
 if executable('ag')
-  let g:ackprg = 'ag --vimgrep'
+  let g:ackprg = 'ag --vimgrep --ignore dist/'
 endif
 
 " asynchronous grep results

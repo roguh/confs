@@ -11,6 +11,7 @@ end
 addpaths $HOME/bin
 addpaths $HOME/.local/bin
 addpaths $HOME/.gem/ruby/2.5.0/bin
+addpaths $HOME/.gem/ruby/2.6.0/bin
 
 function load_file
     if test -e $argv[1]
