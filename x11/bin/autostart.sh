@@ -30,7 +30,7 @@ export SSH_AUTH_SOCK
 xbindkeys &
 
 # Backup config files
-backup-t580.sh &
+backup-$(hostname).sh &
 backup-common.sh &
 
 if xrandr | grep "HDMI2 connected" > /dev/null ; then

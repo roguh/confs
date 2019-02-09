@@ -2,6 +2,9 @@
 " warning: keep this near the top of the config file
 set nocompatible
 
+" autowrite in all situations, except quiting
+set autowrite
+
 if exists('+termguicolors')
   let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
   let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
@@ -32,6 +35,9 @@ set smartcase
 
 " spellcheck
 set spell spelllang=en_us
+
+" C-x C-k to show dictionary words
+set complete+=kspell
 
 " reload a file if it's changed by another process
 set autoread
@@ -192,8 +198,15 @@ set backspace=2
 " <Left> and <Right> wrap around line breaks
 set whichwrap+=<,>,[,]
 
+" keep cursor in center of screen, except when near start or end of file
+set scrolloff=999
+
+set wrapmargin=0
+
+set textwidth=0
+
 " gvim options
-:set guioptions-=T  "remove toolbar
+set guioptions-=T  "remove toolbar
 
 " load project-specific local vim settings at $PWD/.vim.{custom,local}
 if filereadable('.vim.custom')
