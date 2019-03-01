@@ -15,27 +15,25 @@ call plug#begin()
 " execute 'silent colorscheme onehalfdark'
 " let g:airline_theme='onehalfdark'
 
-" Plug 'drewtempelmeyer/palenight.vim'
-" set background=dark
-" colorscheme palenight
+Plug 'drewtempelmeyer/palenight.vim'
 
 " Plug 'ayu-theme/ayu-vim'
 " colorscheme ayu
 
-Plug 'arcticicestudio/nord-vim'
-let g:nord_italic = 1
-let g:nord_underline = 1
-let g:nord_italic_comments = 1
-let g:nord_comment_brightness = 20
-let g:nord_cursor_line_number_background = 1
-augroup nord
-  autocmd!
-  autocmd ColorScheme nord highlight shDerefSimple ctermfg=6 guifg=#88C0D0
-  autocmd ColorScheme nord highlight shDerefVar ctermfg=6 guifg=#88C0D0
-  autocmd ColorScheme nord highlight shVariable ctermfg=6 guifg=#88C0D0
-augroup END
-autocmd VimEnter * execute 'silent colorscheme nord'
-
+" Plug 'arcticicestudio/nord-vim'
+" let g:nord_italic = 1
+" let g:nord_underline = 1
+" let g:nord_italic_comments = 1
+" let g:nord_comment_brightness = 20
+" let g:nord_cursor_line_number_background = 1
+" augroup nord
+"   autocmd!
+"   autocmd ColorScheme nord highlight shDerefSimple ctermfg=6 guifg=#88C0D0
+"   autocmd ColorScheme nord highlight shDerefVar ctermfg=6 guifg=#88C0D0
+"   autocmd ColorScheme nord highlight shVariable ctermfg=6 guifg=#88C0D0
+" augroup END
+" autocmd VimEnter * execute 'silent colorscheme nord'
+" 
 " https://github.com/beloglazov/vim-online-thesaurus
 " https://github.com/tpope/vim-abolish
 
@@ -301,6 +299,9 @@ au filetype tex syntax region texZone start='\\begin{pyconcode}' end='\\end{pyco
 " Improved syntax highlighting for C, add syntax highlighting for Bison, and Flex
 Plug 'justinmk/vim-syntax-extra', { 'for': [ 'c', 'cpp', 'y', 'l' ] }
 call plug#end()
+
+set background=dark
+colorscheme palenight
 
 " read the real vim config
 if filereadable(expand('~/.vimrc.minimal'))

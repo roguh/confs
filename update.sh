@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-# Exit on error, undeclared variable reference, and set pipeline exit code 
+# Exit on error, undeclared variable reference, and set pipeline exit code
 # to that of failing command.
 set -eu
 
@@ -26,7 +26,7 @@ if [ "$MODE" == backup ] ; then
     DST=$CONF_DIR
     echo "Backups are located in $BACKUP_B_DIR"
 
-else 
+else
     SRC=$CONF_DIR
     DST=$2
     echo "Backups are located in $BACKUP_R_DIR"
@@ -51,7 +51,7 @@ log() {
     fi
 }
 
-# USAGE: copy_confs_for section_name [file1 [file2 ...]] 
+# USAGE: copy_confs_for section_name [file1 [file2 ...]]
 #
 # Either copy all files from section_name/ to the destination
 # or copy all files to section_name/, while preserving directory structure.
@@ -59,6 +59,11 @@ log() {
 copy_confs_for() {
     SECTION=$1
     shift
+
+    if [[ ! -d "$SECTION" ]]; then
+      return
+    fi
+
     printf "\n--------- $SECTION ---------\n"
     echo "$@"
     mkdir -p "$CONF_DIR/$SECTION"
@@ -84,7 +89,7 @@ copy_confs_for() {
     else
         log rsync $RSYNC_BAK --relative --ignore-missing-args $FILES "$BACKUP_R_DIR/$SECTION"
         rsync $RSYNC_BAK --relative --ignore-missing-args $FILES "$BACKUP_R_DIR/$SECTION" || true
-        log rsync $RSYNC_RESTORE "$SRC/$SECTION/./" $DST 
+        log rsync $RSYNC_RESTORE "$SRC/$SECTION/./" $DST
         rsync $RSYNC_RESTORE "$SRC/$SECTION/./" $DST || true
     fi
 }
@@ -132,12 +137,9 @@ copy_confs_for compton .config/compton.conf
 
 copy_confs_for conky bin/conky.sh .conkyrc.d/
 
-copy_confs_for dunst \
-  .config/dunst .config/dunst/dunstrc bin/dunst.sh
+copy_confs_for dunst .config/dunst .config/dunst/dunstrc bin/dunst.sh
 
-copy_confs_for emacs.d \
-  .emacs.d/init.el \
-  .emacs.d/ui.el
+copy_confs_for emacs.d .emacs.d/init.el .emacs.d/ui.el
 
 copy_confs_for fish_the_best_sh .config/fish/{config,functions/{tryalias,load_theme,fish_title,fish_prompt,fisher}}.fish .aliases
 
@@ -148,13 +150,17 @@ copy_confs_for gocryptfs bin/gocryptfs_mount.sh bin/gocryptfs_umount.sh
 copy_confs_for htop .config/htop/htoprc
 
 copy_confs_for i3 \
-  .i3status.conf .config/i3/config \
-  bin/locker.sh bin/terminal2.sh bin/terminal.sh bin/launcher.sh \
+  .i3status.conf \
+  .i3/config \
+  bin/locker.sh \
+  bin/terminal2.sh \
+  bin/terminal.sh \
+  bin/launcher.sh \
   bin/backlightoff.sh \
-  bin/i3statustxt bin/i3status.py bin/i3txt.py
+  bin/i3empty.py \
+  bin/i3txt.py
 
-copy_confs_for ipython \
-  .ipython/profile_default/ipython_config.py
+copy_confs_for ipython .ipython/profile_default/ipython_config.py
 
 copy_confs_for kitty .config/kitty/kitty.conf
 
@@ -164,16 +170,14 @@ copy_confs_for work bin/open_work_howtos.sh bin/open_todays_work_journal.sh bin/
 
 copy_confs_for org bin/open_todays_org_journal.sh bin/todays_org_journal.sh
 
-copy_confs_for top .config/procps/toprc 
+copy_confs_for top .config/procps/toprc
 
 copy_confs_for readline .inputrc
 
-copy_confs_for pywal \
-    bin/wal-set-theme.sh bin/theme-post.sh .cache/wal/{sequences,colors.*}
+copy_confs_for pywal bin/wal-set-theme.sh bin/theme-post.sh .cache/wal/{sequences,colors.*}
 
 copy_confs_for ranger .config/ranger/rc.conf
 
-copy_confs_for unison \
-  .unison/default.prf
+copy_confs_for unison .unison/default.prf
 
 copy_confs_for osync .osync.conf

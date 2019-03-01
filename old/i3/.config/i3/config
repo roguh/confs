@@ -1,6 +1,5 @@
-# http://i3wm.org/docs/userguide.html
-
-
+# i3 config file (v4)
+# Please see http://i3wm.org/docs/userguide.html for a complete reference!
 
 # Control
 # set $mod Control
@@ -11,11 +10,15 @@
 # Super key
 set $mod Mod4
 
+# Hide borders
+hide_edge_borders none
+
 # Window title font
-font pango: Ubuntu Mono 12
+# font pango: Ubuntu Mono 12
 # font pango:monospace 11 
 # font pango:DejaVu Sans Mono 10
 # font pango: Source Code Pro 10 
+font xft:URWGothic-Book 11
 
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
@@ -140,19 +143,13 @@ bindsym $mod+Shift+Mod1+Right move container to workspace next; workspace next
 bindsym Ctrl+Shift+Mod1+Left move container to workspace prev; workspace prev
 bindsym Ctrl+Shift+Mod1+Right move container to workspace next; workspace next
 
-# Rename current workspace
+# rename current workspace
 bindsym $mod+u exec i3-input -F 'rename workspace to "%s"' -P 'New name: '
 
-# Exit session
+# exit session
 bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
 
-# Resize bindings
-bindsym $mod+r mode "resize"
-
-# TODO SCREEN DEPENDENT
-floating_maximum_size 1860 x 1000
-
-# Quickly shrink a window
+# shrink a window
 set $quicksize t
 bindsym $mod+$quicksize resize set 35 ppt 0 ppt
 bindsym $mod+Shift+$quicksize resize set 65 ppt 0 ppt
@@ -160,6 +157,9 @@ bindsym $mod+Shift+$quicksize resize set 65 ppt 0 ppt
 set $tinysize k
 bindsym $mod+$tinysize resize set 25 ppt 25 ppt
 bindsym $mod+Shift+$tinysize resize set 35 ppt 35 ppt
+
+# resize
+bindsym $mod+r mode "resize"
 
 mode "resize" {
         # These bindings trigger as soon as you enter the resize mode
@@ -177,25 +177,37 @@ mode "resize" {
         bindsym Escape mode "default"
 }
 
-exec_always --no-startup-id ~/bin/polybar.sh &
+# Set shut down, restart and locking features
+bindsym $mod+0 mode "$mode_system"
+set $mode_system (l)ock, (e)xit, switch_(u)ser, (s)uspend, (h)ibernate, (r)eboot, (Shift+s)hutdown
+mode "$mode_system" {
+    bindsym l exec --no-startup-id i3exit lock, mode "default"
+    bindsym s exec --no-startup-id i3exit suspend, mode "default"
+    bindsym u exec --no-startup-id i3exit switch_user, mode "default"
+    bindsym e exec --no-startup-id i3exit logout, mode "default"
+    bindsym h exec --no-startup-id i3exit hibernate, mode "default"
+    bindsym r exec --no-startup-id i3exit reboot, mode "default"
+    bindsym Shift+s exec --no-startup-id i3exit shutdown, mode "default"
 
-# Window border
+    # exit system mode: "Enter" or "Escape"
+    bindsym Return mode "default"
+    bindsym Escape mode "default"
+}
+
+# switch to workspace with urgent window automatically
+for_window [urgent=latest] focus
+
+# window border
 new_window normal 1
 
-# Colors
-# 1271A1 is slightly darker Arch blue
-# class                 border  backgr. text    indicator
-# client.unfocused        #deebf7 #deebf7 #1271A1 #2e9ef4
-# client.focused_inactive #9ecae1 #9ecae1 #202020 #484e50
-# client.focused          #3182bd #3182bd #E5E7E7 #484e50
-# 
-# client.urgent           #2f343a #900000 #ffffff #900000
-
-# Program launcher
+# program launcher
 bindsym $mod+d exec launcher.sh
 bindsym $mod+Tab exec launcher.sh window
 
-# Start a terminal or browser
+# categorized menu
+bindsym $mod+z exec --no-startup-id morc_menu
+
+# start a terminal or browser
 set $terminal terminal.sh 
 set $terminal2 terminal2.sh 
 set $browser firefox 
@@ -203,7 +215,7 @@ set $browser2 torbrowser.sh
 
 bindsym $mod+Return exec $terminal
 bindsym $mod+x exec $terminal
-bindsym $mod+z exec $terminal2
+bindsym $mod+Shift+x exec $terminal2
 bindsym F8 exec $terminal
 bindsym $mod+c exec $browser2
 bindsym $mod+n exec $browser
@@ -212,54 +224,110 @@ bindsym $mod+l exec locker.sh
 bindsym $mod+Shift+l exec backlightoff.sh
 
 #### i3 gaps
-# for_window [class="^.*"] border pixel 0
-# smart_gaps on
-# gaps inner 5
-# gaps outer 5
-# gaps outer current plus 5
+for_window [class="^.*"] border pixel 0
+smart_gaps on
+gaps inner 5
+gaps outer 5
+gaps outer current plus 5
 
-# Hide title for extremely common windows
+# hide title for extremely common windows
 for_window [title="LXTerminal|Firefox|Chromium|Chrome$"] border pixel 1
 # for_window [title="Firefox|Chromium|Chrome$"] border pixel 0
 
-# Popups should float
+# popups should float
 for_window [window_role="pop-up"] floating enable
 
 for_window [class="Tor Browser"] floating enable
 
-# Reload the configuration file
-# bindsym $mod+Shift+c reload
+# reload the configuration file
 bindsym $mod+Shift+c exec "i3-msg reload"
-#
-# Restart i3
+
+# restart i3
 bindsym $mod+Shift+r restart
 
+# Autostart applications
+exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
+exec --no-startup-id nitrogen --restore; sleep 1; compton -b
+exec --no-startup-id nm-applet
+exec --no-startup-id xfce4-power-manager
+exec --no-startup-id pamac-tray
+exec --no-startup-id clipit
+exec --no-startup-id blueman-applet
+exec --no-startup-id start_conky_maia
+exec --no-startup-id xautolock -time 10 -locker blurlock
+exec_always --no-startup-id ff-theme-util
+exec_always --no-startup-id fix_xcursor
 
-# Either use grayscale colors or base16 colors from Xresources
-set_from_resource $base00 i3wm.color0 #101010
-set_from_resource $base01 i3wm.color1 #252525
-set_from_resource $base02 i3wm.color2 #464646
-set_from_resource $base03 i3wm.color3 #525252
-set_from_resource $base04 i3wm.color4 #ababab
-set_from_resource $base05 i3wm.color5 #b9b9b9
-set_from_resource $base06 i3wm.color6 #e3e3e3
-set_from_resource $base07 i3wm.color7 #f7f7f7
-set_from_resource $base08 i3wm.color8 #7c7c7c
-set_from_resource $base09 i3wm.color9 #999999
-set_from_resource $base0A i3wm.color10 #a0a0a0
-set_from_resource $base0B i3wm.color11 #8e8e8e
-set_from_resource $base0C i3wm.color12 #868686
-set_from_resource $base0D i3wm.color13 #686868
-set_from_resource $base0E i3wm.color14 #747474
-set_from_resource $base0F i3wm.color15 #5e5e5e
+# Color palette used for the terminal ( ~/.Xresources file )
+# Colors are gathered based on the documentation:
+# https://i3wm.org/docs/userguide.html#xresources
+# Change the variable name at the place you want to match the color
+# of your terminal like this:
+# [example]
+# If you want your bar to have the same background color as your 
+# terminal background change the line 362 from:
+# background #14191D
+# to:
+# background $term_background
+# Same logic applied to everything else.
+set_from_resource $term_background background
+set_from_resource $term_foreground foreground
+set_from_resource $term_color0     color0
+set_from_resource $term_color1     color1
+set_from_resource $term_color2     color2
+set_from_resource $term_color3     color3
+set_from_resource $term_color4     color4
+set_from_resource $term_color5     color5
+set_from_resource $term_color6     color6
+set_from_resource $term_color7     color7
+set_from_resource $term_color8     color8
+set_from_resource $term_color9     color9
+set_from_resource $term_color10    color10
+set_from_resource $term_color11    color11
+set_from_resource $term_color12    color12
+set_from_resource $term_color13    color13
+set_from_resource $term_color14    color14
+set_from_resource $term_color15    color15
 
-# Basic color configuration using the Base16 variables for windows and borders.
-# Property Name         Border  BG      Text    Indicator Child Border
-client.focused          $base05 $base0D $base00 $base0D $base0D
-client.focused_inactive $base01 $base01 $base12 $base03 $base01
-client.unfocused        $base01 $base00 $base05 $base01 $base01
-client.urgent           $base08 $base08 $base00 $base08 $base08
-client.placeholder      $base00 $base00 $base05 $base00 $base00
-client.background       $base07
+# Start i3bar to display a workspace bar (plus the system information i3status if available)
+bar {
+	i3bar_command i3bar
+	status_command i3status
+	position bottom
 
-exec --no-startup-id autostart.sh
+## please set your primary output first. Example: 'xrandr --output eDP1 --primary'
+#	tray_output primary
+#	tray_output eDP1
+
+	bindsym button4 nop
+	bindsym button5 nop
+#   font xft:URWGothic-Book 11
+	strip_workspace_numbers yes
+
+    colors {
+        background #222D31
+        statusline #F9FAF9
+        separator  #454947
+
+#                      border  backgr. text
+        focused_workspace  #F9FAF9 #16a085 #292F34
+        active_workspace   #595B5B #353836 #FDF6E3
+        inactive_workspace #595B5B #222D31 #EEE8D5
+        binding_mode       #16a085 #2C2C2C #F9FAF9
+        urgent_workspace   #16a085 #FDF6E3 #E5201D
+    }
+}
+
+# hide/unhide i3status bar
+bindsym $mod+m bar mode toggle
+
+# Theme colors
+# class                   border  backgr. text    indic.   child_border
+  client.focused          #556064 #556064 #80FFF9 #FDF6E3
+  client.focused_inactive #2F3D44 #2F3D44 #1ABC9C #454948
+  client.unfocused        #2F3D44 #2F3D44 #1ABC9C #454948
+  client.urgent           #CB4B16 #FDF6E3 #1ABC9C #268BD2
+  client.placeholder      #000000 #0c0c0c #ffffff #000000 
+
+  client.background       #2B2C2B
+
