@@ -198,8 +198,8 @@ for_window [urgent=latest] focus
 new_window normal 1
 
 # program launcher
-bindsym $mod+d exec launcher.sh
-bindsym $mod+Tab exec launcher.sh window
+bindsym $mod+d exec --no-startup-id launcher.sh
+bindsym $mod+Tab exec --no-startup-id launcher.sh window
 
 # categorized menu
 bindsym $mod+z exec --no-startup-id morc_menu
@@ -210,17 +210,17 @@ set $terminal2 terminal2.sh
 set $browser firefox
 set $browser2 torbrowser.sh
 
-bindsym Mod1+Return exec i3-sensible-terminal
+bindsym Mod1+Return exec --no-startup-id i3-sensible-terminal
 
-bindsym $mod+Return exec $terminal
-bindsym $mod+x exec $terminal
-bindsym $mod+Shift+x exec $terminal2
-bindsym F8 exec $terminal
-bindsym $mod+c exec $browser2
-bindsym $mod+n exec $browser
+bindsym $mod+Return exec --no-startup-id $terminal
+bindsym $mod+x exec --no-startup-id $terminal
+bindsym $mod+Shift+x exec --no-startup-id $terminal2
+bindsym F8 exec --no-startup-id $terminal
+bindsym $mod+c exec --no-startup-id $browser2
+bindsym $mod+n exec --no-startup-id $browser
 
-bindsym $mod+l exec locker.sh
-bindsym $mod+Shift+l exec backlightoff.sh
+bindsym $mod+l exec --no-startup-id locker.sh
+bindsym $mod+Shift+l exec --no-startup-id backlightoff.sh
 
 #### i3 gaps
 for_window [class="^.*"] border pixel 0
@@ -252,9 +252,10 @@ exec --no-startup-id xfce4-power-manager
 exec --no-startup-id pamac-tray
 exec --no-startup-id clipit
 exec --no-startup-id blueman-applet
-exec --no-startup-id start_conky_maia
+exec --no-startup-id conky.sh
 exec --no-startup-id xautolock -time 10 -locker locker.sh
 exec --no-startup-id evolution
+exec --no-startup-id dropboxd
 exec_always --no-startup-id ff-theme-util
 exec_always --no-startup-id fix_xcursor
 

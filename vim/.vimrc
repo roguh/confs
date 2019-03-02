@@ -82,8 +82,11 @@ Plug 'tweekmonster/wstrip.vim'
 " thrift, tmux, tomdoc, toml, twig, typescript, vala, vbnet, vcl, vifm, vm,
 " vue, xls, yaml, yard
 Plug 'sheerun/vim-polyglot'
+let g:polyglot_disabled = ['python', 'ocaml', 'org']
+
 let g:jsx_ext_required = 0
-let g:polyglot_disabled = ['python', 'ocaml']
+
+Plug 'tpope/vim-speeddating'
 
 " Deoplete code completion framework
 " https://github.com/Shougo/deoplete.nvim/wiki/Completion-Sources
@@ -175,7 +178,7 @@ Plug 'vim-pandoc/vim-pandoc-syntax'
 " Plug 'lepture/vim-jinja'
 
 " org mode
-Plug 'jceb/vim-orgmode', { 'for': 'org' }
+" Plug 'jceb/vim-orgmode', { 'for': 'org' }
 " Plug 'jwiegley/org-mode', { 'for': 'org' }
 
 " syntax highlighting for COOL
