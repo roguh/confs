@@ -19,6 +19,7 @@ function load_file
     end
 end
 
+set -gx ESHELL /bin/bash
 set -gx EDITOR vim
 set -gx VISUAL vim
 
@@ -60,7 +61,7 @@ set -gx MANPATH $MANPATH /usr/share/man /usr/local/share/man/
 
 if status is-interactive
     if type keychain > /dev/null 2>&1
-        keychain --eval --quick --quiet id_ed25519 | source
+        keychain --eval --quick --quiet id_ed25519 | source > /dev/null
     end
 
     if not functions -q fisher
