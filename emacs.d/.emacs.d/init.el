@@ -38,20 +38,23 @@
  )))
 
 
-
-(use-package benchmark-init
-  :ensure t
-  :config (add-hook 'after-init-hook 'benchmark-init/deactivate))
+;; Measure startup time
+;; (use-package benchmark-init
+;;   :ensure t
+;;   :config (add-hook 'after-init-hook 'benchmark-init/deactivate))
 
 ;; Syntax checker for ~40 languages.
 ;; pip install --user proselint
 (use-package flycheck
-  :defer 1
   :config
   (global-flycheck-mode)
   (setq flycheck-indication-mode 'left-fringe)
+
+  ;; Navigate errors using Ctrl-J and Ctrl-K
   (global-set-key (kbd "C-j") 'flycheck-next-error)
   (global-set-key (kbd "C-k") 'flycheck-previous-error)
+
+  ;; Window size
   (add-to-list 'display-buffer-alist
              `(,(rx bos "*Flycheck errors*" eos)
               (display-buffer-reuse-window
@@ -59,6 +62,7 @@
               (side            . bottom)
               (window-height   . 0.25))))
 
+;; Show flycheck errors/warnings inline
 (use-package flycheck-inline
   :config
   (with-eval-after-load 'flycheck
@@ -66,7 +70,6 @@
 
 ;; Clean up whitespace.
 (use-package whitespace-cleanup-mode)
-
 
 ;; Markdown
 (use-package markdown-mode
@@ -118,6 +121,29 @@
   (global-set-key (kbd "M-x") 'smex)
   (global-set-key (kbd "M-X") 'smex-major-mode-commands))
 
+;; Python helper
+;; pip install --user autopep8 yapf flake8 jedi black rope elpy
+(use-package elpy
+  :ensure t
+  :defer t
+  :init (advice-add 'python-mode :before 'elpy-enable)
+  :config
+  ;; Format Python code before saving
+  (add-hook 'before-save-hook 'elpy-format-code))
+
+;; Sort imports in Python buffers
+;; pip install --user isort
+(use-package py-isort
+  :defer t
+  ;; Sort on save
+  :config (add-hook 'before-save-hook 'py-isort-buffer))
+
+;; Wrapping and syntax highlighting for docstrings in both reStructuredText
+;; and Epydoc formats
+(use-package python-docstring
+  :defer 1
+  :config (python-docstring-mode))
+
 ;; Coffeescript mode.
 (use-package coffee-mode
   :mode "\\.coffee\\'"
@@ -130,12 +156,10 @@
 ;; Improved Haskell mode.
 (use-package intero
   :defer 1
-  :mode "\\.l?hs\\'"
   :no-require t)
 
 ;; Markdown mode.
 (use-package markdown-mode
-  :defer 1
   :config
   (autoload 'markdown-mode "markdown-mode"
     "Major mode for editing Markdown files" t)
@@ -143,12 +167,12 @@
   (add-to-list 'auto-mode-alist '("\\.markdown\\'" . markdown-mode))
   (add-to-list 'auto-mode-alist '("\\.md\\'" . markdown-mode)))
 
+;; Cleans trailing whitespace if it was clean when the buffer was opened
 (use-package whitespace-cleanup-mode
   :defer 1
   :config (global-whitespace-cleanup-mode))
 
-;; Git.
-;; Adds 0.5 seconds to load time.
+;; Git porcelain
 (use-package magit
   :defer 1
   :no-require t)
@@ -184,7 +208,61 @@
 (use-package all-the-icons
   :defer 1)
 
-;; Paste from system clipboard with Ctrl-Shift-C
+;; For editing JS and HTML
+(use-package web-mode
+  :ensure t
+  :init
+  (add-to-list 'auto-mode-alist '("\\.phtml\\'" . web-mode))
+  (add-to-list 'auto-mode-alist '("\\.tpl\\.php\\'" . web-mode))
+  (add-to-list 'auto-mode-alist '("\\.[agj]sp\\'" . web-mode))
+  (add-to-list 'auto-mode-alist '("\\.as[cp]x\\'" . web-mode))
+  (add-to-list 'auto-mode-alist '("\\.erb\\'" . web-mode))
+  (add-to-list 'auto-mode-alist '("\\.mustache\\'" . web-mode))
+  (add-to-list 'auto-mode-alist '("\\.djhtml\\'" . web-mode))
+  (add-to-list 'auto-mode-alist '("\\.jsx?\\'" . web-mode))
+  (add-to-list 'auto-mode-alist '("\\.html?\\'" . web-mode))
+
+  :config
+  (setq web-mode-content-types-alist '(("jsx" . "\\.js[x]?\\'")))
+
+  (setq web-mode-markup-indent-offset 4)
+
+  (flycheck-add-mode 'javascript-eslint 'web-mode))
+
+;; Auto-completion framework
+(use-package company
+  :config
+  (setq company-dabbrev-downcase 0)
+  (setq company-idle-delay 0)
+  (setq company-frontends '(company-pseudo-tooltip-frontend company-echo-metadata-frontend))
+
+  ;; Show completions by pressing tab
+  (define-key company-mode-map [remap indent-for-tab-command] #'company-indent-or-complete-common))
+
+;; Show
+;; Does not work when emacs is running in a terminal
+(use-package company-quickhelp
+  :after (company)
+  :config (company-quickhelp-mode))
+
+;; Use tern to get helpful JS completion
+(use-package company-tern
+  :after (company)
+  :config
+  (add-to-list 'company-backends 'company-tern)
+  (add-hook 'web-mode-hook (lambda () (tern-mode) (company-mode))))
+
+;; Use jedi to get Python completions
+(use-package company-jedi
+  :after (company)
+  :config
+  (add-to-list 'company-backends 'company-jedi))
+
+;; Use local node project's node_modules
+(use-package add-node-modules-path
+  :config (add-hook 'flycheck-mode-hook 'add-node-modules-path))
+
+;; Paste from system clipboard with Ctrl-Shift-V
 (global-set-key (kbd "C-S-v") 'clipboard-yank)
 
 ;; Mouse mode
@@ -222,7 +300,6 @@
   :config
   (add-hook 'flyspell-mode-hook #'flyspell-popup-auto-correct-mode)
   (setq flyspell-popup-correct-delay 0.3))
-
 
 ;; Do not clobber
 (global-auto-revert-mode 1)
@@ -295,7 +372,7 @@
  ;; If there is more than one, they won't work right.
  '(custom-safe-themes
    (quote
-    ("065efdd71e6d1502877fd5621b984cded01717930639ded0e569e1724d058af8" default)))
+    ("04232a0bfc50eac64c12471607090ecac9d7fd2d79e388f8543d1c5439ed81f5" "065efdd71e6d1502877fd5621b984cded01717930639ded0e569e1724d058af8" default)))
  '(linum-relative-current-symbol "")
  '(linum-relative-format
    (let
@@ -312,7 +389,7 @@
     (org-bbdb org-bibtex org-docview org-gnus org-info org-irc org-mhe org-protocol org-rmail org-w3m org-drill)))
  '(package-selected-packages
    (quote
-    (diff-hl fill-column-indicator cursor-chg ergoemacs-mode org-contrib flyspell-popup org-drill xresources-theme column-marker git-gutter android-mode whitespace-cleanup-mode use-package tao-theme smex rainbow-mode magit linum-relative langtool json-mode impatient-mode haskell-mode guide-key flycheck evil col-highlight coffee-mode benchmark-init auto-complete auctex))))
+    (zenburn diff-hl fill-column-indicator cursor-chg ergoemacs-mode org-contrib flyspell-popup org-drill xresources-theme column-marker git-gutter android-mode whitespace-cleanup-mode use-package tao-theme smex rainbow-mode magit linum-relative langtool json-mode impatient-mode haskell-mode guide-key flycheck evil col-highlight coffee-mode benchmark-init auto-complete auctex))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.

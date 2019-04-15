@@ -6,12 +6,21 @@
 
 
 (use-package ample-theme
+  :ensure t
   :init (progn (load-theme 'ample t t)
                (load-theme 'ample-flat t t)
                (load-theme 'ample-light t t)
-               (enable-theme 'ample-flat))
-  :defer t
-  :ensure t)
+               (enable-theme 'ample-flat)))
+
+;; (use-package zenburn-theme
+;;   :ensure t
+;;   :init
+;;   (load-theme 'zenburn t)
+;;   (setq zenburn-use-variable-pitch t)
+;;   ;; scale headings in org-mode
+;;   (setq zenburn-scale-org-headlines t)
+;;   ;; scale headings in outline-mode
+;;   (setq zenburn-scale-outline-headlines t))
 
 ;; Matching parentheses.
 (show-paren-mode 1)
