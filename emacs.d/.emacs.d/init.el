@@ -121,6 +121,10 @@
   (global-set-key (kbd "M-x") 'smex)
   (global-set-key (kbd "M-X") 'smex-major-mode-commands))
 
+;; Elm
+(use-package elm-mode
+  :defer t)
+
 ;; Python helper
 ;; pip install --user autopep8 yapf flake8 jedi black rope elpy
 (use-package elpy
@@ -188,6 +192,7 @@
   :config
   (projectile-mode +1)
   (define-key projectile-mode-map (kbd "s-p") 'projectile-command-map)
+  (define-key projectile-mode-map (kbd "C-p") 'projectile-find-file)
   (define-key projectile-mode-map (kbd "C-c p") 'projectile-command-map))
 
 ;; File-tree
