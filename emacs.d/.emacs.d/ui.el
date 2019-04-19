@@ -1,10 +1,10 @@
 ;;; ui --- Colors!
 ;;; Commentary:
-;;; bleh
+;;; UI configuration
 ;;;
 ;;; Code:
 
-
+;; Theme
 (use-package ample-theme
   :ensure t
   :init (progn (load-theme 'ample t t)

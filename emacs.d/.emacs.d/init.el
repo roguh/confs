@@ -43,6 +43,10 @@
 ;;   :ensure t
 ;;   :config (add-hook 'after-init-hook 'benchmark-init/deactivate))
 
+;; Cleanup buffers that have been inactive for more than 3 days
+;; M-x clean-buffer-list
+(use-package midnight)
+
 ;; Syntax checker for ~40 languages.
 ;; pip install --user proselint
 (use-package flycheck
@@ -77,7 +81,8 @@
   :mode (("README\\.md\\'" . gfm-mode)
          ("\\.md\\'" . markdown-mode)
          ("\\.markdown\\'" . markdown-mode))
-  :init (setq markdown-command "multimarkdown"))
+  :init (setq markdown-command "multimarkdown")
+  :config (setq markdown-header-scaling t))
 
 ;; Vim keybindings.
 (use-package evil
@@ -96,30 +101,51 @@
   (setq evil-replace-state-cursor '("red" bar))
   (setq evil-operator-state-cursor '("red" hollow)))
 
-;; IDO shows list of choices as you type
-(use-package ido
+;; HELM
+(use-package helm
+  :defer 1
   :config
-  (ido-mode t)
-  (ido-everywhere 1))
+  (setq helm-autoresize-max-height 0
+        helm-autoresize-min-height 20
+        helm-split-window-in-side-p t)
+  (helm-autoresize-mode 1)
+  (when (executable-find "curl")
+    (setq helm-google-suggest-use-curl-p t))
+  (global-set-key (kbd "M-x") #'helm-M-x)
+  (global-set-key (kbd "C-x r b") #'helm-filtered-bookmarks)
+  (global-set-key (kbd "C-x C-f") #'helm-find-files)
+  (helm-mode))
 
-;; Fuzzy matching for IDO
-(use-package flx-ido
-  :after (ido)
+(use-package helm-projectile
   :config
-  (flx-ido-mode 1)
-  ;; Don't do fuzzy mathcing until collection is this small
-  (setq flx-ido-threshold 5000)
-  ;; Highlight matches
-  (setq ido-enable-flex-matching t)
-  (setq ido-use-faces nil))
+  (helm-projectile-on))
 
-;; Smart M-x enhancement built on top of IDO
-(use-package smex
-  :defer 0.5
-  :config
-  (smex-initialize)
-  (global-set-key (kbd "M-x") 'smex)
-  (global-set-key (kbd "M-X") 'smex-major-mode-commands))
+;; ;; IDO shows list of choices as you type
+;; (use-package ido
+;;   :config
+;;   (ido-mode t)
+;;   (ido-everywhere 1)
+;;   )
+;;
+;; ;; Fuzzy matching for IDO
+;; (use-package flx-ido
+;;   :after (ido)
+;;   :config
+;;   (flx-ido-mode 1)
+;;   ;; Don't do fuzzy matching until collection is this small
+;;   (setq flx-ido-threshold 5000)
+;;   ;; Highlight matches
+;;   (setq ido-enable-flex-matching t)
+;;   (setq ido-use-faces nil))
+;;
+;; ;; Smart M-x enhancement built on top of IDO
+;; (use-package smex
+;;   :defer 0.5
+;;   :config
+;;   (smex-initialize)
+;;   ;; (global-set-key (kbd "M-x") 'smex)
+;;   ;; (global-set-key (kbd "M-X") 'smex-major-mode-commands)
+;;   )
 
 ;; Elm
 (use-package elm-mode
@@ -132,8 +158,20 @@
   :defer t
   :init (advice-add 'python-mode :before 'elpy-enable)
   :config
+  (setq python-shell-interpreter "ipython"
+      python-shell-interpreter-args "-i --simple-prompt")
   ;; Format Python code before saving
   (add-hook 'before-save-hook 'elpy-format-code))
+
+;; Jupyter notebook editor and viewer
+;; Start EIN using ONE of the following:
+;;
+;;     Open an .ipynb file normally in emacs and press C-c C-o, or,
+;;     M-x ein:run launches a jupyter process from emacs, or,
+;;     M-x ein:login to a running jupyter server
+;;
+;; Use C-u M-x ein:login for services such as mybinder.org requiring cookie authentication.
+(use-package ein)
 
 ;; Sort imports in Python buffers
 ;; pip install --user isort
@@ -394,7 +432,7 @@
     (org-bbdb org-bibtex org-docview org-gnus org-info org-irc org-mhe org-protocol org-rmail org-w3m org-drill)))
  '(package-selected-packages
    (quote
-    (zenburn diff-hl fill-column-indicator cursor-chg ergoemacs-mode org-contrib flyspell-popup org-drill xresources-theme column-marker git-gutter android-mode whitespace-cleanup-mode use-package tao-theme smex rainbow-mode magit linum-relative langtool json-mode impatient-mode haskell-mode guide-key flycheck evil col-highlight coffee-mode benchmark-init auto-complete auctex))))
+    (smooth-scrolling ein helm zenburn diff-hl fill-column-indicator cursor-chg ergoemacs-mode org-contrib flyspell-popup org-drill xresources-theme column-marker git-gutter android-mode whitespace-cleanup-mode use-package tao-theme smex rainbow-mode magit linum-relative langtool json-mode impatient-mode haskell-mode guide-key flycheck evil col-highlight coffee-mode benchmark-init auto-complete auctex))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
