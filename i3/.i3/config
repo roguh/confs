@@ -1,4 +1,4 @@
-# i3 config file (v4)
+# i3 wonfig file (v4)
 # Please see http://i3wm.org/docs/userguide.html for a complete reference!
 
 # Control
@@ -204,11 +204,13 @@ bindsym $mod+Tab exec --no-startup-id launcher.sh window
 # categorized menu
 bindsym $mod+z exec --no-startup-id morc_menu
 
+# editor
+bindsym $mod+c exec --no-startup-id emacs
+
 # start a terminal or browser
 set $terminal terminal.sh
 set $terminal2 terminal2.sh
 set $browser firefox
-set $browser2 torbrowser.sh
 
 bindsym Mod1+Return exec --no-startup-id i3-sensible-terminal
 
@@ -216,7 +218,6 @@ bindsym $mod+Return exec --no-startup-id $terminal
 bindsym $mod+x exec --no-startup-id $terminal
 bindsym $mod+Shift+x exec --no-startup-id $terminal2
 bindsym F8 exec --no-startup-id $terminal
-bindsym $mod+c exec --no-startup-id $browser2
 bindsym $mod+n exec --no-startup-id $browser
 
 bindsym $mod+l exec --no-startup-id locker.sh

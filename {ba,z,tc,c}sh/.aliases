@@ -1,5 +1,6 @@
 tryalias em 'emacs -nw'
 tryalias emc 'emacsclient -nw --alternate-editor=""'
+tryalias emacsc 'emacsclient --alternate-editor=""'
 tryalias mv 'mv -i'
 tryalias cp 'cp -i'
 tryalias rm 'rm -i'
