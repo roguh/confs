@@ -173,6 +173,11 @@
 ;; Use C-u M-x ein:login for services such as mybinder.org requiring cookie authentication.
 (use-package ein)
 
+(use-package pipenv
+  :hook (python-mode . pipenv-mode)
+  :init (setq pipenv-projectile-after-switch-function #'pipenv-projectile-after-switch-extended)
+  :config (add-hook 'python-mode-hook #'pipenv-mode))
+
 ;; Sort imports in Python buffers
 ;; pip install --user isort
 (use-package py-isort
@@ -287,6 +292,11 @@
 (use-package company-quickhelp
   :after (company)
   :config (company-quickhelp-mode))
+
+;; Offer completions for header file names in C++, C, and ObjC modes
+(use-package company-c-headers
+  :after (company)
+  :config (add-to-list 'company-backends 'company-c-headers))
 
 ;; Use tern to get helpful JS completion
 (use-package company-tern
@@ -432,7 +442,7 @@
     (org-bbdb org-bibtex org-docview org-gnus org-info org-irc org-mhe org-protocol org-rmail org-w3m org-drill)))
  '(package-selected-packages
    (quote
-    (smooth-scrolling ein helm zenburn diff-hl fill-column-indicator cursor-chg ergoemacs-mode org-contrib flyspell-popup org-drill xresources-theme column-marker git-gutter android-mode whitespace-cleanup-mode use-package tao-theme smex rainbow-mode magit linum-relative langtool json-mode impatient-mode haskell-mode guide-key flycheck evil col-highlight coffee-mode benchmark-init auto-complete auctex))))
+    (company-c-headers pipenv smooth-scrolling ein helm zenburn diff-hl fill-column-indicator cursor-chg ergoemacs-mode org-contrib flyspell-popup org-drill xresources-theme column-marker git-gutter android-mode whitespace-cleanup-mode use-package tao-theme smex rainbow-mode magit linum-relative langtool json-mode impatient-mode haskell-mode guide-key flycheck evil col-highlight coffee-mode benchmark-init auto-complete auctex))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
