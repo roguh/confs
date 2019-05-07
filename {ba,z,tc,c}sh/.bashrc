@@ -1,5 +1,6 @@
 # Set path to binaries
 export PATH="$HOME/bin:$PATH:$HOME/.local/bin"
+export REACT_EDITOR=none
 
 export LC_ALL=en_US.UTF-8  
 export LANG=en_US.UTF-8
@@ -102,5 +103,9 @@ if [[ $- == *i* ]]; then
         eval $(keychain --eval --quick --quiet id_ed25519)
     fi
 fi
+
+# Load node version manager, if available
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && source "$NVM_DIR/nvm.sh"
 
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash

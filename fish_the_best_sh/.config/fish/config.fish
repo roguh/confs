@@ -12,6 +12,8 @@ addpaths $HOME/bin
 addpaths $HOME/.local/bin
 addpaths $HOME/.gem/ruby/2.5.0/bin
 addpaths $HOME/.gem/ruby/2.6.0/bin
+addpaths $HOME/Library/Python/3.7/bin
+addpaths /Library/Frameworks/Python.framework/Versions/3.7/bin
 
 function load_file
     if test -e $argv[1]
@@ -22,6 +24,7 @@ end
 set -gx ESHELL /bin/bash
 set -gx EDITOR vim
 set -gx VISUAL vim
+set -gx REACT_EDITOR none
 
 if type vimpager > /dev/null 2>&1
     set -gx PAGER vimpager
@@ -89,7 +92,9 @@ if type ag > /dev/null 2>&1
     set -gx FZF_CTRL_T_COMMAND "$FZF_DEFAULT_COMMAND"
 end
 
-keychain --eval --agents ssh id_ed25519
+if type keychain > /dev/null 2>&1
+    keychain --eval --agents ssh id_ed25519
+end
 
 # Fish does lots of things by default:
 # ignore dups and blank lines in history

@@ -17,6 +17,9 @@ call plug#begin()
 
 Plug 'drewtempelmeyer/palenight.vim'
 
+" Reload files edited externally
+Plug 'djoshea/vim-autoread'
+
 " Plug 'ayu-theme/ayu-vim'
 " colorscheme ayu
 
@@ -33,7 +36,7 @@ Plug 'drewtempelmeyer/palenight.vim'
 "   autocmd ColorScheme nord highlight shVariable ctermfg=6 guifg=#88C0D0
 " augroup END
 " autocmd VimEnter * execute 'silent colorscheme nord'
-" 
+"
 " https://github.com/beloglazov/vim-online-thesaurus
 " https://github.com/tpope/vim-abolish
 
@@ -187,6 +190,10 @@ au BufNewFile,BufRead *.cl setf cool
 Plug 'vim-scripts/cool.vim', { 'for': 'cool' }
 
 " fuzzy file finding
+if !filereadable('/usr/local/opt/fzf')
+  Plug '/usr/local/opt/fzf'
+endif
+
 Plug 'junegunn/fzf.vim'
 
 " if using git, find files in project, not just cwd
@@ -233,13 +240,15 @@ Plug 'w0rp/ale', { 'for': ['javascript', 'python'] }
 
 " open window
 " let g:ale_open_list = 1
-let g:ale_linters = {'javascript': ['eslint']}
+let g:ale_linters = {'javascript': ['standard', 'eslint']}
+
+let g:ale_javascript_standard_options = '--parser babel-eslint'
 
 let g:ale_fix_on_save = 1
 
 let g:ale_fixers = {
 \   '*': ['remove_trailing_lines', 'trim_whitespace'],
-\   'javascript': ['eslint'],
+\   'javascript': ['standard'],
 \   'python': ['autopep8'],
 \}
 
