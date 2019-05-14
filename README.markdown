@@ -19,3 +19,9 @@ git submodule add -repo-
 git submodule update --init --recursive
 git submodule foreach git pull origin master
 ```
+
+## OSX
+
+```
+brew install coreutils
+```

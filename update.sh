@@ -184,3 +184,5 @@ copy_confs_for unison .unison/default.prf
 copy_confs_for osync .osync.conf
 
 copy_confs_for tern .tern-config
+
+copy_confs_for hyper .hyper.js

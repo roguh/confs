@@ -118,13 +118,14 @@ let &guicursor = &guicursor . ',a:blinkon0'
 " set terminal emulator window title
 " filename, basename of git root or an extra space, shortened PWD, user@host
 function! SetTitleString()
-  let &titlestring = 'v ' . expand('%') . ' ' .
+  let &titlestring = 'v ' .
+  \ expand('%') . ' ' .
   \ system('basename $(git rev-parse --show-toplevel 2> /dev/null) ""') . ' ' .
   \ system('trimdir.py', expand('%:p:h')) . ' ' .
   \ $USER . '@' . hostname()
 endfunction
 
-autocmd BufEnter * exe "call SetTitleString()"
+autocmd BufNewFile,BufRead,BufEnter * exe "call SetTitleString()"
 
 if &term == 'screen'
   set t_ts=^[k
