@@ -212,6 +212,19 @@ set textwidth=0
 " gvim options
 set guioptions-=T  "remove toolbar
 
+
+" Don't save hidden and unloaded buffers in sessions.
+set sessionoptions-=buffers
+
+" Don't restore help windows
+set sessionoptions-=help
+
+" Avoid corrupting session files by not saving options and mappings
+set sessionoptions-=options
+
+" Use ESC key to escape terminal mode
+tnoremap <Esc> <C-\><C-n>
+
 " load project-specific local vim settings at $PWD/.vim.{custom,local}
 if filereadable('.vim.custom')
     so .vim.custom

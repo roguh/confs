@@ -41,3 +41,6 @@ unset HISTFILE
 export HISTSIZE=99999
 export HISTCONTROL=ignoredups:ignorespace
 
+
+# Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
+export PATH="$PATH:$HOME/.rvm/bin"

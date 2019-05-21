@@ -310,6 +310,15 @@ au filetype tex syntax region texZone start='\\begin{pyconcode}' end='\\end{pyco
 
 " Improved syntax highlighting for C, add syntax highlighting for Bison, and Flex
 Plug 'justinmk/vim-syntax-extra', { 'for': [ 'c', 'cpp', 'y', 'l' ] }
+
+Plug 'xolox/vim-misc'
+Plug 'xolox/vim-session'
+
+" Save session every X minutes
+let g:session_autosave_periodic = 1
+
+let g:session_autosave_silent = 1
+
 call plug#end()
 
 set background=dark
