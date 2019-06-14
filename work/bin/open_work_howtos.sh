@@ -1,6 +1,6 @@
 #!/bin/sh
-DIR="$HOME/private/work.gocryptfs/howtos/"
-ENC_DIR="$HOME/agilemd/work.gocryptfs/"
+DIR="$HOME/private/truepill.gocryptfs/howtos/"
+ENC_DIR="$HOME/sync/work/truepill/truepill.gocryptfs"
 
 if [ ! -d "$DIR" ]; then
   echo "$DIR" does not exist, attempting to mount

@@ -212,7 +212,6 @@ set textwidth=0
 " gvim options
 set guioptions-=T  "remove toolbar
 
-
 " Don't save hidden and unloaded buffers in sessions.
 set sessionoptions-=buffers
 

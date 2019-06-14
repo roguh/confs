@@ -15,6 +15,14 @@ addpaths $HOME/.gem/ruby/2.6.0/bin
 addpaths $HOME/Library/Python/3.7/bin
 addpaths /Library/Frameworks/Python.framework/Versions/3.7/bin
 
+addpaths /usr/local/opt/openssl/bin
+
+if test -d /usr/local/opt/openssl/
+  set -gx LDFLAGS "-L/usr/local/opt/openssl/lib"
+  set -gx CPPFLAGS "-I/usr/local/opt/openssl/include"
+  set -gx PKG_CONFIG_PATH "/usr/local/opt/openssl/lib/pkgconfig"
+end
+
 function load_file
     if test -e $argv[1]
         source $argv[1]
@@ -25,6 +33,7 @@ set -gx ESHELL /bin/bash
 set -gx EDITOR vim
 set -gx VISUAL vim
 set -gx REACT_EDITOR none
+set -gx PASSWORD_STORE_ENABLE_EXTENSIONS true
 
 if type vimpager > /dev/null 2>&1
     set -gx PAGER vimpager
