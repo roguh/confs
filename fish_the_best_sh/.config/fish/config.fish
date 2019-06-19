@@ -13,15 +13,6 @@ addpaths $HOME/.local/bin
 addpaths $HOME/.gem/ruby/2.5.0/bin
 addpaths $HOME/.gem/ruby/2.6.0/bin
 addpaths $HOME/Library/Python/3.7/bin
-addpaths /Library/Frameworks/Python.framework/Versions/3.7/bin
-
-addpaths /usr/local/opt/openssl/bin
-
-if test -d /usr/local/opt/openssl/
-  set -gx LDFLAGS "-L/usr/local/opt/openssl/lib"
-  set -gx CPPFLAGS "-I/usr/local/opt/openssl/include"
-  set -gx PKG_CONFIG_PATH "/usr/local/opt/openssl/lib/pkgconfig"
-end
 
 function load_file
     if test -e $argv[1]
@@ -102,8 +93,32 @@ if status is-interactive
             bind -M insert \cp fzf-file-widget
         end
     end
-
 end
+
+
+# darwin with some patches
+addpaths /usr/local/opt/gettext/bin
+addpaths /Library/Frameworks/Python.framework/Versions/3.7/bin
+addpaths /usr/local/opt/openssl@1.1/bin
+addpaths /usr/local/opt/openssl/bin
+
+if test -d /usr/local/opt/openssl/
+  set -gx LDFLAGS "-L/usr/local/opt/openssl/lib"
+  set -gx CPPFLAGS "-I/usr/local/opt/openssl/include"
+  set -gx PKG_CONFIG_PATH "/usr/local/opt/openssl/lib/pkgconfig"
+end
+
+if test -d /usr/local/opt/gettext/lib
+  set -gx LDFLAGS "-L/usr/local/opt/gettext/lib"
+  set -gx CPPFLAGS "-I/usr/local/opt/gettext/include"
+end
+
+if test -d /usr/local/opt/openssl@1.1/lib
+  set -gx LDFLAGS "-L/usr/local/opt/openssl@1.1/lib"
+  set -gx CPPFLAGS "-I/usr/local/opt/openssl@1.1/include"
+  set -gx PKG_CONFIG_PATH "/usr/local/opt/openssl@1.1/lib/pkgconfig"
+end
+
 
 # Have fzf use ag to find files
 if type ag > /dev/null 2>&1

@@ -58,6 +58,9 @@ Plug 'tpope/vim-fugitive'
 " Use :WStrip to clean all trailing whitespace
 Plug 'tweekmonster/wstrip.vim'
 
+Plug 'scrooloose/nerdtree'
+Plug 'Xuyuanp/nerdtree-git-plugin'
+
 " good default settings
 " "one step above the nocompatible setting"
 " A taste of its features:
