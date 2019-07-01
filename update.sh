@@ -131,8 +131,7 @@ copy_confs_for alacritty .config/alacritty/alacritty.yml bin/alacritty-cwd.sh
 copy_confs_for cli \
   .tmux.conf \
   .config/lxterminal/lxterminal.conf \
-  .config/terminator/config \
-  .config/xfce4/terminal/terminalrc
+  .config/terminator/config
 
 copy_confs_for compton .config/compton.conf
 
