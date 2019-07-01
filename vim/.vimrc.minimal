@@ -62,8 +62,15 @@ set relativenumber
 " highlight searches
 set hlsearch
 
-let g:python2_host_prog = '/usr/local/bin/python'
-let g:python3_host_prog = '/usr/local/bin/python3'
+if executable('/usr/local/bin/python')
+  let g:python2_host_prog = '/usr/local/bin/python'
+  let g:python3_host_prog = '/usr/local/bin/python3'
+end
+
+if executable('/usr/bin/python')
+  let g:python2_host_prog = '/usr/bin/python'
+  let g:python3_host_prog = '/usr/bin/python3'
+end
 
 " neovim only: highlight replacements when running :s/ command
 if has('nvim')
