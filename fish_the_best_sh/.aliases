@@ -29,3 +29,10 @@ tryalias e 'zathura --fork' evince mupdf mupdf-x11 'wine READER10.exe'
 tryalias sx 'exec startx'
 
 tryalias npm pnpm npm
+
+
+# git fetch origin            # Updates origin/master
+# git rebase origin/master    # Rebases current branch onto origin/master
+tryalias gr 'git pull --rebase origin master'
+tryalias gc 'git commit'
+tryalias gl 'git log'

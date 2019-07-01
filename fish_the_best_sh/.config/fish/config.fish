@@ -27,11 +27,12 @@ set -gx REACT_EDITOR none
 set -gx PASSWORD_STORE_ENABLE_EXTENSIONS true
 
 if type vimpager > /dev/null 2>&1
-    set -gx PAGER vimpager
-    set -gx pager vimpager
-    set -gx MANPAGER vimpager
-    set -gx SYSTEMD_PAGER vimpager
-    alias less=vimpager
+    set -gx PAGER 'vimpager -XFR'
+    set -gx pager $PAGER
+    set -gx LESS $PAGER
+    set -gx MANPAGER $PAGER
+    set -gx SYSTEMD_PAGER $PAGER
+    alias less=$PAGER
 end
 
 # Load aliases

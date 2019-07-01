@@ -58,8 +58,8 @@ Plug 'tpope/vim-fugitive'
 " Use :WStrip to clean all trailing whitespace
 Plug 'tweekmonster/wstrip.vim'
 
-Plug 'scrooloose/nerdtree'
-Plug 'Xuyuanp/nerdtree-git-plugin'
+" Plug 'scrooloose/nerdtree'
+" Plug 'Xuyuanp/nerdtree-git-plugin'
 
 " good default settings
 " "one step above the nocompatible setting"
@@ -316,6 +316,8 @@ Plug 'justinmk/vim-syntax-extra', { 'for': [ 'c', 'cpp', 'y', 'l' ] }
 
 Plug 'xolox/vim-misc'
 Plug 'xolox/vim-session'
+
+Plug 'jceb/vim-orgmode'
 
 " Save session every X minutes
 let g:session_autosave_periodic = 1
