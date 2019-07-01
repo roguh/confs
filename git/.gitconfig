@@ -17,3 +17,6 @@
 
 [core]
 	editor = vim
+
+[alias]
+	workprofile = config user.email \"hugo@truepill.com\"
