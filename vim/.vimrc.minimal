@@ -194,6 +194,37 @@ inoremap <C-S-Tab> <Esc>:tabprevious<CR>i
 inoremap <C-Tab>   <Esc>:tabnext<CR>i
 inoremap <C-T>     <Esc>:tabnew<CR>
 
+" Bindings for Darwin, but fancy
+nnoremap <D-1> 1gt
+nnoremap <D-2> 2gt
+nnoremap <D-3> 3gt
+nnoremap <D-4> 4gt
+nnoremap <D-5> 5gt
+nnoremap <D-6> 6gt
+nnoremap <D-7> 7gt
+nnoremap <D-8> 8gt
+nnoremap <D-9> 9gt
+
+" Bindings for normal machines
+nnoremap <C-1> 1gt
+nnoremap <C-2> 2gt
+nnoremap <C-3> 3gt
+nnoremap <C-4> 4gt
+nnoremap <C-5> 5gt
+nnoremap <C-6> 6gt
+nnoremap <C-7> 7gt
+nnoremap <C-8> 8gt
+nnoremap <C-9> 9gt
+inoremap <C-1> <Esc>1gt<CR>i
+inoremap <C-2> <Esc>2gt<CR>i
+inoremap <C-3> <Esc>3gt<CR>i
+inoremap <C-4> <Esc>4gt<CR>i
+inoremap <C-5> <Esc>5gt<CR>i
+inoremap <C-6> <Esc>6gt<CR>i
+inoremap <C-7> <Esc>7gt<CR>i
+inoremap <C-8> <Esc>8gt<CR>i
+inoremap <C-9> <Esc>9gt<CR>i
+
 " Copy and paste with Ctrl-C and Ctrl-V
 vmap <C-c> "+yi
 vmap <C-x> "+c
