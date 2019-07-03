@@ -49,6 +49,7 @@ function install_plugins
     # make sure to install nvm:
     # git clone https://github.com/creationix/nvm ~/.nvm
     fisher add FabioAntunes/fish-nvm
+    nvm_alias_function npx webpack npm gulp
 
     # "frecency" aware directory switching z
     fisher add jethrokuan/z
@@ -94,6 +95,10 @@ if status is-interactive
             bind -M insert \cp fzf-file-widget
         end
     end
+
+    if type keychain > /dev/null 2>&1
+        keychain --eval --agents ssh id_ed25519
+    end
 end
 
 
@@ -125,10 +130,6 @@ end
 if type ag > /dev/null 2>&1
     set -gx FZF_DEFAULT_COMMAND 'ag -g ""'
     set -gx FZF_CTRL_T_COMMAND "$FZF_DEFAULT_COMMAND"
-end
-
-if type keychain > /dev/null 2>&1
-    keychain --eval --agents ssh id_ed25519
 end
 
 # Fish does lots of things by default:

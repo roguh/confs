@@ -117,7 +117,7 @@ copy_confs_for x11 \
   .xinitrc .xbindkeysrc bin/autostart.sh bin/signal.sh
 
 copy_confs_for "{ba,z,tc,c}sh" \
-  .bashrc .bashrc_ps1 .bash_profile .zshrc .cshrc .tryalias.sh .aliases bin/trimdir.py bin/gitinfo.sh
+  .bashrc .bashrc_ps1 .bash_profile .zshrc .cshrc .tryalias.sh .aliases bin/trimdir.py bin/gitinfo.sh bin/commacd.sh bin/projectroot.sh
 
 copy_confs_for git \
     .gitconfig bin/gitdiff.sh
