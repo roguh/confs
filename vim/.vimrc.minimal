@@ -206,6 +206,16 @@ nnoremap <D-8> 8gt
 nnoremap <D-9> 9gt
 
 " Bindings for normal machines
+" for-loops are for n00bs
+nnoremap <A-1> 1gt
+nnoremap <A-2> 2gt
+nnoremap <A-3> 3gt
+nnoremap <A-4> 4gt
+nnoremap <A-5> 5gt
+nnoremap <A-6> 6gt
+nnoremap <A-7> 7gt
+nnoremap <A-8> 8gt
+nnoremap <A-9> 9gt
 nnoremap <C-1> 1gt
 nnoremap <C-2> 2gt
 nnoremap <C-3> 3gt
@@ -224,6 +234,15 @@ inoremap <C-6> <Esc>6gt<CR>i
 inoremap <C-7> <Esc>7gt<CR>i
 inoremap <C-8> <Esc>8gt<CR>i
 inoremap <C-9> <Esc>9gt<CR>i
+inoremap <A-1> <Esc>1gt<CR>i
+inoremap <A-2> <Esc>2gt<CR>i
+inoremap <A-3> <Esc>3gt<CR>i
+inoremap <A-4> <Esc>4gt<CR>i
+inoremap <A-5> <Esc>5gt<CR>i
+inoremap <A-6> <Esc>6gt<CR>i
+inoremap <A-7> <Esc>7gt<CR>i
+inoremap <A-8> <Esc>8gt<CR>i
+inoremap <A-9> <Esc>9gt<CR>i
 
 " Copy and paste with Ctrl-C and Ctrl-V
 vmap <C-c> "+yi
