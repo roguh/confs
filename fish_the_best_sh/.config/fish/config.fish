@@ -133,6 +133,11 @@ if type ag > /dev/null 2>&1
     set -gx FZF_CTRL_T_COMMAND "$FZF_DEFAULT_COMMAND"
 end
 
+function ,,
+  echo (projectroot.sh)
+  cd (projectroot.sh)
+end
+
 # Fish does lots of things by default:
 # ignore dups and blank lines in history
 # interactive cd and autocompletion
