@@ -156,16 +156,10 @@ Plug 'guersam/vim-j'
 Plug 'othree/html5.vim'
 Plug 'ap/vim-css-color'
 
-" JS, libraries
+" JS
 Plug 'pangloss/vim-javascript', { 'for': [ 'javascript', 'javascript.jsx' ] }
-augroup javascript_folding
-    au!
-    au FileType javascript setlocal foldmethod=syntax
-augroup END
-let g:javascript_plugin_flow = 1
 
 Plug 'othree/javascript-libraries-syntax.vim', { 'for': 'javascript' }
-Plug 'wokalski/autocomplete-flow', { 'for': 'javascript' }
 Plug 'moll/vim-node', { 'for': [ 'javascript', 'javascript.jsx' ] }
 
 " Rust
@@ -184,8 +178,8 @@ Plug 'vim-pandoc/vim-pandoc-syntax'
 " Plug 'lepture/vim-jinja'
 
 " org mode
-Plug 'jceb/vim-orgmode' " , { 'for': 'org' }
-" Plug 'jwiegley/org-mode', { 'for': 'org' }
+" Plug 'jceb/vim-orgmode', { 'for': 'org' }
+Plug 'jwiegley/org-mode', { 'for': 'org' }
 
 " syntax highlighting for COOL
 au BufNewFile,BufRead *.cool setf cool
@@ -239,11 +233,14 @@ let g:ranger_map_keys = 0
 map <C-n> :Ranger<CR>
 
 " async linting. lints as you type
-Plug 'w0rp/ale', { 'for': ['javascript', 'python'] }
+Plug 'w0rp/ale', { 'for': ['javascript', 'python', 'c'] }
 
 " open window
 " let g:ale_open_list = 1
-let g:ale_linters = {'javascript': ['standard', 'eslint']}
+let g:ale_linters = {
+\   'javascript': ['standard', 'eslint'],
+\   'c': ['clang', 'gcc', 'cppcheck', 'flawfinder']
+\}
 
 let g:ale_javascript_standard_options = '--parser babel-eslint'
 
@@ -253,6 +250,7 @@ let g:ale_fixers = {
 \   '*': ['remove_trailing_lines', 'trim_whitespace'],
 \   'javascript': ['standard'],
 \   'python': ['autopep8'],
+\   'c': ['clang', 'gcc', 'cppcheck', 'uncrustify']
 \}
 
 " C-k and C-j to move between ALE errors
@@ -276,7 +274,6 @@ let g:syntastic_python_pylint_exe = 'pylint'
 
 let g:syntastic_tex_checkers = ['chktex']
 
-" ['eslint', 'flow']
 let g:syntastic_javascript_checkers = []
 
 " Prefer local node_modules instead of global
@@ -284,11 +281,6 @@ Plug 'mtscout6/syntastic-local-eslint.vim'
 " if executable('node_modules/.bin/eslint')
 "       let b:syntastic_javascript_eslint_exec = 'node_modules/.bin/eslint'
 " endif
-
-" TODO debug this
-if executable('node_modules/.bin/flow')
-      let b:syntastic_javascript_flow_exec = 'node_modules/.bin/flow'
-endif
 
 let g:syntastic_html_checkers = ['tidy', 'jshint']
 
@@ -310,6 +302,14 @@ au filetype tex syntax region texZone start='\\begin{lstlisting}' end='\\end{lst
 au filetype tex syntax region texZone start='\\begin{python3code}' end='\\end{python3code}'
 au filetype tex syntax region texZone start='\\begin{bashcode}' end='\\end{bashcode}'
 au filetype tex syntax region texZone start='\\begin{pyconcode}' end='\\end{pyconcode}'
+
+" Folding for C, Fortran, Java, CPP
+Plug 'pseewald/anyfold', { 'for': ['c', 'cpp', 'java', 'fortran', 'javascript', 'javascript.jsx'] }
+autocmd Filetype c,cpp,java,fortran,javascript,javascript.jsx AnyFoldActivate
+let g:anyfold_fold_comments=1
+
+" close folds
+set foldlevel=0
 
 " Improved syntax highlighting for C, add syntax highlighting for Bison, and Flex
 Plug 'justinmk/vim-syntax-extra', { 'for': [ 'c', 'cpp', 'y', 'l' ] }

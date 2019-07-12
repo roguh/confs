@@ -62,16 +62,14 @@ set relativenumber
 " highlight searches
 set hlsearch
 
-if executable('/usr/local/bin/python3')
+if executable('/usr/local/bin/python')
+  let g:python2_host_prog = '/usr/local/bin/python'
   let g:python3_host_prog = '/usr/local/bin/python3'
-elseif executable('/Library/Frameworks/Python.framework/Versions/3.7/bin/python3')
-  let g:python3_host_prog = '/Library/Frameworks/Python.framework/Versions/3.7/bin/python3'
-elseif executable('/usr/bin/python3')
+end
+
+if executable('/usr/bin/python')
+  let g:python2_host_prog = '/usr/bin/python'
   let g:python3_host_prog = '/usr/bin/python3'
-elseif executable('/usr/local/bin/python')
-  let g:python3_host_prog = '/usr/local/bin/python'
-elseif executable('/usr/bin/python')
-  let g:python3_host_prog = '/usr/bin/python'
 end
 
 " neovim only: highlight replacements when running :s/ command
@@ -134,11 +132,7 @@ function! SetTitleString()
   \ $USER . '@' . hostname()
 endfunction
 
-function! SetTitleStringFOCUS()
-  let &titlestring = 'v ' . system('trimdir.py $(projectroot.sh)')
-endfunction
-
-autocmd BufNewFile,BufRead,BufEnter * exe "call SetTitleStringFOCUS()"
+autocmd BufNewFile,BufRead,BufEnter * exe "call SetTitleString()"
 
 if &term == 'screen'
   set t_ts=^[k
