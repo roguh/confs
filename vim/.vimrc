@@ -304,12 +304,7 @@ au filetype tex syntax region texZone start='\\begin{bashcode}' end='\\end{bashc
 au filetype tex syntax region texZone start='\\begin{pyconcode}' end='\\end{pyconcode}'
 
 " Folding for C, Fortran, Java, CPP
-Plug 'pseewald/anyfold', { 'for': ['c', 'cpp', 'java', 'fortran', 'javascript', 'javascript.jsx'] }
-autocmd Filetype c,cpp,java,fortran,javascript,javascript.jsx AnyFoldActivate
-let g:anyfold_fold_comments=1
-
-" close folds
-set foldlevel=0
+Plug 'pseewald/anyfold', { 'for': ['c', 'cpp', 'java', 'fortran', 'javascript', 'javascript.jsx', 'python', 'markdown'] }
 
 " Improved syntax highlighting for C, add syntax highlighting for Bison, and Flex
 Plug 'justinmk/vim-syntax-extra', { 'for': [ 'c', 'cpp', 'y', 'l' ] }
@@ -325,6 +320,9 @@ let g:session_autosave_periodic = 1
 let g:session_autosave_silent = 1
 
 call plug#end()
+
+autocmd Filetype c,cpp,java,fortran,javascript,javascript.jsx,python,markdown AnyFoldActivate
+let g:anyfold_fold_comments=1
 
 set background=dark
 colorscheme palenight

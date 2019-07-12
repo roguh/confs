@@ -2,6 +2,15 @@
 " warning: keep this near the top of the config file
 set nocompatible
 
+" foldcolumn on the right side (clickable)
+set foldcolumn=2
+
+" close folds by default
+set foldlevel=0
+
+" do not fold by default
+" set nofoldenable
+
 " autowrite in all situations, except quiting
 set autowrite
 
@@ -57,7 +66,7 @@ set number
 set relativenumber
 
 " easier to see color for folds
-" hi Folded guibg=white guifg=black ctermbg=white ctermfg=black
+hi Folded guibg=white guifg=black ctermbg=white ctermfg=black
 
 " highlight searches
 set hlsearch
@@ -164,9 +173,6 @@ let g:netrw_altv = 1
 
 set wildignore+=*/tmp/*,*.so,*.swp,*.zip,*/node_modules/*
 
-" do not fold by default
-set nofoldenable
-
 " vim-ish tab navigation
 nnoremap th  :tabfirst<CR>
 
@@ -267,7 +273,7 @@ set wrapmargin=0
 set textwidth=0
 
 " gvim options
-set guioptions-=T  "remove toolbar
+set guioptions-=T  " remove toolbar
 
 " Don't save hidden and unloaded buffers in sessions.
 set sessionoptions-=buffers
@@ -282,10 +288,10 @@ set sessionoptions-=options
 tnoremap <Esc> <C-\><C-n>
 
 " load project-specific local vim settings at $PWD/.vim.{custom,local}
-if filereadable('.vim.custom')
-    so .vim.custom
-endif
+" if filereadable('.vim.custom')
+"     so .vim.custom
+" endif
 
-if filereadable('.vimrc.local')
-    so .vimrc.local
-endif
+" if filereadable('.vimrc.local')
+"     so .vimrc.local
+" endif
