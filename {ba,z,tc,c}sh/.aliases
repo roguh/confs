@@ -1,3 +1,4 @@
+tryalias halp 'npx hpal'
 tryalias em 'emacs -nw'
 tryalias emc 'emacsclient -nw --alternate-editor=""'
 tryalias emacsc 'emacsclient --alternate-editor=""'
