@@ -49,7 +49,11 @@ let g:airline#extensions#ale#enabled = 1
 Plug 'wsdjeg/vim-fetch'
 
 " Git gutter
-Plug 'airblade/vim-gitgutter'
+" Plug 'airblade/vim-gitgutter'
+" Plug 'mhinz/vim-signify'
+
+" Show git diff in window when writing git commit message
+Plug 'rhysd/committia.vim'
 
 " THE BEST GIT PORCELAIN IN THE VIM WORLD
 Plug 'tpope/vim-fugitive'
@@ -235,10 +239,27 @@ map <C-n> :Ranger<CR>
 " async linting. lints as you type
 Plug 'w0rp/ale', { 'for': ['javascript', 'python', 'c'] }
 
+let g:ale_cache_executable_check_failures = 1
+
+" let g:ale_close_preview_on_insert = 1
+let g:ale_cursor_detail = 1
+
+" show errors on save
+let g:ale_open_list = 0
+let g:ale_lint_on_save = 1
+let g:ale_lint_on_text_changed = 0
+
+" no sign in gutter
+let g:ale_set_signs = 1
+let g:ale_sign_error = '>'
+let g:ale_sign_warning = '-'
+
 " open window
 " let g:ale_open_list = 1
+" pacman -S {python,python2}-{pydocstyle,isort} mypy
 let g:ale_linters = {
 \   'javascript': ['standard', 'eslint'],
+\   'python': ['pydocstyle', 'flake8', 'isort', 'mypy', 'black'],
 \   'c': ['clang', 'gcc', 'cppcheck', 'flawfinder']
 \}
 
@@ -249,8 +270,8 @@ let g:ale_fix_on_save = 1
 let g:ale_fixers = {
 \   '*': ['remove_trailing_lines', 'trim_whitespace'],
 \   'javascript': ['standard'],
-\   'python': ['autopep8'],
-\   'c': ['clang', 'gcc', 'cppcheck', 'uncrustify']
+\   'python': ['autopep8', 'isort', 'black'],
+\   'c': ['uncrustify']
 \}
 
 " C-k and C-j to move between ALE errors

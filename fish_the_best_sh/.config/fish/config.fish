@@ -8,12 +8,14 @@ function addpaths
   end
 end
 
+
 addpaths $HOME/bin
 addpaths $HOME/.local/bin
 addpaths $HOME/.gem/ruby/2.5.0/bin
 addpaths $HOME/.gem/ruby/2.6.0/bin
 addpaths $HOME/Library/Python/3.7/bin
 addpaths $HOME/.dropbox-dist
+addpaths $HOME/.cargo/bin
 
 function load_file
     if test -e $argv[1]
@@ -50,7 +52,7 @@ function install_plugins
     # make sure to install nvm:
     # git clone https://github.com/creationix/nvm ~/.nvm
     fisher add FabioAntunes/fish-nvm
-    nvm_alias_function npx webpack npm gulp
+    nvm_alias_function npx webpack npm gulp pnpm
 
     # "frecency" aware directory switching z
     fisher add jethrokuan/z
