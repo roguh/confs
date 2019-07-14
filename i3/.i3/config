@@ -255,6 +255,7 @@ exec --no-startup-id pamac-tray
 exec --no-startup-id clipit
 exec --no-startup-id blueman-applet
 exec --no-startup-id conky.sh
+exec --no-startup-id wallpaper.sh
 exec --no-startup-id xautolock -time 10 -locker locker.sh
 exec --no-startup-id evolution
 exec --no-startup-id firefox
