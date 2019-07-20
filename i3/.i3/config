@@ -251,7 +251,6 @@ exec --no-startup-id nm-applet
 exec --no-startup-id kdeconnect-indicator
 exec --no-startup-id udiskie --smart-tray
 exec --no-startup-id xfce4-power-manager
-exec --no-startup-id pamac-tray
 exec --no-startup-id clipit
 exec --no-startup-id blueman-applet
 exec --no-startup-id conky.sh

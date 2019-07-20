@@ -44,6 +44,9 @@ load_file $HOME/.aliases
 # Load OCaml
 load_file $HOME/.opam/opam-init/init.fish
 
+# mkdir -p ~/.config/fish/completions; and cp ~/.asdf/completions/asdf.fish ~/.config/fish/completions
+load_file ~/.asdf/asdf.fish
+
 # Load pywal theme
 # load_theme
 

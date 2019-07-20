@@ -3,7 +3,7 @@ export PATH="$HOME/bin:$PATH:$HOME/.local/bin"
 export PATH="$HOME/.dropbox-dist:$PATH"
 export REACT_EDITOR=none
 
-export LC_ALL=en_US.UTF-8  
+export LC_ALL=en_US.UTF-8
 export LANG=en_US.UTF-8
 
 # Source file if it exists
@@ -16,6 +16,10 @@ load_file "$HOME/.bashrc_extra"
 
 # Load ocaml config
 load_file $HOME/.opam/opam-init/init.sh > /dev/null 2> /dev/null
+
+# asdf
+load_file $HOME/.asdf/asdf.sh
+load_file $HOME/.asdf/completions/asdf.bash
 
 # Set editor
 export VISUAL=vim
@@ -113,3 +117,4 @@ export NVM_DIR="$HOME/.nvm"
 
 # Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
 export PATH="$PATH:$HOME/.rvm/bin"
+
