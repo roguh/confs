@@ -187,4 +187,4 @@ copy_confs_for tern .tern-config
 
 copy_confs_for hyper .hyper.js
 
-copy_confs_for asdf .default-npm-packages .tool-versions
+copy_confs_for asdf .default-python-packages .default-npm-packages .tool-versions
