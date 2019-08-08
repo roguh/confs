@@ -26,7 +26,7 @@ tryalias py python3 python
 tryalias ipy ipython3 ipython
 
 tryalias v nvim vim vis vi nano ed libreoffice openoffice 'wine MicrosoftOffice2003.exe' vim
-tryalias e 'zathura --fork' evince mupdf mupdf-x11 'wine READER10.exe'
+tryalias e 'zathura --fork' evince mupdf mupdf-x11 qpdfview 'wine READER10.exe'
 tryalias sx 'exec startx'
 
 tryalias npm pnpm npm

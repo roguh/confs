@@ -265,6 +265,9 @@ exec --no-startup-id ~/.dropbox-dist/dropboxd
 # Notifications
 exec --no-startup-id killall xfce4-notifyd; dunst
 
+# Night light. 36N, 115W
+exec --no-startup-id redshift -l36:-115
+
 exec_always --no-startup-id ff-theme-util
 exec_always --no-startup-id fix_xcursor
 
@@ -332,7 +335,7 @@ bar {
 }
 
 # hide/unhide i3status bar
-bindsym $mod+m bar mode toggle
+# bindsym $mod+m bar mode toggle
 
 # Theme colors
 # class                   border  backgr. text    indic.   child_border
