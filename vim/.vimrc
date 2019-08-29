@@ -337,8 +337,8 @@ Plug 'jceb/vim-orgmode'
 
 " Save session every X minutes
 let g:session_autosave_periodic = 1
-
 let g:session_autosave_silent = 1
+let g:session_autoload = 'no'
 
 call plug#end()
 
