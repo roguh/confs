@@ -2,3 +2,8 @@ pipenv
 ipython
 numpy
 pandas
+requests
+scrapy
+matplotlib
+pillow
+
