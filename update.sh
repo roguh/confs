@@ -190,3 +190,6 @@ copy_confs_for hyper .hyper.js
 copy_confs_for asdf .default-python-packages .default-npm-packages .tool-versions
 
 copy_confs_for fanciness bin/showoff-linux-desktop-unixporn-sexy-oh-wow-screenshot-time-here-we-go-fancy-extra-nice-UNDO.sh bin/showoff-linux-desktop-unixporn-sexy-oh-wow-screenshot-time-here-we-go-fancy-extra-nice.sh
+
+# git@github.com:roguh/git-quick-stats.git
+copy_confs_for performance bin/cerberus.sh
