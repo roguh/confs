@@ -192,4 +192,4 @@ copy_confs_for asdf .default-python-packages .default-npm-packages .tool-version
 copy_confs_for fanciness bin/showoff-linux-desktop-unixporn-sexy-oh-wow-screenshot-time-here-we-go-fancy-extra-nice-UNDO.sh bin/showoff-linux-desktop-unixporn-sexy-oh-wow-screenshot-time-here-we-go-fancy-extra-nice.sh
 
 # git@github.com:roguh/git-quick-stats.git
-copy_confs_for performance bin/cerberus.sh
+copy_confs_for performance bin/cerberus.sh bin/cerberus-notify-send.sh
