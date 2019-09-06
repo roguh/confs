@@ -242,7 +242,7 @@ Plug 'w0rp/ale', { 'for': ['javascript', 'python', 'c'] }
 let g:ale_cache_executable_check_failures = 1
 
 " let g:ale_close_preview_on_insert = 1
-let g:ale_cursor_detail = 1
+let g:ale_cursor_detail = 0
 
 " show errors on save
 let g:ale_open_list = 0
