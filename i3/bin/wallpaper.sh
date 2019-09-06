@@ -1,2 +1,2 @@
 #!/bin/sh
-feh --bg-tile $HOME/Pictures/trendy-seamless-floral-pattern-vector-260nw-505352479.jpg-freaky.png
+feh --bg-tile $HOME/Dropbox/wallpaper/Blue-Roses-Pattern.png

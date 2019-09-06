@@ -188,3 +188,5 @@ copy_confs_for tern .tern-config
 copy_confs_for hyper .hyper.js
 
 copy_confs_for asdf .default-python-packages .default-npm-packages .tool-versions
+
+copy_confs_for fanciness bin/showoff-linux-desktop-unixporn-sexy-oh-wow-screenshot-time-here-we-go-fancy-extra-nice-UNDO.sh bin/showoff-linux-desktop-unixporn-sexy-oh-wow-screenshot-time-here-we-go-fancy-extra-nice.sh
