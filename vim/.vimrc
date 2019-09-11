@@ -121,6 +121,9 @@ let g:tern#arguments = ["--persistent"]
 " USE TAB!!!!!!
 inoremap <expr><tab> pumvisible() ? "\<c-n>" : "\<tab>"
 
+" Support for .editorconfig files
+Plug 'editorconfig/editorconfig-vim'
+
 " Completion based on syntax
 Plug 'Shougo/neco-syntax'
 
@@ -237,7 +240,7 @@ let g:ranger_map_keys = 0
 map <C-n> :Ranger<CR>
 
 " async linting. lints as you type
-Plug 'w0rp/ale', { 'for': ['javascript', 'python', 'c'] }
+Plug 'w0rp/ale', { 'for': ['javascript', 'python', 'c', 'css', 'scss'] }
 
 let g:ale_cache_executable_check_failures = 1
 
@@ -258,8 +261,9 @@ let g:ale_sign_warning = '-'
 " let g:ale_open_list = 1
 " pacman -S {python,python2}-{pydocstyle,isort} mypy
 let g:ale_linters = {
-\   'javascript': ['standard', 'eslint'],
+\   'javascript': ['standard', 'eslint', 'prettier'],
 \   'python': ['pydocstyle', 'flake8', 'isort', 'mypy', 'black'],
+\   'css': ['stylelint'],
 \   'c': ['clang', 'gcc', 'cppcheck', 'flawfinder']
 \}
 
@@ -269,7 +273,8 @@ let g:ale_fix_on_save = 1
 
 let g:ale_fixers = {
 \   '*': ['remove_trailing_lines', 'trim_whitespace'],
-\   'javascript': ['standard'],
+\   'javascript': ['standard', 'eslint', 'prettier'],
+\   'css': ['prettier', 'stylelint'],
 \   'python': ['autopep8', 'isort', 'black'],
 \   'c': ['uncrustify']
 \}
@@ -279,7 +284,7 @@ nmap <silent> <C-k> <Plug>(ale_previous_wrap)
 nmap <silent> <C-j> <Plug>(ale_next_wrap)
 
 " linters (syntax checkers, other code checkers)
-Plug 'scrooloose/syntastic', { 'for': ['html', 'python', 'rust', 'css', 'scss', 'typescript', 'cpp', 'c', 'ocaml', 'java'] }
+Plug 'scrooloose/syntastic', { 'for': ['html', 'python', 'rust', 'typescript', 'cpp', 'c', 'ocaml', 'java'] }
 
 let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 1
