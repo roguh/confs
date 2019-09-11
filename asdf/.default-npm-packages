@@ -4,3 +4,5 @@ request
 npm-check-updates
 tern
 npm_lazy
+yarn
+# esy # for reasonml native development
