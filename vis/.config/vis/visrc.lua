@@ -1,5 +1,3 @@
--- TODO: run :x/ *$/ c// if this would leave the original file unchanged
-
 -- load standard vis module, providing parts of the Lua API
 require('vis')
 require('plugins/filetype')
@@ -22,6 +20,8 @@ require_if_exists('local-plugins/vis-modelines/vis-modelines')
 -- require('local-plugins/vis-editorconfig/editorconfig')
 -- require('local-plugins/vis-whitespace-cleanup/whitespace')
 backup = require_if_exists('local-plugins/vis-backup/backup') or {}
+
+vis:map(vis.modes.NORMAL, ';', ':')
 
 vis.events.subscribe(vis.events.INIT, function()
 	-- Global configuration options.
@@ -48,6 +48,6 @@ vis.events.subscribe(vis.events.WIN_OPEN, function(win)
 	vis:command('set show-tabs on')
 	vis:command('set show-newlines on')
 	if vis.option_get then
-	vis:info('option: ' .. tostring(vis:option_get("lol")))
+	  vis:info('option: ' .. tostring(vis:option_get("lol")))
 	end
 end)
