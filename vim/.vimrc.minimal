@@ -251,10 +251,10 @@ inoremap <A-8> <Esc>8gt<CR>i
 inoremap <A-9> <Esc>9gt<CR>i
 
 " Copy and paste with Ctrl-C and Ctrl-V
-vmap <C-c> "+yi
-vmap <C-x> "+c
-vmap <C-v> c<ESC>"+p
-imap <C-v> <C-r><C-o>+
+inoremap <C-v> <ESC>"*pa
+vnoremap <C-c> "+y
+nnoremap <C-c> "+y
+cnoremap <C-c> "+y
 
 " enable mouse control in neovim for normal mode, visual mode, and insert mode
 set mouse=nva
