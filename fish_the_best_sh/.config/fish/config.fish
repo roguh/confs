@@ -47,6 +47,12 @@ load_file $HOME/.opam/opam-init/init.fish
 # mkdir -p ~/.config/fish/completions; and cp ~/.asdf/completions/asdf.fish ~/.config/fish/completions
 load_file ~/.asdf/asdf.fish
 
+if type go > /dev/null 2>&1
+    set -gx GOPATH (go env GOPATH)
+    addpaths $GOPATH/bin
+end
+
+
 # Load pywal theme
 # load_theme
 

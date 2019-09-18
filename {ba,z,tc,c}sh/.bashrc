@@ -11,15 +11,20 @@ load_file() {
     [ -f "$1" ] && . "$1"
 }
 
+# asdf
+load_file $HOME/.asdf/asdf.sh
+load_file $HOME/.asdf/completions/asdf.bash
+
 # Load extra .bashrc
 load_file "$HOME/.bashrc_extra"
 
 # Load ocaml config
 load_file $HOME/.opam/opam-init/init.sh > /dev/null 2> /dev/null
 
-# asdf
-load_file $HOME/.asdf/asdf.sh
-load_file $HOME/.asdf/completions/asdf.bash
+if command -v go > /dev/null ; then
+    export GOPATH=$(go env GOPATH)
+    export PATH=$PATH:$GOPATH/bin
+fi
 
 # Set editor
 export VISUAL=vim
