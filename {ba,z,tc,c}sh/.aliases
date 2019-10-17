@@ -37,3 +37,5 @@ tryalias npm pnpm npm
 tryalias gr 'git pull --rebase origin master'
 tryalias gc 'git commit'
 tryalias gl 'git log'
+
+tryalias vscode code

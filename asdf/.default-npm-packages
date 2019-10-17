@@ -5,4 +5,7 @@ npm-check-updates
 tern
 npm_lazy
 yarn
+coffeescript
+uglify-js
+uglify-es
 # esy # for reasonml native development

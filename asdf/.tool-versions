@@ -1,4 +1,5 @@
 python system
 nodejs 10.16.3
-elm 0.19.0
+elm 0.18.0
 golang 1.13
+rust nightly

@@ -261,9 +261,6 @@ exec --no-startup-id ~/.dropbox-dist/dropboxd
 
 exec --no-startup-id evolution
 exec --no-startup-id firefox
-exec --no-startup-id keybase-gui
-exec --no-startup-id signal-desktop
-exec --no-startup-id riot-desktop
 
 # Notifications
 exec --no-startup-id killall xfce4-notifyd; dunst
