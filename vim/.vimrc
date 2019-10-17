@@ -1,3 +1,5 @@
+" Hugo O. Rivera's vim/neovim config
+
 " use Vim defaults instead of Vi's
 " warning: keep this near the top of the config file
 set nocompatible

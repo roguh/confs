@@ -57,7 +57,7 @@ log() {
 # or copy all files to section_name/, while preserving directory structure.
 # Make backups before copying.
 copy_confs_for() {
-    SECTION=$1
+    SECTION="$1"
     shift
 
     if [[ ! -d "$SECTION" ]]; then
@@ -77,9 +77,10 @@ copy_confs_for() {
         FROM="$DST"
     fi
 
-    for f in $@ ; do
+    for f in "$@" ; do
         FILES="$FILES $FROM/./$f"
     done
+    echo FILES: "$FILES"
 
     if [ "$MODE" == backup ] ; then
         log rsync $RSYNC_BAK "$DST/$SECTION" "$BACKUP_B_DIR"
