@@ -1,7 +1,10 @@
-;;; init.el --- Load packages fast!
+;;; init.el --- Load packages fast! Configure emacs, real nice!!!
 ;;;
 ;;; Commentary:
 ;;; lots of use-package
+;;;
+;;; Author:
+;;; Hugo O. Rivera
 ;;;
 ;;; Code:
 

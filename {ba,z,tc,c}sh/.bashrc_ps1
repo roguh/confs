@@ -1,3 +1,4 @@
+# Hugo O. Rivera's PS1
 # Check if colored output is supported
 COLORED_PS1=false
 if test -t 1; then
