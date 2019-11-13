@@ -35,7 +35,7 @@ function xrdb(c)
     return io.popen("xrdb -query | grep " .. c .. " | head -n1 | awk '{print $2}'"):read()
 end
 
-w = 300
+w = 500
 
 conky.config = {
     alignment = 'bottom_left',
