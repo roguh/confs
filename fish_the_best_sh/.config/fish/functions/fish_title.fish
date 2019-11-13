@@ -1,7 +1,7 @@
 function title_get_project
   git rev-parse 2> /dev/null
   if test "$status" = 0
-    printf "| git:%s" (basename (git rev-parse --show-toplevel 2> /dev/null) "")
+    printf "%s |" (basename (git rev-parse --show-toplevel 2> /dev/null) "")
   end
 end
 
@@ -14,5 +14,5 @@ function title_trimdir
 end
 
 function fish_title
-  echo -e "🐟 \$" (title_trimdir) " " (title_get_project)
+  printf "🐟 \$ %s %s" (title_get_project) (title_trimdir)
 end
