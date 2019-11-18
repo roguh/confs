@@ -32,7 +32,7 @@ set -gx REACT_EDITOR none
 set -gx PASSWORD_STORE_ENABLE_EXTENSIONS true
 
 if type vimpager > /dev/null 2>&1
-    set -gx PAGER 'vimpager -XFR'
+    set -gx PAGER 'vimpager'
     set -gx pager $PAGER
     set -gx LESS $PAGER
     set -gx MANPAGER $PAGER
@@ -83,10 +83,6 @@ end
 set -gx MANPATH $MANPATH /usr/share/man /usr/local/share/man/
 
 if status is-interactive
-    if type keychain > /dev/null 2>&1
-        keychain --eval --quick --quiet id_ed25519 | source > /dev/null
-    end
-
     if not functions -q fisher
         set -qx XDG_CONFIG_HOME; or set XDG_CONFIG_HOME ~/.config
         curl https://git.io/fisher --create-dirs -sLo $XDG_CONFIG_HOME/fish/functions/fisher.fish
@@ -105,7 +101,7 @@ if status is-interactive
     end
 
     if type keychain > /dev/null 2>&1
-        keychain --eval --agents ssh id_ed25519
+        bass (keychain --eval --agents ssh -Q --quiet --nogui id_ed25519)
     end
 end
 
