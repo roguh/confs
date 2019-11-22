@@ -277,7 +277,13 @@ let g:ale_fixers = {
 \   '*': ['remove_trailing_lines', 'trim_whitespace'],
 \   'javascript': ['standard', 'eslint', 'prettier'],
 \   'css': ['prettier', 'stylelint'],
-\   'python': ['autopep8', 'isort', 'black'],
+\   'python': ['add_blank_lines_for_python_control_statements',
+\     'autopep8',
+\     'black',
+\     'isort',
+\     'remove_trailing_lines',
+\     'reorder-python-imports',
+\     'trim_whitespace'],
 \   'c': ['uncrustify']
 \}
 

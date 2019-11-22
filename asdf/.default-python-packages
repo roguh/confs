@@ -7,3 +7,7 @@ scrapy
 matplotlib
 pillow
 beautifulsoup4
+
+pydocstyle
+isort
+mypy

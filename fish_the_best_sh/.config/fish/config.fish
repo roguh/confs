@@ -13,6 +13,7 @@ end
 
 addpaths $HOME/bin
 addpaths $HOME/.local/bin
+addpaths $HOME/.poetry/bin
 addpaths $HOME/.gem/ruby/2.5.0/bin
 addpaths $HOME/.gem/ruby/2.6.0/bin
 addpaths $HOME/Library/Python/3.7/bin
@@ -31,8 +32,8 @@ set -gx VISUAL vim
 set -gx REACT_EDITOR none
 set -gx PASSWORD_STORE_ENABLE_EXTENSIONS true
 
-if type vimpager > /dev/null 2>&1
-    set -gx PAGER 'vimpager'
+if type most > /dev/null 2>&1
+    set -gx PAGER most
     set -gx pager $PAGER
     set -gx LESS $PAGER
     set -gx MANPAGER $PAGER
@@ -101,7 +102,7 @@ if status is-interactive
     end
 
     if type keychain > /dev/null 2>&1
-        bass (keychain --eval --agents ssh -Q --quiet --nogui id_ed25519)
+        eval (keychain --eval --agents ssh -Q --quiet --nogui id_ed25519)
     end
 end
 
