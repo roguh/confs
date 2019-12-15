@@ -1,5 +1,5 @@
 python system
-nodejs 12.13.0
+nodejs 12.10.0
 elm 0.18.0
 golang 1.13
 rust nightly
