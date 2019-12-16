@@ -129,8 +129,8 @@ set ruler		" show the cursor position all the time
 let &guicursor = &guicursor . ',a:blinkon0'
 
 " crosshairs
-" set cursorcolumn
-" set cursorline
+set cursorcolumn
+set cursorline
 " " hi  CursorColumn cterm=reverse cterm=reverse gui=reverse
 " hi  CursorLine term=underline cterm=underline gui=underline
 
