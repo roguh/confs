@@ -1,3 +1,6 @@
+tryalias SUDO sudo
+tryalias REBOOT reboot
+
 tryalias halp 'npx hpal'
 tryalias em 'emacs -nw'
 tryalias emc 'emacsclient -nw --alternate-editor=""'
@@ -36,6 +39,7 @@ tryalias npm pnpm npm
 # git rebase origin/master    # Rebases current branch onto origin/master
 tryalias gr 'git pull --rebase origin master'
 tryalias gc 'git commit'
+tryalias gs 'git status'
 tryalias gl 'git log'
 
 tryalias vscode code

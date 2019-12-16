@@ -123,9 +123,6 @@ let g:tern#arguments = ["--persistent"]
 " USE TAB!!!!!!
 inoremap <expr><tab> pumvisible() ? "\<c-n>" : "\<tab>"
 
-" Support for .editorconfig files
-Plug 'editorconfig/editorconfig-vim'
-
 " Completion based on syntax
 Plug 'Shougo/neco-syntax'
 
@@ -277,7 +274,7 @@ let g:ale_fixers = {
 \   '*': ['remove_trailing_lines', 'trim_whitespace'],
 \   'javascript': ['standard', 'eslint', 'prettier'],
 \   'css': ['prettier', 'stylelint'],
-\   'python': ['add_blank_lines_for_python_control_statements',
+\   'python': [
 \     'autopep8',
 \     'black',
 \     'isort',
@@ -346,12 +343,15 @@ Plug 'justinmk/vim-syntax-extra', { 'for': [ 'c', 'cpp', 'y', 'l' ] }
 Plug 'xolox/vim-misc'
 Plug 'xolox/vim-session'
 
-Plug 'jceb/vim-orgmode'
-
 " Save session every X minutes
 let g:session_autosave_periodic = 1
 let g:session_autosave_silent = 1
 let g:session_autoload = 'no'
+
+Plug 'jceb/vim-orgmode'
+
+Plug 'nathanaelkane/vim-indent-guides'
+let g:indent_guides_enable_on_vim_startup = 1
 
 call plug#end()
 
