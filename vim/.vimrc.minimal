@@ -93,7 +93,7 @@ end
 set incsearch
 
 " nicer chars for visible whitespace mode
-set listchars=tab:>\ ,trail:-,extends:>,precedes:<,nbsp:+
+set listchars=tab:>\ ,trail:-,extends:>,precedes:<,nbsp:+,space:.
 
 " unsets the 'last search pattern' register by hitting return
 nnoremap <CR> :nohlsearch<CR><CR>
