@@ -1,2 +1,2 @@
 #!/bin/sh
-feh --bg-tile $HOME/Dropbox/wallpaper/Blue-Roses-Pattern.png
+feh --bg-tile $HOME/Dropbox/wallpaper/Red-Roses-Pattern.png
