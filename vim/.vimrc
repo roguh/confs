@@ -17,7 +17,9 @@ call plug#begin()
 " execute 'silent colorscheme onehalfdark'
 " let g:airline_theme='onehalfdark'
 
-Plug 'drewtempelmeyer/palenight.vim'
+" Plug 'drewtempelmeyer/palenight.vim'
+
+Plug 'AlessandroYorba/Sierra'
 
 " Reload files edited externally
 Plug 'djoshea/vim-autoread'
@@ -359,7 +361,8 @@ autocmd Filetype c,cpp,java,fortran,javascript,javascript.jsx,python,markdown An
 let g:anyfold_fold_comments=1
 
 set background=dark
-colorscheme palenight
+let g:sierra_Pitch = 1
+colorscheme sierra
 
 " read the real vim config
 if filereadable(expand('~/.vimrc.minimal'))
