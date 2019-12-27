@@ -1,6 +1,4 @@
-python system
+python 3.8.0
 nodejs 12.10.0
 elm 0.18.0
-golang 1.13
-rust nightly
 ocaml 4.08.1

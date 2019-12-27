@@ -102,7 +102,7 @@ if status is-interactive
     end
 
     if type keychain > /dev/null 2>&1
-        eval (keychain --eval --agents ssh -Q --quiet --nogui id_ed25519)
+        eval (keychain --eval --agents ssh -Q --quiet --nogui id_ed25519 id_ed25519_2)
     end
 end
 
