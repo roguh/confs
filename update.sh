@@ -118,7 +118,7 @@ copy_confs_for x11 \
   .xinitrc .xbindkeysrc bin/autostart.sh bin/signal.sh
 
 copy_confs_for "{ba,z,tc,c}sh" \
-  .bashrc .bashrc_ps1 .bash_profile .zshrc .cshrc .tryalias.sh .aliases bin/trimdir.py bin/gitinfo.sh bin/projectroot.sh
+  .bashrc .bashrc_ps1 .bash_profile .zshrc .cshrc .tryalias.sh .aliases bin/trimdir.py bin/gitinfo.sh bin/projectroot.sh bin/real-deal-turbo-charged-cd.sh
 
 copy_confs_for git \
     .gitconfig bin/gitdiff.sh
@@ -142,7 +142,7 @@ copy_confs_for dunst .config/dunst .config/dunst/dunstrc bin/dunst.sh
 
 copy_confs_for emacs.d .emacs.d/init.el .emacs.d/ui.el
 
-copy_confs_for fish_the_best_sh .config/fish/{config,functions/{tryalias,load_theme,fish_title,fish_prompt,fisher}}.fish .aliases
+copy_confs_for fish_the_best_sh .config/fish/{config,functions/{tryalias,load_theme,fisher,fish_{title,prompt,greeting}}}.fish .aliases bin/real-deal-turbo-charged-cd.sh
 
 copy_confs_for fluxbox .fluxbox/menu .fluxbox/keys
 

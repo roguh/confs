@@ -44,3 +44,5 @@ tryalias gd 'git diff'
 tryalias gl 'git log'
 
 tryalias vscode code
+
+tryalias cd real-deal-turbo-charged-cd.sh cd cd cd cd cd
