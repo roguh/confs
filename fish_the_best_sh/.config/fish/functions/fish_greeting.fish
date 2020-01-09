@@ -18,3 +18,5 @@ end
 end
 
 echo Upgrading PS1.
+
+echo (curl https://raw.githubusercontent.com/asdf-vm/asdf/master/ballad-of-asdf.md)

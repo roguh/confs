@@ -1,6 +1,6 @@
 #!/bin/sh -
 backlightoff.sh &
-exec i3lock -c ff0000
+exec i3lock -c 0000ff
 
 # if command -v blurlock > /dev/null; then
 #   blurlock
