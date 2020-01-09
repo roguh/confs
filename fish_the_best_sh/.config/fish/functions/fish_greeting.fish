@@ -6,7 +6,7 @@ echo
 echo
 echo
 
-
+echo (curl https://raw.githubusercontent.com/asdf-vm/asdf/master/ballad-of-asdf.md)
 
 echo (hostname) '>' ls $PWD
 ls $PWD
@@ -16,7 +16,3 @@ else
 echo FOTD: Keep your house clean.
 end
 end
-
-echo Upgrading PS1.
-
-echo (curl https://raw.githubusercontent.com/asdf-vm/asdf/master/ballad-of-asdf.md)
