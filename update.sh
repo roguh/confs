@@ -198,3 +198,5 @@ copy_confs_for performance bin/cerberus.sh bin/cerberus-notify-send.sh
 copy_confs_for feh_sane_defaults feh-sane-defaults.sh feh-sane-defaults-gallery.sh
 
 copy_confs_for pacman_scripts bin/defuck-a-pacman-install.sh
+
+copy_confs_for arandr .screenlayout/select-arandr-display.sh

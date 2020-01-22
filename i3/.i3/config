@@ -264,6 +264,7 @@ exec --no-startup-id firefox
 exec --no-startup-id signal-desktop-beta
 exec --no-startup-id teams-insiders
 exec --no-startup-id slack
+exec --no-startup-id .screenlayout/select-arandr-display.sh
 
 # Notifications
 exec --no-startup-id killall xfce4-notifyd; dunst
