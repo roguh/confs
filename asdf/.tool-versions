@@ -1,4 +1,7 @@
-python 3.8.0
-nodejs 12.10.0
+nodejs 12.14.1
 elm 0.18.0
 ocaml 4.08.1
+
+# CHANGING THIS BREAKS PACKAGES ON MANJARO!
+# USE PIPENV FOR CUSTOM PROJECTS
+python system
