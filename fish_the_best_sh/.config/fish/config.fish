@@ -142,6 +142,8 @@ function ,,
   cd (projectroot.sh)
 end
 
+xset r rate 200 60
+
 # Fish does lots of things by default:
 # ignore dups and blank lines in history
 # interactive cd and autocompletion

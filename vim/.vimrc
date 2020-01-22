@@ -343,6 +343,9 @@ Plug 'pseewald/anyfold', { 'for': ['c', 'cpp', 'java', 'fortran', 'javascript', 
 Plug 'justinmk/vim-syntax-extra', { 'for': [ 'c', 'cpp', 'y', 'l' ] }
 
 Plug 'xolox/vim-misc'
+" Use :OpenSession :SaveSession
+" Useful: :RestartVim to save session, close and restart vim, and then reload
+" session. Great for debugging vim scripts.
 Plug 'xolox/vim-session'
 
 " Save session every X minutes

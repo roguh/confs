@@ -196,12 +196,13 @@ inoremap <C-tab>   <Esc>:tabnext<CR>i
 inoremap <C-t>     <Esc>:tabnew<CR>
 
 
-nnoremap <C-S-Tab> :tabprevious<CR>
-nnoremap <C-Tab>   :tabnext<CR>
-nnoremap <C-T>     :tabnew<CR>
-inoremap <C-S-Tab> <Esc>:tabprevious<CR>i
-inoremap <C-Tab>   <Esc>:tabnext<CR>i
-inoremap <C-T>     <Esc>:tabnew<CR>
+" Tab navigation like Firefox.
+" TAB KEYS ARE HANDLED STRANGELY BY SOME TERMINAL LIBRARIES
+nnoremap <C-S-i> :tabprevious<CR>
+nnoremap <C-i>   :tabnext<CR>
+" BEWARE THE CURSE! NO MORE TAB COMPLETE!
+" inoremap <C-S-i> <Esc>:tabprevious<CR>i
+" inoremap <C-i>   <Esc>:tabnext<CR>i
 
 " Bindings for Darwin, but fancy
 nnoremap <D-1> 1gt
@@ -274,6 +275,12 @@ set scrolloff=999
 set wrapmargin=0
 
 set textwidth=0
+
+" Function names starting with a keyword (e.g. baseline-unit()) are not highlighted correctly by default.
+autocmd FileType scss set iskeyword+=-
+
+" Folds for CSS and SCSS syntax
+autocmd BufRead,BufNewFile *.css,*.scss,*.less setlocal foldmethod=marker foldmarker={,}
 
 " gvim options
 set guioptions-=T  " remove toolbar

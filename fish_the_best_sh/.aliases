@@ -38,6 +38,7 @@ tryalias npm pnpm npm
 # git fetch origin            # Updates origin/master
 # git rebase origin/master    # Rebases current branch onto origin/master
 tryalias gr 'git pull --rebase origin master'
+tryalias gp 'git push'
 tryalias gc 'git commit'
 tryalias gs 'git status'
 tryalias gd 'git diff'
