@@ -195,7 +195,7 @@ copy_confs_for fanciness bin/showoff-linux-desktop-unixporn-sexy-oh-wow-screensh
 # git@github.com:roguh/git-quick-stats.git
 copy_confs_for performance bin/cerberus.sh bin/cerberus-notify-send.sh
 
-copy_confs_for feh_sane_defaults feh-sane-defaults.sh feh-sane-defaults-gallery.sh
+copy_confs_for feh_sane_defaults nin/feh-sane-defaults.sh bin/feh-sane-defaults-gallery.sh
 
 copy_confs_for pacman_scripts bin/defuck-a-pacman-install.sh
 
