@@ -20,6 +20,7 @@ call plug#begin()
 " Plug 'drewtempelmeyer/palenight.vim'
 
 Plug 'AlessandroYorba/Sierra'
+Plug 'habamax/vim-colors-defminus'
 
 " Reload files edited externally
 Plug 'djoshea/vim-autoread'
