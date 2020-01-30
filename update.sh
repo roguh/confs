@@ -201,3 +201,5 @@ copy_confs_for feh_sane_defaults nin/feh-sane-defaults.sh bin/feh-sane-defaults-
 copy_confs_for pacman_scripts bin/defuck-a-pacman-install.sh
 
 copy_confs_for arandr .screenlayout/select-arandr-display.sh
+
+copy_confs_for system-space-cleaner.sh bin/system-space-cleaner.sh
