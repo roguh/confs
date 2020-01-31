@@ -32,4 +32,4 @@ echo ------- downloading and installing external confs -------
 git submodule update --init --recursive
 EXT_DIR=$SRC/external
 cp "$EXT_DIR/bash-sensible/sensible.bash" "$DST/.sensible.bash"
-cp "$EXT_DIR/commacd/commacd.bash" "$DST/.commacd.bash"
+cp "$EXT_DIR/commacd/commacd.sh" "$DST/.commacd.sh"
