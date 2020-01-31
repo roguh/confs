@@ -1,9 +1,10 @@
 #!/bin/sh
+
 DIR=$HOME/Dropbox/sync/media/wallpaper/
-if [ -f $DIR/$(HOSTNAME).png ]; then
-  feh --bg-tile $DIR/$(HOSTNAME).png
-else if [ -f $DIR/$(HOSTNAME).jpg]; then
-  feh --bg-tile $DIR/$(HOSTNAME).jpg
+if [ -f $DIR/$(hostname).png ]; then
+  feh --bg-tile $DIR/$(hostname).png
+elif [ -f $DIR/$(hostname).jpg ]; then
+  feh --bg-tile $DIR/$(hostname).jpg
 else
   feh --bg-tile $DIR/Red-Roses-Pattern.png
 fi

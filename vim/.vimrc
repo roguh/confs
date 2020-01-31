@@ -113,7 +113,7 @@ else
   Plug 'roxma/vim-hug-neovim-rpc'
 endif
 
-let g:deoplete#enable_at_startup = 1
+let g:deoplete#enable_at_startup = 0
 let g:deoplete#complete_method = "complete" " merlin compat?
 let g:deoplete#auto_complete_delay = 0
 
@@ -366,7 +366,7 @@ let g:anyfold_fold_comments=1
 
 set background=dark
 let g:sierra_Pitch = 1
-colorscheme sierra
+colorscheme defminus
 
 " read the real vim config
 if filereadable(expand('~/.vimrc.minimal'))
