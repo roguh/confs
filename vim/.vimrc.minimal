@@ -1,20 +1,23 @@
 " Hugo O. Rivera's vim/neovim config
 " Internet connection unneeded.
 
-" use Vim defaults instead of Vi's
-" warning: keep this near the top of the config file
+" Use Vim defaults instead of Vi's.
+" Warning: keep this near the top of the config file.
 set nocompatible
 
-" foldcolumn on the right side (clickable)
+" Map semicolon to colon
+:nmap ; :
+
+" Foldcolumn on the right side (clickable).
 set foldcolumn=2
 
-" close folds by default
+" Close folds by default.
 set foldlevel=0
 
-" do not fold by default
+" Do not fold by default.
 " set nofoldenable
 
-" autowrite in all situations, except quiting
+" Autowrite in all situations, except quiting.
 set autowrite
 
 if exists('+termguicolors')
@@ -25,95 +28,92 @@ endif
 
 set t_Co=256
 
-" use bash instead of $SHELL
+" Use bash instead of $SHELL.
 set shell=/bin/bash
 
-" change dir to that of the current file
-" benefits:
+" Change dir to that of the current file
+" Benefits:
 "   - easier to navigate to nearby files
 "   - gf works better (with some plugins)
-" alternative 1: set autochdir
-" alternative 2: nnoremap <leader>cd :cd %:p:h<CR>:pwd<CR>
-" alternative 3: autocmd BufReadPost,BufWinEnter * silent! lcd %:p:h
+" Alternative 1: set autochdir
+" Alternative 2: nnoremap <leader>cd :cd %:p:h<CR>:pwd<CR>
+" Alternative 3: autocmd BufReadPost,BufWinEnter * silent! lcd %:p:h
 set autochdir
 autocmd BufReadPost,BufWinEnter * silent! lcd %:p:h
 
-" when searching, ignore case unless there's an uppercase letter in query
+" When searching, ignore case unless there's an uppercase letter in query
 set ignorecase
 set smartcase
 
-" map semicolon to colon
-:nmap ; :
-
-" spellcheck
+" Spellcheck
 set spell spelllang=en_us
 
 " C-x C-k to show dictionary words
 set complete+=kspell
 
-" reload a file if it's changed by another process
+" Reload a file if it's changed by another process
 set autoread
 
-" don't run modeline commands when opening files
-" this would read code in any file and run it!
+" Don't run modeline commands when opening files.
+" This would read code in any file and run it!
 set nomodeline
 
-" no viminfo file
+" No viminfo file
 set viminfo=
 
-" keep 5 lines of history
+" Keep 5 lines of history
 set history=5
 
-" show line numbers
+" Show line numbers
 set number
 set relativenumber
 
-" easier to see color for folds
+" Easier to see color for folds
 hi Folded guibg=white guifg=black ctermbg=white ctermfg=black
 
-" highlight searches
+" Highlight searches
 set hlsearch
 
 if executable('/usr/local/bin/python')
-  let g:python2_host_prog = '/usr/local/bin/python'
+  let g:python2_host_prog = '/usr/local/bin/python2'
   let g:python3_host_prog = '/usr/local/bin/python3'
 end
 
 if executable('/usr/bin/python')
-  let g:python2_host_prog = '/usr/bin/python'
+  let g:python2_host_prog = '/usr/bin/python2'
   let g:python3_host_prog = '/usr/bin/python3'
 end
 
-" neovim only: highlight replacements when running :s/ command
+" Neovim only: highlight replacements when running :s/ command
 if has('nvim')
   set inccommand=nosplit
 end
 
-" incremental search: search before hitting ENTER
+" Incremental search: search before hitting ENTER
 set incsearch
 
-" nicer chars for visible whitespace mode
+" Nicer chars for visible whitespace mode
 set listchars=tab:>\ ,trail:-,extends:>,precedes:<,nbsp:+,space:.
 
-" unsets the 'last search pattern' register by hitting return
+" Unsets the 'last search pattern' register by hitting return
 nnoremap <CR> :nohlsearch<CR><CR>
 
-" highlight column 79
+" Highlight column 79
 set colorcolumn=79
 
-" save backups
+" Save backups
 set backup
 
-" keep swap files and backup files in a home folder
-" should run
-" mkdir -p ~/{.vim,.config/nvim,tmp}/{backup,swap,undo}
+" Keep swap files and backup files in a home folder
+" Please run: mkdir -p ~/{.vim,.config/nvim,tmp}/{backup,swap,undo}
 set directory=~/tmp/swap//,~/tmp//
 set backupdir=~/tmp/backup//,~/tmp//
 set undodir=~/tmp/undo//,~/tmp//
 
-" save backups with a timestamp and directory info
+" Save backups with a timestamp and directory info
 au BufWritePre * let &backupext = '%' . strftime('%m-%d-%H:%M')
 
+" Set to UTF-8
 set encoding=utf-8
 
 " UTF 8
@@ -121,20 +121,26 @@ if v:lang =~ 'utf8$' || v:lang =~ 'UTF-8$'
    set fileencodings=ucs-bom,utf-8,latin1
 endif
 
-set bs=indent,eol,start	" allow backspacing over everything in insert mode
-set ruler		" show the cursor position all the time
+" Allow backspacing over everything in insert mode
+set bs=indent,eol,start
+
+" Backspace over everything
+set backspace=2
+
+" Show the cursor position all the time
+set ruler
 
 " Don't wake up system with blinking cursor:
 " http://www.linuxpowertop.org/known.php
 let &guicursor = &guicursor . ',a:blinkon0'
 
-" crosshairs
+" Crosshairs
 set cursorcolumn
 set cursorline
-" " hi  CursorColumn cterm=reverse cterm=reverse gui=reverse
+" hi  CursorColumn cterm=reverse cterm=reverse gui=reverse
 " hi  CursorLine term=underline cterm=underline gui=underline
 
-" set terminal emulator window title
+" Set terminal emulator window title
 " filename, basename of git root or an extra space, shortened PWD, user@host
 function! SetTitleString()
   let &titlestring = 'v ' .
@@ -152,7 +158,7 @@ if &term == 'screen'
 endif
 set title
 
-" indentation
+" Indentation
 set tabstop=2 shiftwidth=2 tabstop=2 expandtab
 
 filetype plugin indent on
@@ -161,14 +167,15 @@ filetype plugin indent on
 au BufNewFile,BufRead *.py
     \ set tabstop=4 softtabstop=4 shiftwidth=4 textwidth=79 expandtab autoindent fileformat=unix
 
-" Personal indentation rules
+" ML indentation
 au BufNewFile,BufRead *.ml
     \ set tabstop=2 softtabstop=2 shiftwidth=2 textwidth=80 expandtab autoindent fileformat=unix
 
+" JavaScript indentation
 au BufNewFile,BufRead *.js
     \ set tabstop=2 softtabstop=2 shiftwidth=2 textwidth=80 expandtab autoindent fileformat=unix
 
-" nicer netrw (default file browser)
+" Nicer netrw, the default file browser
 let g:netrw_banner = 0
 let g:netrw_liststyle = 3
 let g:netrw_browse_split = 4
@@ -176,7 +183,7 @@ let g:netrw_altv = 1
 
 set wildignore+=*/tmp/*,*.so,*.swp,*.zip,*/node_modules/*
 
-" vim-ish tab navigation
+" Tab navigation like Vim:
 nnoremap th  :tabfirst<CR>
 
 nnoremap tk  :tabnext<CR>
@@ -260,20 +267,15 @@ vnoremap <C-c> "+y
 nnoremap <C-c> "+y
 cnoremap <C-c> "+y
 
-" enable mouse control in neovim for normal mode, visual mode, and insert mode
+" Enable mouse control in neovim for normal mode, visual mode, and insert mode
 set mouse=nva
-
-" backspace over everything
-set backspace=2
 
 " <Left> and <Right> wrap around line breaks
 set whichwrap+=<,>,[,]
 
-" keep cursor in center of screen, except when near start or end of file
+" Keep cursor in center of screen, except when near start or end of file
 set scrolloff=999
-
 set wrapmargin=0
-
 set textwidth=0
 
 " Function names starting with a keyword (e.g. baseline-unit()) are not highlighted correctly by default.
@@ -282,8 +284,8 @@ autocmd FileType scss set iskeyword+=-
 " Folds for CSS and SCSS syntax
 autocmd BufRead,BufNewFile *.css,*.scss,*.less setlocal foldmethod=marker foldmarker={,}
 
-" gvim options
-set guioptions-=T  " remove toolbar
+" Options for gvim: remove toolbar
+set guioptions-=T
 
 " Don't save hidden and unloaded buffers in sessions.
 set sessionoptions-=buffers
@@ -297,7 +299,7 @@ set sessionoptions-=options
 " Use ESC key to escape terminal mode
 tnoremap <Esc> <C-\><C-n>
 
-" load project-specific local vim settings at $PWD/.vim.{custom,local}
+" Load project-specific local vim settings at $PWD/.vim.{custom,local}
 " if filereadable('.vim.custom')
 "     so .vim.custom
 " endif

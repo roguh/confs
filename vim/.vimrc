@@ -1,49 +1,32 @@
 " Hugo O. Rivera's vim/neovim config
 
-" use Vim defaults instead of Vi's
-" warning: keep this near the top of the config file
+" Use Vim defaults instead of Vi's.
+" Warning: keep this near the top of the config file.
 set nocompatible
 
 " junnegunn/vim-plug
-" need .vim/autoload/plug.vim
-" call :PlugInstall to install and update
+" Need .vim/autoload/plug.vim
+" Call :PlugInstall or :PlugUpdate.
+
 call plug#begin()
 
-" Theme
-" Plug 'dylanaraps/wal.vim'
-" execute 'silent colorscheme wal'
-
-" Plug 'sonph/onehalf', { 'rtp': 'vim' }
-" execute 'silent colorscheme onehalfdark'
-" let g:airline_theme='onehalfdark'
-
-" Plug 'drewtempelmeyer/palenight.vim'
-
+" Color themes
+Plug 'sonph/onehalf', { 'rtp': 'vim' }
+Plug 'drewtempelmeyer/palenight.vim'
+Plug 'dylanaraps/wal.vim'
 Plug 'AlessandroYorba/Sierra'
+Plug 'ayu-theme/ayu-vim'
 Plug 'habamax/vim-colors-defminus'
+Plug 'habamax/vim-colors-lessthan'
 
 " Reload files edited externally
 Plug 'djoshea/vim-autoread'
 
-" Plug 'ayu-theme/ayu-vim'
-" colorscheme ayu
+" Writer's plugins
 
-" Plug 'arcticicestudio/nord-vim'
-" let g:nord_italic = 1
-" let g:nord_underline = 1
-" let g:nord_italic_comments = 1
-" let g:nord_comment_brightness = 20
-" let g:nord_cursor_line_number_background = 1
-" augroup nord
-"   autocmd!
-"   autocmd ColorScheme nord highlight shDerefSimple ctermfg=6 guifg=#88C0D0
-"   autocmd ColorScheme nord highlight shDerefVar ctermfg=6 guifg=#88C0D0
-"   autocmd ColorScheme nord highlight shVariable ctermfg=6 guifg=#88C0D0
-" augroup END
-" autocmd VimEnter * execute 'silent colorscheme nord'
-"
-" https://github.com/beloglazov/vim-online-thesaurus
-" https://github.com/tpope/vim-abolish
+" Use :OnlineThesaurusCurrentWord or :Thesaurus word
+Plug 'beloglazov/vim-online-thesaurus'
+let g:online_thesaurus_map_keys = 0
 
 " Good statusline
 Plug 'vim-airline/vim-airline'
@@ -70,7 +53,16 @@ Plug 'tweekmonster/wstrip.vim'
 " Plug 'scrooloose/nerdtree'
 " Plug 'Xuyuanp/nerdtree-git-plugin'
 
-" good default settings
+" Advanced search and replace (or grep):
+" :%Subvert/facilit{y,ies}/building{,s}/g
+" :Subvert/child{,ren}/adult{,s}/g
+" :Subvert/di{e,ce}/spinner{,s}/g
+"
+" I know how to spell "separate". I know how to spell "desperate". My fingers, however, have trouble distinguishing between the two, and I invariably have a 50 percent chance of typing "seperate" or "desparate" each time one of these comes up.
+" :Abolish {despa,sepe}rat{e,es,ed,ing,ely,ion,ions,or}  {despe,sepa}rat{}
+Plug 'tpope/vim-abolish'
+
+" Good default settings
 " "one step above the nocompatible setting"
 " A taste of its features:
 "   'backspace': Backspace through anything in insert mode.
@@ -79,23 +71,18 @@ Plug 'tweekmonster/wstrip.vim'
 "   'scrolloff': Always show at least one line above/below the cursor.
 "   'autoread': Autoload file changes. You can undo by pressing u.
 "   runtime! macros/matchit.vim: Load the version of matchit.vim that ships with Vim.
+" I enable most of these manually.
 " Plug 'tpope/vim-sensible'
 
 " Various language syntax definitions. Loads much faster than individual plugins.
-" Languages supported as of 09/2018:
-" ansible, apiblueprint, applescript, arduino, asciidoc, autohotkey, blade,
-" c++11, c/c++, caddyfile, carp, cjsx, clojure, cmake, coffee-script, cql,
-" cryptol, crystal, cucumber, dart, dockerfile, elixir, elm, emberscript,
-" emblem, erlang, ferm, fish, fsharp, git, glsl, gmpl, gnuplot, go, graphql,
-" groovy, haml, handlebars, haproxy, haskell, haxe, html5, i3, jasmine,
-" javascript, jenkins, json5, json, jst, jsx, julia, kotlin, latex, less,
-" liquid, livescript, lua, mako, markdown, mathematica, nginx, nim, nix,
-" objc, ocaml, octave, opencl, perl, pgsql, php, plantuml, powershell,
-" protobuf, pug, puppet, purescript, python-compiler, python-ident, python,
-" qml, r-lang, racket, ragel, raml, rspec, ruby, rust, sbt, scala, scss,
-" slim, slime, solidity, stylus, swift, sxhkd, systemd, terraform, textile,
-" thrift, tmux, tomdoc, toml, twig, typescript, vala, vbnet, vcl, vifm, vm,
-" vue, xls, yaml, yard
+" Languages supported as of 02/2020:
+" acpiasl (syntax), ansible (syntax, indent, ftplugin), apiblueprint (syntax), applescript (syntax, indent), arduino (syntax, indent), asciidoc (syntax), autohotkey (indent), blade (syntax, indent, ftplugin), c++11 (syntax), c/c++ (syntax), caddyfile (syntax, indent, ftplugin), carp (syntax), cjsx (syntax, ftplugin), clojure (syntax, indent, autoload, ftplugin), cmake (syntax, indent), coffee-script (syntax, compiler, indent, autoload, ftplugin), cql (syntax), cryptol (syntax, compiler, ftplugin), crystal (syntax, indent, autoload, ftplugin), csv (syntax, autoload, ftplugin), cucumber (syntax, indent, compiler, ftplugin), cue (syntax), dart (syntax, indent, autoload, ftplugin), dhall (syntax, ftplugin), dlang (syntax, indent), dockerfile (syntax, indent, ftplugin), elixir (syntax, indent, compiler, autoload, ftplugin),
+" elm (syntax, indent, autoload, ftplugin), emberscript (syntax, indent, ftplugin), emblem (syntax, indent, ftplugin), erlang (syntax, indent), ferm (syntax), fish (syntax, indent, compiler, autoload, ftplugin), flatbuffers (syntax), fsharp (syntax, indent), git (syntax, indent, ftplugin), glsl (syntax, indent), gmpl (syntax), gnuplot (syntax), go (syntax, compiler, indent), gradle (compiler), graphql (syntax, indent, autoload, ftplugin, after), groovy-indent (indent), groovy (syntax), haml (syntax, indent, compiler, ftplugin), handlebars (syntax, indent, ftplugin), haproxy (syntax),
+" haskell (syntax, indent, ftplugin), haxe (syntax), hcl (syntax, indent, ftplugin), helm (syntax), hive (syntax, ftplugin), html5 (syntax, indent, autoload, ftplugin), i3 (syntax, ftplugin), idris (syntax, indent, ftplugin), ion (syntax, ftplugin), jasmine (syntax), javascript (syntax, indent, compiler, ftplugin, extras), jenkins (syntax, indent), jinja (syntax, indent), json5 (syntax), json (syntax, indent, ftplugin), jst (syntax, indent), jsx (autoload, after),
+" julia (syntax, indent, autoload, ftplugin), kotlin (syntax, indent, ftplugin), latex (syntax, indent, ftplugin), less (syntax, indent, ftplugin), lilypond (syntax, indent, compiler, ftplugin), livescript (syntax, indent, compiler, ftplugin), llvm (syntax, indent, ftplugin), log (syntax), lua (syntax, indent), mako (syntax, indent, ftplugin), markdown (syntax, indent, ftplugin), mathematica (syntax, ftplugin), mdx (syntax), meson (syntax, indent, ftplugin), moonscript (syntax, indent, ftplugin), nginx (syntax, indent, ftplugin), nim (syntax, compiler, indent), nix (syntax, indent, compiler, ftplugin), objc (ftplugin, syntax, indent), ocaml (syntax, indent, compiler, ftplugin),
+" octave (syntax, indent), opencl (syntax, indent, ftplugin), perl (syntax, indent, ftplugin), pgsql (syntax, indent), php (syntax), plantuml (syntax, indent, ftplugin), pony (syntax, indent, autoload, ftplugin), powershell (syntax, indent, ftplugin), protobuf (syntax, indent), pug (syntax, indent, ftplugin), puppet (syntax, indent, autoload, ftplugin), purescript (syntax, indent, ftplugin), python-compiler (compiler, autoload), python-indent (indent), python (syntax), qmake (syntax), qml (syntax, indent, ftplugin), r-lang (syntax), racket (syntax, indent, ftplugin), ragel (syntax), raml (syntax, ftplugin),
+" reason (syntax, indent), rspec (syntax), rst (syntax, indent, autoload, ftplugin), ruby (syntax, indent, compiler, autoload, ftplugin), rust (syntax, indent, compiler, autoload, ftplugin), sbt (syntax), scala (syntax, indent, compiler, ftplugin), scss (syntax, indent, ftplugin), slim (syntax, indent, ftplugin), slime (syntax, indent), smt2 (syntax, autoload, ftplugin), solidity (syntax, indent, ftplugin), stylus (syntax, indent, ftplugin), svelte (syntax, indent), svg-indent (indent),
+" svg (syntax), swift (syntax, indent, ftplugin), sxhkd (syntax), systemd (syntax, ftplugin), terraform (syntax, indent, autoload, ftplugin), textile (syntax, ftplugin), thrift (syntax), tmux (syntax, ftplugin), tomdoc (syntax), toml (syntax, ftplugin), tptp (syntax), twig (syntax, indent, ftplugin), typescript (syntax, indent, compiler, ftplugin), v (syntax, indent, ftplugin), vala (syntax, indent, ftplugin), vbnet (syntax), vcl (syntax), vifm (syntax, autoload, ftplugin), vm (syntax, indent), vue (syntax, indent, ftplugin), xdc (syntax), xls (syntax), xml (syntax), yaml (syntax, ftplugin), yard (syntax), zephir (syntax), zig (syntax, autoload, ftplugin)
 Plug 'sheerun/vim-polyglot'
 let g:polyglot_disabled = ['python', 'ocaml', 'org']
 
@@ -174,21 +161,16 @@ Plug 'moll/vim-node', { 'for': [ 'javascript', 'javascript.jsx' ] }
 " Rust
 Plug 'racer-rust/vim-racer', { 'for': 'rust' }
 
-" JS Elm
-" Plug 'ElmCast/elm-vim'
-
 " Pandoc
 Plug 'vim-pandoc/vim-pandoc'
 Plug 'vim-pandoc/vim-pandoc-syntax'
 
-" handlebar and mustache templates
-" Plug 'mustache/vim-mustache-handlebars'
-" Plug 'evidens/vim-twig'
-" Plug 'lepture/vim-jinja'
+" Jinja HTML templates
+Plug 'lepture/vim-jinja'
 
-" org mode
-" Plug 'jceb/vim-orgmode', { 'for': 'org' }
+" Org mode
 Plug 'jwiegley/org-mode', { 'for': 'org' }
+Plug 'jceb/vim-orgmode', { 'for': 'org' }
 
 " syntax highlighting for COOL
 au BufNewFile,BufRead *.cool setf cool
@@ -220,18 +202,19 @@ if executable('ag')
   let g:ackprg = 'ag --vimgrep --ignore dist/'
 endif
 
-" asynchronous grep results
-" default search tool is whatever is available first from ag, ack, grep, findstr, rg, pt, git
-" leave an empty query to search for word under the cursor
+" Asynchronous grep results.
+" Default search tool is whatever is available first from:
+" ag, ack, grep, findstr, rg, pt, git
+" Leave an empty query to search for word under the cursor.
 Plug 'mhinz/vim-grepper'
 
-" search from project root
+" Search starting from project root.
 " let g:grepper.repo = ['.project', '.git', '.SVN', 'node-packages.json']
 
 command! ProjectGrepper execute 'Grepper -dir repo'
 map <C-f> :ProjectGrepper<CR>
 
-" file browser
+" File browser.
 Plug 'francoiscabrol/ranger.vim'
 if has('nvim')
   Plug 'rbgrouleff/bclose.vim'
@@ -241,7 +224,7 @@ let g:ranger_replace_netrw = 1
 let g:ranger_map_keys = 0
 map <C-n> :Ranger<CR>
 
-" async linting. lints as you type
+" Async linting lints as you type.
 Plug 'w0rp/ale', { 'for': ['javascript', 'python', 'c', 'css', 'scss'] }
 
 let g:ale_cache_executable_check_failures = 1
@@ -252,7 +235,7 @@ let g:ale_cursor_detail = 0
 " show errors on save
 let g:ale_open_list = 0
 let g:ale_lint_on_save = 1
-let g:ale_lint_on_text_changed = 0
+let g:ale_lint_on_text_changed = 1
 
 " no sign in gutter
 let g:ale_set_signs = 1
@@ -291,14 +274,15 @@ let g:ale_fixers = {
 nmap <silent> <C-k> <Plug>(ale_previous_wrap)
 nmap <silent> <C-j> <Plug>(ale_next_wrap)
 
-" linters (syntax checkers, other code checkers)
+" Linters (syntax checkers, other code checkers):
 Plug 'scrooloose/syntastic', { 'for': ['html', 'python', 'rust', 'typescript', 'cpp', 'c', 'ocaml', 'java'] }
 
 let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 0
 let g:syntastic_check_on_wq = 0
-" show warnings AND errors
+
+" Show warnings AND errors.
 let g:syntastic_quiet_messages = {'level': 'none'}
 
 let g:syntastic_rust_checkers = ['cargo']
@@ -339,14 +323,16 @@ au filetype tex syntax region texZone start='\\begin{pyconcode}' end='\\end{pyco
 
 " Folding for C, Fortran, Java, CPP
 Plug 'pseewald/anyfold', { 'for': ['c', 'cpp', 'java', 'fortran', 'javascript', 'javascript.jsx', 'python', 'markdown'] }
+autocmd Filetype c,cpp,java,fortran,javascript,javascript.jsx,python,markdown AnyFoldActivate
+let g:anyfold_fold_comments=1
 
 " Improved syntax highlighting for C, add syntax highlighting for Bison, and Flex
 Plug 'justinmk/vim-syntax-extra', { 'for': [ 'c', 'cpp', 'y', 'l' ] }
 
-Plug 'xolox/vim-misc'
 " Use :OpenSession :SaveSession
 " Useful: :RestartVim to save session, close and restart vim, and then reload
 " session. Great for debugging vim scripts.
+Plug 'xolox/vim-misc'
 Plug 'xolox/vim-session'
 
 " Save session every X minutes
@@ -354,21 +340,37 @@ let g:session_autosave_periodic = 1
 let g:session_autosave_silent = 1
 let g:session_autoload = 'no'
 
-Plug 'jceb/vim-orgmode'
-
 Plug 'nathanaelkane/vim-indent-guides'
 let g:indent_guides_enable_on_vim_startup = 1
+" Sample:
+                                                                 let test_var = 0
 
 call plug#end()
 
-autocmd Filetype c,cpp,java,fortran,javascript,javascript.jsx,python,markdown AnyFoldActivate
-let g:anyfold_fold_comments=1
 
-set background=dark
-let g:sierra_Pitch = 1
-colorscheme defminus
+try
+  set background=dark
+  let g:sierra_Pitch = 1
+  " colorscheme sierra
 
-" read the real vim config
+  " colorscheme wal
+
+  " colorscheme onehalfdark
+  " let g:airline_theme='onehalfdark'
+
+  " set termguicolors     " enable true colors support
+  " let ayucolor="light"  " for light version of theme
+  " let ayucolor="mirage" " for mirage version of theme
+  " let ayucolor="dark"   " for dark version of theme
+  " colorscheme ayu
+
+  colorscheme defminus
+  " colorscheme lessthan
+catch
+  " no colors!
+endtry
+
+" Read the real vim config.
 if filereadable(expand('~/.vimrc.minimal'))
     so ~/.vimrc.minimal
 endif
