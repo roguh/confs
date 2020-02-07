@@ -6,3 +6,12 @@
 	path = external/commacd
 	url = https://github.com/shyiko/commacd
   branch = master
+[submodule "rsync-for-src.sh"]
+	path = external/rsync-for-src.sh
+	url = git@github.com:roguh/rsync-for-src.sh
+[submodule "gocryptfs.sh"]
+	path = gocryptfs.sh
+	url = git@github.com:roguh/gocryptfs.sh
+[submodule "external/gocryptfs.sh"]
+	path = external/gocryptfs.sh
+	url = git@github.com:roguh/gocryptfs.sh

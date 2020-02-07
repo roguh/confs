@@ -30,6 +30,10 @@ curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
 
 echo ------- downloading and installing external confs -------
 git submodule update --init --recursive
+
 EXT_DIR=$SRC/external
+set -x
 cp "$EXT_DIR/bash-sensible/sensible.bash" "$DST/.sensible.bash"
 cp "$EXT_DIR/commacd/commacd.sh" "$DST/.commacd.sh"
+cp "$EXT_DIR/rsync-for-src.sh/rsync-for-src.sh" "$DST/bin/"
+cp "$EXT_DIR"/gocryptfs.sh/*.sh "$DST/bin/"
