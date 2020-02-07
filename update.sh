@@ -154,6 +154,7 @@ copy_confs_for i3 \
   .i3status.conf \
   .i3/config \
   bin/locker.sh \
+  bin/welcome-shell.sh \
   bin/backup-this-pacman-machine.sh \
   bin/backup.sh \
   bin/get-backup-root.sh \
