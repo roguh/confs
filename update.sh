@@ -203,3 +203,7 @@ copy_confs_for pacman_scripts bin/defuck-a-pacman-install.sh
 copy_confs_for arandr .screenlayout/select-arandr-display.sh
 
 copy_confs_for system-space-cleaner.sh bin/system-space-cleaner.sh
+
+# MAKE SURE TO INSTALL docker-credential-pass
+# trizen -S docker-credential-pass-bin
+copy_confs_for DOCKER .docker/config.json
