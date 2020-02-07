@@ -154,7 +154,7 @@ copy_confs_for i3 \
   .i3status.conf \
   .i3/config \
   bin/locker.sh \
-  bin/backup.sh \
+  bin/backup-this-machine.sh \
   bin/wallpaper.sh \
   bin/terminal2.sh \
   bin/terminal.sh \
@@ -196,7 +196,7 @@ copy_confs_for fanciness bin/showoff-linux-desktop-unixporn-sexy-oh-wow-screensh
 # git@github.com:roguh/git-quick-stats.git
 copy_confs_for performance bin/cerberus.sh bin/cerberus-notify-send.sh
 
-copy_confs_for feh_sane_defaults nin/feh-sane-defaults.sh bin/feh-sane-defaults-gallery.sh
+copy_confs_for feh_sane_defaults bin/feh-sane-defaults.sh bin/feh-sane-defaults-gallery.sh
 
 copy_confs_for pacman_scripts bin/defuck-a-pacman-install.sh
 
