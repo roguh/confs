@@ -259,6 +259,7 @@ exec --no-startup-id xautolock -time 10 -locker locker.sh
 exec --no-startup-id backup-this-pacman-machine.sh
 exec --no-startup-id backup.sh
 exec --no-startup-id ~/.dropbox-dist/dropboxd
+exec --no-startup-id kitty fish -c welcome-shell.sh
 
 exec --no-startup-id evolution
 exec --no-startup-id firefox
