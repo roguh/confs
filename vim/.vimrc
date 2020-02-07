@@ -323,8 +323,6 @@ au filetype tex syntax region texZone start='\\begin{pyconcode}' end='\\end{pyco
 
 " Folding for C, Fortran, Java, CPP
 Plug 'pseewald/anyfold', { 'for': ['c', 'cpp', 'java', 'fortran', 'javascript', 'javascript.jsx', 'python', 'markdown'] }
-autocmd Filetype c,cpp,java,fortran,javascript,javascript.jsx,python,markdown AnyFoldActivate
-let g:anyfold_fold_comments=1
 
 " Improved syntax highlighting for C, add syntax highlighting for Bison, and Flex
 Plug 'justinmk/vim-syntax-extra', { 'for': [ 'c', 'cpp', 'y', 'l' ] }
@@ -347,6 +345,9 @@ let g:indent_guides_enable_on_vim_startup = 1
 
 call plug#end()
 
+" Must go outside of vim-plug's config block
+autocmd Filetype c,cpp,java,fortran,javascript,javascript.jsx,python,markdown AnyFoldActivate
+let g:anyfold_fold_comments=1
 
 try
   set background=dark
