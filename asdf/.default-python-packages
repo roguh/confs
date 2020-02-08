@@ -9,8 +9,8 @@ pillow
 beautifulsoup4
 
 pydocstyle
+pycodestyle
 isort
-mypy
 progressbar
 progressbar
 progressbar

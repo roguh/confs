@@ -13,3 +13,4 @@ pacman -Qie --native > $ROOT/pacman-Qie
 pacman -Qie --foreign > $ROOT/pacman-Qie-AUR
 
 rsync $RSYNC_OPTS $HOME/bin/ $ROOT/bin
+rsync $RSYNC_OPTS $HOME/.screenlayout/ $ROOT/dotscreenlayout

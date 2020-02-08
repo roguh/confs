@@ -100,9 +100,9 @@ else
   Plug 'roxma/vim-hug-neovim-rpc'
 endif
 
-let g:deoplete#enable_at_startup = 0
+let g:deoplete#enable_at_startup = 1
 let g:deoplete#complete_method = "complete" " merlin compat?
-let g:deoplete#auto_complete_delay = 0
+let g:deoplete#auto_complete_delay = 100
 
 Plug 'carlitux/deoplete-ternjs', { 'do': 'echo run npm install -g tern' }
 
@@ -224,33 +224,56 @@ let g:ranger_replace_netrw = 1
 let g:ranger_map_keys = 0
 map <C-n> :Ranger<CR>
 
+" Enable Python venv
+Plug 'plytophogy/vim-virtualenv'
+" https://github.com/jmcantrell/vim-pipenv also exists, seems very similar
+Plug 'PieterjanMontens/vim-pipenv'
+
 " Async linting lints as you type.
 Plug 'w0rp/ale', { 'for': ['javascript', 'python', 'c', 'css', 'scss'] }
 
 let g:ale_cache_executable_check_failures = 1
 
-" let g:ale_close_preview_on_insert = 1
+let g:ale_python_auto_pipenv = 1
+
+let g:ale_close_preview_on_insert = 1
 let g:ale_cursor_detail = 0
 
 " show errors on save
-let g:ale_open_list = 0
+let g:ale_open_list = 1
+let g:ale_list_vertical = 0
+
+let g:ale_completion_max_suggestions = 200
+
+" When to lint
 let g:ale_lint_on_save = 1
 let g:ale_lint_on_text_changed = 1
 
-" no sign in gutter
+" Signs in gutter
 let g:ale_set_signs = 1
 let g:ale_sign_error = '>'
 let g:ale_sign_warning = '-'
 
-" open window
-" let g:ale_open_list = 1
+" Default ALE behavior is to enable as many linters as possible.
 " pacman -S {python,python2}-{pydocstyle,isort} mypy
-let g:ale_linters = {
-\   'javascript': ['standard', 'eslint', 'prettier'],
-\   'python': ['pydocstyle', 'flake8', 'isort', 'mypy', 'black'],
-\   'css': ['stylelint'],
-\   'c': ['clang', 'gcc', 'cppcheck', 'flawfinder']
-\}
+" let g:ale_linters = {
+" \   'javascript': ['standard', 'eslint', 'prettier'],
+" \   'python': [
+" \       'bandit',
+" \       'flake8',
+" \       'prospector',
+" \       'pycodestyle',
+" \       'pydocstyle',
+" \       'pyflakes',
+" \       'pylama',
+" \       'pylint',
+" \       'pyls',
+" \       'pyre',
+" \       'vulture'
+" \   ],
+" \   'css': ['stylelint'],
+" \   'c': ['clang', 'gcc', 'cppcheck', 'flawfinder']
+" \}
 
 let g:ale_javascript_standard_options = '--parser babel-eslint'
 
@@ -263,6 +286,7 @@ let g:ale_fixers = {
 \   'python': [
 \     'autopep8',
 \     'black',
+\     'yapf',
 \     'isort',
 \     'remove_trailing_lines',
 \     'reorder-python-imports',
@@ -275,7 +299,7 @@ nmap <silent> <C-k> <Plug>(ale_previous_wrap)
 nmap <silent> <C-j> <Plug>(ale_next_wrap)
 
 " Linters (syntax checkers, other code checkers):
-Plug 'scrooloose/syntastic', { 'for': ['html', 'python', 'rust', 'typescript', 'cpp', 'c', 'ocaml', 'java'] }
+Plug 'scrooloose/syntastic', { 'for': ['html', 'rust', 'typescript', 'cpp', 'c', 'ocaml', 'java'] }
 
 let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 1
@@ -287,7 +311,7 @@ let g:syntastic_quiet_messages = {'level': 'none'}
 
 let g:syntastic_rust_checkers = ['cargo']
 
-let g:syntastic_python_checkers = ['python', 'flake8', 'pycodestyle', 'pylint']
+let g:syntastic_python_checkers = ['bandit', 'pep257', 'pep8', 'pycodestyle', 'pydocstyle', 'pyflakes', 'pylint', 'python']
 let g:syntastic_python_pylint_exe = 'pylint'
 
 let g:syntastic_tex_checkers = ['chktex']
