@@ -153,18 +153,20 @@ copy_confs_for htop .config/htop/htoprc
 copy_confs_for i3 \
   .i3status.conf \
   .i3/config \
-  bin/locker.sh \
-  bin/welcome-shell.sh \
+  bin/backlightoff.sh \
   bin/backup-this-pacman-machine.sh \
   bin/backup.sh \
   bin/get-backup-root.sh \
-  bin/wallpaper.sh \
-  bin/terminal2.sh \
-  bin/terminal.sh \
-  bin/launcher.sh \
-  bin/backlightoff.sh \
   bin/i3empty.py \
   bin/i3txt.py
+
+copy_confs_for i3 \
+  bin/launcher.sh \
+  bin/locker.sh \
+  bin/terminal.sh \
+  bin/terminal2.sh \
+  bin/wallpaper.sh \
+  bin/welcome-shell.sh \
 
 copy_confs_for ipython .ipython/profile_default/ipython_config.py
 

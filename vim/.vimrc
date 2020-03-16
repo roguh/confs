@@ -389,8 +389,8 @@ try
   " let ayucolor="dark"   " for dark version of theme
   " colorscheme ayu
 
-  colorscheme defminus
-  " colorscheme lessthan
+  " colorscheme defminus
+  colorscheme lessthan
 catch
   " no colors!
 endtry
