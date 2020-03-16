@@ -6,7 +6,7 @@ ROOT=$(get-backup-root.sh)
 mkdir -p $ROOT/pacman-Qii
 mkdir -p $ROOT/bin
 
-RSYNC_OPTS="--archive --stats --human-readable --progress --delete-after --verbose --recursive"
+RSYNC_OPTS="--archive --human-readable --progress --delete-after --verbose --recursive"
 
 rsync --relative $RSYNC_OPTS $(pacman -Qii | awk '/^MODIFIED/ {print $2}') $ROOT/pacman-Qii
 pacman -Qie --native > $ROOT/pacman-Qie
