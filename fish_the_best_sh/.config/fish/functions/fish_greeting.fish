@@ -19,7 +19,7 @@ function fish_greeting
   end
   
   echo (hostname) '>' ls "$PWD"
-  if type exa > /dev/null 2>>&1
+  if type exa > /dev/null 2>&1
     exa "$PWD"
   else
     ls "$PWD"
@@ -28,7 +28,7 @@ function fish_greeting
   echo
   echo
   
-  if type fortune > /dev/null 2>>&1
+  if type fortune > /dev/null 2>&1
     fortune
   else
     echo FOTD: Keep your house clean.
