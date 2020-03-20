@@ -83,30 +83,6 @@ end
 
 set -gx MANPATH $MANPATH /usr/share/man /usr/local/share/man/
 
-if status is-interactive
-    if not functions -q fisher
-        set -qx XDG_CONFIG_HOME; or set XDG_CONFIG_HOME ~/.config
-        curl https://git.io/fisher --create-dirs -sLo $XDG_CONFIG_HOME/fish/functions/fisher.fish
-        fish -c fisher
-    end
-
-    function fish_user_key_bindings
-        # Use Ctrl-R to find command in history
-        fzf_key_bindings
-
-        # Use Ctrl-P to find files
-        bind \cp fzf-file-widget
-        if bind -M insert > /dev/null 2>&1 2>&1
-            bind -M insert \cp fzf-file-widget
-        end
-    end
-
-    if type keychain > /dev/null 2>&1
-        eval (keychain --eval --agents ssh -Q --quiet --nogui id_ed25519 id_ed25519_2)
-    end
-end
-
-
 # darwin with some patches
 addpaths /usr/local/opt/gettext/bin
 addpaths /Library/Frameworks/Python.framework/Versions/3.7/bin
@@ -142,7 +118,30 @@ function ,,
   cd (projectroot.sh)
 end
 
-xset r rate 200 60
+if status is-interactive
+    xset r rate 200 60
+
+    if not functions -q fisher
+        set -qx XDG_CONFIG_HOME; or set XDG_CONFIG_HOME ~/.config
+        curl https://git.io/fisher --create-dirs -sLo $XDG_CONFIG_HOME/fish/functions/fisher.fish
+        fish -c fisher
+    end
+
+    function fish_user_key_bindings
+        # Use Ctrl-R to find command in history
+        fzf_key_bindings
+
+        # Use Ctrl-P to find files
+        bind \cp fzf-file-widget
+        if bind -M insert > /dev/null 2>&1 2>&1
+            bind -M insert \cp fzf-file-widget
+        end
+    end
+
+    if type keychain > /dev/null 2>&1
+        eval (keychain --eval --agents ssh -Q --quiet --nogui id_ed25519 id_ed25519_2) &
+    end
+end
 
 # Fish does lots of things by default:
 # ignore dups and blank lines in history
