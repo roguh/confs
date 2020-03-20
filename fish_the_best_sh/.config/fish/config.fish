@@ -133,9 +133,15 @@ if status is-interactive
 
         # Use Ctrl-P to find files
         bind \cp fzf-file-widget
+
         if bind -M insert > /dev/null 2>&1 2>&1
             bind -M insert \cp fzf-file-widget
         end
+
+        # Ctrl-F is essential fish
+        # It can become unbound, e.g. if in vi-mode
+        # Right Arrow and Ctrl-E might work
+        bind \cf forward-char
     end
 
     if type keychain > /dev/null 2>&1
