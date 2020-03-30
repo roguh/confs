@@ -1,12 +1,13 @@
 function fish_greeting
-	echo Welcome to 🐠, the FRIENDLY INTERACTIVE SHELL.
+  echo Welcome to 🐠, the FRIENDLY INTERACTIVE SHELL.
   echo Type `sl` for instructions on how to use 🐠.
-  echo 🐠🐠🐠🐠🐠🐠🐠🐠🐠🐠🐠🐠🐠🐠🐠🐠🐠🐠🐠🐠🐠🐠🐠🐠🐠🐠🐠🐠🐠🐠🐠🐠🐠🐠🐠🐠🐠
+  echo 🐠🐠🐠🐠🐠🐠🐠🐠🐠🐠🐠🐠🐠🐠🐠🐠🐠🐠🐠🐠🐠
   echo
   
   if [ "$PWD" = "$HOME" ]
 
     uname -a
+
     if type screenfetch-cached > /dev/null 2>&1
       screenfetch-cached
     else if type screenfetch > /dev/null 2>&1
@@ -15,7 +16,7 @@ function fish_greeting
     
     echo
 
-    echo (curl https://raw.githubusercontent.com/asdf-vm/asdf/master/ballad-of-asdf.md)
+    # echo (curl https://raw.githubusercontent.com/asdf-vm/asdf/master/ballad-of-asdf.md)
   else
     echo (hostname) '>' ls "$PWD"
     if type exa > /dev/null 2>&1
@@ -25,6 +26,10 @@ function fish_greeting
     end
   end
   
+  echo
+
+  uptime
+
   echo
   
   if type fortune > /dev/null 2>&1
