@@ -92,19 +92,16 @@ Plug 'tpope/vim-speeddating'
 
 " Deoplete code completion framework
 " https://github.com/Shougo/deoplete.nvim/wiki/Completion-Sources
+Plug 'Shougo/deoplete.nvim'
 if has('nvim')
-  Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 else
-  Plug 'Shougo/deoplete.nvim'
   Plug 'roxma/nvim-yarp'
   Plug 'roxma/vim-hug-neovim-rpc'
 endif
 
-let g:deoplete#enable_at_startup = 1
-let g:deoplete#complete_method = "complete" " merlin compat?
-let g:deoplete#auto_complete_delay = 100
-
 Plug 'carlitux/deoplete-ternjs', { 'do': 'echo run npm install -g tern' }
+let g:deoplete#enable_at_startup = 1
+" call deoplete#custom#option('auto_complete_delay', 100)
 
 " Use tern_for_vim.
 let g:tern#command = ["tern"]
