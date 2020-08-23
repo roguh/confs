@@ -17,3 +17,5 @@
 
 [core]
 	editor = vim
+[pull]
+	rebase = false
