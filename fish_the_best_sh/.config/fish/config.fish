@@ -27,6 +27,7 @@ function load_file
 end
 
 set -gx ESHELL /bin/bash
+set -gx SHELL (which fish)
 set -gx EDITOR vim
 set -gx VISUAL vim
 set -gx REACT_EDITOR none
