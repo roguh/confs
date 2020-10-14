@@ -174,22 +174,10 @@ au BufNewFile,BufRead *.cool setf cool
 au BufNewFile,BufRead *.cl setf cool
 Plug 'vim-scripts/cool.vim', { 'for': 'cool' }
 
-" fuzzy file finding
-if !filereadable('/usr/local/opt/fzf')
-  Plug '/usr/local/opt/fzf'
-endif
-
-Plug 'junegunn/fzf.vim'
-
-" if using git, find files in project, not just cwd
-function! s:find_project_root()
-  return system('git rev-parse --show-toplevel 2> /dev/null')[:-2]
-endfunction
-
-command! ProjectFiles execute 'Files' s:find_project_root()
+Plug 'ctrlpvim/ctrlp.vim'
 
 " use ctrl-p to find files
-map <C-p> :ProjectFiles<CR>
+map <C-p> :CtrlPMixed<CR>
 
 " use ag or ack to search for text in files
 " use the :Ack command instead of :grep
@@ -244,7 +232,7 @@ let g:ale_completion_max_suggestions = 200
 
 " When to lint
 let g:ale_lint_on_save = 1
-let g:ale_lint_on_text_changed = 1
+let g:ale_lint_on_text_changed = 0
 
 " Signs in gutter
 let g:ale_set_signs = 1
