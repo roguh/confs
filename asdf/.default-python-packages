@@ -11,15 +11,5 @@ beautifulsoup4
 pydocstyle
 pycodestyle
 isort
+black
 progressbar
-progressbar
-progressbar
-progressbar
-progressbar
-progressbar
-progressbar
-progressbar
-progressbar
-progressbar
-progressbar
-
