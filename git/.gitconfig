@@ -13,9 +13,10 @@
 	pager = false
 
 [merge]
-	tool = vimdiff
+	tool = meld
 
 [core]
 	editor = vim
+
 [pull]
 	rebase = false

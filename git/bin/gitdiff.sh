@@ -14,9 +14,9 @@ if command -v icdiff > /dev/null ; then
     # LOL
     icdiff --cols=$((2 * D)) --no-headers --line-numbers "$2" "$5" | grep -v -e '^$' | less
 elif command -v sdiff > /dev/null ; then
-    sdiff -l --suppress-common-lines  --ignore-all-space --width=$C "$2" "$5" | less
+    sdiff -l --ignore-all-space --width=$C "$2" "$5" | less
 else
-    diff --suppress-common-lines -y "$2" "$5" | less
+    diff -y "$2" "$5" | less
 fi
 
 # Don't die
