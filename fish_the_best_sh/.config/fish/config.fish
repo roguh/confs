@@ -19,6 +19,7 @@ addpaths $HOME/.gem/ruby/2.6.0/bin
 addpaths $HOME/Library/Python/3.7/bin
 addpaths $HOME/.dropbox-dist
 addpaths $HOME/.cargo/bin
+addpaths /opt/flutter/bin
 
 function load_file
     if test -e $argv[1]
@@ -31,6 +32,14 @@ set -gx EDITOR vim
 set -gx VISUAL vim
 set -gx REACT_EDITOR none
 set -gx PASSWORD_STORE_ENABLE_EXTENSIONS true
+
+if test -d /opt/android-sdk/
+  # On Arch, must install aur/android-platform and aur/android-sdk-build-tools
+  set -gx ANDROID_SDK_ROOT /opt/android-sdk/
+  addpaths $ANDROID_SDK_ROOT/tools
+  addpaths $ANDROID_SDK_ROOT/platform-tools
+  addpaths $ANDROID_SDK_ROOT/build-tools
+end
 
 if type most > /dev/null 2>&1
     set -gx PAGER most

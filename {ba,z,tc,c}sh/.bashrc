@@ -1,5 +1,5 @@
 # Set path to binaries
-export PATH="$HOME/bin:$PATH:$HOME/.local/bin"
+export PATH="$HOME/bin:$PATH:$HOME/.local/bin:/opt/flutter/bin"
 export PATH="$HOME/.dropbox-dist:$PATH"
 export REACT_EDITOR=none
 
