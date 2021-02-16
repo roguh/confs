@@ -1,5 +1,4 @@
 #!/bin/sh
+set -x
 backup-this-pacman-machine.sh
-if [ -e backup-$(hostname).sh ]; then
-  backup-$(hostname).sh
-fi
+backup-$(hostname).sh

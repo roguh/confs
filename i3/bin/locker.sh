@@ -5,6 +5,7 @@ backlightoff.sh &
 if command -v blurlock > /dev/null; then
   blurlock
 else
+  rm -rf $HOME/tmp/s.png
   # -sample is faster than -scale or -resize
   scrot $HOME/tmp/s.png && \
   mogrify -sample 50% -spread 1 -paint 2 -normalize -sample 200% $HOME/tmp/s.png && \
