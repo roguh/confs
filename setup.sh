@@ -14,12 +14,16 @@ function link () {
     fi
 }
 
+echo ------- making ~/tmp -------
+mkdir $DST/tmp
+
 echo ------- mkshrc is bashrc -------
 link $DST/.bashrc $DST/.mkshrc
 
-echo ------- linking .vimrc to .config/nvim. creating vim backup dirs ------- 
+echo ------- linking .vimrc to .config/nvim. creating vim backup dirs -------
 mkdir -p $DST/.config/nvim
 mkdir -p $DST/{.vim,.config/nvim,tmp}/{backup,swap,undo}
+touch $DST/.vimrc
 link $DST/.vimrc $DST/.config/nvim/init.vim
 
 echo ------- downloading plug.vim -------
