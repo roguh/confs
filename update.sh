@@ -40,7 +40,7 @@ if [[ "$changes_ok" != "" ]] ; then
   exit 1
 fi
 
-RSYNC_OPTS="--human-readable --recursive"
+RSYNC_OPTS="--human-readable --recursive --xattrs"
 RSYNC_BAK="$RSYNC_OPTS"
 RSYNC_BACKUP="$RSYNC_OPTS --delete-after --relative"
 RSYNC_RESTORE="$RSYNC_OPTS --relative"
