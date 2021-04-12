@@ -170,6 +170,7 @@ copy_confs_for i3 \
 copy_confs_for i3 \
   bin/launcher.sh \
   bin/locker.sh \
+  bin/read-one-mouse-char.sh \
   bin/terminal.sh \
   bin/terminal2.sh \
   bin/wallpaper.sh \
