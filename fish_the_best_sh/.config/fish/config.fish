@@ -1,15 +1,44 @@
 # Hugo O. Rivera's FISH config
 
-set -gx LC_ALL en_US.UTF-8
-set -gx LANG en_US.UTF-8
+set DEBUG_OUTPUT = false
 
-function addpaths
-  if test -d $argv[1]
-    contains -- $argv[1] $fish_user_paths
-       or set -U fish_user_paths $fish_user_paths $argv[1]
+if [ "$PWD" = "$HOME" ]
+  if status is-interactive
+    set DEBUG_OUTPUT true
   end
 end
 
+function debug
+  if [ "$DEBUG_OUTPUT" = true ]
+    echo $FISH_LOGO: $argv
+  end
+end
+
+function addpaths
+  if test -d $argv[1]
+    if not contains -- $argv[1] $fish_user_paths
+      # Must check if path is already added.
+      # Without this check, fish becomes gradually slower to start as it
+      # struggles to manage an enormous variable.
+      set -U fish_user_paths $fish_user_paths $argv[1]
+      debug Added path (trimdir.py $argv[1])
+    end
+  end
+end
+
+function load_file
+    if test -e $argv[1]
+        source $argv[1]
+        debug Loaded file $argv[1]
+    end
+end
+
+function set_global
+  set -gx $argv
+  debug Set variable $argv[1]
+end
+
+set_global FISH_LOGO 🐠
 
 addpaths $HOME/bin
 addpaths $HOME/.local/bin
@@ -21,33 +50,32 @@ addpaths $HOME/.dropbox-dist
 addpaths $HOME/.cargo/bin
 addpaths /opt/flutter/bin
 
-function load_file
-    if test -e $argv[1]
-        source $argv[1]
-    end
-end
+set_global LC_ALL en_US.UTF-8
+set_global LANG en_US.UTF-8
 
-set -gx ESHELL /bin/bash
-set -gx SHELL (which fish)
-set -gx EDITOR vim
-set -gx VISUAL vim
-set -gx REACT_EDITOR none
-set -gx PASSWORD_STORE_ENABLE_EXTENSIONS true
+set_global ESHELL /bin/bash
+set_global SHELL (which fish)
+set_global EDITOR vim
+set_global VISUAL vim
+set_global REACT_EDITOR none
+set_global PASSWORD_STORE_ENABLE_EXTENSIONS true
 
 if test -d /opt/android-sdk/
   # On Arch, must install aur/android-platform and aur/android-sdk-build-tools
-  set -gx ANDROID_SDK_ROOT /opt/android-sdk/
+  set_global ANDROID_SDK_ROOT /opt/android-sdk/
   addpaths $ANDROID_SDK_ROOT/tools
   addpaths $ANDROID_SDK_ROOT/platform-tools
   addpaths $ANDROID_SDK_ROOT/build-tools
+
+  debug Set Android variables and paths
 end
 
 if type most > /dev/null 2>&1
-    set -gx PAGER most
-    set -gx pager $PAGER
-    set -gx LESS $PAGER
-    set -gx MANPAGER $PAGER
-    set -gx SYSTEMD_PAGER $PAGER
+    set_global PAGER most
+    set_global pager $PAGER
+    set_global LESS $PAGER
+    set_global MANPAGER $PAGER
+    set_global SYSTEMD_PAGER $PAGER
     alias less=$PAGER
 end
 
@@ -61,25 +89,14 @@ load_file $HOME/.opam/opam-init/init.fish
 load_file ~/.asdf/asdf.fish
 
 if type go > /dev/null 2>&1
-    set -gx GOPATH (go env GOPATH)
-    addpaths $GOPATH/bin
+  set_global GOPATH (go env GOPATH)
+  addpaths $GOPATH/bin
+  debug Set Go variables and paths
 end
 
 
 # Load pywal theme
 # load_theme
-
-function install_plugins
-    # "frecency" aware directory switching z
-    fisher add jethrokuan/z
-
-    # notifications when commands are done
-    fisher add franciscolourenco/done
-
-    # bash like syntax
-    # bass export X=4
-    fisher add edc/bass
-end
 
 # Ruby version manager
 # https://rvm.io/rvm/install
@@ -88,10 +105,11 @@ end
 # curl -sSL https://get.rvm.io | bash -s stable --ruby
 # curl -L --create-dirs -o ~/.config/fish/functions/rvm.fish https://raw.github.com/lunks/fish-nuggets/master/functions/rvm.fish
 if type rvm > /dev/null 2>&1
-    rvm default
+  rvm default
+  debug Loaded RVM
 end
 
-set -gx MANPATH $MANPATH /usr/share/man /usr/local/share/man/
+set_global MANPATH $MANPATH /usr/share/man /usr/local/share/man/
 
 # darwin with some patches
 addpaths /usr/local/opt/gettext/bin
@@ -100,63 +118,63 @@ addpaths /usr/local/opt/openssl@1.1/bin
 addpaths /usr/local/opt/openssl/bin
 
 if test -d /usr/local/opt/openssl/
-  set -gx LDFLAGS "-L/usr/local/opt/openssl/lib"
-  set -gx CPPFLAGS "-I/usr/local/opt/openssl/include"
-  set -gx PKG_CONFIG_PATH "/usr/local/opt/openssl/lib/pkgconfig"
+  set_global LDFLAGS "-L/usr/local/opt/openssl/lib"
+  set_global CPPFLAGS "-I/usr/local/opt/openssl/include"
+  set_global PKG_CONFIG_PATH "/usr/local/opt/openssl/lib/pkgconfig"
+
+  debug Set local openssl variables
 end
 
 if test -d /usr/local/opt/gettext/lib
-  set -gx LDFLAGS "-L/usr/local/opt/gettext/lib"
-  set -gx CPPFLAGS "-I/usr/local/opt/gettext/include"
+  set_global LDFLAGS "-L/usr/local/opt/gettext/lib"
+  set_global CPPFLAGS "-I/usr/local/opt/gettext/include"
+
+  debug Set local gettext variables
 end
 
 if test -d /usr/local/opt/openssl@1.1/lib
-  set -gx LDFLAGS "-L/usr/local/opt/openssl@1.1/lib"
-  set -gx CPPFLAGS "-I/usr/local/opt/openssl@1.1/include"
-  set -gx PKG_CONFIG_PATH "/usr/local/opt/openssl@1.1/lib/pkgconfig"
+  set_global LDFLAGS "-L/usr/local/opt/openssl@1.1/lib"
+  set_global CPPFLAGS "-I/usr/local/opt/openssl@1.1/include"
+  set_global PKG_CONFIG_PATH "/usr/local/opt/openssl@1.1/lib/pkgconfig"
+
+  debug Set local openssl@1.1 variables
 end
 
 
 # Have fzf use ag to find files
 if type ag > /dev/null 2>&1
-    set -gx FZF_DEFAULT_COMMAND 'ag -g ""'
-    set -gx FZF_CTRL_T_COMMAND "$FZF_DEFAULT_COMMAND"
-end
+  set_global FZF_DEFAULT_COMMAND 'ag -g ""'
+  set_global FZF_CTRL_T_COMMAND "$FZF_DEFAULT_COMMAND"
 
-function ,,
-  echo (projectroot.sh)
-  cd (projectroot.sh)
+  debug Set fzf variables
 end
 
 if status is-interactive
-    xset r rate 200 60
+  xset r rate 200 60
 
-    if not functions -q fisher
-        set -qx XDG_CONFIG_HOME; or set XDG_CONFIG_HOME ~/.config
-        curl https://git.io/fisher --create-dirs -sLo $XDG_CONFIG_HOME/fish/functions/fisher.fish
-        fish -c fisher
+  debug Set keyboard rate
+
+  function fish_user_key_bindings
+    # Use Ctrl-R to find command in history
+    fzf_key_bindings
+
+    # Use Ctrl-P to find files
+    bind \cp fzf-file-widget
+
+    if bind -M insert > /dev/null 2>&1 2>&1
+      bind -M insert \cp fzf-file-widget
     end
 
-    function fish_user_key_bindings
-        # Use Ctrl-R to find command in history
-        fzf_key_bindings
+    # Ctrl-F is essential fish
+    # It can become unbound, e.g. if in vi-mode
+    # Right Arrow and Ctrl-E might work
+    bind \cf forward-char
+  end
+  debug Will configure interactive fzf features
 
-        # Use Ctrl-P to find files
-        bind \cp fzf-file-widget
-
-        if bind -M insert > /dev/null 2>&1 2>&1
-            bind -M insert \cp fzf-file-widget
-        end
-
-        # Ctrl-F is essential fish
-        # It can become unbound, e.g. if in vi-mode
-        # Right Arrow and Ctrl-E might work
-        bind \cf forward-char
-    end
-
-    if type keychain > /dev/null 2>&1
-        eval (keychain --eval --agents ssh -Q --quiet --nogui id_ed25519 id_ed25519_2) &
-    end
+  if type keychain > /dev/null 2>&1
+    eval (keychain --eval --agents ssh -Q --quiet --nogui id_ed25519) &
+  end
 end
 
 # Fish does lots of things by default:

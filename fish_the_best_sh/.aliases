@@ -35,9 +35,9 @@ tryalias sx 'exec startx'
 tryalias npm pnpm npm
 
 
-# git fetch origin            # Updates origin/master
-# git rebase origin/master    # Rebases current branch onto origin/master
-tryalias gr 'git pull --rebase origin master'
+# git fetch origin            # Updates origin/main
+# git rebase origin/main    # Rebases current branch onto origin/main
+tryalias gr 'git pull --rebase origin main'
 tryalias gp 'git push'
 tryalias gc 'git commit'
 tryalias gs 'git status'
