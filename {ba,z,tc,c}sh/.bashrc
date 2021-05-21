@@ -109,8 +109,8 @@ if [[ $- == *i* ]]; then
     fi
 
     tty -s
-    if command -v keychain > /dev/null && [ "$0" == "$?" ] ; then
-        eval $(keychain --eval --agents ssh --nogui --quick --quiet id_ed25519 id_ed25519_2)
+    if command -v keychain > /dev/null ; then
+        eval $(keychain --eval --agents ssh --nogui --quick --quiet id_ed25519)
     fi
 fi
 
