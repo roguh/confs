@@ -32,6 +32,9 @@ curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs \
 curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
     https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 
+echo ------- downloading kitty-themes -------
+git clone --depth 1 git@github.com:dexpota/kitty-themes.git ~/.config/kitty/kitty-themes
+
 echo ------- downloading and installing external confs -------
 git submodule update --init --recursive
 
