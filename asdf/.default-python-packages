@@ -1,12 +1,20 @@
 pipenv
+
 ipython
+
 numpy
+scipy
 pandas
-requests
-scrapy
+
 matplotlib
-pillow
+seaborn
+
+requests
+
+scrapy
 beautifulsoup4
+
+pillow
 
 pydocstyle
 pycodestyle
