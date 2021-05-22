@@ -144,7 +144,7 @@ copy_confs_for emacs.d .emacs.d/init.el .emacs.d/ui.el
 
 copy_confs_for fish_the_best_sh \
   .aliases \
-  .config/fish/{config,functions/{tryalias,load_theme,fisher,fish_{title,prompt,greeting}}}.fish \
+  .config/fish/{config,functions/{commacomma,tryalias,load_theme,fisher,fish_{title,prompt,greeting}}}.fish \
   bin/{🐠,real-deal-turbo-charged-cd.sh} \
 
 copy_confs_for bash-cache bin/bash-cache

@@ -81,6 +81,7 @@ end
 
 # Load aliases
 load_file $HOME/.aliases
+tryalias ,, commacomma
 
 # Load OCaml
 load_file $HOME/.opam/opam-init/init.fish
@@ -174,6 +175,7 @@ if status is-interactive
 
   if type keychain > /dev/null 2>&1
     eval (keychain --eval --agents ssh -Q --quiet --nogui id_ed25519) &
+    debug Loaded keychain
   end
 end
 
