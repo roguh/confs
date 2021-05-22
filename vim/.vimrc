@@ -139,8 +139,8 @@ let g:haskellmode_completion_ghc = 0
 autocmd FileType haskell setlocal omnifunc=necoghc#omnifunc
 
 " Python code-completion, many other features
-Plug 'davidhalter/jedi-vim', { 'for': 'python' }
-Plug 'zchee/deoplete-jedi'
+" Plug 'davidhalter/jedi-vim', { 'for': 'python' }
+" Plug 'zchee/deoplete-jedi'
 
 " J, APL derivative
 Plug 'guersam/vim-j'
