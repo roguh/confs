@@ -1,7 +1,7 @@
 function fish_greeting
-  echo Welcome to 🐠, the FRIENDLY INTERACTIVE SHELL.
-  echo Type `sl` for instructions on how to use 🐠.
-  echo 🐠🐠🐠🐠🐠🐠🐠🐠🐠🐠🐠🐠🐠🐠🐠🐠🐠🐠🐠🐠🐠
+  echo Welcome to $FISH_LOGO, the FRIENDLY INTERACTIVE SHELL.
+  echo Type `sl` for instructions on how to use $FISH_LOGO.
+  echo $FISH_LOGO$FISH_LOGO$FISH_LOGO$FISH_LOGO$FISH_LOGO$FISH_LOGO$FISH_LOGO$FISH_LOGO$FISH_LOGO$FISH_LOGO$FISH_LOGO$FISH_LOGO$FISH_LOGO$FISH_LOGO$FISH_LOGO$FISH_LOGO$FISH_LOGO$FISH_LOGO$FISH_LOGO$FISH_LOGO$FISH_LOGO$FISH_LOGO$FISH_LOGO
   echo
   
   if [ "$PWD" = "$HOME" ]

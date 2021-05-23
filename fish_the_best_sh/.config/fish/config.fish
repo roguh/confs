@@ -38,7 +38,14 @@ function set_global
   debug Set variable $argv[1]
 end
 
-set_global FISH_LOGO Fish # 🐠
+function set_global_if_unset
+  if not set -q $argv[1]
+    set_global $argv
+  end
+end
+
+load_file $HOME/.config/fish/local_env.fish
+set_global_if_unset FISH_LOGO Fish # 🐠
 
 addpaths $HOME/bin
 addpaths $HOME/.local/bin
@@ -50,13 +57,13 @@ addpaths $HOME/.dropbox-dist
 addpaths $HOME/.cargo/bin
 addpaths /opt/flutter/bin
 
-set_global LC_ALL en_US.UTF-8
-set_global LANG en_US.UTF-8
+set_global_if_unset LC_ALL en_US.UTF-8
+set_global_if_unset LANG en_US.UTF-8
 
-set_global ESHELL /bin/bash
-set_global SHELL (which fish)
-set_global EDITOR vim
-set_global VISUAL vim
+set_global_if_unset ESHELL /bin/bash
+set_global_if_unset SHELL (which fish)
+set_global_if_unset EDITOR vim
+set_global_if_unset VISUAL vim
 set_global REACT_EDITOR none
 set_global PASSWORD_STORE_ENABLE_EXTENSIONS true
 
