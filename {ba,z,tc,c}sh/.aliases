@@ -21,7 +21,7 @@ tryalias grep 'grep --color'
 tryalias gzip pigz gzip
 
 tryalias c ccat
-tryalias exa 'exa --git'
+tryalias exa 'exa --git' exa
 
 tryalias trizen 'trizen --flip-results=1'
 

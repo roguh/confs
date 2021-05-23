@@ -38,7 +38,7 @@ function set_global
   debug Set variable $argv[1]
 end
 
-set_global FISH_LOGO 🐠
+set_global FISH_LOGO Fish # 🐠
 
 addpaths $HOME/bin
 addpaths $HOME/.local/bin
@@ -144,34 +144,40 @@ end
 
 # Have fzf use ag to find files
 if type ag > /dev/null 2>&1
-  set_global FZF_DEFAULT_COMMAND 'ag -g ""'
-  set_global FZF_CTRL_T_COMMAND "$FZF_DEFAULT_COMMAND"
+  if type fzf > /dev/null 2>&1
+    set_global FZF_DEFAULT_COMMAND 'ag -g ""'
+    set_global FZF_CTRL_T_COMMAND "$FZF_DEFAULT_COMMAND"
 
-  debug Set fzf variables
+    debug Set fzf variables
+  end
 end
 
 if status is-interactive
-  xset r rate 200 60
-
-  debug Set keyboard rate
+  if type xset > /dev/null 2>&1
+    xset r rate 200 60
+    debug Set keyboard rate
+  end
 
   function fish_user_key_bindings
-    # Use Ctrl-R to find command in history
-    fzf_key_bindings
+    if type fzf > /dev/null 2>&1
+      # Use Ctrl-R to find command in history
+      fzf_key_bindings
 
-    # Use Ctrl-P to find files
-    bind \cp fzf-file-widget
+      # Use Ctrl-P to find files
+      bind \cp fzf-file-widget
 
-    if bind -M insert > /dev/null 2>&1 2>&1
-      bind -M insert \cp fzf-file-widget
+      if bind -M insert > /dev/null 2>&1 2>&1
+        bind -M insert \cp fzf-file-widget
+      end
+      debug Configured interactive fzf features
     end
 
     # Ctrl-F is essential fish
     # It can become unbound, e.g. if in vi-mode
     # Right Arrow and Ctrl-E might work
     bind \cf forward-char
+    debug Bound Ctrl-F
   end
-  debug Will configure interactive fzf features
 
   if type keychain > /dev/null 2>&1
     eval (keychain --eval --agents ssh -Q --quiet --nogui id_ed25519) &
