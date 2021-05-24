@@ -20,3 +20,5 @@
 
 [pull]
 	rebase = false
+[init]
+	templateDir = /home/hugo/.git-template
