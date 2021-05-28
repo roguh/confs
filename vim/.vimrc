@@ -209,11 +209,6 @@ let g:ranger_replace_netrw = 1
 let g:ranger_map_keys = 0
 map <C-n> :Ranger<CR>
 
-" Enable Python venv
-Plug 'plytophogy/vim-virtualenv'
-" https://github.com/jmcantrell/vim-pipenv also exists, seems very similar
-Plug 'PieterjanMontens/vim-pipenv'
-
 " Async linting lints as you type.
 Plug 'w0rp/ale', { 'for': ['javascript', 'python', 'c', 'css', 'scss'] }
 
