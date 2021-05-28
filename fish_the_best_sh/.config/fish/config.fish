@@ -1,4 +1,5 @@
 # Hugo O. Rivera's FISH config
+# Remember to run `install_plugins` once.
 
 set DEBUG_OUTPUT = false
 
@@ -190,6 +191,10 @@ if status is-interactive
     eval (keychain --eval --agents ssh -Q --quiet --nogui id_ed25519) &
     debug Loaded keychain
   end
+end
+
+function install_plugins
+  curl -Lo ~/.config/fish/conf.d/done.fish --create-dirs https://raw.githubusercontent.com/franciscolourenco/done/master/conf.d/done.fish
 end
 
 # Fish does lots of things by default:
