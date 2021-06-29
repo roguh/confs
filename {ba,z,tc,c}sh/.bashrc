@@ -109,9 +109,9 @@ if [[ $- == *i* ]]; then
     fi
 
     tty -s
-    if command -v keychain > /dev/null ; then
-        eval $(keychain --eval --agents ssh --nogui --quick --quiet id_ed25519)
-    fi
+    # if command -v keychain > /dev/null ; then
+    #     eval $(keychain --eval --agents ssh --nogui --quick --quiet id_ed25519)
+    # fi
 fi
 
 # Load node version manager, if available
