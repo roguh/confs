@@ -1,0 +1,72 @@
+theme = "solarized-dark"
+icons = "awesome"
+
+[[block]]
+block = "networkmanager"
+on_click = "alacritty -e nmtui"
+interface_name_exclude = ["br\\-[0-9a-f]{12}", "docker\\d+"]
+
+[[block]]
+block = "disk_space"
+path = "/"
+alias = "/"
+info_type = "available"
+unit = "GB"
+interval = 20
+warning = 20.0
+alert = 10.0
+
+[[block]]
+block = "memory"
+display_type = "memory"
+format_mem = "{mem_used_percents} RAM"
+format_swap = "{swap_used_percents}"
+
+[[block]]
+block = "cpu"
+format = "{utilization} {frequency}"
+interval = 1
+
+[[block]]
+block = "temperature"
+interval = 1
+collapsed = false
+format = "{average}"
+
+[[block]]
+block = "load"
+interval = 1
+format = "{1m} {5m} {15m}"
+
+[[block]]
+block = "sound"
+
+[[block]]
+block = "time"
+interval = 1
+timezone = "US/Pacific"
+format = "%H"
+
+[[block]]
+block = "time"
+interval = 1
+format = "%a %d/%m %R:%S"
+
+[[block]]
+block = "time"
+interval = 1
+timezone = "US/Central"
+format = "%H"
+
+[[block]]
+block = "battery"
+interval = 10
+format = "{percentage}"
+
+[[block]]
+block = "battery"
+interval = 10
+format = "{percentage}"
+device = "BAT1"
+allow_missing = true
+missing_format = "n/a"
