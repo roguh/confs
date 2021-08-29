@@ -16,6 +16,7 @@ MODE=$1
 
 # The location of this script
 CONF_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+HOST_SPECIFIC_DIR="host-specific"
 
 # Store backups here
 BACKUP_B_DIR=$CONF_DIR/backup-bak
@@ -92,6 +93,41 @@ copy_confs_for() {
         rsync $RSYNC_BAK --relative --ignore-missing-args $FILES "$BACKUP_R_DIR/$SECTION" || true
         log rsync $RSYNC_RESTORE "$SRC/$SECTION/./" $DST
         rsync $RSYNC_RESTORE "$SRC/$SECTION/./" $DST || true
+    fi
+}
+
+# Either copy all files from host-specific/$hostname/section_name/ to the
+# destination or copy all files to host-specific/$hostname/section_name/, while
+# preserving directory structure.  Make backups before copying.
+copy_confs_for_host() {
+    SECTION="$1"
+    HOST=$(hostname)
+    shift
+
+    printf "\n--------- $SECTION for $HOST
+    echo "$@"
+    mkdir -p "$CONF_DIR/$SECTION"
+
+    THIS_DST="$DST/$HOST_SPECIFIC_DIR/$HOST/$SECTION"
+    FILES=
+    if [ "$MODE" == backup ] ; then
+        mkdir -p "$BACKUP_B_DIR/$SECTION"
+        mkdir -p "$THIS_DST"
+        FROM="$SRC"
+    else
+      printf "Unimplemented: cannot restore from host specific directory"
+    fi
+
+    for f in "$@" ; do
+        FILES="$FILES $FROM/./$f"
+    done
+    echo FILES: "$FILES"
+
+    if [ "$MODE" == backup ] ; then
+        log rsync $RSYNC_BAK "$THIS_DST" "$BACKUP_B_DIR"
+        rsync $RSYNC_BAK "$THIS_DST" "$BACKUP_B_DIR" || true
+        log rsync $RSYNC_BACKUP $FILES "$THIS_DST"
+        rsync $RSYNC_BACKUP $FILES "$THIS_DST" || true
     fi
 }
 
@@ -176,6 +212,8 @@ copy_confs_for i3 \
   bin/wallpaper.sh \
   bin/welcome-shell.sh \
 
+copy_confs_for_host i3 .config/i3status-rust/
+
 copy_confs_for ipython .ipython/profile_default/ipython_config.py
 
 copy_confs_for kitty .config/kitty/kitty.conf
@@ -219,4 +257,4 @@ copy_confs_for system-space-cleaner.sh bin/system-space-cleaner.sh
 
 # MAKE SURE TO INSTALL docker-credential-pass
 # trizen -S docker-credential-pass-bin
-copy_confs_for DOCKER bin/docker-remove-images.sh bin/docker-remove-stopped-containers.sh .docker/config.json
+copy_confs_for DOCKER bin/docker-remove-images.sh bin/docker-remove-stopped-containers.sh

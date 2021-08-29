@@ -256,7 +256,6 @@ exec --no-startup-id blueman-applet
 exec --no-startup-id conky.sh
 exec --no-startup-id wallpaper.sh
 exec --no-startup-id xautolock -time 10 -locker locker.sh
-exec --no-startup-id backup-this-pacman-machine.sh
 exec --no-startup-id backup.sh
 exec --no-startup-id ~/.dropbox-dist/dropboxd
 exec --no-startup-id kitty fish -c welcome-shell.sh
@@ -314,8 +313,8 @@ set_from_resource $term_color15    color15
 # Start i3bar to display a workspace bar (plus the system information i3status if available)
 bar {
 	i3bar_command i3bar
-	status_command i3status
-	position bottom
+	status_command i3status-rs
+	position top
 
 ## please set your primary output first. Example: 'xrandr --output eDP1 --primary'
 #	tray_output primary
