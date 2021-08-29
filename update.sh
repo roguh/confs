@@ -104,7 +104,7 @@ copy_confs_for_host() {
     HOST=$(hostname)
     shift
 
-    printf "\n--------- $SECTION for $HOST
+    printf "\n--------- $SECTION for $HOST ---------\n"
     echo "$@"
     mkdir -p "$CONF_DIR/$SECTION"
 
