@@ -2,14 +2,6 @@
 CANCEL_WITH_MOUSE_TIMEOUT=15
 
 backlightoff.sh &
-# exec i3lock -c ff0000
-
-timeout $CANCEL_WITH_MOUSE_TIMEOUT read-one-mouse-char.sh
-
-if [ $? != 124 ]; then
-  echo Lock canceled by mouse movement
-  exit 124
-fi
 
 if command -v blurlock > /dev/null; then
   blurlock
