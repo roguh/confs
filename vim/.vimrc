@@ -99,13 +99,13 @@ else
   Plug 'roxma/vim-hug-neovim-rpc'
 endif
 
-Plug 'carlitux/deoplete-ternjs', { 'do': 'echo run npm install -g tern' }
+" Plug 'carlitux/deoplete-ternjs', { 'do': 'echo run npm install -g tern' }
 let g:deoplete#enable_at_startup = 1
 " call deoplete#custom#option('auto_complete_delay', 100)
 
 " Use tern_for_vim.
-let g:tern#command = ["tern"]
-let g:tern#arguments = ["--persistent"]
+" let g:tern#command = ["tern"]
+" let g:tern#arguments = ["--persistent"]
 
 " USE TAB!!!!!!
 inoremap <expr><tab> pumvisible() ? "\<c-n>" : "\<tab>"
