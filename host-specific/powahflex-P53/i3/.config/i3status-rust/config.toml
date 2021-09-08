@@ -44,6 +44,12 @@ block = "sound"
 [[block]]
 block = "time"
 interval = 1
+timezone = "UTC"
+format = "%H"
+
+[[block]]
+block = "time"
+interval = 1
 format = "%a %d/%m %R:%S"
 
 [[block]]
@@ -62,11 +68,3 @@ format = "%H"
 block = "battery"
 interval = 10
 format = "{percentage}"
-
-[[block]]
-block = "battery"
-interval = 10
-format = "{percentage}"
-device = "BAT1"
-allow_missing = true
-missing_format = "n/a"
