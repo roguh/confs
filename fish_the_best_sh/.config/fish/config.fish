@@ -195,6 +195,9 @@ end
 
 function install_plugins
   curl -Lo ~/.config/fish/conf.d/done.fish --create-dirs https://raw.githubusercontent.com/franciscolourenco/done/master/conf.d/done.fish
+  cd ~/.config/fish
+  git clone https://github.com/evanlucas/fish-kubectl-completions
+  ln -s ../fish-kubectl-completions/completions/kubectl.fish completions/
 end
 
 # Fish does lots of things by default:
