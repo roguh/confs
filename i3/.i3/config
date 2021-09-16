@@ -85,6 +85,8 @@ bindsym $mod+F7 workspace 17
 bindsym $mod+F8 workspace 18
 bindsym $mod+F9 workspace 19
 bindsym $mod+F10 workspace 20
+bindsym $mod+F11 workspace 21
+bindsym $mod+F12 workspace 22
 bindsym $mod+p workspace 23:fun
 bindsym $mod+o workspace 22:TODO
 bindsym $mod+i workspace 21:comm
@@ -109,6 +111,8 @@ bindsym $mod+Shift+F7 move container to workspace 17; workspace 17
 bindsym $mod+Shift+F8 move container to workspace 18; workspace 18
 bindsym $mod+Shift+F9 move container to workspace 19; workspace 19
 bindsym $mod+Shift+F10 move container to workspace 20; workspace 20
+bindsym $mod+Shift+F11 move container to workspace 21; workspace 21
+bindsym $mod+Shift+F12 move container to workspace 22; workspace 22
 bindsym $mod+Shift+p move container to workspace 23:fun; workspace 23:fun
 bindsym $mod+Shift+o move container to workspace 22:TODO; workspace 22:TODO
 bindsym $mod+Shift+i move container to workspace 21:comm; workspace 21:comm
