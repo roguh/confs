@@ -86,6 +86,10 @@ if [[ $- == *i* ]]; then
     # Globally enable bash completion for Python scripts using argcomplete
     load_file "$HOME/.bash_completion.d/python-argcomplete.sh"
 
+    # pyenv
+    eval "$(pyenv init -)"
+    eval "$(pyenv virtualenv-init -)"
+
     # Use , as an improved cd command
     load_file "$HOME/.commacd.bash"
 

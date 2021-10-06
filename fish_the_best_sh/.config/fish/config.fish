@@ -207,6 +207,11 @@ function install_plugins
 
   # kubectl completion
   fisher install evanlucas/fish-kubectl-completions
+
+  # pyenv
+  if type pyenv > /dev/null 2>&1
+    fisher install oh-my-fish/plugin-pyenv
+  end
 end
 
 # Fish does lots of things by default:
