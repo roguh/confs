@@ -193,11 +193,19 @@ if status is-interactive
   end
 end
 
+function install_plugin_manager
+  curl -sL https://git.io/fisher | source && fisher install jorgebucaran/fisher
+end
+
 function install_plugins
-  curl -Lo ~/.config/fish/conf.d/done.fish --create-dirs https://raw.githubusercontent.com/franciscolourenco/done/master/conf.d/done.fish
-  cd ~/.config/fish
-  git clone https://github.com/evanlucas/fish-kubectl-completions
-  ln -s ../fish-kubectl-completions/completions/kubectl.fish completions/
+  # Run bash commands
+  fisher install edc/bass
+
+  # Done
+  fisher install franciscolourenco/done
+
+  # kubectl completion
+  fisher install evanlucas/fish-kubectl-completions
 end
 
 # Fish does lots of things by default:
