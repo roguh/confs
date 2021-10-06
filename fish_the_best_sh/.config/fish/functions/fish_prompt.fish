@@ -40,7 +40,13 @@ function fish_prompt
       printf " "
     end
 
-    set_color --italics -b white
+    if [ (hostname) = raspberrypi ]
+        set USER_AND_HOST_COLOR red
+    else
+        set USER_AND_HOST_COLOR white
+    end
+
+    set_color --italics -b $USER_AND_HOST_COLOR
     set_color black
     printf "%s" (whoami)@(hostname)
 
