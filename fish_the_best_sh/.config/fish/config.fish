@@ -56,6 +56,7 @@ addpaths $HOME/.gem/ruby/2.6.0/bin
 addpaths $HOME/Library/Python/3.7/bin
 addpaths $HOME/.dropbox-dist
 addpaths $HOME/.cargo/bin
+addpaths $HOME/.pyenv/bin
 addpaths /opt/flutter/bin
 
 set_global_if_unset LC_ALL en_US.UTF-8

@@ -1,6 +1,7 @@
 # Set path to binaries
 export PATH="$HOME/bin:$PATH:$HOME/.local/bin:/opt/flutter/bin"
 export PATH="$HOME/.dropbox-dist:$PATH"
+export PATH="$HOME/.pyenv/bin:$PATH"
 export REACT_EDITOR=none
 
 export LC_ALL=en_US.UTF-8
