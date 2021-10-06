@@ -235,27 +235,12 @@ let g:ale_sign_error = '>'
 let g:ale_sign_warning = '-'
 
 " Default ALE behavior is to enable as many linters as possible.
-" pacman -S {python,python2}-{pydocstyle,isort} mypy
-" let g:ale_linters = {
-" \   'javascript': ['standard', 'eslint', 'prettier'],
-" \   'python': [
-" \       'bandit',
-" \       'flake8',
-" \       'prospector',
-" \       'pycodestyle',
-" \       'pydocstyle',
-" \       'pyflakes',
-" \       'pylama',
-" \       'pylint',
-" \       'pyls',
-" \       'pyre',
-" \       'vulture'
-" \   ],
-" \   'css': ['stylelint'],
-" \   'c': ['clang', 'gcc', 'cppcheck', 'flawfinder']
-" \}
 
 let g:ale_javascript_standard_options = '--parser babel-eslint'
+
+let g:ale_python_black_executable = 'pyston-black'
+let g:ale_python_isort_executable = 'pyston-isort'
+let g:ale_python_pylint_executable = 'pyston-pylint'
 
 let g:ale_fix_on_save = 1
 

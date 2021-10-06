@@ -133,7 +133,11 @@ copy_confs_for_host() {
 
 copy_confs_for vim \
   .vimrc \
-  .vimrc.minimal
+  .vimrc.minimal \
+  bin/pyston-pylint \
+  bin/pyston-black \
+  bin/pyston-isort \
+  bin/try-pyston
 
 copy_confs_for vis \
   .config/vis/visrc.lua \
