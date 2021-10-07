@@ -11,7 +11,9 @@ end
 
 function debug
   if [ "$DEBUG_OUTPUT" = true ]
+    set_color -i
     echo $FISH_LOGO: $argv
+    set_color normal
   end
 end
 
