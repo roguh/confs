@@ -31,6 +31,7 @@ let g:online_thesaurus_map_keys = 0
 " Good statusline
 Plug 'vim-airline/vim-airline'
 let g:airline#extensions#ale#enabled = 1
+let g:airline_powerline_fonts = 1
 
 " Support opening filename:line:column
 " vim, gF, :e[dit] /path/to/file:100:12
@@ -85,6 +86,8 @@ Plug 'tpope/vim-abolish'
 " svg (syntax), swift (syntax, indent, ftplugin), sxhkd (syntax), systemd (syntax, ftplugin), terraform (syntax, indent, autoload, ftplugin), textile (syntax, ftplugin), thrift (syntax), tmux (syntax, ftplugin), tomdoc (syntax), toml (syntax, ftplugin), tptp (syntax), twig (syntax, indent, ftplugin), typescript (syntax, indent, compiler, ftplugin), v (syntax, indent, ftplugin), vala (syntax, indent, ftplugin), vbnet (syntax), vcl (syntax), vifm (syntax, autoload, ftplugin), vm (syntax, indent), vue (syntax, indent, ftplugin), xdc (syntax), xls (syntax), xml (syntax), yaml (syntax, ftplugin), yard (syntax), zephir (syntax), zig (syntax, autoload, ftplugin)
 Plug 'sheerun/vim-polyglot'
 let g:polyglot_disabled = ['python', 'ocaml', 'org']
+
+Plug 'lark-parser/vim-lark-syntax'
 
 let g:jsx_ext_required = 0
 
@@ -346,8 +349,8 @@ try
 
   " colorscheme wal
 
-  " colorscheme onehalfdark
-  " let g:airline_theme='onehalfdark'
+  colorscheme onehalfdark
+  let g:airline_theme='onehalfdark'
 
   " set termguicolors     " enable true colors support
   " let ayucolor="light"  " for light version of theme
@@ -356,7 +359,7 @@ try
   " colorscheme ayu
 
   " colorscheme defminus
-  colorscheme lessthan
+  " colorscheme lessthan
 catch
   " no colors!
 endtry
