@@ -95,7 +95,7 @@ Plug 'tpope/vim-speeddating'
 
 " Deoplete code completion framework
 " https://github.com/Shougo/deoplete.nvim/wiki/Completion-Sources
-Plug 'Shougo/deoplete.nvim'
+" Plug 'Shougo/deoplete.nvim'
 if has('nvim')
 else
   Plug 'roxma/nvim-yarp'
@@ -103,7 +103,7 @@ else
 endif
 
 " Plug 'carlitux/deoplete-ternjs', { 'do': 'echo run npm install -g tern' }
-let g:deoplete#enable_at_startup = 1
+" let g:deoplete#enable_at_startup = 1
 " call deoplete#custom#option('auto_complete_delay', 100)
 
 " Use tern_for_vim.
@@ -212,6 +212,11 @@ let g:ranger_replace_netrw = 1
 let g:ranger_map_keys = 0
 map <C-n> :Ranger<CR>
 
+" Language server protocol (LSP) for completion and other fancy IDE-like features
+" Using ALE for Python formatting and linting.
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
+let g:coc_global_extensions = ['coc-syntax', 'coc-json', 'coc-git', 'coc-tsserver', 'coc-pyright']
+
 " Async linting lints as you type.
 Plug 'w0rp/ale', { 'for': ['javascript', 'python', 'c', 'css', 'scss'] }
 
@@ -267,46 +272,7 @@ let g:ale_fixers = {
 nmap <silent> <C-k> <Plug>(ale_previous_wrap)
 nmap <silent> <C-j> <Plug>(ale_next_wrap)
 
-" Linters (syntax checkers, other code checkers):
-Plug 'scrooloose/syntastic', { 'for': ['html', 'rust', 'typescript', 'cpp', 'c', 'ocaml', 'java'] }
-
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list = 1
-let g:syntastic_check_on_open = 0
-let g:syntastic_check_on_wq = 0
-
-" Show warnings AND errors.
-let g:syntastic_quiet_messages = {'level': 'none'}
-
-let g:syntastic_rust_checkers = ['cargo']
-
-let g:syntastic_python_checkers = ['bandit', 'pep257', 'pep8', 'pycodestyle', 'pydocstyle', 'pyflakes', 'pylint', 'python']
-let g:syntastic_python_pylint_exe = 'pylint'
-
-let g:syntastic_tex_checkers = ['chktex']
-
-let g:syntastic_javascript_checkers = []
-
-" Prefer local node_modules instead of global
-Plug 'mtscout6/syntastic-local-eslint.vim'
-" if executable('node_modules/.bin/eslint')
-"       let b:syntastic_javascript_eslint_exec = 'node_modules/.bin/eslint'
-" endif
-
-let g:syntastic_html_checkers = ['tidy', 'jshint']
-
-let g:syntastic_css_checkers = ['csslint', 'stylelint', 'scss_lint']
-let g:syntastic_scss_checkers = ['scss_lint']
-
-let g:syntastic_typescript_checkers = ['tslint']
-
-let g:syntastic_cpp_compiler = 'clang++'
-let g:syntastic_cpp_compiler_options = ' -std=c++11'
-
-let g:syntastic_c_checkers = ['clang_check', 'gcc', 'splint', 'clang_tidy']
-let g:syntastic_cpp_checkers = ['clang_check', 'gcc', 'splint', 'clang_tidy']
-
-let g:syntastic_ocaml_checkers = ['merlin']
+" RIP syntastic
 
 " treat contents of some tex environments as verbatim text
 au filetype tex syntax region texZone start='\\begin{lstlisting}' end='\\end{lstlisting}'

@@ -1,0 +1,43 @@
+{
+  "hover.target": "echo",
+  "signature.target": "echo",
+  "coc.preferences.formatOnType": true,
+  "coc.preferences.formatOnSaveFiletypes": ["python"],
+  "coc.preferences.useQuickfixForLocations": true,
+  "coc.preferences.snippets.enable": true
+  // I was unable to get pyright or diagnostic-languageserver formatting+linting working
+  // "pyright.enable": true,
+  // "python.linting.enabled": true,
+  // "python.linting.pylintEnabled": true,
+  // "python.linting.pylintUseMinimalCheckers": false,
+  // "python.formatting.provider": "black",
+  // "python.sortImports.path": "pyston-isort",
+  // "python.formatting.blackPath": "pyston-black",
+  // "python.linting.lintOnSave": true,
+  // "jedi.hover.enable": true,
+  // "jedi.enable": true,
+  // "diagnostic.enable": true,
+  // "diagnostic-languageserver.enable": true,
+  // "diagnostic-languageserver.filetypes": {
+  //   "python": ["pylint", "pydocstyle"]
+  // },
+  // "diagnostic-languageserver.linters": {
+  //   "pylint": {
+  //     "sourceName": "pylint",
+  //     "command": "pyston-pylint"
+  //   }
+  // },
+  // "diagnostic-languageserver.formatFiletypes": {
+  //   "python": ["black", "isort"]
+  // },
+  // "diagnostic-languageserver.formatters": {
+  //   "black": {
+  //     "command": "black",
+  //     "args": ["-q", "-"]
+  //   },
+  //   "isort": {
+  //     "command": "pyston-isort",
+  //     "args": ["-q", "-"]
+  //   }
+  // }
+}

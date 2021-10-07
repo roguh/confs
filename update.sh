@@ -134,6 +134,7 @@ copy_confs_for_host() {
 copy_confs_for vim \
   .vimrc \
   .vimrc.minimal \
+  .config/nvim/coc-settings.json \
   bin/pyston-pylint \
   bin/pyston-black \
   bin/pyston-isort \
