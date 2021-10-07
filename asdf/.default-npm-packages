@@ -1,10 +1,10 @@
+yarn
 pnpm
 lodash
 request
 npm-check-updates
 tern
 npm_lazy
-yarn
 coffeescript
 uglify-js
 uglify-es
