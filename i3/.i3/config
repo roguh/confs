@@ -19,7 +19,7 @@ hide_edge_borders none
 # font pango:monospace 11
 # font pango:DejaVu Sans Mono 10
 # font pango: Source Code Pro 10
-font xft:URWGothic-Book 11
+font pango:MonoLisa Medium 9
 
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
@@ -326,7 +326,6 @@ bar {
 
 	bindsym button4 nop
 	bindsym button5 nop
-  font pango:monospace 10
 	strip_workspace_numbers yes
 
     colors {
