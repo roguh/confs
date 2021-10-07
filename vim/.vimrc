@@ -217,6 +217,11 @@ map <C-n> :Ranger<CR>
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 let g:coc_global_extensions = ['coc-syntax', 'coc-json', 'coc-git', 'coc-tsserver', 'coc-pyright']
 
+nmap <silent> <C-h> <Plug>(coc-diagnostic-next)
+nmap <silent> <C-l> <Plug>(coc-diagnostic-prev)
+nmap <C-LeftMouse> :call CocAction('jumpDefinition')<CR>
+nmap <F2> :call CocAction('jumpDefinition')<CR>
+
 " Async linting lints as you type.
 Plug 'w0rp/ale', { 'for': ['javascript', 'python', 'c', 'css', 'scss'] }
 
