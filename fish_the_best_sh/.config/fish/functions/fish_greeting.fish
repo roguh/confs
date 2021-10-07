@@ -2,6 +2,11 @@ function fish_greeting
   echo Welcome to $FISH_LOGO, the FRIENDLY INTERACTIVE SHELL.
   echo Type `sl` for instructions on how to use $FISH_LOGO.
   echo $FISH_LOGO$FISH_LOGO$FISH_LOGO$FISH_LOGO$FISH_LOGO$FISH_LOGO$FISH_LOGO$FISH_LOGO$FISH_LOGO$FISH_LOGO$FISH_LOGO$FISH_LOGO$FISH_LOGO$FISH_LOGO$FISH_LOGO$FISH_LOGO$FISH_LOGO$FISH_LOGO$FISH_LOGO$FISH_LOGO$FISH_LOGO$FISH_LOGO$FISH_LOGO
+
+  echo
+
+  uptime
+
   echo
   
   if [ "$PWD" = "$HOME" ]
@@ -18,7 +23,9 @@ function fish_greeting
 
     # echo (curl https://raw.githubusercontent.com/asdf-vm/asdf/master/ballad-of-asdf.md)
   else
-    echo (hostname) '>' ls "$PWD"
+    [ true = true ] # clear status code
+    fish_prompt
+    echo
     if type exa > /dev/null 2>&1
       exa "$PWD"
     else
@@ -27,8 +34,6 @@ function fish_greeting
   end
   
   echo
-
-  uptime
 
   echo
   
