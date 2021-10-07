@@ -18,7 +18,7 @@ TIME_CACHE=$(echo "$CACHE" | rev | cut -d'-' -f 1 | rev)
 if [ $TIME_NOW -ge $(( $TIME_CACHE + $TIME_TILL_NULL )) ]; then
   mkdir -p "$TMP"
   NEW_OUT="$CACHE_LOCATION-$TIME_NOW"
-  $COMMAND > "$NEW_OUT"
+  bash -c "$COMMAND" > "$NEW_OUT"
   cat "$NEW_OUT"
 else
   cat "$CACHE"
