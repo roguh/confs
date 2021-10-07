@@ -218,6 +218,7 @@ Plug 'w0rp/ale', { 'for': ['javascript', 'python', 'c', 'css', 'scss'] }
 let g:ale_cache_executable_check_failures = 1
 
 let g:ale_python_auto_pipenv = 1
+let pipenv_venv_path = system('pipenv --venv')
 
 let g:ale_close_preview_on_insert = 1
 let g:ale_cursor_detail = 0
