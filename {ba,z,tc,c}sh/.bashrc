@@ -87,8 +87,10 @@ if [[ $- == *i* ]]; then
     load_file "$HOME/.bash_completion.d/python-argcomplete.sh"
 
     # pyenv
-    eval "$(pyenv init -)"
-    eval "$(pyenv virtualenv-init -)"
+    if command -v pyenv > /dev/null ; then
+        eval "$(pyenv init -)"
+        eval "$(pyenv virtualenv-init -)"
+    fi
 
     # Use , as an improved cd command
     load_file "$HOME/.commacd.bash"
