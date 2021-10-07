@@ -202,8 +202,6 @@ inoremap <C-t>     <Esc>:tabnew<CR>
 
 " Tab navigation like Firefox.
 " TAB KEYS ARE HANDLED STRANGELY BY SOME TERMINAL LIBRARIES
-nnoremap <C-S-i> :tabprevious<CR>
-nnoremap <C-i>   :tabnext<CR>
 " BEWARE THE CURSE! NO MORE TAB COMPLETE!
 " inoremap <C-S-i> <Esc>:tabprevious<CR>i
 " inoremap <C-i>   <Esc>:tabnext<CR>i
