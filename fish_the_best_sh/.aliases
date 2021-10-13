@@ -45,3 +45,5 @@ tryalias gd 'git diff'
 tryalias gl 'git log'
 
 tryalias vscode code
+
+tryalias make 'pipenv run make'
