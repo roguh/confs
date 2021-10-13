@@ -162,7 +162,9 @@ copy_confs_for "{ba,z,tc,c}sh" \
   .bashrc .bashrc_ps1 .bash_profile .zshrc .cshrc .tryalias.sh .aliases bin/trimdir.py bin/gitinfo.sh bin/projectroot.sh bin/real-deal-turbo-charged-cd.sh
 
 copy_confs_for git \
-    .gitconfig bin/gitdiff.sh .git-template/HEAD
+    bin/git-remove-branches-gone-in-remote.sh bin/git-push-new-branch.sh bin/gitdiff.sh .git-template/HEAD
+
+copy_confs_for_host git .gitconfig
 
 copy_confs_for utils \
   bin/cpufreq.sh bin/systemload.sh bin/mem.sh bin/screenshot.sh bin/screenshot-select.sh bin/pip-update-outdated.sh \

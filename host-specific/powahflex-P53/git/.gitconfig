@@ -1,13 +1,14 @@
 [user]
 	email = hugo@roguh.com
 	name = Hugo O. Rivera
+	signingkey = 24DF8D014261AEF7B338DD3E595198EE68DB61E1
 
 [credential]
 	helper = cache --timeout=3600
 
-[diff]
-  tool = icdiff
-  external = gitdiff.sh 
+# [diff]
+#   tool = icdiff
+#   external = gitdiff.sh 
 
 [color]
 	pager = false
@@ -22,3 +23,5 @@
 	rebase = false
 [init]
 	templateDir = /home/hugo/.git-template
+[commit]
+	gpgsign = true
