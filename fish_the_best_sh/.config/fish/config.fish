@@ -49,6 +49,7 @@ end
 
 load_file $HOME/.config/fish/local_env.fish
 set_global_if_unset FISH_LOGO Fish # 🐠
+set_global DOCKER_BUILDKIT 1
 
 addpaths $HOME/bin
 addpaths $HOME/.local/bin
