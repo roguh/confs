@@ -45,7 +45,7 @@ Plug 'wsdjeg/vim-fetch'
 Plug 'rhysd/committia.vim'
 
 " THE BEST GIT PORCELAIN IN THE VIM WORLD
-Plug 'tpope/vim-fugitive'
+" Plug 'tpope/vim-fugitive'
 
 " Strip trailing whitespace on changed lines only
 " Use :WStrip to clean all trailing whitespace
@@ -221,6 +221,17 @@ nmap <silent> <C-h> <Plug>(coc-diagnostic-next)
 nmap <silent> <C-l> <Plug>(coc-diagnostic-prev)
 nmap <C-LeftMouse> :call CocAction('jumpDefinition')<CR>
 nmap <F2> :call CocAction('jumpDefinition')<CR>
+
+" Use K to show documentation in preview window
+nnoremap <silent> K :call <SID>show_documentation()<CR>
+
+function! s:show_documentation()
+  if (index(['vim','help'], &filetype) >= 0)
+    execute 'h '.expand('<cword>')
+  else
+    call CocAction('doHover')
+  endif
+endfunction
 
 " Async linting lints as you type.
 Plug 'w0rp/ale', { 'for': ['javascript', 'python', 'c', 'css', 'scss'] }
