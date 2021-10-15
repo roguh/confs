@@ -49,3 +49,6 @@ tryalias gl 'git log'
 tryalias vscode code
 
 tryalias make 'pipenv run make'
+
+tryalias kubectl-get-pods-with-node 'kubectl get pod -o wide'
+tryalias kubectl-get-previous-logs 'kubectl logs --previous'
