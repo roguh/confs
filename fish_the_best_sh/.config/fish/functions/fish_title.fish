@@ -13,6 +13,10 @@ function title_trimdir
   end
 end
 
+function fish_title_info
+  printf "Fish Shell pid=%s" $fish_pid
+end
+
 function fish_title
-  printf "🐟 \$ %s %s" (title_get_project) (title_trimdir)
+  printf "🐟 \$ %s %s %s" (title_get_project) (title_trimdir) (fish_title_info)
 end

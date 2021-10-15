@@ -145,7 +145,8 @@ function! SetTitleString()
   \ system('basename $(git rev-parse --show-toplevel 2> /dev/null) ""') . ' ' .
   \ system('trimdir.py', expand('%:p:h')) . ' ' .
   \ $USER . '@' . hostname() . ' ' .
-  \ 'vim editor'
+  \ 'vim editor' . ' ' .
+  \ ' pid=' . system('echo $$')
 endfunction
 
 autocmd BufNewFile,BufRead,BufEnter * exe "call SetTitleString()"
