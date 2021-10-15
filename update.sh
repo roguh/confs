@@ -262,6 +262,8 @@ copy_confs_for arandr .screenlayout/select-arandr-display.sh
 
 copy_confs_for system-space-cleaner.sh bin/system-space-cleaner.sh
 
+copy_confs_for pass bin/pass-with-custom-editor.sh
+
 # MAKE SURE TO INSTALL docker-credential-pass
 # trizen -S docker-credential-pass-bin
 copy_confs_for DOCKER bin/docker-remove-images.sh bin/docker-remove-stopped-containers.sh
