@@ -263,9 +263,9 @@ let g:ale_sign_warning = '-'
 
 let g:ale_javascript_standard_options = '--parser babel-eslint'
 
-let g:ale_python_black_executable = 'pyston-black'
-let g:ale_python_isort_executable = 'pyston-isort'
-let g:ale_python_pylint_executable = 'pyston-pylint'
+let g:ale_python_black_executable = 'black'
+let g:ale_python_isort_executable = 'isort'
+let g:ale_python_pylint_executable = 'pylint'
 
 let g:ale_fix_on_save = 1
 
@@ -274,15 +274,14 @@ let g:ale_fixers = {
 \   'javascript': ['standard', 'eslint', 'prettier'],
 \   'css': ['prettier', 'stylelint'],
 \   'python': [
-\     'autopep8',
 \     'black',
-\     'yapf',
 \     'isort',
 \     'remove_trailing_lines',
-\     'reorder-python-imports',
-\     'trim_whitespace'],
+\     'trim_whitespace',
+\   ],
 \   'c': ['uncrustify']
 \}
+
 
 " C-k and C-j to move between ALE errors
 nmap <silent> <C-k> <Plug>(ale_previous_wrap)
@@ -321,9 +320,7 @@ let g:indent_guides_enable_on_vim_startup = 1
 
 call plug#end()
 
-" Must go outside of vim-plug's config block
-autocmd Filetype c,cpp,java,fortran,javascript,javascript.jsx,python,markdown AnyFoldActivate
-let g:anyfold_fold_comments=1
+let g:anyfold_fold_comments=0
 
 try
   set background=dark
