@@ -137,6 +137,12 @@ set cursorline
 " hi  CursorColumn cterm=reverse cterm=reverse gui=reverse
 hi  CursorLine term=underline cterm=underline gui=underline
 
+if has('nvim')
+  let $VIMNAME='Neovim editor'
+else
+  let $VIMNAME='Vim editor'
+endif
+
 " Set terminal emulator window title
 " filename, basename of git root or an extra space, shortened PWD, user@host
 function! SetTitleString()
@@ -145,7 +151,7 @@ function! SetTitleString()
   \ system('basename $(git rev-parse --show-toplevel 2> /dev/null) ""') . ' ' .
   \ system('trimdir.py', expand('%:p:h')) . ' ' .
   \ $USER . '@' . hostname() . ' ' .
-  \ 'vim editor' . ' ' .
+  \ $VIMNAME . ' ' .
   \ ' pid=' . system('echo $$')
 endfunction
 
