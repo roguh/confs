@@ -206,9 +206,6 @@ new_window normal 1
 bindsym $mod+d exec --no-startup-id launcher.sh
 bindsym $mod+Tab exec --no-startup-id launcher.sh window
 
-# categorized menu
-bindsym $mod+z exec --no-startup-id morc_menu
-
 # editor
 bindsym $mod+c exec --no-startup-id emacs
 
@@ -222,6 +219,7 @@ bindsym Mod1+Return exec --no-startup-id i3-sensible-terminal
 bindsym $mod+Return exec --no-startup-id $terminal
 bindsym $mod+x exec --no-startup-id $terminal
 bindsym $mod+Shift+x exec --no-startup-id $terminal2
+bindsym $mod+z exec --no-startup-id $terminal2
 bindsym F8 exec --no-startup-id $terminal
 bindsym $mod+n exec --no-startup-id $browser
 
