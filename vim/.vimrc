@@ -102,6 +102,9 @@ else
   Plug 'roxma/vim-hug-neovim-rpc'
 endif
 
+Plug 'machakann/vim-highlightedyank'
+let g:highlightedyank_highlight_duration = 10000
+
 " Plug 'carlitux/deoplete-ternjs', { 'do': 'echo run npm install -g tern' }
 " let g:deoplete#enable_at_startup = 1
 " call deoplete#custom#option('auto_complete_delay', 100)
