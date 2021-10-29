@@ -45,7 +45,7 @@ Plug 'wsdjeg/vim-fetch'
 Plug 'rhysd/committia.vim'
 
 " THE BEST GIT PORCELAIN IN THE VIM WORLD
-" Plug 'tpope/vim-fugitive'
+Plug 'tpope/vim-fugitive'
 
 " Strip trailing whitespace on changed lines only
 " Use :WStrip to clean all trailing whitespace
