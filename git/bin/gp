@@ -1,0 +1,20 @@
+#!/bin/sh
+REMOTE_STATUS="$(git-remote-status.sh)"
+
+if [ "$REMOTE_STATUS" == "No remote" ]; then
+  echo "No remote branch! Press ENTER to push a new remote branch"
+  read -r PUSH_NEW_REMOTE_OK
+  if [[ "$PUSH_NEW_REMOTE_OK" != "" ]] ; then
+    exit 1
+  fi
+  set -x
+  git-push-new-branch.sh
+elif [ "$REMOTE_STATUS" == "Need to pull" ]; then
+  set -x
+  git pull "$@"
+elif [ "$REMOTE_STATUS" == "Need to push" ]; then
+  set -x
+  git push "$@"
+else
+  echo "$REMOTE_STATUS"
+fi
