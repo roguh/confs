@@ -36,19 +36,44 @@ tryalias sx 'exec startx'
 
 tryalias npm pnpm npm
 
-
-# git fetch origin            # Updates origin/main
-# git rebase origin/main    # Rebases current branch onto origin/main
-tryalias gr 'git pull --rebase origin main'
-tryalias gp 'git push'
-tryalias gc 'git commit'
-tryalias gs 'git status'
-tryalias gd 'git diff'
-tryalias gl 'git log'
-
 tryalias vscode code
 
 tryalias make 'pipenv run make'
 
 tryalias kubectl-get-pods-with-node 'kubectl get pod -o wide'
 tryalias kubectl-get-previous-logs 'kubectl logs --previous'
+
+
+# Duplicated as Fish abbreviations
+tryalias ga 'git add'
+tryalias gc 'git commit'
+tryalias gch 'git checkout'
+tryalias gchm 'git checkout main'
+tryalias gs 'git status'
+tryalias gd 'git diff'
+tryalias gdt 'git difftool'
+tryalias gl 'git log'
+
+# Duplicated as Fish abbreviations
+tryalias kx kubectx
+tryalias kc 'kubectl config'
+# List and detail resources
+tryalias kci 'kubectl cluster-info'
+tryalias kgp 'kubectl get pods'
+tryalias kgn 'kubectl get nodes'
+tryalias kgs 'kubectl get services'
+tryalias kd 'kubectl describe'
+tryalias ke 'kubectl explain'
+# Debugging pods
+tryalias kl 'kubectl logs'
+tryalias kt 'kubectl top'
+tryalias kcp 'kubectl cp'
+tryalias kex 'kubectl exec'
+tryalias kpf 'kubectl port-forward'
+
+# Duplicated as Fish abbreviations
+tryalias dcls 'docker container ls'
+tryalias dl 'docker logs'
+tryalias da 'docker attach'
+tryalias dex 'docker exec'
+

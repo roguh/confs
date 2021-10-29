@@ -1,0 +1,30 @@
+abbr ga 'git add'
+abbr gc 'git commit'
+abbr gch 'git checkout'
+abbr gchm 'git checkout main'
+abbr gs 'git status'
+abbr gd 'git diff'
+abbr gdt 'git difftool'
+abbr gl 'git log'
+
+abbr kx kubectx
+abbr kc 'kubectl config'
+# List and detail resources
+abbr kci 'kubectl cluster-info'
+abbr kgp 'kubectl get pods'
+abbr kgn 'kubectl get nodes'
+abbr kgs 'kubectl get services'
+abbr kd 'kubectl describe'
+abbr ke 'kubectl explain'
+# Debugging pods
+abbr kl 'kubectl logs'
+abbr kt 'kubectl top'
+abbr kcp 'kubectl cp'
+abbr kex 'kubectl exec'
+abbr kpf 'kubectl port-forward'
+
+abbr dcls 'docker container ls'
+abbr dl 'docker logs'
+abbr da 'docker attach'
+abbr dex 'docker exec'
+abbr dck 'docker container kill (docker ps -q)'

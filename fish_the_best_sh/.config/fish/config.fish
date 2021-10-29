@@ -91,6 +91,8 @@ if type most > /dev/null 2>&1
     alias less=$PAGER
 end
 
+load_file $HOME/.config/fish/abbrs.fish
+
 # Load aliases
 load_file $HOME/.aliases
 tryalias ,, commacomma
@@ -170,6 +172,11 @@ if status is-interactive
   if type xset > /dev/null 2>&1
     xset r rate 200 60
     debug Set keyboard rate
+  end
+
+  if command -v gh > /dev/null
+    eval (gh completion --shell fish)
+    debug Added GitHub gh completions
   end
 
   function fish_user_key_bindings
