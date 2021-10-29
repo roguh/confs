@@ -259,7 +259,8 @@ exec --no-startup-id conky.sh
 exec --no-startup-id wallpaper.sh
 exec --no-startup-id xautolock -time 10 -locker locker.sh
 exec --no-startup-id backup.sh
-exec --no-startup-id ~/.dropbox-dist/dropboxd
+# exec --no-startup-id ~/.dropbox-dist/dropboxd
+exec --no-startup-id /opt/dropbox/dropboxd
 exec --no-startup-id kitty fish -c welcome-shell.sh
 
 exec --no-startup-id evolution
