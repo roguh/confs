@@ -9,6 +9,10 @@
 # [diff]
 #   tool = icdiff
 #   external = gitdiff.sh 
+[difftool]
+    prompt = false
+[difftool "meld"]
+    cmd = meld "$LOCAL" "$REMOTE"
 
 [color]
 	pager = false
