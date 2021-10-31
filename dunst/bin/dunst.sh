@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 source "$HOME/.cache/wal/colors.sh"
 killall dunst

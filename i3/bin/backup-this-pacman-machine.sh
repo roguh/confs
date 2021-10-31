@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 # delete extraneous files from destination
 ROOT=$(get-backup-root.sh)

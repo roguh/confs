@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 DIR="$HOME/private/truepill.gocryptfs/howtos/"
 ENC_DIR="$HOME/sync/work/truepill/truepill.gocryptfs"
 

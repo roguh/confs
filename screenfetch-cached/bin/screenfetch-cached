@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 COMMAND="screenfetch -c '4;3' -w -d -uptime"
 CACHE_LOCATION="$HOME/tmp/screenfetch-cache"
 TIME_TILL_NULL=$(( 7 * 24 * 60 * 60 ))

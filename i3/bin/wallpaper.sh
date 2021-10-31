@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 DIR=$HOME/Dropbox/sync/media/wallpaper/
 if [ -f $DIR/$(hostname).png ]; then

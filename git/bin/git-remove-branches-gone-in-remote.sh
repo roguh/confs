@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 MUST_DELETE="$(git fetch -p && git branch -vv | sed 's/\* *//' | awk '/: gone]/{print $1}')"
 
 if [ "$MUST_DELETE" = "" ]; then

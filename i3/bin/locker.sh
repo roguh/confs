@@ -1,4 +1,4 @@
-#!/bin/sh -
+#!/bin/bash -
 CANCEL_WITH_MOUSE_TIMEOUT=15
 
 backlightoff.sh &

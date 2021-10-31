@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 docker system prune -a
 pacman -Scc
 rm -rf $HOME/.cache

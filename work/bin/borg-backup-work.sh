@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 # x1e /home/hugo/ $  borg init ./hugo.bak/ -e=repokey
 NAME=$(date "+%Y-%m-%d")
 

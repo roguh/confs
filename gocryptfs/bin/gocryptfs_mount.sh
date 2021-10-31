@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 set -x
 PREFIX_DEST="$HOME/private"
 if [ "$#" -ne 1 ]; then

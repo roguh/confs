@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 REMOTE_STATUS="$(git-remote-status.sh)"
 
 if [ "$REMOTE_STATUS" == "No remote" ]; then

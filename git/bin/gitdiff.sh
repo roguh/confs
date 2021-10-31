@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 C=$(stty size | cut -d' ' -f2)
 D=$((C / 2))
 

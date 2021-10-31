@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 git remote update 1>&2
 
 UPSTREAM='@{u}'

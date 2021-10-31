@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 DIR="$(todays_work_journal.sh)"
 ENC_DIR="$HOME/sync/work/truepill/truepill.gocryptfs"
 

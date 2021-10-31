@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 # Get root of a git project
 P=$(git rev-parse --show-toplevel 2> /dev/null)
 EXIT_CODE="$?"

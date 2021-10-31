@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 killall conky
 for c in ~/.conkyrc.d/*conkyrc ; do 
     sleep 1
