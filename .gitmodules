@@ -12,3 +12,6 @@
 [submodule "external/gocryptfs.sh"]
 	path = external/gocryptfs.sh
 	url = https://github.com/roguh/gocryptfs.sh
+[submodule "external/gp"]
+	path = external/gp
+	url = https://github.com/roguh/gp
