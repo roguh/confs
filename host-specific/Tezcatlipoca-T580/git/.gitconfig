@@ -1,7 +1,7 @@
 [user]
 	email = hugo@roguh.com
 	name = Hugo O. Rivera
-# signingkey = 24DF8D014261AEF7B338DD3E595198EE68DB61E1
+	signingkey = 57B21CCABBEA3EDD849C7ED087D9AF822A1A7EF9
 
 [credential]
 	helper = cache --timeout=3600
