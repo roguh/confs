@@ -1,6 +1,7 @@
 {
   "hover.target": "echo",
   "signature.target": "echo",
+  "rust-analyzer.server.path": "/usr/bin/rust-analyzer",
   "coc.preferences.formatOnType": true,
   "coc.preferences.formatOnSaveFiletypes": ["python"],
   "coc.preferences.useQuickfixForLocations": true,

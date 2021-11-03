@@ -1,5 +1,3 @@
-" Hugo O. Rivera's vim/neovim config
-
 " Use Vim defaults instead of Vi's.
 " Warning: keep this near the top of the config file.
 set nocompatible
@@ -218,7 +216,7 @@ map <C-n> :Ranger<CR>
 " Language server protocol (LSP) for completion and other fancy IDE-like features
 " Using ALE for Python formatting and linting.
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
-let g:coc_global_extensions = ['coc-syntax', 'coc-json', 'coc-git', 'coc-tsserver', 'coc-pyright']
+let g:coc_global_extensions = ['coc-syntax', 'coc-json', 'coc-git', 'coc-tsserver', 'coc-pyright', 'coc-rust-analyzer']
 
 nmap <silent> <C-h> <Plug>(coc-diagnostic-next)
 nmap <silent> <C-l> <Plug>(coc-diagnostic-prev)
@@ -299,7 +297,7 @@ au filetype tex syntax region texZone start='\\begin{bashcode}' end='\\end{bashc
 au filetype tex syntax region texZone start='\\begin{pyconcode}' end='\\end{pyconcode}'
 
 " Folding for C, Fortran, Java, CPP
-Plug 'pseewald/anyfold', { 'for': ['c', 'cpp', 'java', 'fortran', 'javascript', 'javascript.jsx', 'python', 'markdown'] }
+Plug 'pseewald/anyfold', { 'for': ['c', 'cpp', 'java', 'fortran', 'javascript', 'javascript.jsx', 'python', 'markdown', 'rust'] }
 
 " Improved syntax highlighting for C, add syntax highlighting for Bison, and Flex
 Plug 'justinmk/vim-syntax-extra', { 'for': [ 'c', 'cpp', 'y', 'l' ] }
