@@ -3,16 +3,14 @@
 
 set DEBUG_OUTPUT = false
 
-if [ "$PWD" = "$HOME" ]
-  if status is-interactive
-    set DEBUG_OUTPUT true
-  end
+if [ "$PWD" = "$HOME" ] && status is-interactive
+  set DEBUG_OUTPUT true
 end
 
 function debug
   if [ "$DEBUG_OUTPUT" = true ]
     set_color -i
-    echo $FISH_LOGO: $argv
+    echo "$FISH_LOGO: $argv"
     set_color normal
   end
 end
@@ -218,7 +216,9 @@ function install_plugins
   fisher install franciscolourenco/done
 
   # kubectl completion
-  fisher install evanlucas/fish-kubectl-completions
+  if type kubectl > /dev/null 2>&1
+    fisher install evanlucas/fish-kubectl-completions
+  end
 
   # pyenv
   if type pyenv > /dev/null 2>&1
