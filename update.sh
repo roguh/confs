@@ -9,10 +9,18 @@ if [[ "$#" != "2" || ( "$1" != restore && "$1" != backup ) ]]; then
   exit 1
 fi
 
-VERBOSE=false
+CONFS_COPY_PARALLEL="${CONFS_COPY_PARALLEL-true}"
+if [ "${VERBOSE-}" == "" ]; then
+    VERBOSE=true
+fi
+VERBOSE="${VERBOSE-false}"
+echo $VERBOSE $CONFS_COPY_PARALLEL
 
 # Either "restore" or "backup"
 MODE=$1
+
+LOG_FILE_DIR="/tmp/confs-logs-$(whoami)-$(date +%s)"
+mkdir -p "$LOG_FILE_DIR"
 
 # The location of this script
 CONF_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
@@ -42,9 +50,13 @@ if [[ "$changes_ok" != "" ]] ; then
 fi
 
 RSYNC_OPTS="--human-readable --recursive --xattrs"
+# Some platfomrs do not support attributes
+# RSYNC_OPTS="--human-readable --recursive"
 RSYNC_BAK="$RSYNC_OPTS"
 RSYNC_BACKUP="$RSYNC_OPTS --delete-after --relative"
 RSYNC_RESTORE="$RSYNC_OPTS --relative"
+
+pids=()
 
 log() {
     if [[ "$VERBOSE" == true ]] ; then
@@ -59,13 +71,28 @@ log() {
 # Make backups before copying.
 copy_confs_for() {
     SECTION="$1"
+    if [ "$CONFS_COPY_PARALLEL" == true ]; then
+        _copy_confs_for "$@" > "$LOG_FILE_DIR/$SECTION" &
+        PID="$!"
+        pids+=("$PID")
+        echo "$SECTION" > "$LOG_FILE_DIR/$PID"
+    else
+        _copy_confs_for "$@"
+    fi
+}
+
+_copy_confs_for() {
+    set -eu
+
+    SECTION="$1"
     shift
 
-    if [[ ! -d "$SECTION" ]]; then
-      return
+    if ! [ -d "$SECTION" ]; then
+        exit 0
     fi
 
     printf "\n--------- $SECTION ---------\n"
+
     echo "$@"
     mkdir -p "$CONF_DIR/$SECTION"
 
@@ -85,14 +112,14 @@ copy_confs_for() {
 
     if [ "$MODE" == backup ] ; then
         log rsync $RSYNC_BAK "$DST/$SECTION" "$BACKUP_B_DIR"
-        rsync $RSYNC_BAK "$DST/$SECTION" "$BACKUP_B_DIR" || true
+        rsync $RSYNC_BAK "$DST/$SECTION" "$BACKUP_B_DIR"
         log rsync $RSYNC_BACKUP $FILES "$DST/$SECTION"
-        rsync $RSYNC_BACKUP $FILES "$DST/$SECTION" || true
+        rsync $RSYNC_BACKUP $FILES "$DST/$SECTION"
     else
         log rsync $RSYNC_BAK --relative --ignore-missing-args $FILES "$BACKUP_R_DIR/$SECTION"
-        rsync $RSYNC_BAK --relative --ignore-missing-args $FILES "$BACKUP_R_DIR/$SECTION" || true
+        rsync $RSYNC_BAK --relative --ignore-missing-args $FILES "$BACKUP_R_DIR/$SECTION"
         log rsync $RSYNC_RESTORE "$SRC/$SECTION/./" $DST
-        rsync $RSYNC_RESTORE "$SRC/$SECTION/./" $DST || true
+        rsync $RSYNC_RESTORE "$SRC/$SECTION/./" $DST
     fi
 }
 
@@ -101,7 +128,20 @@ copy_confs_for() {
 # preserving directory structure.  Make backups before copying.
 copy_confs_for_host() {
     SECTION="$1"
-    HOST=$(hostname)
+    HOST="$(hostname)"
+    if [ "$CONFS_COPY_PARALLEL" == true ]; then
+        _copy_confs_for_host "$@" > "$LOG_FILE_DIR/$SECTION-$HOST" &
+        PID="$!"
+        pids+=("$PID")
+        echo "$SECTION-$HOST" > "$LOG_FILE_DIR/$PID"
+    else
+        _copy_confs_for_host "$@"
+    fi
+}
+
+_copy_confs_for_host() {
+    SECTION="$1"
+    HOST="$(hostname)"
     shift
 
     printf "\n--------- $SECTION for $HOST ---------\n"
@@ -125,9 +165,9 @@ copy_confs_for_host() {
 
     if [ "$MODE" == backup ] ; then
         log rsync $RSYNC_BAK "$THIS_DST" "$BACKUP_B_DIR"
-        rsync $RSYNC_BAK "$THIS_DST" "$BACKUP_B_DIR" || true
+        rsync $RSYNC_BAK "$THIS_DST" "$BACKUP_B_DIR"
         log rsync $RSYNC_BACKUP $FILES "$THIS_DST"
-        rsync $RSYNC_BACKUP $FILES "$THIS_DST" || true
+        rsync $RSYNC_BACKUP $FILES "$THIS_DST"
     fi
 }
 
@@ -195,8 +235,6 @@ copy_confs_for bash-cache bin/bash-cache
 copy_confs_for screenfetch-cached bin/{screenfetch-cached,bash-cache}
 
 copy_confs_for fluxbox .fluxbox/menu .fluxbox/keys
-
-copy_confs_for gocryptfs bin/gocryptfs_mount.sh bin/gocryptfs_umount.sh
 
 copy_confs_for htop .config/htop/htoprc
 
@@ -269,3 +307,28 @@ copy_confs_for kubernetes bin/kubectl-get-image-sizes.sh
 # MAKE SURE TO INSTALL docker-credential-pass
 # trizen -S docker-credential-pass-bin
 copy_confs_for DOCKER bin/docker-remove-images.sh bin/docker-remove-stopped-containers.sh
+
+FAILURE=false
+FAILED_SECTIONS=""
+FAILUREs=0
+SUCCESS=0
+for PID in "${pids[@]}"; do
+  if ! wait "$PID"; then
+    echo Failure in PID="$PID"
+    SECTION="$(cat "$LOG_FILE_DIR/$PID")"
+    echo cat "$LOG_FILE_DIR/$SECTION"
+    cat "$LOG_FILE_DIR/$SECTION"
+    echo Failure in SECTION="$SECTION"
+    FAILURE=true
+    FAILURES="$((FAILURES + 1))"
+    FAILED_SECTIONS="$SECTION $FAILED_SECTIONS"
+  else
+    SUCCESS="$((SUCCESS + 1))"
+  fi
+done
+
+echo "$SUCCESS" sections copied successfully
+if [ "$FAILURE" = true ]; then
+    echo "$FAILURES" sections could not be copied: "$FAILED_SECTIONS"
+    exit 1
+fi
