@@ -159,7 +159,7 @@ end
 # Have fzf use ag to find files
 if type ag > /dev/null 2>&1
   if type fzf > /dev/null 2>&1
-    set_global FZF_DEFAULT_COMMAND 'ag -g ""'
+    set_global FZF_DEFAULT_COMMAND 'ag --hidden -g ""'
     set_global FZF_CTRL_T_COMMAND "$FZF_DEFAULT_COMMAND"
 
     debug Set fzf variables
