@@ -148,15 +148,20 @@ _copy_confs_for_host() {
     echo "$@"
     mkdir -p "$CONF_DIR/$SECTION"
 
-    THIS_DST="$DST/$HOST_SPECIFIC_DIR/$HOST/$SECTION"
     FILES=
     if [ "$MODE" == backup ] ; then
+        THIS_DST="$DST/$HOST_SPECIFIC_DIR/$HOST/$SECTION"
         mkdir -p "$BACKUP_B_DIR/$SECTION"
         mkdir -p "$THIS_DST"
         FROM="$SRC"
     else
-      echo "Unimplemented: cannot restore from host specific directory"
-      exit 1
+        THIS_SRC="$SRC/$HOST_SPECIFIC_DIR/$HOST/$SECTION"
+        if ! [ -d "$THIS_SRC" ]; then
+            echo "Ignoring"
+            exit 0
+        fi
+        echo "Unimplemented: cannot restore from host specific directory"
+        exit 1
     fi
 
     for f in "$@" ; do
@@ -206,6 +211,8 @@ copy_confs_for git \
     bin/git-show-commits-not-in-branch.sh bin/git-remove-branches-gone-in-remote.sh bin/git-push-new-branch.sh bin/gitdiff.sh .git-template/HEAD
 
 copy_confs_for_host git .gitconfig
+
+copy_confs_for_host TEST TEST
 
 copy_confs_for utils \
   bin/cpufreq.sh bin/systemload.sh bin/mem.sh bin/screenshot.sh bin/screenshot-select.sh bin/pip-update-outdated.sh \
