@@ -183,6 +183,9 @@ Plug 'ctrlpvim/ctrlp.vim'
 " use ctrl-p to find files
 map <C-p> :CtrlPMixed<CR>
 
+" ignore files in .gitignore, include dotfiles
+let g:ctrlp_user_command = 'find %s -ipath \*.git -prune -or -type f'
+
 " use ag or ack to search for text in files
 " use the :Ack command instead of :grep
 Plug 'mileszs/ack.vim'

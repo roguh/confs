@@ -170,15 +170,18 @@ filetype plugin indent on
 
 " Python indentation
 au BufNewFile,BufRead *.py
-    \ set tabstop=4 softtabstop=4 shiftwidth=4 textwidth=79 expandtab autoindent fileformat=unix
+    \ set tabstop=4 softtabstop=4 shiftwidth=4 expandtab autoindent fileformat=unix
 
 " ML indentation
 au BufNewFile,BufRead *.ml
-    \ set tabstop=2 softtabstop=2 shiftwidth=2 textwidth=80 expandtab autoindent fileformat=unix
+    \ set tabstop=2 softtabstop=2 shiftwidth=2 expandtab autoindent fileformat=unix
 
 " JavaScript indentation
 au BufNewFile,BufRead *.js
-    \ set tabstop=2 softtabstop=2 shiftwidth=2 textwidth=80 expandtab autoindent fileformat=unix
+    \ set tabstop=2 softtabstop=2 shiftwidth=2 expandtab autoindent fileformat=unix
+
+" Plz no auto wrapping
+set textwidth=0 wrapmargin=0
 
 " Nicer netrw, the default file browser
 let g:netrw_banner = 0
@@ -198,15 +201,7 @@ nnoremap tt  :tabedit<Space>
 nnoremap tm  :tabm<Space>
 nnoremap td  :tabclose<CR>
 nnoremap tn :tabnew<CR>
-
-" Tab navigation like Firefox.
-nnoremap <C-S-tab> :tabprevious<CR>
-nnoremap <C-tab>   :tabnext<CR>
-nnoremap <C-t>     :tabnew<CR>
-inoremap <C-S-tab> <Esc>:tabprevious<CR>i
-inoremap <C-tab>   <Esc>:tabnext<CR>i
-inoremap <C-t>     <Esc>:tabnew<CR>
-
+nnoremap to :tabonly<CR>
 
 " Tab navigation like Firefox.
 " TAB KEYS ARE HANDLED STRANGELY BY SOME TERMINAL LIBRARIES
