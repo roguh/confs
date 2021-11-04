@@ -155,7 +155,8 @@ _copy_confs_for_host() {
         mkdir -p "$THIS_DST"
         FROM="$SRC"
     else
-      printf "Unimplemented: cannot restore from host specific directory"
+      echo "Unimplemented: cannot restore from host specific directory"
+      exit 1
     fi
 
     for f in "$@" ; do
