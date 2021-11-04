@@ -19,7 +19,7 @@ echo $VERBOSE $CONFS_COPY_PARALLEL
 # Either "restore" or "backup"
 MODE=$1
 
-LOG_FILE_DIR="/tmp/confs-logs-$(whoami)-$(date +%s)"
+LOG_FILE_DIR="$(mktemp --directory)/config-logs-$(whoami)"
 mkdir -p "$LOG_FILE_DIR"
 
 # The location of this script
@@ -239,6 +239,7 @@ copy_confs_for fluxbox .fluxbox/menu .fluxbox/keys
 copy_confs_for htop .config/htop/htoprc
 
 copy_confs_for i3 \
+NOPE \
   .i3status.conf \
   .i3/config \
   bin/backlightoff.sh \
@@ -310,10 +311,11 @@ copy_confs_for DOCKER bin/docker-remove-images.sh bin/docker-remove-stopped-cont
 
 FAILURE=false
 FAILED_SECTIONS=""
-FAILUREs=0
+FAILURES=0
 SUCCESS=0
 for PID in "${pids[@]}"; do
   if ! wait "$PID"; then
+    echo
     echo Failure in PID="$PID"
     SECTION="$(cat "$LOG_FILE_DIR/$PID")"
     echo cat "$LOG_FILE_DIR/$SECTION"
@@ -329,6 +331,6 @@ done
 
 echo "$SUCCESS" sections copied successfully
 if [ "$FAILURE" = true ]; then
-    echo "$FAILURES" sections could not be copied: "$FAILED_SECTIONS"
+    echo "$FAILURES section(s) could not be copied: $FAILED_SECTIONS"
     exit 1
 fi
