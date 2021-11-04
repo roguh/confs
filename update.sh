@@ -14,7 +14,6 @@ if [ "${VERBOSE-}" == "" ]; then
     VERBOSE=true
 fi
 VERBOSE="${VERBOSE-false}"
-echo $VERBOSE $CONFS_COPY_PARALLEL
 
 # Either "restore" or "backup"
 MODE=$1
@@ -176,6 +175,8 @@ _copy_confs_for_host() {
         rsync $RSYNC_BACKUP $FILES "$THIS_DST"
     fi
 }
+
+log "VERBOSE=$VERBOSE CONFS_COPY_PARALLEL=$CONFS_COPY_PARALLEL"
 
 copy_confs_for vim \
   .vimrc \
