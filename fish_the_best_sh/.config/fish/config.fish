@@ -101,9 +101,9 @@ load_file $HOME/.opam/opam-init/init.fish
 # mkdir -p ~/.config/fish/completions; and cp ~/.asdf/completions/asdf.fish ~/.config/fish/completions
 load_file ~/.asdf/asdf.fish
 
-if command -v yarn 2>&1 > /dev/null; then
+if command -v yarn 2>&1 > /dev/null
     addpaths (yarn global bin)
-fi
+end
 
 if type go > /dev/null 2>&1
   set_global GOPATH (go env GOPATH)
