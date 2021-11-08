@@ -159,9 +159,6 @@ Plug 'pangloss/vim-javascript', { 'for': [ 'javascript', 'javascript.jsx' ] }
 Plug 'othree/javascript-libraries-syntax.vim', { 'for': 'javascript' }
 Plug 'moll/vim-node', { 'for': [ 'javascript', 'javascript.jsx' ] }
 
-" Rust
-Plug 'racer-rust/vim-racer', { 'for': 'rust' }
-
 " Pandoc
 Plug 'vim-pandoc/vim-pandoc'
 Plug 'vim-pandoc/vim-pandoc-syntax'
