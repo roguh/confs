@@ -21,7 +21,7 @@
 	tool = meld
 
 [core]
-	editor = vim
+	editor = /usr/bin/nvim
 
 [pull]
 	rebase = false
