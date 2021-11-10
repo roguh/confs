@@ -213,8 +213,6 @@ copy_confs_for git \
 
 copy_confs_for_host git .gitconfig
 
-copy_confs_for_host TEST TEST
-
 copy_confs_for utils \
   bin/cpufreq.sh bin/systemload.sh bin/mem.sh bin/screenshot.sh bin/screenshot-select.sh bin/pip-update-outdated.sh \
   .xsession .profile
@@ -248,7 +246,6 @@ copy_confs_for fluxbox .fluxbox/menu .fluxbox/keys
 copy_confs_for htop .config/htop/htoprc
 
 copy_confs_for i3 \
-NOPE \
   .i3status.conf \
   .i3/config \
   bin/backlightoff.sh \
