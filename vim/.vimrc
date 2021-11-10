@@ -21,7 +21,6 @@ Plug 'djoshea/vim-autoread'
 
 " Good statusline
 Plug 'vim-airline/vim-airline'
-let g:airline#extensions#ale#enabled = 1
 let g:airline_powerline_fonts = 1
 
 " Show git diff in window when writing git commit message
@@ -95,9 +94,10 @@ let g:highlightedyank_highlight_duration = 10000
 Plug 'tpope/vim-fugitive'
 
 " Language server protocol (LSP) for completion and other fancy IDE-like features
-" Using ALE for Python formatting and linting.
 Plug 'neoclide/coc.nvim', {'branch': 'release', 'for': ['javascript', 'javascript.jsx', 'python', 'rust', 'json'] }
 let g:coc_global_extensions = ['coc-syntax', 'coc-json', 'coc-git', 'coc-tsserver', 'coc-pyright', 'coc-rust-analyzer']
+
+au BufWritePost *.py call CocAction('format')
 
 nmap <silent> <C-h> <Plug>(coc-diagnostic-next)
 nmap <silent> <C-l> <Plug>(coc-diagnostic-prev)
@@ -187,12 +187,10 @@ else
 
     " Async linting lints as you type.
     " SLOW TO LOAD
-    Plug 'w0rp/ale', { 'for': ['javascript', 'python', 'c', 'css', 'scss'] }
+    " Use Coc for Python instead
+    Plug 'w0rp/ale', { 'for': ['javascript', 'c', 'css', 'scss'] }
 
     let g:ale_cache_executable_check_failures = 1
-
-    let g:ale_python_auto_pipenv = 1
-    let pipenv_venv_path = system('pipenv --venv')
 
     let g:ale_close_preview_on_insert = 1
     let g:ale_cursor_detail = 0
@@ -216,21 +214,14 @@ else
 
     let g:ale_javascript_standard_options = '--parser babel-eslint'
 
-    let g:ale_python_black_executable = 'black'
-    let g:ale_python_isort_executable = 'isort'
-    let g:ale_python_pylint_executable = 'pylint'
-
     let g:ale_fix_on_save = 1
 
+    " Use Coc for Python instead
     let g:ale_fixers = {
     \   '*': ['remove_trailing_lines', 'trim_whitespace'],
     \   'javascript': ['standard', 'eslint', 'prettier'],
     \   'css': ['prettier', 'stylelint'],
     \   'python': [
-    \     'black',
-    \     'isort',
-    \     'remove_trailing_lines',
-    \     'trim_whitespace',
     \   ],
     \   'c': ['uncrustify']
     \}

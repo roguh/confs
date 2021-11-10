@@ -1,0 +1,3 @@
+# Need to expand_aliases if running bash in non-interactive mode
+shopt -s expand_aliases
+alias ma=makeanywhere

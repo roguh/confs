@@ -28,9 +28,6 @@ endif
 
 set t_Co=256
 
-" Use bash instead of $SHELL.
-set shell=/bin/bash
-
 " Change dir to that of the current file
 " Benefits:
 "   - easier to navigate to nearby files
@@ -328,6 +325,17 @@ hi Identifier cterm=italic gui=italic
 hi Special cterm=italic gui=italic
 
 let g:neovide_cursor_vfx_mode = "railgun"
+
+" Use bash instead of $SHELL.
+set shell=/bin/bash
+
+" Load bash configuration file
+" My .bashrc detects if interactive mode is enabled before enabling any
+" interactive shell features.
+let $BASH_ENV = $HOME . "/.bash_vim"
+
+" !makeanywhere format-fix-with-pyston PYFILES=%:p
+" !ma test-unit
 
 " Load project-specific local vim settings at $PWD/.vim.{custom,local}
 " if filereadable('.vim.custom')

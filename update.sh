@@ -182,6 +182,7 @@ copy_confs_for vim \
   .vimrc \
   .vimrc.minimal \
   .config/nvim/coc-settings.json \
+  .bash_vim \
   bin/pyston-pylint \
   bin/pyston-black \
   bin/pyston-isort \
