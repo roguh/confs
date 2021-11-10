@@ -119,6 +119,8 @@ if [[ $- == *i* ]]; then
     # if command -v keychain > /dev/null ; then
     #     eval $(keychain --eval --agents ssh --nogui --quick --quiet id_ed25519)
     # fi
+    
+    export BASHRC_INTERACTIVE_LOADED=true
 fi
 
 # Load node version manager, if available
@@ -130,3 +132,4 @@ fi
 # Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
 export PATH="$PATH:$HOME/.rvm/bin"
 
+export BASHRC_LOADED=true

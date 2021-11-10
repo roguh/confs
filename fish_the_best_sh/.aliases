@@ -1,6 +1,8 @@
 tryalias SUDO sudo
 tryalias REBOOT reboot
 
+tryalias ma makeanywhere
+
 tryalias pass $HOME/bin/pass-with-custom-editor.sh
 
 tryalias halp 'npx hpal'

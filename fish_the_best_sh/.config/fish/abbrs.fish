@@ -39,9 +39,3 @@ if command -v docker > /dev/null
     abbr dck 'docker container kill (docker ps -q)'
     debug Setup Docker abbreviations
 end
-
-if command -v nvim > /dev/null
-    abbr v 'nvim'
-    abbr vmin 'nvim -u ~/.vimrc.minimal'
-    debug Setup Neovim abbreviations
-end

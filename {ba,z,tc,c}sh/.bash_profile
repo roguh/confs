@@ -1,3 +1,5 @@
+export BASH_PROFILE_LOADED=true
+
 if [ -f ~/.bashrc ]; then
     . ~/.bashrc
 fi
