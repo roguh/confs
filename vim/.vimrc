@@ -6,38 +6,19 @@ set nocompatible
 " Need .vim/autoload/plug.vim
 " Call :PlugInstall or :PlugUpdate.
 
+" Load plugins
 call plug#begin()
 
 " Color themes
 Plug 'sonph/onehalf', { 'rtp': 'vim' }
-Plug 'drewtempelmeyer/palenight.vim'
-Plug 'dylanaraps/wal.vim'
-Plug 'AlessandroYorba/Sierra'
-Plug 'ayu-theme/ayu-vim'
-Plug 'habamax/vim-colors-defminus'
-Plug 'habamax/vim-colors-lessthan'
 
 " Reload files edited externally
 Plug 'djoshea/vim-autoread'
-
-" Writer's plugins
-
-" Use :OnlineThesaurusCurrentWord or :Thesaurus word
-Plug 'beloglazov/vim-online-thesaurus'
-let g:online_thesaurus_map_keys = 0
 
 " Good statusline
 Plug 'vim-airline/vim-airline'
 let g:airline#extensions#ale#enabled = 1
 let g:airline_powerline_fonts = 1
-
-" Support opening filename:line:column
-" vim, gF, :e[dit] /path/to/file:100:12
-Plug 'wsdjeg/vim-fetch'
-
-" Git gutter
-" Plug 'airblade/vim-gitgutter'
-" Plug 'mhinz/vim-signify'
 
 " Show git diff in window when writing git commit message
 Plug 'rhysd/committia.vim'
@@ -48,18 +29,6 @@ Plug 'tpope/vim-fugitive'
 " Strip trailing whitespace on changed lines only
 " Use :WStrip to clean all trailing whitespace
 Plug 'tweekmonster/wstrip.vim'
-
-" Plug 'scrooloose/nerdtree'
-" Plug 'Xuyuanp/nerdtree-git-plugin'
-
-" Advanced search and replace (or grep):
-" :%Subvert/facilit{y,ies}/building{,s}/g
-" :Subvert/child{,ren}/adult{,s}/g
-" :Subvert/di{e,ce}/spinner{,s}/g
-"
-" I know how to spell "separate". I know how to spell "desperate". My fingers, however, have trouble distinguishing between the two, and I invariably have a 50 percent chance of typing "seperate" or "desparate" each time one of these comes up.
-" :Abolish {despa,sepe}rat{e,es,ed,ing,ely,ion,ions,or}  {despe,sepa}rat{}
-Plug 'tpope/vim-abolish'
 
 " Good default settings
 " "one step above the nocompatible setting"
@@ -91,47 +60,13 @@ let g:jsx_ext_required = 0
 
 Plug 'tpope/vim-speeddating'
 
-" Deoplete code completion framework
-" https://github.com/Shougo/deoplete.nvim/wiki/Completion-Sources
-" Plug 'Shougo/deoplete.nvim'
-if has('nvim')
-else
-  Plug 'roxma/nvim-yarp'
-  Plug 'roxma/vim-hug-neovim-rpc'
-endif
-
 Plug 'machakann/vim-highlightedyank'
 let g:highlightedyank_highlight_duration = 10000
-
-" Plug 'carlitux/deoplete-ternjs', { 'do': 'echo run npm install -g tern' }
-" let g:deoplete#enable_at_startup = 1
-" call deoplete#custom#option('auto_complete_delay', 100)
-
-" Use tern_for_vim.
-" let g:tern#command = ["tern"]
-" let g:tern#arguments = ["--persistent"]
-
-" USE TAB!!!!!!
-inoremap <expr><tab> pumvisible() ? "\<c-n>" : "\<tab>"
 
 " Completion based on syntax
 Plug 'Shougo/neco-syntax'
 
-" merlin, autocomplete for ocaml
-" TODO only load for ocaml
-" TODO only load if opam exists
-""  let g:opamshare = substitute(system('opam config var share'),'\n$','','''')
-""  execute 'set rtp+=' . g:opamshare . '/merlin/vim'
-""  execute 'set rtp+=' . g:opamshare . '/ocp-indent/vim'
-""
-" Completion for ocaml using merlin
-" install merline with:
-" opam install merlin
-
 Plug 'rgrinberg/vim-ocaml', { 'for': 'ocaml' }
-
-" deoplete and ocaml
-Plug 'copy/deoplete-ocaml', { 'for': 'ocaml' }
 
 " Reason
 Plug 'reasonml-editor/vim-reason-plus'
@@ -141,10 +76,6 @@ Plug 'reasonml-editor/vim-reason-plus'
 Plug 'eagletmt/neco-ghc', { 'for': 'haskell' }
 let g:haskellmode_completion_ghc = 0
 autocmd FileType haskell setlocal omnifunc=necoghc#omnifunc
-
-" Python code-completion, many other features
-" Plug 'davidhalter/jedi-vim', { 'for': 'python' }
-" Plug 'zchee/deoplete-jedi'
 
 " J, APL derivative
 Plug 'guersam/vim-j'
@@ -183,22 +114,11 @@ map <C-p> :CtrlPMixed<CR>
 " ignore files in .gitignore, include dotfiles
 let g:ctrlp_user_command = 'find %s -ipath \*.git -prune -or -type f'
 
-" use ag or ack to search for text in files
-" use the :Ack command instead of :grep
-Plug 'mileszs/ack.vim'
-
-if executable('ag')
-  let g:ackprg = 'ag --vimgrep --ignore dist/'
-endif
-
 " Asynchronous grep results.
 " Default search tool is whatever is available first from:
 " ag, ack, grep, findstr, rg, pt, git
 " Leave an empty query to search for word under the cursor.
 Plug 'mhinz/vim-grepper'
-
-" Search starting from project root.
-" let g:grepper.repo = ['.project', '.git', '.SVN', 'node-packages.json']
 
 command! ProjectGrepper execute 'Grepper -dir repo'
 map <C-f> :ProjectGrepper<CR>
@@ -225,14 +145,6 @@ nmap <F2> :call CocAction('jumpDefinition')<CR>
 
 " Use K to show documentation in preview window
 nnoremap <silent> K :call <SID>show_documentation()<CR>
-
-function! s:show_documentation()
-  if (index(['vim','help'], &filetype) >= 0)
-    execute 'h '.expand('<cword>')
-  else
-    call CocAction('doHover')
-  endif
-endfunction
 
 " Async linting lints as you type.
 Plug 'w0rp/ale', { 'for': ['javascript', 'python', 'c', 'css', 'scss'] }
@@ -297,7 +209,7 @@ au filetype tex syntax region texZone start='\\begin{bashcode}' end='\\end{bashc
 au filetype tex syntax region texZone start='\\begin{pyconcode}' end='\\end{pyconcode}'
 
 " Folding for C, Fortran, Java, CPP
-Plug 'pseewald/anyfold', { 'for': ['c', 'cpp', 'java', 'fortran', 'javascript', 'javascript.jsx', 'python', 'markdown', 'rust'] }
+Plug 'pseewald/anyfold'
 
 " Improved syntax highlighting for C, add syntax highlighting for Bison, and Flex
 Plug 'justinmk/vim-syntax-extra', { 'for': [ 'c', 'cpp', 'y', 'l' ] }
@@ -319,34 +231,21 @@ let g:indent_guides_enable_on_vim_startup = 1
 " Sample:
                                                                  let test_var = 0
 
-call plug#end()
-
-let g:anyfold_fold_comments=1
-
 " Activate advanced folding and open all folds
+let g:anyfold_fold_comments=1
 autocmd Filetype * AnyFoldActivate
 set foldlevel=99 " Open all folds
 
+call plug#end()
+
+" Set colors
 try
   set background=dark
-  let g:sierra_Pitch = 1
-  " colorscheme sierra
-
-  " colorscheme wal
-
-  colorscheme onehalfdark
+  colorscheme nehalfdark
   let g:airline_theme='onehalfdark'
-
-  " set termguicolors     " enable true colors support
-  " let ayucolor="light"  " for light version of theme
-  " let ayucolor="mirage" " for mirage version of theme
-  " let ayucolor="dark"   " for dark version of theme
-  " colorscheme ayu
-
-  " colorscheme defminus
-  " colorscheme lessthan
 catch
   " no colors!
+  echo 'NO COLORS'
 endtry
 
 " Read the real vim config.
