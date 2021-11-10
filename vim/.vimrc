@@ -321,7 +321,11 @@ let g:indent_guides_enable_on_vim_startup = 1
 
 call plug#end()
 
-let g:anyfold_fold_comments=0
+let g:anyfold_fold_comments=1
+
+" Activate advanced folding and open all folds
+autocmd Filetype * AnyFoldActivate
+set foldlevel=99 " Open all folds
 
 try
   set background=dark
