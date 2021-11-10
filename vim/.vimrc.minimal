@@ -168,6 +168,8 @@ set tabstop=2 shiftwidth=2 tabstop=2 expandtab
 
 filetype plugin indent on
 
+syntax on
+
 " Python indentation
 au BufNewFile,BufRead *.py
     \ set tabstop=4 softtabstop=4 shiftwidth=4 expandtab autoindent fileformat=unix
