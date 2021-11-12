@@ -16,15 +16,10 @@ if command -v kubectl > /dev/null
     abbr kx kubectx
     abbr kc 'kubectl config'
     # List and detail resources
-    abbr kci 'kubectl cluster-info'
     abbr kgp 'kubectl get pods'
-    abbr kgn 'kubectl get nodes'
-    abbr kgs 'kubectl get services'
     abbr kd 'kubectl describe'
-    abbr ke 'kubectl explain'
     # Debugging pods
     abbr kl 'kubectl logs'
-    abbr kt 'kubectl top'
     abbr kcp 'kubectl cp'
     abbr kex 'kubectl exec'
     abbr kpf 'kubectl port-forward'
@@ -34,7 +29,6 @@ end
 if command -v docker > /dev/null
     abbr dcls 'docker container ls'
     abbr dl 'docker logs'
-    abbr da 'docker attach'
     abbr dex 'docker exec'
     abbr dck 'docker container kill (docker ps -q)'
     debug Setup Docker abbreviations

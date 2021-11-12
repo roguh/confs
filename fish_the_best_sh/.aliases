@@ -1,27 +1,17 @@
-tryalias SUDO sudo
-tryalias REBOOT reboot
-
 tryalias ma makeanywhere
 
 tryalias pass $HOME/bin/pass-with-custom-editor.sh
 
-tryalias halp 'npx hpal'
 tryalias em 'emacs -nw'
 tryalias emc 'emacsclient -nw --alternate-editor=""'
 tryalias emacsc 'emacsclient --alternate-editor=""'
 tryalias mv 'mv -i'
 tryalias cp 'cp -i'
 tryalias rm 'rm -i'
-tryalias please sudo
-
-tryalias ping 'prettyping --nolegend' ping
-tryalias less "$PAGER" less
-tryalias more "$PAGER" more
 
 tryalias ls exa ls
 tryalias l 'ls -Fa'
 tryalias ll 'l -lh'
-tryalias grep 'grep --color'
 tryalias gzip pigz gzip
 
 tryalias c ccat
@@ -35,50 +25,10 @@ tryalias ipy ipython3 ipython
 tryalias v nvim vim vis vi nano ed libreoffice openoffice 'wine MicrosoftOffice2003.exe' vim
 tryalias vmin 'nvim -u ~/.vimrc.minimal' 'vim -u ~/.vimrc.minmal' vis vi nano 'nvim -u ~/.vimrc.minimal'
 tryalias e 'zathura --fork' evince mupdf mupdf-x11 qpdfview 'wine READER10.exe'
-tryalias sx 'exec startx'
-
-tryalias npm pnpm npm
-
-tryalias vscode code
 
 tryalias pmake 'pipenv run make'
 
 tryalias kubectl-get-pods-with-node 'kubectl get pod -o wide'
 tryalias kubectl-get-previous-logs 'kubectl logs --previous'
 
-
-# Duplicated as Fish abbreviations
-tryalias ga 'git add'
-tryalias gc 'git commit'
-tryalias gch 'git checkout'
-tryalias gchm 'git checkout main'
-tryalias gs 'git status'
-tryalias gst 'git stash push --'
-tryalias gstp 'git stash pop'
-tryalias gd 'git diff'
-tryalias gdt 'git difftool'
-tryalias gl 'git log'
-
-# Duplicated as Fish abbreviations
-tryalias kx kubectx
-tryalias kc 'kubectl config'
-# List and detail resources
-tryalias kci 'kubectl cluster-info'
-tryalias kgp 'kubectl get pods'
-tryalias kgn 'kubectl get nodes'
-tryalias kgs 'kubectl get services'
-tryalias kd 'kubectl describe'
-tryalias ke 'kubectl explain'
-# Debugging pods
-tryalias kl 'kubectl logs'
-tryalias kt 'kubectl top'
-tryalias kcp 'kubectl cp'
-tryalias kex 'kubectl exec'
-tryalias kpf 'kubectl port-forward'
-
-# Duplicated as Fish abbreviations
-tryalias dcls 'docker container ls'
-tryalias dl 'docker logs'
-tryalias da 'docker attach'
-tryalias dex 'docker exec'
-
+# Some aliases are now only found as Fish abbreviations

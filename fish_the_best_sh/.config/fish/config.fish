@@ -1,7 +1,8 @@
 # Hugo O. Rivera's FISH config
 # Remember to run `install_plugins` once.
 
-set DEBUG_OUTPUT = false
+set FAST_STARTUP true
+set DEBUG_OUTPUT false
 
 if [ "$PWD" = "$HOME" ] && status is-interactive
   set DEBUG_OUTPUT true
@@ -10,27 +11,36 @@ end
 function debug
   if [ "$DEBUG_OUTPUT" = true ]
     set_color -i
-    echo "$FISH_LOGO: $argv"
+    echo "$FISH_LOGO $argv"
     set_color normal
   end
 end
 
-function addpaths
-  if test -d $argv[1]
-    if not contains -- $argv[1] $fish_user_paths
+function warn
+  set_color bryellow black
+  debug WARNING: $argv
+end
+
+function addpaths --argument-names 'path' 'verbose'
+  if test -d "$path"
+    if not contains -- "$path" $fish_user_paths
       # Must check if path is already added.
       # Without this check, fish becomes gradually slower to start as it
       # struggles to manage an enormous variable.
-      set -U fish_user_paths $fish_user_paths $argv[1]
-      debug Added path (trimdir.py $argv[1])
+      set -U fish_user_paths $fish_user_paths "$path"
+      debug Added path (trimdir.py "$path")
     end
+  else if ! [ "$verbose" = "" ]
+    warn addpaths could not find $argv[1]
   end
 end
 
-function load_file
-    if test -e $argv[1]
-        source $argv[1]
-        debug Loaded file $argv[1]
+function load_file --argument-names 'file' 'verbose'
+    if test -e $file
+        source $file
+        debug Loaded file $file
+    else if ! [ "$verbose" = "" ]
+        warn File not found: $file
     end
 end
 
@@ -49,13 +59,13 @@ load_file $HOME/.config/fish/local_env.fish
 set_global_if_unset FISH_LOGO Fish # 🐠
 set_global DOCKER_BUILDKIT 1
 
-addpaths $HOME/bin
-addpaths $HOME/.local/bin
+addpaths $HOME/bin --verbose
+addpaths $HOME/.local/bin  --verbose
 addpaths $HOME/.poetry/bin
 addpaths $HOME/.gem/ruby/2.5.0/bin
 addpaths $HOME/.gem/ruby/2.6.0/bin
 addpaths $HOME/Library/Python/3.7/bin
-addpaths $HOME/.dropbox-dist
+addpaths $HOME/.dropbox-dist  --verbose
 addpaths $HOME/.cargo/bin
 addpaths $HOME/.pyenv/bin
 addpaths /opt/flutter/bin
@@ -89,25 +99,37 @@ if type most > /dev/null 2>&1
     alias less=$PAGER
 end
 
-load_file $HOME/.config/fish/abbrs.fish
+load_file $HOME/.config/fish/abbrs.fish --verbose
 
 # Load aliases
-load_file $HOME/.aliases
+# TODO reduce number of aliases to speed up loading time or create ~/.essential_aliases
+load_file $HOME/.aliases --verbose
 tryalias ,, commacomma
 
 # Load OCaml
 load_file $HOME/.opam/opam-init/init.fish
 
 # mkdir -p ~/.config/fish/completions; and cp ~/.asdf/completions/asdf.fish ~/.config/fish/completions
-load_file ~/.asdf/asdf.fish
+load_file ~/.asdf/asdf.fish --verbose
 
 if command -v yarn 2>&1 > /dev/null
-    addpaths (yarn global bin)
+    if [ "$FAST_STARTUP" = true ]
+        debug SPEEDUP: Reading ~/.tool-versions to find NPM path instead of calling yarn
+        set TOOL_VERSIONS_FILE "$HOME/.tool-versions"
+        if [ -f "$TOOL_VERSIONS_FILE" ] && grep nodejs "$TOOL_VERSIONS_FILE" &>/dev/null
+            set NODE_VERSION (grep nodejs "$TOOL_VERSIONS_FILE" | cut -f2 -d' ')
+            addpaths "$HOME/.asdf/installs/nodejs/$NODE_VERSION/.npm/bin" --verbose
+        else
+            warn "ASDF installation of NodeJS not found."
+        end
+    else
+        addpaths (yarn global bin) --verbose
+    end
 end
 
 if type go > /dev/null 2>&1
   set_global GOPATH (go env GOPATH)
-  addpaths $GOPATH/bin
+  addpaths $GOPATH/bin --verbose
   debug Set Go variables and paths
 end
 
@@ -175,8 +197,12 @@ if status is-interactive
   end
 
   if command -v gh > /dev/null
-    eval (gh completion --shell fish)
-    debug Added GitHub gh completions
+    if [ "$FAST_STARTUP" = true ]
+      debug SPEEDUP Skipping GitHub gh completions
+    else
+      eval (gh completion --shell fish)
+      debug Added GitHub gh completions
+    end
   end
 
   function fish_user_key_bindings
@@ -201,8 +227,12 @@ if status is-interactive
   end
 
   if type keychain > /dev/null 2>&1
-    eval (keychain --eval --agents ssh -Q --quiet --nogui id_ed25519) &
-    debug Loaded keychain
+    if [ "$FAST_STARTUP" = true ] && [ "$SSH_AGENT_PID" != "" ]
+        debug SPEEDUP Skipping calling keychain as SSH_AGENT_PID is already set
+    else
+        eval (keychain --eval --agents ssh -Q --quiet --nogui id_ed25519) &
+        debug Loaded keychain
+    end
   end
 end
 
