@@ -108,9 +108,7 @@ nmap <F2> :call CocAction('jumpDefinition')<CR>
 nnoremap <silent> K :call <SID>show_documentation()<CR>
 
 """""""""""""""" Load heavy and/or extra plugins
-if $VIM_LOAD_EXTRA_PLUGINS != "true"
-    echo "Loading minimal plugins. Do not use :PlugClean"
-else
+if $VIM_LOAD_EXTRA_PLUGINS == "true"
     echo "Loading all plugins"
 
     " Strip trailing whitespace on changed lines only
