@@ -227,8 +227,8 @@ if status is-interactive
   end
 
   if type keychain > /dev/null 2>&1
-    if [ "$FAST_STARTUP" = true ] && [ "$SSH_AGENT_PID" != "" ]
-        debug SPEEDUP Skipping calling keychain as SSH_AGENT_PID is already set
+    if [ "$FAST_STARTUP" = true ] && [ "$SSH_AGENT_PID" != "" ] && [ (pgrep ssh-agent | wc -l) = 1 ]
+        debug SPEEDUP Skipping calling keychain as SSH_AGENT_PID is already set and ssh-agent is running
     else
         eval (keychain --eval --agents ssh -Q --quiet --nogui id_ed25519) &
         debug Loaded keychain
