@@ -427,8 +427,7 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(custom-safe-themes
-   (quote
-    ("04232a0bfc50eac64c12471607090ecac9d7fd2d79e388f8543d1c5439ed81f5" "065efdd71e6d1502877fd5621b984cded01717930639ded0e569e1724d058af8" default)))
+   '("04232a0bfc50eac64c12471607090ecac9d7fd2d79e388f8543d1c5439ed81f5" "065efdd71e6d1502877fd5621b984cded01717930639ded0e569e1724d058af8" default))
  '(linum-relative-current-symbol "")
  '(linum-relative-format
    (let
@@ -439,13 +438,11 @@
             (point-min)
             (point-max))))))
      (format "%%%ds " max-width)))
- '(org-agenda-files (quote ("~/org/")))
+ '(org-agenda-files '("~/org/"))
  '(org-modules
-   (quote
-    (org-bbdb org-bibtex org-docview org-gnus org-info org-irc org-mhe org-protocol org-rmail org-w3m org-drill)))
+   '(org-bbdb org-bibtex org-docview org-gnus org-info org-irc org-mhe org-protocol org-rmail org-w3m org-drill))
  '(package-selected-packages
-   (quote
-    (company-c-headers pipenv smooth-scrolling ein helm zenburn diff-hl fill-column-indicator cursor-chg ergoemacs-mode org-contrib flyspell-popup org-drill xresources-theme column-marker git-gutter android-mode whitespace-cleanup-mode use-package tao-theme smex rainbow-mode magit linum-relative langtool json-mode impatient-mode haskell-mode guide-key flycheck evil col-highlight coffee-mode benchmark-init auto-complete auctex))))
+   '(company-c-headers pipenv smooth-scrolling ein helm zenburn diff-hl fill-column-indicator cursor-chg ergoemacs-mode org-contrib flyspell-popup org-drill xresources-theme column-marker git-gutter android-mode whitespace-cleanup-mode use-package tao-theme smex rainbow-mode magit linum-relative langtool json-mode impatient-mode haskell-mode guide-key flycheck evil col-highlight coffee-mode benchmark-init auto-complete auctex)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
