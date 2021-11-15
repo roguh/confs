@@ -107,6 +107,17 @@ nmap <F2> :call CocAction('jumpDefinition')<CR>
 " Use K to show documentation in preview window
 nnoremap <silent> K :call <SID>show_documentation()<CR>
 
+function! s:show_documentation()
+  if (index(['vim','help'], &filetype) >= 0)
+    execute 'h '.expand('<cword>')
+  else
+    call CocAction('doHover')
+  endif
+endfunction
+
+" Use tab for selecting completion
+inoremap <expr><tab> pumvisible() ? "\<c-n>" : "\<tab>"
+
 """""""""""""""" Load heavy and/or extra plugins
 if $VIM_LOAD_EXTRA_PLUGINS == "true"
     echo "Loading all plugins"
