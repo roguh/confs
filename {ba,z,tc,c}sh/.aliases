@@ -1,4 +1,5 @@
 tryalias ma makeanywhere
+tryalias pma 'pipenv run makeanywhere'
 
 tryalias pass $HOME/bin/pass-with-custom-editor.sh
 
