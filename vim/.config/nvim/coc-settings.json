@@ -1,15 +1,27 @@
 {
   "hover.target": "echo",
   "signature.target": "echo",
-  "rust-analyzer.server.path": "/usr/bin/rust-analyzer",
   "coc.preferences.formatOnType": true,
   "coc.preferences.formatOnSaveFiletypes": ["python"],
   "coc.preferences.useQuickfixForLocations": true,
   "coc.preferences.snippets.enable": true,
 
+  // Setup rust
+  "rust-analyzer.server.path": "/usr/bin/rust-analyzer",
+
+  // Setup black
   "python.formatting.provider": "black",
   "python.formatting.blackPath": "${env:HOME}/bin/pyston-black",
-  "coc.preferences.formatOnSaveFiletypes": ["python"]
+  "coc.preferences.formatOnSaveFiletypes": ["python"],
+  // Setup isort
+  "python.sortImports.args": [
+    "--profile=black"
+  ],
+  "[python]": {
+    "editor.codeActionsOnSave": {
+        "source.organizeImports": true
+    }
+  }
   // I was unable to get pyright or diagnostic-languageserver formatting+linting working
   // Update: I got black formatting working with coc-pyright
   // "pyright.enable": true,
