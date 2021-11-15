@@ -238,6 +238,9 @@ copy_confs_for fish_the_best_sh \
   .config/fish/{abbrs,config,functions/{commacomma,tryalias,load_theme,fisher,fish_{title,prompt,greeting}}}.fish \
   bin/{🐠,string_split.py,real-deal-turbo-charged-cd.sh} \
 
+copy_confs_for_host fish_local \
+  .config/fish/local_env.fish
+
 copy_confs_for bash-cache bin/bash-cache
 
 copy_confs_for screenfetch-cached bin/{screenfetch-cached,bash-cache}
