@@ -33,3 +33,22 @@ if command -v docker > /dev/null
     abbr dck 'docker container kill (docker ps -q)'
     debug Setup Docker abbreviations
 end
+
+if command -v makeanywhere > /dev/null
+    set -g MAKEANYWHERE (which makeanywhere)
+    function makeanywhere --wraps make --description "makeanywhere --wraps make $MAKEANYWHERE"
+        "$MAKEANYWHERE" $argv
+    end
+    
+    function pma --wraps make --description "pma --wraps make pipenv run $MAKEANYWHERE"
+        pipenv run "$MAKEANYWHERE" $argv
+    end
+
+    alias ma makeanywhere
+
+    debug Setup makeanywhere alias
+end
+
+function pmake --wraps make --description "pma --wraps make pipenv run"
+    pipenv run make $argv
+end
