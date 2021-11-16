@@ -87,9 +87,12 @@ bindsym $mod+F9 workspace 19
 bindsym $mod+F10 workspace 20
 bindsym $mod+F11 workspace 21
 bindsym $mod+F12 workspace 22
-bindsym $mod+p workspace 23:fun
-bindsym $mod+o workspace 22:TODO
+# backtick
+bindsym $mod+grave workspace 0:journal
 bindsym $mod+i workspace 21:comm
+bindsym $mod+o workspace 22:TODO
+bindsym $mod+p workspace 23:fun
+bindsym $mod+bracketleft workspace 24:music
 
 # Move focused container to workspace
 bindsym $mod+Shift+1 move container to workspace 1; workspace 1
@@ -113,9 +116,13 @@ bindsym $mod+Shift+F9 move container to workspace 19; workspace 19
 bindsym $mod+Shift+F10 move container to workspace 20; workspace 20
 bindsym $mod+Shift+F11 move container to workspace 21; workspace 21
 bindsym $mod+Shift+F12 move container to workspace 22; workspace 22
-bindsym $mod+Shift+p move container to workspace 23:fun; workspace 23:fun
-bindsym $mod+Shift+o move container to workspace 22:TODO; workspace 22:TODO
+# backtick
+bindsym $mod+Shift+grave move container to workspace 0:journal; workspace 0:journal
 bindsym $mod+Shift+i move container to workspace 21:comm; workspace 21:comm
+bindsym $mod+Shift+o move container to workspace 22:TODO; workspace 22:TODO
+bindsym $mod+Shift+p move container to workspace 23:fun; workspace 23:fun
+# Doesn't work!
+# bindsym $mod+braceright move container to workspace 24:music; workspace 24:music
 
 bindsym $mod+Mod1+1 exec --no-startup-id i3empty.py next 1
 bindsym $mod+Mod1+2 exec --no-startup-id i3empty.py next 2
