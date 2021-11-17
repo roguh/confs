@@ -1,6 +1,7 @@
 # Hugo O. Rivera's FISH config
 # Remember to run `install_plugins` once.
 
+set START_TIME (date +%s.%N)
 set FAST_STARTUP true
 set DEBUG_OUTPUT false
 
@@ -8,11 +9,15 @@ if [ "$PWD" = "$HOME" ] && status is-interactive
   set DEBUG_OUTPUT true
 end
 
+function log
+  set_color -i
+  echo "$FISH_LOGO $argv"
+  set_color normal
+end
+
 function debug
   if [ "$DEBUG_OUTPUT" = true ]
-    set_color -i
-    echo "$FISH_LOGO $argv"
-    set_color normal
+    log "$argv"
   end
 end
 
@@ -37,10 +42,10 @@ end
 
 function load_file --argument-names 'file' 'verbose'
     if test -e $file
-        source $file
-        debug Loaded file $file
+      source $file
+      debug Loaded file $file
     else if ! [ "$verbose" = "" ]
-        warn File not found: $file
+      warn File not found: $file
     end
 end
 
@@ -234,6 +239,8 @@ if status is-interactive
         debug Loaded keychain
     end
   end
+
+  log Startup time (echo (date +%s.%N) "$START_TIME" | awk '{print $1 - $2}' || echo UNKNOWN)
 end
 
 function install_plugin_manager
