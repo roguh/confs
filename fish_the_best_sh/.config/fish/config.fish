@@ -319,19 +319,19 @@ set SHELL_TYPE ([ -n "$SSH_CLIENT" ] && echo ' SSH' || echo)
 switch $hostname$SHELL_TYPE
   case 'raspberrypi' '*SSH*'
     if [ "$hostname" = raspberrypi ]
-      debug Running fish in a Raspberry Pi.
+      set HOSTNAME_SUMMARY "a Raspberry Pi"
     else
-      debug Running fish in SSH.
+      set HOSTNAME_SUMMARY SSH
     end
     set USER_AND_HOST_COLOR brred
   case '*T580*'
-    debug Running fish in a known host.
+    set HOSTNAME_SUMMARY "a known host"
     set USER_AND_HOST_COLOR brcyan
   case '*flex*'
-    debug Running fish in a known host.
+    set HOSTNAME_SUMMARY "a known host"
     set USER_AND_HOST_COLOR bryellow
   case '*'
-    debug Running fish in an unknown host.
+    set HOSTNAME_SUMMARY "an UNKNOWN host"
     set USER_AND_HOST_COLOR brwhite
 end
 

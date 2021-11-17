@@ -5,6 +5,8 @@ function fish_greeting
 
   echo
 
+  echo "Running fish in $HOSTNAME_SUMMARY."
+  
   uptime
 
   echo
@@ -13,9 +15,9 @@ function fish_greeting
 
     uname -a
 
-    if type screenfetch-cached > /dev/null 2>&1
+    if command -v screenfetch-cached > /dev/null 2>&1
       screenfetch-cached
-    else if type screenfetch > /dev/null 2>&1
+    else if command -v screenfetch > /dev/null 2>&1
       screenfetch
     end
     
@@ -23,10 +25,10 @@ function fish_greeting
 
     # echo (curl https://raw.githubusercontent.com/asdf-vm/asdf/master/ballad-of-asdf.md)
   else
-    [ true = true ] # clear status code
+    true
     fish_prompt
     echo
-    if type exa > /dev/null 2>&1
+    if command -v exa > /dev/null 2>&1
       exa "$PWD"
     else
       ls "$PWD"
@@ -35,9 +37,7 @@ function fish_greeting
   
   echo
 
-  echo
-  
-  if type fortune > /dev/null 2>&1
+  if command -v fortune > /dev/null 2>&1
     fortune
   else
     echo FOTD: Create something beautiful.
