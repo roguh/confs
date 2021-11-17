@@ -321,7 +321,7 @@ switch $hostname$SHELL_TYPE
     if [ "$hostname" = raspberrypi ]
       set HOSTNAME_SUMMARY "a Raspberry Pi"
     else
-      set HOSTNAME_SUMMARY "SSH on $hostname"
+      set HOSTNAME_SUMMARY "SSH on $hostname (SSH_CLIENT=$SSH_CLIENT)"
     end
     set USER_AND_HOST_COLOR brred
   case '*T580*'
