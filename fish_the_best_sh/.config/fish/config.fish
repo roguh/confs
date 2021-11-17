@@ -1,6 +1,7 @@
 # Hugo O. Rivera's FISH config
 # Remember to run `install_plugins` once.
 
+set START_TIME (date +%s.%N)
 set FAST_STARTUP true
 set DEBUG_OUTPUT false
 
@@ -8,11 +9,15 @@ if [ "$PWD" = "$HOME" ] && status is-interactive
   set DEBUG_OUTPUT true
 end
 
+function log
+  set_color -i
+  echo "$FISH_LOGO $argv"
+  set_color normal
+end
+
 function debug
   if [ "$DEBUG_OUTPUT" = true ]
-    set_color -i
-    echo "$FISH_LOGO $argv"
-    set_color normal
+    log "$argv"
   end
 end
 
@@ -37,10 +42,10 @@ end
 
 function load_file --argument-names 'file' 'verbose'
     if test -e $file
-        source $file
-        debug Loaded file $file
+      source $file
+      debug Loaded file $file
     else if ! [ "$verbose" = "" ]
-        warn File not found: $file
+      warn File not found: $file
     end
 end
 
@@ -90,7 +95,7 @@ if test -d /opt/android-sdk/
   debug Set Android variables and paths
 end
 
-if type most > /dev/null 2>&1
+if command -v most > /dev/null 2>&1
     set_global PAGER most
     set_global pager $PAGER
     set_global LESS $PAGER
@@ -99,10 +104,65 @@ if type most > /dev/null 2>&1
     alias less=$PAGER
 end
 
-load_file $HOME/.config/fish/abbrs.fish --verbose
+if command -v git > /dev/null
+    abbr ga 'git add'
+    abbr gc 'git commit'
+    abbr gch 'git checkout'
+    abbr gchm 'git checkout main'
+    abbr gs 'git status'
+    abbr gst 'git stash push --'
+    abbr gstp 'git stash pop'
+    abbr gd 'git diff'
+    abbr gdt 'git difftool'
+    abbr gl 'git log'
+    debug Setup Git abbreviations
+end
+
+if command -v kubectl > /dev/null
+    abbr kx kubectx
+    abbr kc 'kubectl config'
+    # List and detail resources
+    abbr kgp 'kubectl get pods'
+    abbr kd 'kubectl describe'
+    # Debugging pods
+    abbr kl 'kubectl logs'
+    abbr kcp 'kubectl cp'
+    abbr kex 'kubectl exec'
+    abbr kpf 'kubectl port-forward'
+    debug Setup Kubernetes abbreviations
+end
+
+if command -v docker > /dev/null
+    abbr dcls 'docker container ls'
+    abbr dl 'docker logs'
+    abbr dex 'docker exec'
+    abbr dck 'docker container kill (docker ps -q)'
+    debug Setup Docker abbreviations
+end
+
+if command -v makeanywhere > /dev/null
+    set -g MAKEANYWHERE (which makeanywhere)
+    function makeanywhere --wraps make --description "makeanywhere --wraps make $MAKEANYWHERE"
+        "$MAKEANYWHERE" $argv
+    end
+    
+    function pma --wraps make --description "pma --wraps make pipenv run $MAKEANYWHERE"
+        pipenv run "$MAKEANYWHERE" $argv
+    end
+
+    alias ma makeanywhere
+
+    debug Setup makeanywhere alias
+end
+
+function pmake --wraps make --description "pma --wraps make pipenv run"
+    pipenv run make $argv
+end
 
 # Load aliases
 # TODO reduce number of aliases to speed up loading time or create ~/.essential_aliases
+# I tried getting rid of tryalias with "alias tryalias alias", but it's actually
+# almost as fast as plain alias so I'll keep it.
 load_file $HOME/.aliases --verbose
 tryalias ,, commacomma
 
@@ -115,10 +175,13 @@ load_file ~/.asdf/asdf.fish --verbose
 if command -v yarn 2>&1 > /dev/null
     if [ "$FAST_STARTUP" = true ]
         debug SPEEDUP: Reading ~/.tool-versions to find NPM path instead of calling yarn
-        set TOOL_VERSIONS_FILE "$HOME/.tool-versions"
-        if [ -f "$TOOL_VERSIONS_FILE" ] && grep nodejs "$TOOL_VERSIONS_FILE" &>/dev/null
-            set NODE_VERSION (grep nodejs "$TOOL_VERSIONS_FILE" | cut -f2 -d' ')
-            addpaths "$HOME/.asdf/installs/nodejs/$NODE_VERSION/.npm/bin" --verbose
+        set --local TOOL_VERSIONS_FILE "$HOME/.tool-versions"
+        if [ -f "$TOOL_VERSIONS_FILE" ]
+            set --local NODEJS_VERSION (ag nodejs "$TOOL_VERSIONS_FILE" 2>/dev/null)
+            if [ -n "$NODEJS_VERSION" ]
+              set NODE_VERSION (echo "$NODEJS_VERSION" | cut -f2 -d' ')
+              addpaths "$HOME/.asdf/installs/nodejs/$NODE_VERSION/.npm/bin" --verbose
+            end
         else
             warn "ASDF installation of NodeJS not found."
         end
@@ -127,8 +190,13 @@ if command -v yarn 2>&1 > /dev/null
     end
 end
 
-if type go > /dev/null 2>&1
-  set_global GOPATH (go env GOPATH)
+if command -v go > /dev/null 2>&1
+  if [ "$FAST_STARTUP" ]
+    debug SPEEDUP: Guessing GOPATH
+    set_global GOPATH "$HOME/go"
+  else
+    set_global GOPATH (go env GOPATH)
+  end
   addpaths $GOPATH/bin --verbose
   debug Set Go variables and paths
 end
@@ -143,7 +211,7 @@ end
 # or curl -sSL https://rvm.io/mpapis.asc | gpg --import -
 # curl -sSL https://get.rvm.io | bash -s stable --ruby
 # curl -L --create-dirs -o ~/.config/fish/functions/rvm.fish https://raw.github.com/lunks/fish-nuggets/master/functions/rvm.fish
-if type rvm > /dev/null 2>&1
+if command -v rvm > /dev/null 2>&1
   rvm default
   debug Loaded RVM
 end
@@ -181,8 +249,8 @@ end
 
 
 # Have fzf use ag to find files
-if type ag > /dev/null 2>&1
-  if type fzf > /dev/null 2>&1
+if command -v ag > /dev/null 2>&1
+  if command -v fzf > /dev/null 2>&1
     set_global FZF_DEFAULT_COMMAND 'ag --hidden -g ""'
     set_global FZF_CTRL_T_COMMAND "$FZF_DEFAULT_COMMAND"
 
@@ -191,7 +259,7 @@ if type ag > /dev/null 2>&1
 end
 
 if status is-interactive
-  if type xset > /dev/null 2>&1
+  if command -v xset > /dev/null 2>&1
     xset r rate 200 60
     debug Set keyboard rate
   end
@@ -206,7 +274,7 @@ if status is-interactive
   end
 
   function fish_user_key_bindings
-    if type fzf > /dev/null 2>&1
+    if command -v fzf > /dev/null 2>&1
       # Use Ctrl-R to find command in history
       fzf_key_bindings
 
@@ -226,14 +294,25 @@ if status is-interactive
     debug Bound Ctrl-F
   end
 
-  if type keychain > /dev/null 2>&1
-    if [ "$FAST_STARTUP" = true ] && [ "$SSH_AGENT_PID" != "" ] && [ (pgrep ssh-agent | wc -l) = 1 ]
+  if command -v keychain > /dev/null 2>&1
+    if [ "$FAST_STARTUP" = true ] && [ "$SSH_AGENT_PID" != "" ] && [ -e "/proc/$SSH_AGENT_PID/status" ]
         debug SPEEDUP Skipping calling keychain as SSH_AGENT_PID is already set and ssh-agent is running
     else
         eval (keychain --eval --agents ssh -Q --quiet --nogui id_ed25519) &
-        debug Loaded keychain
+        debug Started ssh-agent with keychain
+        if ! [ -e "/proc/$SSH_AGENT_PID/status" ]
+          if [ (ps "$SSH_AGENT_PID" | wc -l) -ge 2 ]
+            warn Your system does not support procfs 
+          else
+            warn The SSH agent was not started!
+          end
+        end
     end
   end
+
+  set TOTAL_STARTUP_TIME (echo (date +%s.%N) "$START_TIME" | awk '{print ($1 - $2) * 1000}' || echo UNKNOWN)
+  log Startup time "$TOTAL_STARTUP_TIME"ms
+  echo "$TOTAL_STARTUP_TIME" >> "$HOME/tmp/fish_startup_times"
 end
 
 function install_plugin_manager
@@ -248,12 +327,12 @@ function install_plugins
   fisher install franciscolourenco/done
 
   # kubectl completion
-  if type kubectl > /dev/null 2>&1
+  if command -v kubectl > /dev/null 2>&1
     fisher install evanlucas/fish-kubectl-completions
   end
 
   # pyenv
-  if type pyenv > /dev/null 2>&1
+  if command -v pyenv > /dev/null 2>&1
     fisher install oh-my-fish/plugin-pyenv
   end
 end
