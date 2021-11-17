@@ -234,13 +234,13 @@ bindsym $mod+l exec --no-startup-id locker.sh
 bindsym $mod+Shift+l exec --no-startup-id backlightoff.sh
 
 #### i3 gaps
-for_window [class="^.*"] border pixel 0
+# for_window [class="^.*"] border pixel 0
 smart_gaps on
 gaps inner 5
 gaps outer 5
 
-# hide title for extremely common windows
-for_window [title="LXTerminal|Firefox|Chromium|Chrome$"] border pixel 1
+# hide border for extremely common windows
+for_window [title="Firefox|Chromium|Chrome$"] border pixel 1
 # for_window [title="Firefox|Chromium|Chrome$"] border pixel 0
 
 # popups should float
