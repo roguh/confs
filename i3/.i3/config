@@ -276,6 +276,7 @@ exec --no-startup-id signal-desktop-beta --use-tray-icon
 exec --no-startup-id teams-insiders
 exec --no-startup-id slack
 exec --no-startup-id .screenlayout/select-arandr-display.sh
+exec --no-startup-id indicator-keylock # notifications when capslock pressed
 
 # Notifications
 exec --no-startup-id killall xfce4-notifyd; dunst
