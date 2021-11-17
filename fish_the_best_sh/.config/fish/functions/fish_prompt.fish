@@ -32,7 +32,7 @@ function fish_prompt
 
     function clean
         set_color -b normal
-        set_color normal
+        set_color brwhite
     end
 
     function clean_and_space
@@ -40,15 +40,25 @@ function fish_prompt
       printf " "
     end
 
-    if [ (hostname) = raspberrypi ]
-        set USER_AND_HOST_COLOR red
-    else
-        set USER_AND_HOST_COLOR white
+    set SHELL_TYPE ([ -n "$SSH_CLIENT" ] && echo SSH || echo)
+    switch $hostname$SHELL_TYPE
+      case '*T580*'
+        set USER_AND_HOST_COLOR brcyan
+      case '*flex*'
+        set USER_AND_HOST_COLOR bryellow
+      case 'raspberrypi' '*SSH*'
+        set USER_AND_HOST_COLOR brred
+      case '*'
+        set USER_AND_HOST_COLOR brwhite
     end
 
     set_color --italics -b $USER_AND_HOST_COLOR
     set_color black
     printf "%s" (whoami)@(hostname)
+
+    if [ -n "$SHELL_TYPE" ]
+      printf " %s" "$SHELL_TYPE"
+    end
 
     clean_and_space
     set_color --dim
