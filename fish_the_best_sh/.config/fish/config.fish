@@ -259,7 +259,7 @@ if command -v ag > /dev/null 2>&1
 end
 
 if status is-interactive
-  if command -v xset > /dev/null 2>&1
+  if command -v xset > /dev/null 2>&1 && [ -n "$DISPLAY" ]
     xset r rate 200 60
     debug Set keyboard rate
   end
@@ -313,6 +313,26 @@ if status is-interactive
   set TOTAL_STARTUP_TIME (echo (date +%s.%N) "$START_TIME" | awk '{print ($1 - $2) * 1000}' || echo UNKNOWN)
   log Startup time "$TOTAL_STARTUP_TIME"ms
   echo "$TOTAL_STARTUP_TIME" (date +%Y-%m-%d) >> "$HOME/tmp/fish_startup_times"
+end
+
+set SHELL_TYPE ([ -n "$SSH_CLIENT" ] && echo ' SSH' || echo)
+switch $hostname$SHELL_TYPE
+  case 'raspberrypi' '*SSH*'
+    if [ "$hostname" = raspberrypi ]
+      debug Running fish in a Raspberry Pi.
+    else
+      debug Running fish in SSH.
+    end
+    set USER_AND_HOST_COLOR brred
+  case '*T580*'
+    debug Running fish in a known host.
+    set USER_AND_HOST_COLOR brcyan
+  case '*flex*'
+    debug Running fish in a known host.
+    set USER_AND_HOST_COLOR bryellow
+  case '*'
+    debug Running fish in an unknown host.
+    set USER_AND_HOST_COLOR brwhite
 end
 
 function install_plugin_manager
