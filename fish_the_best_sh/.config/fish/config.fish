@@ -324,7 +324,7 @@ switch $hostname$SHELL_TYPE
       set HOSTNAME_SUMMARY "SSH on $hostname (SSH_CLIENT=$SSH_CLIENT)"
     end
     set USER_AND_HOST_COLOR brred
-  case '*T580*'
+  case '*T580*' localhost
     set HOSTNAME_SUMMARY "a known host"
     set USER_AND_HOST_COLOR brcyan
   case '*flex*'
