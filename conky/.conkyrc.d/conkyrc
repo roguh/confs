@@ -35,7 +35,7 @@ function xrdb(c)
     return io.popen("xrdb -query | grep " .. c .. " | head -n1 | awk '{print $2}'"):read()
 end
 
-w = 500
+w = 560
 
 conky.config = {
     alignment = 'top_left',
@@ -76,13 +76,10 @@ conky.config = {
     maximum_width = w,
 }
 
-conky.text = interp([[
-#{fonttitle}${time %m/%d %H:%M}
-
-$nodename
+conky.text = interp([[#{timetitle}${time %m/%d %H:%M}
+#{fonttitle}$nodename
 $sysname
 #{fontsubtitle}$kernel on $machine${font}
-
 #{emph}CPU #{normal}${cpu cpu0}% $alignr ${loadavg}
 ${cpubar cpu1 3,#{quartw}}   ${cpubar cpu2 3,#{quartw}} $alignr ${cpubar cpu3 3,#{quartw}}   ${cpubar cpu4 3,#{quartw}}
 ${cpubar cpu5 3,#{quartw}}   ${cpubar cpu6 3,#{quartw}} $alignr ${cpubar cpu7 3,#{quartw}}   ${cpubar cpu8 3,#{quartw}}
@@ -119,6 +116,7 @@ ${top_io name 5} $alignr ${top_io io_read 5} ${top_io io_write 5} ${top_io pid 5
     gheight = 27,
     gcolors = "#FF0000 #FFFF00",
     emph = '${font MonoLisa Medium Italic:size=8}',
+    timetitle = '${font MonoLisa:size=55:ss02=on}',
     fonttitle = '${font MonoLisa:size=25:ss02=on}',
     fontsubtitle = '${font MonoLisa:size=11}',
     normal = '$font',
