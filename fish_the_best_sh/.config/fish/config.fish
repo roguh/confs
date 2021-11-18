@@ -119,11 +119,13 @@ if command -v git > /dev/null
 end
 
 if command -v kubectl > /dev/null
+    abbr k kubectl
     abbr kx kubectx
     abbr kc 'kubectl config'
     # List and detail resources
     abbr kgp 'kubectl get pods'
     abbr kd 'kubectl describe'
+    abbr kdl 'kubectl delete'
     # Debugging pods
     abbr kl 'kubectl logs'
     abbr kcp 'kubectl cp'
