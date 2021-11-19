@@ -51,7 +51,7 @@ conky.config = {
     draw_shades = false,
     use_xft = true,
     font = 'MonoLisa Medium:size=9',
-    gap_x = 0.3 * w,
+    gap_x = 131,
     gap_y = 100, 
     minimum_height = 900,
     net_avg_samples = 2,
