@@ -58,3 +58,9 @@ git submodule foreach git pull origin main
 ```
 brew install coreutils
 ```
+
+## See what's actually being used
+
+```
+./find-used-confs.sh
+```
