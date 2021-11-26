@@ -233,6 +233,9 @@ bindsym $mod+n exec --no-startup-id $browser
 bindsym $mod+l exec --no-startup-id locker.sh
 bindsym $mod+Shift+l exec --no-startup-id backlightoff.sh
 
+bindsym Control+space exec dunstctl close
+bindsym Control+grave exec dunstctl history-pop
+
 #### i3 gaps
 # for_window [class="^.*"] border pixel 0
 smart_gaps on
