@@ -65,6 +65,12 @@ timezone = "US/Central"
 format = "%H"
 
 [[block]]
+block = "time"
+interval = 1
+timezone = "America/Argentina/Buenos_Aires"
+format = "%H"
+
+[[block]]
 block = "battery"
 interval = 10
 format = "{percentage}"
