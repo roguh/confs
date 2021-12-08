@@ -1,5 +1,16 @@
-theme = "solarized-dark"
-icons = "awesome"
+[theme]
+name = "nord-dark"
+
+[icons]
+name = "awesome"
+[icons.overrides]
+time = ""
+
+[[block]]
+block = "time"
+interval = 1
+timezone = "UTC"
+format = "%s"
 
 [[block]]
 block = "networkmanager"
