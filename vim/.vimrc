@@ -94,7 +94,7 @@ let g:highlightedyank_highlight_duration = 10000
 Plug 'tpope/vim-fugitive'
 
 " Language server protocol (LSP) for completion and other fancy IDE-like features
-Plug 'neoclide/coc.nvim', {'branch': 'release', 'for': ['javascript', 'javascript.jsx', 'python', 'rust', 'json'] }
+Plug 'neoclide/coc.nvim', {'branch': 'release', 'for': ['typescript', 'javascript', 'javascript.jsx', 'python', 'rust', 'json'] }
 let g:coc_global_extensions = ['coc-syntax', 'coc-json', 'coc-git', 'coc-tsserver', 'coc-pyright', 'coc-rust-analyzer']
 
 au BufWritePost *.py call CocAction('format')
