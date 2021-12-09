@@ -249,9 +249,6 @@ copy_confs_for fluxbox .fluxbox/menu .fluxbox/keys
 
 copy_confs_for htop .config/htop/htoprc
 
-copy_confs_for_host i3 \
-  .i3/config
-
 copy_confs_for i3 \
   .i3status.conf \
   bin/backlightoff.sh \
@@ -270,7 +267,7 @@ copy_confs_for i3 \
   bin/wallpaper.sh \
   bin/welcome-shell.sh \
 
-copy_confs_for_host i3 .config/i3status-rust/
+copy_confs_for_host i3 .config/i3status-rust/ .i3/config
 
 copy_confs_for ipython .ipython/profile_default/ipython_config.py
 
