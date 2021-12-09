@@ -118,6 +118,10 @@ endfunction
 " Use tab for selecting completion
 inoremap <expr><tab> pumvisible() ? "\<c-n>" : "\<tab>"
 
+Plug 'ervandew/supertab'
+
+Plug 'stevearc/vim-arduino'
+
 """""""""""""""" Load heavy and/or extra plugins
 if $VIM_LOAD_EXTRA_PLUGINS == "true"
     echo "Loading all plugins"
