@@ -45,11 +45,6 @@ collapsed = false
 format = "{average}"
 
 [[block]]
-block = "load"
-interval = 1
-format = "{1m} {5m} {15m}"
-
-[[block]]
 block = "sound"
 
 [[block]]
