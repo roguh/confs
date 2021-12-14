@@ -5,6 +5,7 @@ name = "nord-dark"
 name = "awesome"
 [icons.overrides]
 time = ""
+cpu = ""
 
 [[block]]
 block = "time"
@@ -56,7 +57,7 @@ format = "%H"
 [[block]]
 block = "time"
 interval = 1
-format = "%a %d/%m %R:%S"
+format = "%a %d/%m %R"
 
 [[block]]
 block = "time"
