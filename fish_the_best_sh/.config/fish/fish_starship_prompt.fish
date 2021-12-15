@@ -11,7 +11,7 @@ function fish_prompt
     set STARSHIP_DURATION "$CMD_DURATION$cmd_duration"
     set STARSHIP_JOBS (count (jobs -p))
     string unescape (string replace -r '\\\e\\\[\[]J' '' (string escape (
-      /usr/bin/starship prompt --terminal-width="$COLUMNS" --status=$STARSHIP_CMD_STATUS --pipestatus=$STARSHIP_CMD_PIPESTATUS --keymap=$STARSHIP_KEYMAP --cmd-duration=$STARSHIP_DURATION --jobs=$STARSHIP_JOBS
+      /usr/bin/starship prompt --status=$STARSHIP_CMD_STATUS --pipestatus=$STARSHIP_CMD_PIPESTATUS --keymap=$STARSHIP_KEYMAP --cmd-duration=$STARSHIP_DURATION --jobs=$STARSHIP_JOBS
     )))
 end
 
@@ -28,7 +28,7 @@ function fish_right_prompt
     set STARSHIP_DURATION "$CMD_DURATION$cmd_duration"
     set STARSHIP_JOBS (count (jobs -p))
     string unescape (string replace -r '\\\e\\\[\[]J' '' (string escape (
-      /usr/bin/starship prompt --right --terminal-width="$COLUMNS" --status=$STARSHIP_CMD_STATUS --pipestatus=$STARSHIP_CMD_PIPESTATUS --keymap=$STARSHIP_KEYMAP --cmd-duration=$STARSHIP_DURATION --jobs=$STARSHIP_JOBS
+      /usr/bin/starship prompt --right --status=$STARSHIP_CMD_STATUS --pipestatus=$STARSHIP_CMD_PIPESTATUS --keymap=$STARSHIP_KEYMAP --cmd-duration=$STARSHIP_DURATION --jobs=$STARSHIP_JOBS
     )))
 end
 

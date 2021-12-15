@@ -315,6 +315,7 @@ if status is-interactive
   # Waiting for https://github.com/starship/starship/issues/3305 to be fixed
   # Applying temp fix manually
   # starship init fish | source
+  load_file ~/.config/fish/fish_starship_prompt.fish
 
   set TOTAL_STARTUP_TIME (echo (date +%s.%N) "$START_TIME" | awk '{print ($1 - $2) * 1000}' || echo UNKNOWN)
   log Startup time "$TOTAL_STARTUP_TIME"ms

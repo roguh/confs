@@ -69,7 +69,7 @@ deleted_style = "bold underline fg:blue"
 
 [git_status]
 style = "bright-yellow"
-format = '([\[$all_status$ahead_behind\]]($style) )'
+format = "([$all_status$ahead_behind]($style) )"
 stashed = "S"
 
 [status]
