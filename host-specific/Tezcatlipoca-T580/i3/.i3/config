@@ -279,7 +279,9 @@ exec --no-startup-id firefox
 exec --no-startup-id discord
 exec --no-startup-id signal-desktop --use-tray-icon
 exec --no-startup-id .screenlayout/select-arandr-display.sh
+
 exec --no-startup-id indicator-keylock # notifications when capslock pressed
+exec --no-startup-id xrdb -merge ~/.Xresources
 
 # Notifications
 exec --no-startup-id killall xfce4-notifyd; dunst

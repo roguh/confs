@@ -281,6 +281,7 @@ exec --no-startup-id teams-insiders
 exec --no-startup-id slack
 exec --no-startup-id .screenlayout/select-arandr-display.sh
 exec --no-startup-id indicator-keylock # notifications when capslock pressed
+exec --no-startup-id xrdb -merge ~/.Xresource
 
 # Notifications
 exec --no-startup-id killall xfce4-notifyd; dunst

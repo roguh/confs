@@ -273,6 +273,9 @@ copy_confs_for ipython .ipython/profile_default/ipython_config.py
 
 copy_confs_for kitty .config/kitty/kitty.conf
 
+# Remember to load this file with xrdb -merge ~/.Xresources
+copy_confs_for xterm .Xresources
+
 copy_confs_for nvm .nvm/default-packages
 
 copy_confs_for work bin/open_work_howtos.sh bin/open_todays_work_journal.sh bin/todays_work_journal.sh bin/borg-backup-work.sh
