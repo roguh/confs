@@ -1,0 +1,135 @@
+format = "$shell${custom.shorthost}$time$directory$jobs$all$git_metrics$git_branch$git_status$status$cmd_duration$battery$character"
+right_format = "$git_commit${custom.git_metrics_main_added}${custom.git_metrics_main_deleted}$kubernetes"
+add_newline = false
+
+[line_break]
+# Prompt is one line, not two lines
+disabled = true
+
+[hostname]
+disabled = true
+
+[shell]
+fish_indicator = ""
+unknown_indicator = "sh? "
+bash_indicator = "bash "
+zsh_indicator = "zsh "
+# How to erase if it's only a space?
+# format = '[($indicator )]($style)'
+# format = '([$indicator]($style) )'
+format = '[$indicator]($style)'
+style = "white"
+disabled = false
+
+[custom.shorthost]
+command = "hostname | cut -d'-' -f'2-'"
+shell = "bash"
+format = "[$symbol($output)]($style) "
+style = "bg:bright-cyan fg:black italic"
+when = "true"
+
+[custom.git_metrics_main_added]
+when = "true"
+shell = "bash"
+command = "git diff main --shortstat | sed 's/[ 0-9]* file.* changed, /+/ ; s/ insertion.*//' | sed '/+[0-9]*/!c 0'"
+format = "[$symbol($output)]($style) "
+style = "bold underline fg:bright-green"
+
+[custom.git_metrics_main_deleted]
+when = "true"
+shell = "bash"
+command = "git diff main --shortstat | sed 's/[ 0-9]* file.* changed, .*insertion.*, /-/ ; s/ deletion.*//' | sed '/-[0-9]*/!c 0'"
+format = "[$symbol($output)]($style) "
+style = "bold underline fg:blue"
+
+[directory]
+style = "bright-white bold"
+truncation_length = 3
+truncation_symbol = "//"
+[directory.substitutions]
+"powerflex_edge_" = ""
+"powerflex_cloud_" = ""
+"powerflex_" = ""
+
+[time]
+disabled = false
+style = "dimmed white"
+format = "[$time]($style) "
+
+[git_branch]
+format = "[$symbol$branch]($style) "
+style = "bold fg:bright-yellow"
+symbol = ""
+truncation_length=18
+
+[git_metrics]
+disabled = false
+added_style = "bold underline fg:bright-green"
+deleted_style = "bold underline fg:blue"
+
+[git_status]
+style = "bright-yellow"
+format = '([\[$all_status$ahead_behind\]]($style) )'
+stashed = "S"
+
+[status]
+# Show exit code of last command
+disabled = false
+symbol = ""
+
+[[battery.display]]
+threshold = 25
+
+[character]
+success_symbol = "[\\$](bold white)"
+error_symbol = "[X](bold red)"
+
+[cmd_duration]
+min_time = 1_000
+show_milliseconds = true
+format = "[$duration]($style) "
+
+[kubernetes]
+disabled = false
+format = '[$symbol$context( \($namespace\))]($style)'
+style = "fg:#88ddff"
+[kubernetes.context_aliases]
+"0007-04-hugoroguh" = "0007-04"
+
+[git_commit]
+commit_hash_length = 4
+only_detached = false
+tag_disabled = false
+format = "[$hash$tag]($style) "
+style = "fg:bright-yellow"
+
+[gcloud]
+disabled = true
+
+[package]
+format = "[$symbol$version]($style) "
+symbol = ""
+
+########## REMOVE "via"
+[python]
+# Keep up to date with latest default, but omit "via"
+style = "white"
+format = '[${symbol}${pyenv_prefix}(${version} )(\($virtualenv\) )]($style)'
+
+[rust]
+style = "white"
+format = "[$symbol($version )]($style)"
+
+[nodejs]
+style = "white"
+format = "[$symbol($version )]($style)"
+
+[ocaml]
+# This is a double humped camel!!!!!!!! 🐫
+style = "white"
+format = "[$symbol($version )]($style)"
+
+[perl]
+# This is a single humped camel!!!!!!!! 🐪
+style = "white"
+format = "[$symbol($version )]($style)"

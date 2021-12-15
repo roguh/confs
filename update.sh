@@ -206,6 +206,9 @@ copy_confs_for polybar .config/polybar/config \
 copy_confs_for x11 \
   .xinitrc .xbindkeysrc bin/autostart.sh bin/signal.sh
 
+copy_confs_for starship_rust_portable_shell_prompt \
+  .config/starship.toml
+
 copy_confs_for "{ba,z,tc,c}sh" \
   .bashrc .bashrc_ps1 .bash_profile .zshrc .cshrc .tryalias.sh .aliases bin/trimdir.py bin/gitinfo.sh bin/projectroot.sh bin/real-deal-turbo-charged-cd.sh
 
@@ -233,9 +236,11 @@ copy_confs_for dunst .config/dunst .config/dunst/dunstrc bin/dunst.sh
 
 copy_confs_for emacs.d .emacs.d/init.el .emacs.d/ui.el
 
+# fish_starship_prompt.fish is temporary while https://github.com/starship/starship/issues/3305 is fixed
 copy_confs_for fish_the_best_sh \
   .aliases \
   .config/fish/{config,functions/{commacomma,tryalias,load_theme,fisher,fish_{title,prompt,right_prompt,greeting}}}.fish \
+  .config/fish/fish_starship_prompt.fish \
   bin/{🐠,string_split.py,real-deal-turbo-charged-cd.sh} \
 
 copy_confs_for_host fish_local \

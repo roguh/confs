@@ -4,8 +4,6 @@ load_file() {
     fi
 }
 
-PS1='$ '
-
 # Path to your oh-my-zsh installation.
 OMZ_PATH="$HOME/.oh-my-zsh"
 if ! [ -d "$OMZ_PATH" ]; then
@@ -103,3 +101,6 @@ export PATH="$PATH:$HOME/.rvm/bin"
 export PATH="$HOME/bin:$PATH:$HOME/.local/bin:/opt/flutter/bin"
 export PATH="$HOME/.dropbox-dist:$PATH"
 export PATH="$HOME/.pyenv/bin:$PATH"
+
+# PS1='$ '
+eval "$(starship init zsh)"

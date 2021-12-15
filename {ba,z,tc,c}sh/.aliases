@@ -15,7 +15,6 @@ tryalias l 'ls -Fa'
 tryalias ll 'l -lh'
 tryalias gzip pigz gzip
 
-tryalias c ccat
 tryalias exa 'exa --git' exa
 
 tryalias trizen 'trizen --flip-results=1'
@@ -31,5 +30,8 @@ tryalias pmake 'pipenv run make'
 
 tryalias kubectl-get-pods-with-node 'kubectl get pod -o wide'
 tryalias kubectl-get-previous-logs 'kubectl logs --previous'
+
+tryalias cl clear
+tryalias c clear
 
 # Some aliases are now only found as Fish abbreviations

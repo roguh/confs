@@ -37,7 +37,7 @@ export HISTCONTROL=ignoredups:ignorespace
 export HISTTIMEFORMAT="$(echo -e\ '\r\e[K\')"
 
 ##### Set PS1
-load_file "$HOME/.bashrc_ps1"
+# load_file "$HOME/.bashrc_ps1"
 
 # # Run tmux if there's no GUI but it's an interactive shell
 # [[ $- == *i* ]] && [ -z "$DISPLAY" ] && [ -z "$TMUX" ] && exec tmux
@@ -119,6 +119,9 @@ if [[ $- == *i* ]]; then
     # if command -v keychain > /dev/null ; then
     #     eval $(keychain --eval --agents ssh --nogui --quick --quiet id_ed25519)
     # fi
+
+    ##### Set PS1
+    eval "$(starship init bash)"
     
     export BASHRC_INTERACTIVE_LOADED=true
 fi
