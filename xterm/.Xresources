@@ -1,2 +1,4 @@
 xterm*background: black
 xterm*foreground: white
+xterm*faceName: MonoLisa
+xterm*faceSize: 10
