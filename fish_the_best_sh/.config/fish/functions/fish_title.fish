@@ -5,18 +5,10 @@ function title_get_project
   end
 end
 
-function title_trimdir
-  if type trimdir.py > /dev/null 2>&1
-    trimdir.py (pwd)
-  else
-    pwd
-  end
-end
-
 function fish_title_info
   printf "Fish Shell pid=%s" $fish_pid
 end
 
 function fish_title
-  printf "🐟 \$ %s %s %s" (title_get_project) (title_trimdir) (fish_title_info)
+  printf "🐟 \$ %s %s %s" (title_get_project) (pwd) (fish_title_info)
 end
