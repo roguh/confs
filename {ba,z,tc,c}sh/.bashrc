@@ -30,11 +30,10 @@ fi
 # Set editor
 export VISUAL=vim
 
-# Do not save history to a file
-unset HISTFILE
-export HISTSIZE=99999
+# Save lots of history
+export HISTSIZE=999999
 export HISTCONTROL=ignoredups:ignorespace
-export HISTTIMEFORMAT="$(echo -e\ '\r\e[K\')"
+# export HISTTIMEFORMAT="$(echo -e\ '\r\e[K\')"
 
 ##### Set PS1
 # load_file "$HOME/.bashrc_ps1"
