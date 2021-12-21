@@ -14,6 +14,7 @@ fish_indicator = ""
 unknown_indicator = "sh? "
 bash_indicator = "bash "
 zsh_indicator = "zsh "
+powershell_indicator = "psh "
 # How to erase if it's only a space?
 # format = '[($indicator )]($style)'
 # format = '([$indicator]($style) )'
