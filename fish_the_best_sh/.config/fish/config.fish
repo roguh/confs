@@ -85,6 +85,9 @@ set_global_if_unset VISUAL vim
 set_global REACT_EDITOR none
 set_global PASSWORD_STORE_ENABLE_EXTENSIONS true
 
+# To disable parallely notifications unless a failure happens
+set_global_if_unset NOTIFY_COMMAND 'true'
+
 if test -d /opt/android-sdk/
   # On Arch, must install aur/android-platform and aur/android-sdk-build-tools
   set_global ANDROID_SDK_ROOT /opt/android-sdk/
