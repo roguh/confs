@@ -269,10 +269,17 @@ function anaconda_fish_init
 end
 
 function miniconda_fish_init
-    eval "$HOME/miniconda3/bin/conda" "shell.fish" "hook" $argv | source
+  eval "$HOME/miniconda3/bin/conda" "shell.fish" "hook" $argv | source
+  debug Loaded miniconda
 end
 
 if status is-interactive
+  # Load direnv
+  if command -v direnv > /dev/null 2>&1
+    direnv hook fish | source
+    debug Loaded direnv
+  end
+
   # If this is overwriting your system's Python:
   # conda config --set auto_activate_base false
   miniconda_fish_init

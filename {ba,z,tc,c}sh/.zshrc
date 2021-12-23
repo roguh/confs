@@ -103,4 +103,10 @@ export PATH="$HOME/.dropbox-dist:$PATH"
 export PATH="$HOME/.pyenv/bin:$PATH"
 
 # PS1='$ '
-eval "$(starship init zsh)"
+if command -v starship > /dev/null; then
+  eval "$(starship init zsh)"
+fi
+
+if command -v direnv > /dev/null; then
+  eval "$(direnv hook zsh)"
+fi

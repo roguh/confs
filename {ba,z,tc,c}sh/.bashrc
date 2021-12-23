@@ -120,7 +120,14 @@ if [[ $- == *i* ]]; then
     # fi
 
     ##### Set PS1
-    eval "$(starship init bash)"
+    if command -v starship > /dev/null; then
+      eval "$(starship init bash)"
+    fi
+    
+    # Load direnv
+    if command -v direnv > /dev/null; then
+      eval "$(direnv hook bash)"
+    fi
     
     export BASHRC_INTERACTIVE_LOADED=true
 fi
