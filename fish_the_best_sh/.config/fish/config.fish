@@ -74,6 +74,7 @@ addpaths $HOME/.dropbox-dist  --verbose
 addpaths $HOME/.cargo/bin
 addpaths $HOME/.pyenv/bin
 addpaths /opt/flutter/bin
+addpaths /opt/cuda/bin
 
 set_global_if_unset LC_ALL en_US.UTF-8
 set_global_if_unset LANG en_US.UTF-8
@@ -263,7 +264,19 @@ if command -v ag > /dev/null 2>&1
   end
 end
 
+function anaconda_fish_init
+  eval "$HOME/anaconda3/bin/conda" "shell.fish" "hook" $argv | source
+end
+
+function miniconda_fish_init
+    eval "$HOME/miniconda3/bin/conda" "shell.fish" "hook" $argv | source
+end
+
 if status is-interactive
+  # If this is overwriting your system's Python:
+  # conda config --set auto_activate_base false
+  miniconda_fish_init
+
   if command -v xset > /dev/null 2>&1 && [ -n "$DISPLAY" ]
     xset r rate 200 60
     debug Set keyboard rate

@@ -276,6 +276,8 @@ copy_confs_for_host i3 .config/i3status-rust/ .i3/config
 
 copy_confs_for ipython .ipython/profile_default/ipython_config.py
 
+copy_confs_for conda .condarc
+
 copy_confs_for kitty .config/kitty/kitty.conf
 
 # Remember to load this file with xrdb -merge ~/.Xresources
