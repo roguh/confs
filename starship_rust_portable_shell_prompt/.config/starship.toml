@@ -1,5 +1,5 @@
 format = "$shell${custom.shorthost}$time$directory$jobs$all$git_metrics$git_branch$git_status$status$cmd_duration$battery$character"
-right_format = "$git_commit${custom.git_metrics_main_added}${custom.git_metrics_main_deleted}$kubernetes"
+right_format = "${custom.git_metrics_main_added}${custom.git_metrics_main_deleted}$git_commit$conda$kubernetes"
 add_newline = false
 
 [line_break]
@@ -33,14 +33,14 @@ when = "true"
 when = "true"
 shell = "bash"
 command = "git diff main --shortstat | sed 's/[ 0-9]* file.* changed, /+/ ; s/ insertion.*//' | sed '/+[0-9]*/!c 0'"
-format = "[$symbol($output)]($style) "
+format = " [$symbol($output)]($style)"
 style = "bold underline fg:bright-green"
 
 [custom.git_metrics_main_deleted]
 when = "true"
 shell = "bash"
 command = "git diff main --shortstat | sed 's/[ 0-9]* file.* changed, .*insertion.*, /-/ ; s/ deletion.*//' | sed '/-[0-9]*/!c 0'"
-format = "[$symbol($output)]($style) "
+format = " [$symbol($output)]($style)"
 style = "bold underline fg:blue"
 
 [directory]
@@ -92,7 +92,7 @@ format = "[$duration]($style) "
 
 [kubernetes]
 disabled = false
-format = '[$symbol$context( \($namespace\))]($style)'
+format = ' [$symbol$context( \($namespace\))]($style)'
 style = "fg:#88ddff"
 [kubernetes.context_aliases]
 "0007-04-hugoroguh" = "0007-04"
@@ -101,8 +101,13 @@ style = "fg:#88ddff"
 commit_hash_length = 4
 only_detached = false
 tag_disabled = false
-format = "[$hash$tag]($style) "
+format = " [$hash$tag]($style)"
 style = "fg:bright-yellow"
+
+[conda]
+ignore_base = false
+format = " [$symbol$environment]($style)"
+disabled = false
 
 [gcloud]
 disabled = true
