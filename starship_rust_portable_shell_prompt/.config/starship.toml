@@ -106,7 +106,8 @@ style = "fg:bright-yellow"
 
 [conda]
 ignore_base = false
-format = " [$symbol$environment]($style)"
+format = " [$symbol $environment]($style)"
+symbol = "𓆘"
 disabled = false
 
 [gcloud]
