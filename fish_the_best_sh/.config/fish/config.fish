@@ -273,16 +273,16 @@ function miniconda_fish_init
   debug Loaded miniconda
 end
 
+# If this is overwriting your system's Python:
+# conda config --set auto_activate_base false
+miniconda_fish_init
+
 if status is-interactive
   # Load direnv
   if command -v direnv > /dev/null 2>&1
     direnv hook fish | source
     debug Loaded direnv
   end
-
-  # If this is overwriting your system's Python:
-  # conda config --set auto_activate_base false
-  miniconda_fish_init
 
   if command -v xset > /dev/null 2>&1 && [ -n "$DISPLAY" ]
     xset r rate 200 60
