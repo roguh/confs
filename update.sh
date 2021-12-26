@@ -50,9 +50,13 @@ fi
 
 # -E means preserve executability and maybe other attributes
 RSYNC_OPTS="--human-readable --recursive -E"
-# Some platfomrs do not support attributes
-# RSYNC_OPTS="--human-readable --recursive"
 RSYNC_BAK="$RSYNC_OPTS"
+
+if rsync -h | grep '\--ignore-missing-args' 2>&1 >/dev/null; then
+  # Supports --ignore-missing-args
+  RSYNC_BAK="$RSYNC_BAK --ignore-missing-args"
+fi
+
 RSYNC_BACKUP="$RSYNC_OPTS --delete-after --relative"
 RSYNC_RESTORE="$RSYNC_OPTS --relative"
 
