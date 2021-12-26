@@ -1,0 +1,25 @@
+[user]
+	email = hugo@roguh.com
+	name = Hugo O. Rivera
+  # signingkey = 
+
+[credential]
+	helper = cache --timeout=3600
+
+[difftool]
+    prompt = false
+
+[difftool "meld"]
+    cmd = meld "$LOCAL" "$REMOTE"
+
+[color]
+	pager = false
+
+[merge]
+	tool = meld
+
+[core]
+	editor = /usr/bin/nvim
+
+[pull]
+	rebase = false
