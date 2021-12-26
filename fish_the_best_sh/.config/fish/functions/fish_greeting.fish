@@ -14,7 +14,9 @@ function fish_greeting
 
     uname -a
 
-    if command -v screenfetch-cached > /dev/null 2>&1
+    if command -v neofetch > /dev/null 2>&1
+      neofetch
+    else if command -v screenfetch-cached > /dev/null 2>&1
       screenfetch-cached
     else if command -v screenfetch > /dev/null 2>&1
       screenfetch
