@@ -1,4 +1,9 @@
 function fish_prompt
+    if ! command -v starship > /dev/null
+        default_fish_prompt
+        return 0
+    end
+    set STARSHIP (command -v starship)
     switch "$fish_key_bindings"
         case fish_hybrid_key_bindings fish_vi_key_bindings
             set STARSHIP_KEYMAP "$fish_bind_mode"
@@ -11,11 +16,15 @@ function fish_prompt
     set STARSHIP_DURATION "$CMD_DURATION$cmd_duration"
     set STARSHIP_JOBS (count (jobs -p))
     string unescape (string replace -r '\\\e\\\[\[]J' '' (string escape (
-      /usr/bin/starship prompt --status=$STARSHIP_CMD_STATUS --pipestatus=$STARSHIP_CMD_PIPESTATUS --keymap=$STARSHIP_KEYMAP --cmd-duration=$STARSHIP_DURATION --jobs=$STARSHIP_JOBS
+      $STARSHIP prompt --status=$STARSHIP_CMD_STATUS --pipestatus=$STARSHIP_CMD_PIPESTATUS --keymap=$STARSHIP_KEYMAP --cmd-duration=$STARSHIP_DURATION --jobs=$STARSHIP_JOBS
     )))
 end
 
 function fish_right_prompt
+    if ! command -v starship > /dev/null
+        return 0
+    end
+    set STARSHIP (command -v starship)
     switch "$fish_key_bindings"
         case fish_hybrid_key_bindings fish_vi_key_bindings
             set STARSHIP_KEYMAP "$fish_bind_mode"
@@ -28,7 +37,7 @@ function fish_right_prompt
     set STARSHIP_DURATION "$CMD_DURATION$cmd_duration"
     set STARSHIP_JOBS (count (jobs -p))
     string unescape (string replace -r '\\\e\\\[\[]J' '' (string escape (
-      /usr/bin/starship prompt --right --status=$STARSHIP_CMD_STATUS --pipestatus=$STARSHIP_CMD_PIPESTATUS --keymap=$STARSHIP_KEYMAP --cmd-duration=$STARSHIP_DURATION --jobs=$STARSHIP_JOBS
+      $STARSHIP prompt --right --status=$STARSHIP_CMD_STATUS --pipestatus=$STARSHIP_CMD_PIPESTATUS --keymap=$STARSHIP_KEYMAP --cmd-duration=$STARSHIP_DURATION --jobs=$STARSHIP_JOBS
     )))
 end
 

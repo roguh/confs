@@ -269,6 +269,9 @@ function anaconda_fish_init
 end
 
 function miniconda_fish_init
+  if ! command -v conda > /dev/null
+    return 1
+  end
   eval "$HOME/miniconda3/bin/conda" "shell.fish" "hook" $argv | source
   debug Loaded miniconda
 end
@@ -338,7 +341,9 @@ if status is-interactive
   # Waiting for https://github.com/starship/starship/issues/3305 to be fixed
   # Applying temp fix manually
   # starship init fish | source
-  load_file ~/.config/fish/fish_starship_prompt.fish
+  if command -v starship > /dev/null
+    load_file ~/.config/fish/fish_starship_prompt.fish
+  end
 
   set TOTAL_STARTUP_TIME (echo (date +%s.%N) "$START_TIME" | awk '{print ($1 - $2) * 1000}' || echo UNKNOWN)
   log Startup time "$TOTAL_STARTUP_TIME"ms
@@ -358,6 +363,9 @@ switch $hostname$SHELL_TYPE
     set HOSTNAME_SUMMARY "a known host"
     set USER_AND_HOST_COLOR brcyan
   case '*flex*'
+    set HOSTNAME_SUMMARY "a known host"
+    set USER_AND_HOST_COLOR bryellow
+  case '2012-iMac'
     set HOSTNAME_SUMMARY "a known host"
     set USER_AND_HOST_COLOR bryellow
   case '*'

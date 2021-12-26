@@ -18,7 +18,7 @@ VERBOSE="${VERBOSE-false}"
 # Either "restore" or "backup"
 MODE=$1
 
-LOG_FILE_DIR="$(mktemp --directory)/config-logs-$(whoami)"
+LOG_FILE_DIR="$(mktemp -d)/config-logs-$(whoami)"
 mkdir -p "$LOG_FILE_DIR"
 
 # The location of this script
@@ -48,7 +48,8 @@ if [[ "$changes_ok" != "" ]] ; then
   exit 1
 fi
 
-RSYNC_OPTS="--human-readable --recursive --xattrs"
+# -E means preserve executability and maybe other attributes
+RSYNC_OPTS="--human-readable --recursive -E"
 # Some platfomrs do not support attributes
 # RSYNC_OPTS="--human-readable --recursive"
 RSYNC_BAK="$RSYNC_OPTS"
@@ -115,8 +116,8 @@ _copy_confs_for() {
         log rsync $RSYNC_BACKUP $FILES "$DST/$SECTION"
         rsync $RSYNC_BACKUP $FILES "$DST/$SECTION"
     else
-        log rsync $RSYNC_BAK --relative --ignore-missing-args $FILES "$BACKUP_R_DIR/$SECTION"
-        rsync $RSYNC_BAK --relative --ignore-missing-args $FILES "$BACKUP_R_DIR/$SECTION"
+        log rsync $RSYNC_BAK --relative $FILES "$BACKUP_R_DIR/$SECTION"
+        rsync $RSYNC_BAK --relative $FILES "$BACKUP_R_DIR/$SECTION" || true
         log rsync $RSYNC_RESTORE "$SRC/$SECTION/./" $DST
         rsync $RSYNC_RESTORE "$SRC/$SECTION/./" $DST
     fi
@@ -239,7 +240,7 @@ copy_confs_for emacs.d .emacs.d/init.el .emacs.d/ui.el
 # fish_starship_prompt.fish is temporary while https://github.com/starship/starship/issues/3305 is fixed
 copy_confs_for fish_the_best_sh \
   .aliases \
-  .config/fish/{config,functions/{commacomma,tryalias,load_theme,fisher,fish_{title,prompt,right_prompt,greeting}}}.fish \
+  .config/fish/{config,functions/{commacomma,tryalias,load_theme,fisher,default_fish_prompt,fish_{title,prompt,right_prompt,greeting}}}.fish \
   .config/fish/fish_starship_prompt.fish \
   bin/{🐠,string_split.py,real-deal-turbo-charged-cd.sh} \
 
