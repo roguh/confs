@@ -16,5 +16,8 @@ rsync $RSYNC_OPTS $HOME/bin/ $ROOT/bin
 rsync $RSYNC_OPTS $HOME/.screenlayout/ $ROOT/dotscreenlayout
 
 mkdir -p $ROOT/history/
-cp ~/.local/share/fish/fish_history $ROOT/history/fish_history
-cp /var/log/pacman.log $ROOT/history/pacman.log
+cp ~/.local/share/fish/fish_history $ROOT/history/
+cp /var/log/pacman.log $ROOT/history/
+
+mkdir -p $ROOT/personal_dictionaries/
+cp ~/.aspell.en.pws $ROOT/personal_dictionaries/

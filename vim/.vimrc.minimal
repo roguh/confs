@@ -43,7 +43,8 @@ set ignorecase
 set smartcase
 
 " Spellcheck
-set spell spelllang=en_us
+" Use z= to get spelling suggestions
+set spelllang=en_us,es_es,es_mx,fr,ru_ru
 
 " C-x C-k to show dictionary words
 set complete+=kspell

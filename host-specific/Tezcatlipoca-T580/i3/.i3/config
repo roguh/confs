@@ -278,7 +278,10 @@ exec --no-startup-id discord
 exec --no-startup-id signal-desktop --use-tray-icon
 exec --no-startup-id .screenlayout/select-arandr-display.sh
 
+
 exec --no-startup-id indicator-keylock # notifications when capslock pressed
+exec --no-startup-id set-keyboard-layout.sh
+exec --no-startup-id sbxkb # notification for current keyboard layout
 exec --no-startup-id xrdb -merge ~/.Xresources
 
 # Notifications

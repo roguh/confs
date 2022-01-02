@@ -204,9 +204,9 @@
   :defer 1)
 
 ;; Improved Haskell mode.
-(use-package intero
-  :defer 1
-  :no-require t)
+;; (use-package intero
+;;   :defer 1
+;;   :no-require t)
 
 ;; Markdown mode.
 (use-package markdown-mode
@@ -302,11 +302,11 @@
   :config (add-to-list 'company-backends 'company-c-headers))
 
 ;; Use tern to get helpful JS completion
-(use-package company-tern
-  :after (company)
-  :config
-  (add-to-list 'company-backends 'company-tern)
-  (add-hook 'web-mode-hook (lambda () (tern-mode) (company-mode))))
+;; (use-package company-tern
+;;   :after (company)
+;;   :config
+;;   (add-to-list 'company-backends 'company-tern)
+;;   (add-hook 'web-mode-hook (lambda () (tern-mode) (company-mode))))
 
 ;; Use jedi to get Python completions
 (use-package company-jedi
@@ -331,24 +331,12 @@
 (add-hook 'text-mode-hook 'flyspell-mode)
 (add-hook 'prog-mode-hook 'flyspell-prog-mode)
 
-;; Easily switch between languages
-(bind-key "C-c S"
-          (lambda ()
-            (interactive)
-            (ispell-change-dictionary "es")
-            (flyspell-buffer)))
-
-(bind-key "C-c F"
-          (lambda ()
-            (interactive)
-            (ispell-change-dictionary "fr")
-            (flyspell-buffer)))
-
-(bind-key "C-c E"
-          (lambda ()
-            (interactive)
-            (ispell-change-dictionary "en_US")
-            (flyspell-buffer)))
+(with-eval-after-load "ispell"
+        (setq ispell-program-name "hunspell")
+        (setq ispell-dictionary "en_US,es,es_MX,fr_FR,ru_RU")
+        (ispell-set-spellchecker-params)
+        (ispell-hunspell-add-multi-dic "en_US,es,es_MX,fr_FR,ru_RU")
+)
 
 ;; Show spelling corrections in popup.
 (use-package flyspell-popup
