@@ -80,6 +80,12 @@ let g:session_autosave_silent = 1
 let g:session_autoload = 'no'
 let g:session_autosave = 'no'
 
+" Rainbow coloring for parenthesis and other paired characters
+" Uncomment following line for demo
+" ( (( [ ] ]]] )) )
+Plug 'frazrepo/vim-rainbow'
+let g:rainbow_active = 1
+
 Plug 'nathanaelkane/vim-indent-guides'
 let g:indent_guides_enable_on_vim_startup = 1
 " Sample:
