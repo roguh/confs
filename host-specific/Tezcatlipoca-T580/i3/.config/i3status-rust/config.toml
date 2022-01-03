@@ -7,6 +7,10 @@ on_click = "alacritty -e nmtui"
 interface_name_exclude = ["br\\-[0-9a-f]{12}", "docker\\d+"]
 
 [[block]]
+block = "speedtest"
+interval = 1600
+
+[[block]]
 block = "disk_space"
 path = "/"
 alias = "/"
@@ -34,11 +38,6 @@ collapsed = false
 format = "{average}"
 
 [[block]]
-block = "load"
-interval = 1
-format = "{1m} {5m} {15m}"
-
-[[block]]
 block = "sound"
 
 [[block]]
@@ -58,18 +57,11 @@ interval = 1
 timezone = "US/Central"
 format = "%H"
 
-# This doesn't work when your layout is a list of languages, such as us,ru
-# [[block]]
-# block = "keyboard_layout"
-# driver = "setxkbmap"
-# interval = 15
-
-# Use xkb-switch to query and switch layouts
-# https://github.com/grwlf/xkb-switch
 [[block]]
-block = "custom"
-command = "xkb-switch"
-on_click = "xkb-switch -n "
+block = "keyboard_layout"
+driver = "xkbswitch"
+on_click = "xkb-switch -n"
+format = "{layout} {variant}"
 interval = 1
 
 [[block]]
