@@ -39,6 +39,7 @@ format = "{average}"
 
 [[block]]
 block = "sound"
+on_click = "pavucontrol"
 
 [[block]]
 block = "time"
