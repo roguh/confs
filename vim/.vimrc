@@ -126,39 +126,40 @@ inoremap <expr><tab> pumvisible() ? "\<c-n>" : "\<tab>"
 
 Plug 'ervandew/supertab'
 
+
 Plug 'stevearc/vim-arduino'
+
+" Strip trailing whitespace on changed lines only
+" Use :WStrip to clean all trailing whitespace
+Plug 'tweekmonster/wstrip.vim'
+
+" Good default settings
+" "one step above the nocompatible setting"
+" A taste of its features:
+"   'backspace': Backspace through anything in insert mode.
+"   'incsearch': Start searching before pressing enter.
+"   'listchars': Makes :set list (visible whitespace) prettier.
+"   'scrolloff': Always show at least one line above/below the cursor.
+"   'autoread': Autoload file changes. You can undo by pressing u.
+"   runtime! macros/matchit.vim: Load the version of matchit.vim that ships with Vim.
+" I enable most of these manually.
+" Plug 'tpope/vim-sensible'
+
+" Various language syntax definitions. Loads much faster than individual plugins.
+" Languages supported as of 02/2020:
+" acpiasl (syntax), ansible (syntax, indent, ftplugin), apiblueprint (syntax), applescript (syntax, indent), arduino (syntax, indent), asciidoc (syntax), autohotkey (indent), blade (syntax, indent, ftplugin), c++11 (syntax), c/c++ (syntax), caddyfile (syntax, indent, ftplugin), carp (syntax), cjsx (syntax, ftplugin), clojure (syntax, indent, autoload, ftplugin), cmake (syntax, indent), coffee-script (syntax, compiler, indent, autoload, ftplugin), cql (syntax), cryptol (syntax, compiler, ftplugin), crystal (syntax, indent, autoload, ftplugin), csv (syntax, autoload, ftplugin), cucumber (syntax, indent, compiler, ftplugin), cue (syntax), dart (syntax, indent, autoload, ftplugin), dhall (syntax, ftplugin), dlang (syntax, indent), dockerfile (syntax, indent, ftplugin), elixir (syntax, indent, compiler, autoload, ftplugin),
+" elm (syntax, indent, autoload, ftplugin), emberscript (syntax, indent, ftplugin), emblem (syntax, indent, ftplugin), erlang (syntax, indent), ferm (syntax), fish (syntax, indent, compiler, autoload, ftplugin), flatbuffers (syntax), fsharp (syntax, indent), git (syntax, indent, ftplugin), glsl (syntax, indent), gmpl (syntax), gnuplot (syntax), go (syntax, compiler, indent), gradle (compiler), graphql (syntax, indent, autoload, ftplugin, after), groovy-indent (indent), groovy (syntax), haml (syntax, indent, compiler, ftplugin), handlebars (syntax, indent, ftplugin), haproxy (syntax),
+" haskell (syntax, indent, ftplugin), haxe (syntax), hcl (syntax, indent, ftplugin), helm (syntax), hive (syntax, ftplugin), html5 (syntax, indent, autoload, ftplugin), i3 (syntax, ftplugin), idris (syntax, indent, ftplugin), ion (syntax, ftplugin), jasmine (syntax), javascript (syntax, indent, compiler, ftplugin, extras), jenkins (syntax, indent), jinja (syntax, indent), json5 (syntax), json (syntax, indent, ftplugin), jst (syntax, indent), jsx (autoload, after),
+" julia (syntax, indent, autoload, ftplugin), kotlin (syntax, indent, ftplugin), latex (syntax, indent, ftplugin), less (syntax, indent, ftplugin), lilypond (syntax, indent, compiler, ftplugin), livescript (syntax, indent, compiler, ftplugin), llvm (syntax, indent, ftplugin), log (syntax), lua (syntax, indent), mako (syntax, indent, ftplugin), markdown (syntax, indent, ftplugin), mathematica (syntax, ftplugin), mdx (syntax), meson (syntax, indent, ftplugin), moonscript (syntax, indent, ftplugin), nginx (syntax, indent, ftplugin), nim (syntax, compiler, indent), nix (syntax, indent, compiler, ftplugin), objc (ftplugin, syntax, indent), ocaml (syntax, indent, compiler, ftplugin),
+" octave (syntax, indent), opencl (syntax, indent, ftplugin), perl (syntax, indent, ftplugin), pgsql (syntax, indent), php (syntax), plantuml (syntax, indent, ftplugin), pony (syntax, indent, autoload, ftplugin), powershell (syntax, indent, ftplugin), protobuf (syntax, indent), pug (syntax, indent, ftplugin), puppet (syntax, indent, autoload, ftplugin), purescript (syntax, indent, ftplugin), python-compiler (compiler, autoload), python-indent (indent), python (syntax), qmake (syntax), qml (syntax, indent, ftplugin), r-lang (syntax), racket (syntax, indent, ftplugin), ragel (syntax), raml (syntax, ftplugin),
+" reason (syntax, indent), rspec (syntax), rst (syntax, indent, autoload, ftplugin), ruby (syntax, indent, compiler, autoload, ftplugin), rust (syntax, indent, compiler, autoload, ftplugin), sbt (syntax), scala (syntax, indent, compiler, ftplugin), scss (syntax, indent, ftplugin), slim (syntax, indent, ftplugin), slime (syntax, indent), smt2 (syntax, autoload, ftplugin), solidity (syntax, indent, ftplugin), stylus (syntax, indent, ftplugin), svelte (syntax, indent), svg-indent (indent),
+" svg (syntax), swift (syntax, indent, ftplugin), sxhkd (syntax), systemd (syntax, ftplugin), terraform (syntax, indent, autoload, ftplugin), textile (syntax, ftplugin), thrift (syntax), tmux (syntax, ftplugin), tomdoc (syntax), toml (syntax, ftplugin), tptp (syntax), twig (syntax, indent, ftplugin), typescript (syntax, indent, compiler, ftplugin), v (syntax, indent, ftplugin), vala (syntax, indent, ftplugin), vbnet (syntax), vcl (syntax), vifm (syntax, autoload, ftplugin), vm (syntax, indent), vue (syntax, indent, ftplugin), xdc (syntax), xls (syntax), xml (syntax), yaml (syntax, ftplugin), yard (syntax), zephir (syntax), zig (syntax, autoload, ftplugin)
+Plug 'sheerun/vim-polyglot'
+let g:polyglot_disabled = ['ocaml', 'org', 'python']
 
 """""""""""""""" Load heavy and/or extra plugins
 if $VIM_LOAD_EXTRA_PLUGINS == "true"
     echo "Loading all plugins"
-
-    " Strip trailing whitespace on changed lines only
-    " Use :WStrip to clean all trailing whitespace
-    Plug 'tweekmonster/wstrip.vim'
-
-    " Good default settings
-    " "one step above the nocompatible setting"
-    " A taste of its features:
-    "   'backspace': Backspace through anything in insert mode.
-    "   'incsearch': Start searching before pressing enter.
-    "   'listchars': Makes :set list (visible whitespace) prettier.
-    "   'scrolloff': Always show at least one line above/below the cursor.
-    "   'autoread': Autoload file changes. You can undo by pressing u.
-    "   runtime! macros/matchit.vim: Load the version of matchit.vim that ships with Vim.
-    " I enable most of these manually.
-    " Plug 'tpope/vim-sensible'
-
-    " Various language syntax definitions. Loads much faster than individual plugins.
-    " Languages supported as of 02/2020:
-    " acpiasl (syntax), ansible (syntax, indent, ftplugin), apiblueprint (syntax), applescript (syntax, indent), arduino (syntax, indent), asciidoc (syntax), autohotkey (indent), blade (syntax, indent, ftplugin), c++11 (syntax), c/c++ (syntax), caddyfile (syntax, indent, ftplugin), carp (syntax), cjsx (syntax, ftplugin), clojure (syntax, indent, autoload, ftplugin), cmake (syntax, indent), coffee-script (syntax, compiler, indent, autoload, ftplugin), cql (syntax), cryptol (syntax, compiler, ftplugin), crystal (syntax, indent, autoload, ftplugin), csv (syntax, autoload, ftplugin), cucumber (syntax, indent, compiler, ftplugin), cue (syntax), dart (syntax, indent, autoload, ftplugin), dhall (syntax, ftplugin), dlang (syntax, indent), dockerfile (syntax, indent, ftplugin), elixir (syntax, indent, compiler, autoload, ftplugin),
-    " elm (syntax, indent, autoload, ftplugin), emberscript (syntax, indent, ftplugin), emblem (syntax, indent, ftplugin), erlang (syntax, indent), ferm (syntax), fish (syntax, indent, compiler, autoload, ftplugin), flatbuffers (syntax), fsharp (syntax, indent), git (syntax, indent, ftplugin), glsl (syntax, indent), gmpl (syntax), gnuplot (syntax), go (syntax, compiler, indent), gradle (compiler), graphql (syntax, indent, autoload, ftplugin, after), groovy-indent (indent), groovy (syntax), haml (syntax, indent, compiler, ftplugin), handlebars (syntax, indent, ftplugin), haproxy (syntax),
-    " haskell (syntax, indent, ftplugin), haxe (syntax), hcl (syntax, indent, ftplugin), helm (syntax), hive (syntax, ftplugin), html5 (syntax, indent, autoload, ftplugin), i3 (syntax, ftplugin), idris (syntax, indent, ftplugin), ion (syntax, ftplugin), jasmine (syntax), javascript (syntax, indent, compiler, ftplugin, extras), jenkins (syntax, indent), jinja (syntax, indent), json5 (syntax), json (syntax, indent, ftplugin), jst (syntax, indent), jsx (autoload, after),
-    " julia (syntax, indent, autoload, ftplugin), kotlin (syntax, indent, ftplugin), latex (syntax, indent, ftplugin), less (syntax, indent, ftplugin), lilypond (syntax, indent, compiler, ftplugin), livescript (syntax, indent, compiler, ftplugin), llvm (syntax, indent, ftplugin), log (syntax), lua (syntax, indent), mako (syntax, indent, ftplugin), markdown (syntax, indent, ftplugin), mathematica (syntax, ftplugin), mdx (syntax), meson (syntax, indent, ftplugin), moonscript (syntax, indent, ftplugin), nginx (syntax, indent, ftplugin), nim (syntax, compiler, indent), nix (syntax, indent, compiler, ftplugin), objc (ftplugin, syntax, indent), ocaml (syntax, indent, compiler, ftplugin),
-    " octave (syntax, indent), opencl (syntax, indent, ftplugin), perl (syntax, indent, ftplugin), pgsql (syntax, indent), php (syntax), plantuml (syntax, indent, ftplugin), pony (syntax, indent, autoload, ftplugin), powershell (syntax, indent, ftplugin), protobuf (syntax, indent), pug (syntax, indent, ftplugin), puppet (syntax, indent, autoload, ftplugin), purescript (syntax, indent, ftplugin), python-compiler (compiler, autoload), python-indent (indent), python (syntax), qmake (syntax), qml (syntax, indent, ftplugin), r-lang (syntax), racket (syntax, indent, ftplugin), ragel (syntax), raml (syntax, ftplugin),
-    " reason (syntax, indent), rspec (syntax), rst (syntax, indent, autoload, ftplugin), ruby (syntax, indent, compiler, autoload, ftplugin), rust (syntax, indent, compiler, autoload, ftplugin), sbt (syntax), scala (syntax, indent, compiler, ftplugin), scss (syntax, indent, ftplugin), slim (syntax, indent, ftplugin), slime (syntax, indent), smt2 (syntax, autoload, ftplugin), solidity (syntax, indent, ftplugin), stylus (syntax, indent, ftplugin), svelte (syntax, indent), svg-indent (indent),
-    " svg (syntax), swift (syntax, indent, ftplugin), sxhkd (syntax), systemd (syntax, ftplugin), terraform (syntax, indent, autoload, ftplugin), textile (syntax, ftplugin), thrift (syntax), tmux (syntax, ftplugin), tomdoc (syntax), toml (syntax, ftplugin), tptp (syntax), twig (syntax, indent, ftplugin), typescript (syntax, indent, compiler, ftplugin), v (syntax, indent, ftplugin), vala (syntax, indent, ftplugin), vbnet (syntax), vcl (syntax), vifm (syntax, autoload, ftplugin), vm (syntax, indent), vue (syntax, indent, ftplugin), xdc (syntax), xls (syntax), xml (syntax), yaml (syntax, ftplugin), yard (syntax), zephir (syntax), zig (syntax, autoload, ftplugin)
-    Plug 'sheerun/vim-polyglot'
-    let g:polyglot_disabled = ['ocaml', 'org', 'python']
 
     let g:jsx_ext_required = 0
 
