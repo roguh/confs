@@ -211,6 +211,8 @@ copy_confs_for polybar .config/polybar/config \
 copy_confs_for x11 \
   .xinitrc .xbindkeysrc bin/autostart.sh bin/signal.sh
 
+copy_confs_for_host x11_keyboard_layout bin/set-keyboard-layout.sh
+
 copy_confs_for starship_rust_portable_shell_prompt \
   .config/starship.toml
 
