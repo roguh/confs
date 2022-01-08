@@ -1,0 +1,6 @@
+#!/bin/bash
+COMMAND="neofetch"
+CACHE_LOCATION="$HOME/tmp/neofetch-cache"
+TIME_TILL_NULL=$(( 7 * 24 * 60 * 60 ))
+
+bash-cache "$COMMAND" "$CACHE_LOCATION" "$TIME_TILL_NULL"

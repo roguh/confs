@@ -255,7 +255,7 @@ copy_confs_for_host fish_local \
 
 copy_confs_for bash-cache bin/bash-cache
 
-copy_confs_for screenfetch-cached bin/{screenfetch-cached,bash-cache}
+copy_confs_for fetch-cached bin/{neofetch-cached,screenfetch-cached,bash-cache}
 
 copy_confs_for fluxbox .fluxbox/menu .fluxbox/keys
 
