@@ -90,7 +90,7 @@ ${membar 6}
 #{emph}${diskiograph_read #{gheight},#{halfw} #{gcolors}} $alignr ${diskiograph_write #{gheight},#{halfw} #{gcolors}}
 #{emph}${if_up wlp4s0}${downspeedgraph wlp4s0 #{gheight},#{halfw} #{gcolors} -l} $alignr ${upspeedgraph wlp4s0 #{gheight},#{halfw} #{gcolors} -l}${endif}
 
-$processes #{emph}processes $alignr CPU MEM#{normal}
+$processes #{emph}processes $alignr I/O Read    I/O Write    PID    CPU    MEM#{normal}
 ${top name 1} $alignr ${top pid 1} ${top cpu 1} ${top mem 1}
 ${top name 2} $alignr ${top pid 2} ${top cpu 2} ${top mem 2}
 ${top name 3} $alignr ${top pid 3} ${top cpu 3} ${top mem 3}
