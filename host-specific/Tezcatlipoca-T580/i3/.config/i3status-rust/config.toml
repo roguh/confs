@@ -1,14 +1,14 @@
 theme = "solarized-dark"
-icons = "awesome"
+icons = "awesome5"
+
+[[block]]
+block = "speedtest"
+interval = 1600
 
 [[block]]
 block = "networkmanager"
 on_click = "alacritty -e nmtui"
 interface_name_exclude = ["br\\-[0-9a-f]{12}", "docker\\d+"]
-
-[[block]]
-block = "speedtest"
-interval = 1600
 
 [[block]]
 block = "disk_space"

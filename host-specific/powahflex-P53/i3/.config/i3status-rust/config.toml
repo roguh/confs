@@ -2,7 +2,7 @@
 name = "nord-dark"
 
 [icons]
-name = "awesome"
+name = "awesome5"
 [icons.overrides]
 time = ""
 cpu = ""

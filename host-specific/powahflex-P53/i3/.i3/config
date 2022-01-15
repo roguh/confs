@@ -334,6 +334,7 @@ set_from_resource $term_color15    color15
 bar {
 	i3bar_command i3bar
 	status_command i3status-rs
+  font pango:Noto Sans, FontAwesome 11
 	position top
 
   ## please set your primary output first. Example: 'xrandr --output eDP1 --primary'
