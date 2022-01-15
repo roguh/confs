@@ -209,7 +209,7 @@ copy_confs_for polybar .config/polybar/config \
   bin/polybar.sh
 
 copy_confs_for x11 \
-  .xinitrc .xbindkeysrc bin/autostart.sh bin/signal.sh
+  .xinitrc .xbindkeysrc bin/calculator.sh
 
 copy_confs_for_host x11_keyboard_layout bin/set-keyboard-layout.sh
 
@@ -269,7 +269,8 @@ copy_confs_for i3 \
   bin/get-backup-root.sh \
   bin/i3empty.py \
   bin/i3txt.py \
-  .xbindkeysrc
+  .xbindkeysrc \
+  bin/calculator.sh
 
 copy_confs_for i3 \
   bin/launcher.sh \

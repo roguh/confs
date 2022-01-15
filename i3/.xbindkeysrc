@@ -100,3 +100,6 @@
     Mod4 + d
 "launcher.sh window"
     Mod4 + Tab
+
+"calculator.sh"
+    XF86Calculator
