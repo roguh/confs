@@ -122,6 +122,8 @@ bindsym $mod+Shift+p move container to workspace 23:fun; workspace 23:fun
 # Doesn't work!
 # bindsym $mod+braceright move container to workspace 24:music; workspace 24:music
 
+bindsym XF86HomePage exec --no-startup-id i3empty.py next 1
+
 bindsym $mod+Mod1+1 exec --no-startup-id i3empty.py next 1
 bindsym $mod+Mod1+2 exec --no-startup-id i3empty.py next 2
 bindsym $mod+Mod1+3 exec --no-startup-id i3empty.py next 3
@@ -208,8 +210,8 @@ for_window [urgent=latest] focus
 new_window normal 1
 
 # program launcher
-bindsym $mod+d exec --no-startup-id launcher.sh
-bindsym $mod+Tab exec --no-startup-id launcher.sh window
+# bindsym $mod+d exec --no-startup-id launcher.sh
+# bindsym $mod+Tab exec --no-startup-id launcher.sh window
 
 # editor
 bindsym $mod+c exec --no-startup-id emacs
@@ -277,6 +279,9 @@ exec --no-startup-id firefox
 exec --no-startup-id discord
 exec --no-startup-id signal-desktop --use-tray-icon
 exec --no-startup-id .screenlayout/select-arandr-display.sh
+
+exec --no-startup-id "xbindkeys"
+
 
 
 exec --no-startup-id indicator-keylock # notifications when capslock pressed

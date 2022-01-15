@@ -268,7 +268,8 @@ copy_confs_for i3 \
   bin/backup.sh \
   bin/get-backup-root.sh \
   bin/i3empty.py \
-  bin/i3txt.py
+  bin/i3txt.py \
+  .xbindkeysrc
 
 copy_confs_for i3 \
   bin/launcher.sh \
