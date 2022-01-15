@@ -47,6 +47,7 @@ format = "{average}"
 
 [[block]]
 block = "sound"
+on_click = "pavucontrol"
 
 [[block]]
 block = "time"
@@ -76,6 +77,13 @@ block = "time"
 interval = 1
 timezone = "America/Argentina/Buenos_Aires"
 format = "%H"
+
+[[block]]
+block = "keyboard_layout"
+driver = "xkbswitch"
+on_click = "xkb-switch -n"
+format = "{layout} {variant}"
+interval = 1
 
 [[block]]
 block = "battery"

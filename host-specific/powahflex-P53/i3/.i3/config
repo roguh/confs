@@ -265,6 +265,7 @@ exec --no-startup-id udiskie --smart-tray
 exec --no-startup-id xfce4-power-manager
 exec --no-startup-id vorta
 exec --no-startup-id blueman-applet
+exec --no-startup-id set-keyboard-layout.sh
 exec --no-startup-id conky.sh
 exec --no-startup-id wallpaper.sh
 exec --no-startup-id xautolock -time 10 -locker locker.sh
