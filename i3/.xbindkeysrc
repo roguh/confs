@@ -62,9 +62,13 @@
     XF86AudioRaiseVolume
 "pactl set-sink-volume 0 -5%"
     XF86AudioLowerVolume
-"pactl set-sink-mute 0 toggle"
+"pactl set-sink-mute 0 toggle ; pactl set-sink-mute 1 toggle"
     XF86AudioMute
-"pactl set-source-mute 1 toggle"
+"pactl set-source-volume 1 +5%"
+    Control + XF86AudioRaiseVolume
+"pactl set-source-volume 1 -5%"
+    Control + XF86AudioLowerVolume
+"pactl set-source-mute 1 toggle ; pactl set-source-mute 2 toggle"
     XF86AudioMicMute
 
 # Sreen brightness controls
