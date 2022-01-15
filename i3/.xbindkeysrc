@@ -80,6 +80,10 @@
     XF86Favorites
 "launcher.sh"
     XF86Search
+"launcher.sh window"
+    Mod4 + XF86Search
+"launcher.sh window"
+    Control + XF86Search
 "sleep.sh"
     XF86Sleep sleep
 

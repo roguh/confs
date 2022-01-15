@@ -50,6 +50,11 @@ block = "sound"
 on_click = "pavucontrol"
 
 [[block]]
+block = "sound"
+device_kind = "source"
+on_click = "pavucontrol"
+
+[[block]]
 block = "time"
 interval = 1
 timezone = "UTC"

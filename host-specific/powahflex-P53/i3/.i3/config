@@ -26,8 +26,6 @@ floating_modifier $mod
 
 # Kill focused window
 bindsym $mod+Shift+q kill
-bindsym Mod1+F4 kill
-bindsym F4 kill
 
 # Change focus
 bindsym $mod+Left focus left
@@ -123,6 +121,8 @@ bindsym $mod+Shift+o move container to workspace 22:TODO; workspace 22:TODO
 bindsym $mod+Shift+p move container to workspace 23:fun; workspace 23:fun
 # Doesn't work!
 # bindsym $mod+braceright move container to workspace 24:music; workspace 24:music
+
+bindsym XF86HomePage exec --no-startup-id i3empty.py next 1
 
 bindsym $mod+Mod1+1 exec --no-startup-id i3empty.py next 1
 bindsym $mod+Mod1+2 exec --no-startup-id i3empty.py next 2
@@ -281,8 +281,11 @@ exec --no-startup-id signal-desktop-beta --use-tray-icon
 exec --no-startup-id teams-insiders
 exec --no-startup-id slack
 exec --no-startup-id .screenlayout/select-arandr-display.sh
+
+exec "xbindkeys"
+
 exec --no-startup-id indicator-keylock # notifications when capslock pressed
-exec --no-startup-id xrdb -merge ~/.Xresource
+exec --no-startup-id xrdb -merge ~/.Xresources
 
 # Notifications
 exec --no-startup-id killall xfce4-notifyd; dunst
@@ -333,9 +336,9 @@ bar {
 	status_command i3status-rs
 	position top
 
-## please set your primary output first. Example: 'xrandr --output eDP1 --primary'
-#	tray_output primary
-#	tray_output eDP1
+  ## please set your primary output first. Example: 'xrandr --output eDP1 --primary'
+  tray_output primary
+  # tray_output eDP1
 
 	bindsym button4 nop
 	bindsym button5 nop
