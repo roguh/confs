@@ -230,7 +230,9 @@
 ;; Org mode. Enable indent mode.
 (use-package org
   :defer 1
-  :no-require t)
+  :no-require t
+  :config
+  (setq org-startup-indented 'false))
 
 ;; Projectile project interaction library
 (use-package projectile

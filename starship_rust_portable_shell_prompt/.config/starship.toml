@@ -76,7 +76,7 @@ stashed = "S"
 [status]
 # Show exit code of last command
 disabled = false
-symbol = ""
+format = '[\[$status $common meaning\]]($style) '
 
 [[battery.display]]
 threshold = 25
