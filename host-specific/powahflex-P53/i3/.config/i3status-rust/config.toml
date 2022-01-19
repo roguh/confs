@@ -2,7 +2,7 @@
 name = "nord-dark"
 
 [icons]
-name = "awesome5"
+name = "awesome"
 [icons.overrides]
 time = ""
 cpu = ""
@@ -12,6 +12,24 @@ block = "time"
 interval = 1
 timezone = "UTC"
 format = "%s"
+
+[[block]]
+block = "weather"
+format = "{weather} {temp}"
+# API Key must be stored in OPENWEATHERMAP_API_KEY env var
+# Los Altos 5368335
+service = { name = "openweathermap", city_id = "5368335", units = "imperial" }
+
+[[block]]
+block = "weather"
+format = "{wind}mph {weather} {temp}"
+# Santa Fe County 5490272
+# Santa Fe 5490263
+# Eldorado at Santa Fe 5466585
+# See other cities, lat/lon, and more info at
+# https://openweathermap.org/current#cityid
+# API Key must be stored in OPENWEATHERMAP_API_KEY env var
+service = { name = "openweathermap", city_id = "5466585", units = "imperial" }
 
 [[block]]
 block = "networkmanager"
@@ -43,6 +61,7 @@ interval = 1
 block = "temperature"
 interval = 1
 collapsed = false
+scale = "fahrenheit"
 format = "{average}"
 
 [[block]]

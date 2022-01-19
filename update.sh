@@ -226,7 +226,7 @@ copy_confs_for_host git .gitconfig
 
 copy_confs_for utils \
   bin/cpufreq.sh bin/systemload.sh bin/mem.sh bin/screenshot.sh bin/screenshot-select.sh bin/pip-update-outdated.sh \
-  .xsession .profile
+  .xsession
 
 copy_confs_for alacritty .config/alacritty/alacritty.yml bin/alacritty-cwd.sh
 
@@ -263,13 +263,14 @@ copy_confs_for htop .config/htop/htoprc
 
 copy_confs_for i3 \
   .i3status.conf \
+  .xbindkeysrc \
+  .profile \
   bin/backlightoff.sh \
   bin/backup-this-pacman-machine.sh \
   bin/backup.sh \
   bin/get-backup-root.sh \
   bin/i3empty.py \
   bin/i3txt.py \
-  .xbindkeysrc \
   bin/calculator.sh
 
 copy_confs_for i3 \

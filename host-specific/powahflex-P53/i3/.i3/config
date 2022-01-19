@@ -221,8 +221,6 @@ set $terminal terminal.sh
 set $terminal2 terminal2.sh
 set $browser firefox
 
-bindsym Mod1+Return exec --no-startup-id i3-sensible-terminal
-
 bindsym $mod+Return exec --no-startup-id $terminal
 bindsym $mod+x exec --no-startup-id $terminal
 bindsym $mod+Shift+x exec --no-startup-id $terminal2
@@ -334,8 +332,8 @@ set_from_resource $term_color15    color15
 bar {
 	i3bar_command i3bar
 	status_command i3status-rs
-  font pango:MonoLisa Light, FontAwesome, PowerlineSymbols 10
 	position top
+  font pango:MonoLisa Bold 8
 
   ## please set your primary output first. Example: 'xrandr --output eDP1 --primary'
   # tray_output primary

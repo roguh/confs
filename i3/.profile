@@ -9,3 +9,11 @@ export PATH="$PATH:$HOME/.rvm/bin"
 export PATH="$HOME/.cargo/bin:$PATH"
 
 export PATH="$HOME/.poetry/bin:$PATH"
+
+# Source file if it exists
+load_file() {
+    [ -f "$1" ] && . "$1"
+}
+
+# Load extra .bashrc
+load_file "$HOME/.bashrc_extra"
