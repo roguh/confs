@@ -6,6 +6,17 @@ block = "speedtest"
 interval = 1600
 
 [[block]]
+block = "weather"
+format = "{wind}mph {weather} {temp}"
+# Santa Fe County 5490272
+# Santa Fe 5490263
+# Eldorado at Santa Fe 5466585
+# See other cities, lat/lon, and more info at
+# https://openweathermap.org/current#cityid
+# API Key must be stored in OPENWEATHERMAP_API_KEY env var
+service = { name = "openweathermap", city_id = "5466585", units = "imperial" }
+
+[[block]]
 block = "networkmanager"
 on_click = "alacritty -e nmtui"
 interface_name_exclude = ["br\\-[0-9a-f]{12}", "docker\\d+"]
