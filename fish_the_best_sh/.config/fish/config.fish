@@ -73,6 +73,7 @@ addpaths $HOME/Library/Python/3.7/bin
 addpaths $HOME/.dropbox-dist  --verbose
 addpaths $HOME/.cargo/bin
 addpaths $HOME/.pyenv/bin
+addpaths $HOME/miniconda3/bin
 addpaths /opt/flutter/bin
 addpaths /opt/cuda/bin
 
