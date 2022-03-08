@@ -285,7 +285,6 @@ exec --no-startup-id "xbindkeys"
 
 exec --no-startup-id indicator-keylock # notifications when capslock pressed
 exec --no-startup-id set-keyboard-layout.sh
-exec --no-startup-id sbxkb # notification for current keyboard layout
 exec --no-startup-id xrdb -merge ~/.Xresources
 
 # Notifications
