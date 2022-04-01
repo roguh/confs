@@ -8,6 +8,10 @@ time = ""
 cpu = ""
 
 [[block]]
+block = "speedtest"
+interval = 1600
+
+[[block]]
 block = "time"
 interval = 1
 timezone = "UTC"
@@ -82,7 +86,7 @@ format = "%H"
 [[block]]
 block = "time"
 interval = 1
-format = "%a %d/%m %R"
+format = "%a %d/%m %R:%S"
 
 [[block]]
 block = "time"
