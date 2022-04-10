@@ -276,7 +276,7 @@ exec --no-startup-id kitty fish -c welcome-shell.sh
 exec --no-startup-id evolution
 exec --no-startup-id firefox
 exec --no-startup-id signal-desktop-beta --use-tray-icon
-exec --no-startup-id teams-insiders
+exec --no-startup-id teams-insiders --no-sandbox
 exec --no-startup-id slack
 exec --no-startup-id .screenlayout/select-arandr-display.sh
 
