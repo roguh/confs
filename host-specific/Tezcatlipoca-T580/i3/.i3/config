@@ -226,7 +226,6 @@ bindsym $mod+x exec --no-startup-id $terminal
 bindsym $mod+Shift+x exec --no-startup-id $terminal2
 bindsym $mod+z exec --no-startup-id $terminal2
 bindsym $mod+Shift+z exec --no-startup-id i3-sensible-terminal
-bindsym F8 exec --no-startup-id $terminal
 bindsym $mod+n exec --no-startup-id $browser
 
 bindsym $mod+l exec --no-startup-id locker.sh
@@ -267,6 +266,7 @@ exec --no-startup-id blueman-applet
 exec --no-startup-id conky.sh
 exec --no-startup-id wallpaper.sh
 exec --no-startup-id xautolock -time 10 -locker locker.sh
+exec --no-startup-id caffeine
 exec --no-startup-id backup.sh
 # exec --no-startup-id ~/.dropbox-dist/dropboxd
 # Arch: Install dropbox from the AUR

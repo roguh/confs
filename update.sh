@@ -271,7 +271,8 @@ copy_confs_for i3 \
   bin/get-backup-root.sh \
   bin/i3empty.py \
   bin/i3txt.py \
-  bin/calculator.sh
+  bin/calculator.sh \
+  bin/hue_lights_toggle_all.sh
 
 copy_confs_for i3 \
   bin/launcher.sh \

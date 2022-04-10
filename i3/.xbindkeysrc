@@ -77,7 +77,10 @@
 "xbacklight -dec 20"
     XF86MonBrightnessDown
 
-"xrandr --auto"
+"hue_lights_toggle_all.sh"
+    XF86Tools
+
+"switch-displays-xrandr.sh"
     XF86Display
 # XF86Bluetooth
 "launcher.sh"
