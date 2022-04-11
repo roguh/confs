@@ -285,7 +285,10 @@ copy_confs_for i3 \
 
 copy_confs_for_host i3 .config/i3status-rust/ .i3/config
 
-copy_confs_for ipython .ipython/profile_default/ipython_config.py
+copy_confs_for ipython \
+    .ipython/profile_default/ipython_config.py \
+    .ipython/profile_default/startup/00-prompt.py \
+    .ipython/profile_default/startup/10-imports.py
 
 copy_confs_for conda .condarc
 

@@ -21,6 +21,7 @@ tryalias trizen 'trizen --flip-results=1'
 
 tryalias py python3 python
 tryalias ipy ipython3 ipython
+tryalias ipy-mouse 'ipy --TerminalInteractiveShell.mouse_support=True'
 
 tryalias v nvim vim vis vi nano ed libreoffice openoffice 'wine MicrosoftOffice2003.exe' vim
 tryalias vmin 'nvim -u ~/.vimrc.minimal' 'vim -u ~/.vimrc.minmal' vis vi nano 'nvim -u ~/.vimrc.minimal'
