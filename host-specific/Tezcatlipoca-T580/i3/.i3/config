@@ -121,6 +121,7 @@ bindsym $mod+Shift+o move container to workspace 22:TODO; workspace 22:TODO
 bindsym $mod+Shift+p move container to workspace 23:fun; workspace 23:fun
 # Doesn't work!
 # bindsym $mod+braceright move container to workspace 24:music; workspace 24:music
+bindsym $mod+Shift+bracketleft move container to workspace 24:music; workspace 24:music
 
 bindsym XF86HomePage exec --no-startup-id i3empty.py next 1
 
