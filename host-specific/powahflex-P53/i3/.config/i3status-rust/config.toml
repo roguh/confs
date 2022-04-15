@@ -8,10 +8,6 @@ time = ""
 cpu = ""
 
 [[block]]
-block = "speedtest"
-interval = 1600
-
-[[block]]
 block = "time"
 interval = 1
 timezone = "UTC"
@@ -116,4 +112,4 @@ interval = 1
 [[block]]
 block = "battery"
 interval = 10
-format = "{percentage}"
+format = "{percentage} {power}"
