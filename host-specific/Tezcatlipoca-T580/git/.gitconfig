@@ -29,3 +29,6 @@
 
 [commit]
 	gpgsign = true
+
+[mergetool]
+  keepBackup = false

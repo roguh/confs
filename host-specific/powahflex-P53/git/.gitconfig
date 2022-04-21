@@ -29,3 +29,5 @@
 	templateDir = /home/hugo/.git-template
 [commit]
 	gpgsign = true
+[mergetool]
+	keepBackup = false
