@@ -6,6 +6,10 @@
 [credential]
 	helper = cache --timeout=3600
 
+# [diff]
+#   tool = icdiff
+#   external = gitdiff.sh 
+
 [difftool]
     prompt = false
 
@@ -19,7 +23,7 @@
 	tool = meld
 
 [core]
-	editor = vim
+	editor = /usr/bin/nvim
 
 [pull]
 	rebase = false
@@ -31,4 +35,4 @@
 	gpgsign = true
 
 [mergetool]
-  keepBackup = false
+	keepBackup = false
