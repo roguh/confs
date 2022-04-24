@@ -33,14 +33,15 @@ import typing
 def imp(module_name: str):
     try:
         return importlib.import_module(module_name)
-    except ModuleNotFoundError:
-        pass
+    except (ModuleNotFoundError, ImportError):
+        return None
 
 
 matplotlib = imp("matplotlib")
-np = imp("numpy")
-numpy = imp("numpy")
+np = numpy = imp("numpy")
+pd = pandas = imp("pandas")
 plt = imp("matplotlib.pyplot")
 progressbar = imp("progressbar")
 pydantic = imp("pydantic")
 yaml = imp("yaml")
+requests = imp("requests")
