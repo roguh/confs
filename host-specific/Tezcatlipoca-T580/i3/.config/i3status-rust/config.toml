@@ -84,12 +84,12 @@ interval = 1
 [[block]]
 block = "battery"
 interval = 10
-format = "{percentage}"
+format = "{percentage} {power}"
 
 [[block]]
 block = "battery"
 interval = 10
-format = "{percentage}"
+format = "{percentage} {power}"
 device = "BAT1"
 allow_missing = true
 missing_format = "n/a"
