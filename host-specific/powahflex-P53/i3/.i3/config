@@ -272,6 +272,7 @@ exec --no-startup-id backup.sh
 # Arch: Install dropbox from the AUR
 exec --no-startup-id /opt/dropbox/dropboxd
 exec --no-startup-id kitty fish -c welcome-shell.sh
+exec --no-startup-id kdeconnect-indicator
 
 exec --no-startup-id evolution
 exec --no-startup-id firefox
