@@ -86,6 +86,7 @@ set_global_if_unset EDITOR vim
 set_global_if_unset VISUAL vim
 set_global REACT_EDITOR none
 set_global PASSWORD_STORE_ENABLE_EXTENSIONS true
+set_global PYTHON_KEYRING_BACKEND keyring.backends.null.Keyring
 
 # To disable parallely notifications unless a failure happens
 set_global_if_unset NOTIFY_COMMAND 'true'
