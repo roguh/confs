@@ -8,4 +8,4 @@ npm_lazy
 coffeescript
 uglify-js
 uglify-es
-# esy # for reasonml native development
+redis-commander
