@@ -73,7 +73,6 @@ addpaths $HOME/Library/Python/3.7/bin
 addpaths $HOME/.dropbox-dist  --verbose
 addpaths $HOME/.cargo/bin
 addpaths $HOME/.pyenv/bin
-addpaths $HOME/miniconda3/bin
 addpaths /opt/flutter/bin
 addpaths /opt/cuda/bin
 
@@ -271,16 +270,19 @@ function anaconda_fish_init
 end
 
 function miniconda_fish_init
-  if ! command -v conda > /dev/null
+  set --local CONDA_BIN "$HOME/miniconda3/bin/conda"
+  if ! command -v "$CONDA_BIN" > /dev/null
     return 1
   end
-  eval "$HOME/miniconda3/bin/conda" "shell.fish" "hook" $argv | source
-  debug Loaded miniconda
+  eval "$CONDA_BIN" "shell.fish" "hook" $argv | source
+  conda activate torch
+  debug Loaded miniconda and its torch environment
 end
 
 # If this is overwriting your system's Python:
 # conda config --set auto_activate_base false
-miniconda_fish_init
+#
+# miniconda_fish_init
 
 if status is-interactive
   # Load direnv
