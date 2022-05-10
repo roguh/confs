@@ -46,6 +46,7 @@ interval = 1
 block = "temperature"
 interval = 1
 collapsed = false
+scale = "fahrenheit"
 format = "{average}"
 
 [[block]]
