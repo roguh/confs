@@ -179,24 +179,6 @@ load_file $HOME/.opam/opam-init/init.fish
 # mkdir -p ~/.config/fish/completions; and cp ~/.asdf/completions/asdf.fish ~/.config/fish/completions
 load_file ~/.asdf/asdf.fish --verbose
 
-if command -v yarn 2>&1 > /dev/null
-    if [ "$FAST_STARTUP" = true ]
-        debug SPEEDUP: Reading ~/.tool-versions to find NPM path instead of calling yarn
-        set --local TOOL_VERSIONS_FILE "$HOME/.tool-versions"
-        if [ -f "$TOOL_VERSIONS_FILE" ]
-            set --local NODEJS_VERSION (ag nodejs "$TOOL_VERSIONS_FILE" 2>/dev/null)
-            if [ -n "$NODEJS_VERSION" ]
-              set NODE_VERSION (echo "$NODEJS_VERSION" | cut -f2 -d' ')
-              addpaths "$HOME/.asdf/installs/nodejs/$NODE_VERSION/.npm/bin" --verbose
-            end
-        else
-            warn "ASDF installation of NodeJS not found."
-        end
-    else
-        addpaths (yarn global bin) --verbose
-    end
-end
-
 if command -v go > /dev/null 2>&1
   if [ "$FAST_STARTUP" ]
     debug SPEEDUP: Guessing GOPATH
