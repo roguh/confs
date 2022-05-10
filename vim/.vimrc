@@ -157,6 +157,8 @@ Plug 'tweekmonster/wstrip.vim'
 Plug 'sheerun/vim-polyglot'
 let g:polyglot_disabled = ['ocaml', 'org', 'python']
 
+Plug 'ap/vim-css-color'
+
 """""""""""""""" Load heavy and/or extra plugins
 if $VIM_LOAD_EXTRA_PLUGINS == "true"
     echo "Loading all plugins"
