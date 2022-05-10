@@ -14,7 +14,9 @@ call plug#begin()
 Plug 'dstein64/vim-startuptime'
 
 " Color themes
-Plug 'raphamorim/lucario'
+" $ trizen -S gruvbox-dark-gtk lxappearance-gtk3
+" $ lxappearance
+Plug 'sainnhe/gruvbox-material'
 
 " Reload files edited externally
 Plug 'djoshea/vim-autoread'
@@ -269,7 +271,7 @@ call plug#end()
 " Set colors
 try
   set background=dark
-  colorscheme lucario
+  colorscheme gruvbox-material
 catch
   echo 'NO COLORS'
 endtry
