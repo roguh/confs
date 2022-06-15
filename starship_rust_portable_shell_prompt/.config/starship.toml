@@ -46,11 +46,16 @@ style = "bold underline fg:blue"
 [directory]
 style = "bright-white bold"
 truncation_length = 3
-truncation_symbol = "//"
+truncation_symbol = ""
 [directory.substitutions]
 "powerflex_edge_" = ""
 "powerflex_cloud_" = ""
 "powerflex_" = ""
+"central_system" = "CS"
+"traffic_manager" = "traffman"
+"storage_interface" = "storint"
+"storage_simulator" = "storsim"
+"edge_device_manager" = "devman"
 
 [time]
 disabled = false
@@ -61,7 +66,7 @@ format = "[$time]($style) "
 format = "[$symbol$branch]($style) "
 style = "bold fg:bright-yellow"
 symbol = ""
-truncation_length=18
+truncation_length=14
 
 [git_metrics]
 disabled = false

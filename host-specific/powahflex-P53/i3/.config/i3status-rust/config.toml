@@ -1,5 +1,4 @@
-[theme]
-name = "nord-dark"
+theme = "gruvbox-dark"
 
 [icons]
 name = "awesome"

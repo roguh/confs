@@ -10,3 +10,4 @@ uglify-js
 uglify-es
 redis-commander
 hueadm
+clipboard

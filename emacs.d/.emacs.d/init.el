@@ -335,9 +335,9 @@
 
 (with-eval-after-load "ispell"
         (setq ispell-program-name "hunspell")
-        (setq ispell-dictionary "en_US,es,es_MX,fr_FR,ru_RU")
+        (setq ispell-dictionary "en_US,es,es_MX")
         (ispell-set-spellchecker-params)
-        (ispell-hunspell-add-multi-dic "en_US,es,es_MX,fr_FR,ru_RU")
+        (ispell-hunspell-add-multi-dic "en_US,es,es_MX")
 )
 
 ;; Show spelling corrections in popup.

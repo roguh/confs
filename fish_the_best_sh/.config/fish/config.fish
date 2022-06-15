@@ -136,6 +136,9 @@ if command -v kubectl > /dev/null
     abbr kcp 'kubectl cp'
     abbr kex 'kubectl exec'
     abbr kpf 'kubectl port-forward'
+    abbr kubectl-stop-sync-app 'kubectl -n argocd patch --type=merge application -p "{\"spec\":{\"syncPolicy\":null}}"'
+    abbr kubectl-start-sync-app 'kubectl -n argocd patch --type=merge application -p "{\"spec\":{\"syncPolicy\":{\"automated\":{\"selfHeal\":true}}}}"'
+
     debug Setup Kubernetes abbreviations
 end
 
