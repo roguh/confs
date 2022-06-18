@@ -76,6 +76,12 @@ timezone = "US/Central"
 format = "%H"
 
 [[block]]
+block = "time"
+interval = 1
+timezone = "US/Eastern"
+format = "%H"
+
+[[block]]
 block = "keyboard_layout"
 driver = "xkbswitch"
 on_click = "xkb-switch -n"
