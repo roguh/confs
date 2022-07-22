@@ -24,6 +24,13 @@
 
 [core]
 	editor = /usr/bin/nvim
+	packedGitLimit = 512m 
+  packedGitWindowSize = 512m
+
+[pack]
+	deltaCacheSize = 2047m 
+  packSizeLimit = 2047m 
+  windowMemory = 2047m
 
 [pull]
 	rebase = false
@@ -36,6 +43,7 @@
 
 [mergetool]
 	keepBackup = false
-
 [alias]
 	praise = blame
+[http]
+	postBuffer = 157286400
