@@ -36,3 +36,6 @@
 
 [mergetool]
 	keepBackup = false
+
+[alias]
+	praise = blame

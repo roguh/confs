@@ -8,7 +8,7 @@
 
 # [diff]
 #   tool = icdiff
-#   external = gitdiff.sh 
+#   external = gitdiff.sh
 
 [difftool]
     prompt = false
@@ -27,8 +27,11 @@
 [pull]
 	rebase = false
 [init]
-	templateDir = /home/hugo/.git-template
+	templateDir = /home/roguh/.git-template
 [commit]
 	gpgsign = true
 [mergetool]
 	keepBackup = false
+[alias]
+	# Be nice, you cunt
+	praise = blame
