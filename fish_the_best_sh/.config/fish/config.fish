@@ -75,6 +75,7 @@ addpaths $HOME/.cargo/bin
 addpaths $HOME/.pyenv/bin
 addpaths /opt/flutter/bin
 addpaths /opt/cuda/bin
+addpaths /opt/asdf-vm/bin/
 
 set_global_if_unset LC_ALL en_US.UTF-8
 set_global_if_unset LANG en_US.UTF-8
@@ -182,6 +183,7 @@ tryalias ,, commacomma
 load_file $HOME/.opam/opam-init/init.fish
 
 load_file ~/.asdf/asdf.fish --verbose
+load_file /opt/asdf-vm/asdf.fish --verbose
 
 if test -e ~/.asdf/completions/asdf.fish
   mkdir -p ~/.config/fish/completions
