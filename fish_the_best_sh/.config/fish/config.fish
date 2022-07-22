@@ -90,6 +90,8 @@ set_global PYTHON_KEYRING_BACKEND keyring.backends.null.Keyring
 # To disable parallely notifications unless a failure happens
 set_global_if_unset NOTIFY_COMMAND 'true'
 
+set_global_if_unset PYTHONSTARTUP "$HOME/.ipython/profile_default/startup/10-imports.py"
+
 if test -d /opt/android-sdk/
   # On Arch, must install aur/android-platform and aur/android-sdk-build-tools
   set_global ANDROID_SDK_ROOT /opt/android-sdk/

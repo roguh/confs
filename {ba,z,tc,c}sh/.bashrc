@@ -73,6 +73,8 @@ fi
 export MANPAGER="$PAGER"
 export SYSTEMD_PAGER="$PAGER"
 
+export PYTHONSTARTUP="$HOME/.ipython/profile_default/startup/10-imports.py"
+
 # Load aliases
 load_file "$HOME/.tryalias.sh"
 load_file "$HOME/.aliases"
