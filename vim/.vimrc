@@ -105,7 +105,9 @@ Plug 'tpope/vim-fugitive'
 Plug 'neoclide/coc.nvim', {'branch': 'release', 'for': ['java', 'typescript', 'javascript', 'javascript.jsx', 'python', 'rust', 'json'] }
 let g:coc_global_extensions = ['coc-syntax', 'coc-json', 'coc-git', 'coc-java', 'coc-tsserver', 'coc-pyright', 'coc-rust-analyzer']
 
-au BufWritePost *.py call CocAction('format')
+autocmd BufWritePost *.py call CocAction('format')
+autocmd BufWritePost *.py CocCommand python.sortImports
+autocmd BufWritePost *.py CocCommand python.runLinting
 
 nmap <silent> <C-h> <Plug>(coc-diagnostic-next)
 nmap <silent> <C-l> <Plug>(coc-diagnostic-prev)
