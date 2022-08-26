@@ -34,4 +34,8 @@ tryalias c clear
 
 tryalias docker-prune-everything 'docker system prune -a -f'
 
+tryalias bucle curl
+
+# cp ~/.kube/config ~/.kube/config.bak && KUBECONFIG=~/.kube/config:./ADDITIONAL_KUBECONFIG kubectl config view --flatten > /tmp/config && mv /tmp/config ~/.kube/config
+
 # Some aliases are now only found as Fish abbreviations

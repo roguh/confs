@@ -58,21 +58,22 @@ format = "%H"
 block = "time"
 interval = 1
 timezone = "US/Mountain"
-# format = "%a %d/%m %R:%S"
-format = "%H"
+format = "%a %d/%m %R:%S"
+# format = "%H"
 
 [[block]]
 block = "time"
 interval = 1
 timezone = "US/Central"
 format = "%H"
+# format = "%a %d/%m %R:%S"
 
 [[block]]
 block = "time"
 interval = 1
 timezone = "US/Eastern"
-# format = "%H"
-format = "%a %d/%m %R:%S"
+format = "%H"
+# format = "%a %d/%m %R:%S"
 
 [[block]]
 block = "keyboard_layout"

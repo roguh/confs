@@ -5,6 +5,7 @@ import binascii
 import collections
 import copy
 import datetime
+import enum
 import fileinput
 import functools
 import importlib

@@ -169,8 +169,6 @@ if $VIM_LOAD_EXTRA_PLUGINS == "true"
 
     let g:jsx_ext_required = 0
 
-    Plug 'tpope/vim-speeddating'
-
     " Completion based on syntax
     Plug 'Shougo/neco-syntax'
 
