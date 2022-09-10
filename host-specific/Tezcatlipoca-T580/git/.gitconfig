@@ -45,5 +45,6 @@
 	keepBackup = false
 [alias]
 	praise = blame
+	er-done = commit
 [http]
 	postBuffer = 157286400

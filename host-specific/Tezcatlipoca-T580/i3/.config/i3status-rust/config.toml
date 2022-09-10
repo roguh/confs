@@ -6,6 +6,14 @@ block = "speedtest"
 interval = 1600
 
 [[block]]
+block = "custom"
+# Ping Google's rock solid DNS server
+# Print packet loss percentage and total time to send packet(s)
+# Send a total of -c=2 packets with a deadline timeout of -W=2 seconds
+command = '''ping -w 2 -c 2 8.8.8.8 | grep -o "[0-9.]\\+% packet loss, time .*" | sed "s/packet loss, time //"'''
+interval = 2.2
+
+[[block]]
 block = "networkmanager"
 on_click = "alacritty -e nmtui"
 ap_format = "{ssid^2}"

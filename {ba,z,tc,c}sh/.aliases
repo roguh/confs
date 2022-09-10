@@ -38,4 +38,6 @@ tryalias bucle curl
 
 # cp ~/.kube/config ~/.kube/config.bak && KUBECONFIG=~/.kube/config:./ADDITIONAL_KUBECONFIG kubectl config view --flatten > /tmp/config && mv /tmp/config ~/.kube/config
 
+tryalias MONKEY 'echo MONKEY'
+
 # Some aliases are now only found as Fish abbreviations
