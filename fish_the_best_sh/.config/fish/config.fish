@@ -60,6 +60,8 @@ function set_global_if_unset
   end
 end
 
+debug Starting FISH debug output. Set DO_NOT_CLEAR to leave it on the screen after startup.
+
 load_file $HOME/.config/fish/local_env.fish
 set_global_if_unset FISH_LOGO Fish # 🐠
 set_global DOCKER_BUILDKIT 1
@@ -311,14 +313,14 @@ if status is-interactive
       if bind -M insert > /dev/null 2>&1 2>&1
         bind -M insert \cp fzf-file-widget
       end
-      debug Configured interactive fzf features
+      # debug Configured interactive fzf features
     end
 
     # Ctrl-F is essential fish
     # It can become unbound, e.g. if in vi-mode
     # Right Arrow and Ctrl-E might work
     bind \cf forward-char
-    debug Bound Ctrl-F
+    # debug Bound Ctrl-F
   end
 
   if command -v keychain > /dev/null 2>&1

@@ -14,6 +14,10 @@ function fish_greeting
 
     uname -a
 
+    if [ "$DO_NOT_CLEAR" != true ]
+      clear
+    end
+
     if command -v neofetch > /dev/null 2>&1
       if command -v neofetch-cached > /dev/null 2>&1
         neofetch-cached
