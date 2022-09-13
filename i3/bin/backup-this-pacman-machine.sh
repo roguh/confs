@@ -1,7 +1,9 @@
 #!/bin/bash
 
 # delete extraneous files from destination
-ROOT=$(get-backup-root.sh)
+ROOT=$(get-backup-root.sh)-$(date +%Y-%m)
+
+set -x
 
 mkdir -p $ROOT/pacman-Qii
 mkdir -p $ROOT/bin
@@ -15,7 +17,6 @@ pacman -Qie --foreign > $ROOT/pacman-Qie-AUR
 rsync $RSYNC_OPTS $HOME/bin/ $ROOT/bin
 rsync $RSYNC_OPTS $HOME/.screenlayout/ $ROOT/dotscreenlayout
 
-set -x
 mkdir -p $ROOT/history/
 rsync $RSYNC_OPTS \
   ~/.local/share/fish/fish_history \
@@ -26,3 +27,5 @@ rsync $RSYNC_OPTS \
 
 mkdir -p $ROOT/personal_dictionaries/
 cp ~/.aspell.*.pws $ROOT/personal_dictionaries/
+
+cd ~/src && echo * > "$ROOT/src_filenames" && cd -
