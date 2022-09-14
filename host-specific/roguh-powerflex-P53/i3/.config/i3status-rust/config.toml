@@ -1,0 +1,103 @@
+theme = "gruvbox-dark"
+icons = "awesome5"
+
+[[block]]
+block = "speedtest"
+interval = 1600
+
+[[block]]
+block = "custom"
+# Ping Google's rock solid DNS server
+# Print packet loss percentage and total time to send packet(s)
+# Send a total of -c=2 packets with a deadline timeout of -W=2 seconds
+command = '''ping -w 2 -c 2 8.8.8.8 | grep -o "[0-9.]\\+% packet loss, time .*" | sed "s/packet loss, time //"'''
+interval = 2.2
+
+[[block]]
+block = "networkmanager"
+on_click = "alacritty -e nmtui"
+ap_format = "{ssid^2}"
+interface_name_exclude = ["br\\-[0-9a-f]{12}", "docker\\d+"]
+
+[[block]]
+block = "disk_space"
+path = "/"
+alias = "/"
+info_type = "available"
+unit = "GB"
+interval = 20
+warning = 20.0
+alert = 10.0
+
+[[block]]
+block = "memory"
+display_type = "memory"
+format_mem = "{mem_used_percents} RAM"
+format_swap = "{swap_used_percents}"
+
+[[block]]
+block = "cpu"
+format = "{utilization} {frequency}"
+interval = 1
+
+[[block]]
+block = "temperature"
+interval = 1
+collapsed = false
+scale = "fahrenheit"
+format = "{average}"
+
+[[block]]
+block = "sound"
+on_click = "pavucontrol"
+
+[[block]]
+block = "sound"
+device_kind = "source"
+on_click = "pavucontrol"
+
+[[block]]
+block = "time"
+interval = 1
+timezone = "US/Pacific"
+format = "%H"
+
+[[block]]
+block = "time"
+interval = 1
+timezone = "US/Mountain"
+format = "%a %d/%m %R:%S"
+# format = "%H"
+
+[[block]]
+block = "time"
+interval = 1
+timezone = "US/Central"
+format = "%H"
+# format = "%a %d/%m %R:%S"
+
+[[block]]
+block = "time"
+interval = 1
+timezone = "US/Eastern"
+format = "%H"
+# format = "%a %d/%m %R:%S"
+
+[[block]]
+block = "keyboard_layout"
+driver = "xkbswitch"
+on_click = "xkb-switch -n"
+format = "{layout} {variant}"
+interval = 1
+
+[[block]]
+block = "battery"
+interval = 10
+format = "{percentage} {power}"
+
+[[block]]
+block = "battery"
+interval = 10
+format = "{percentage} {power}"
+device = "BAT1"
+missing_format = "n/a"
