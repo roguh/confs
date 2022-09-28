@@ -19,7 +19,7 @@ hide_edge_borders none
 # font pango:monospace 11
 # font pango:DejaVu Sans Mono 10
 # font pango: Source Code Pro 10
-font pango:MonoLisa Medium 9
+font pango:MonoLisa Heavy 10
 
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
@@ -340,7 +340,7 @@ set_from_resource $term_color15    color15
 bar {
 	i3bar_command i3bar
 	status_command i3status-rs
-  font pango:MonoLisa Light, FontAwesome, PowerlineSymbols 8
+  font pango:MonoLisa Light, FontAwesome, PowerlineSymbols 7
 	position top
 
   ## please set your primary output first. Example: 'xrandr --output eDP1 --primary'

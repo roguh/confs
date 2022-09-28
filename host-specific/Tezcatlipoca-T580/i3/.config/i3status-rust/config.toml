@@ -2,6 +2,11 @@ theme = "gruvbox-dark"
 icons = "awesome5"
 
 [[block]]
+block = "xrandr"
+interval = 60
+step_width = 1
+
+[[block]]
 block = "speedtest"
 interval = 1600
 
@@ -49,10 +54,12 @@ format = "{average}"
 
 [[block]]
 block = "sound"
+step_width = 1
 on_click = "pavucontrol"
 
 [[block]]
 block = "sound"
+step_width = 1
 device_kind = "source"
 on_click = "pavucontrol"
 
