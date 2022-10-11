@@ -1,11 +1,9 @@
 import argparse
 import ast
-import asyncio
 import binascii
 import collections
 import copy
 import datetime
-import enum
 import fileinput
 import functools
 import importlib
@@ -21,23 +19,23 @@ import platform
 import pprint
 import random
 import re
-import statistics
 import string
 import subprocess
 import sys
 import threading
 import time
 import traceback
-import typing
 
 
-def imp(module_name: str):
+def imp(module_name):
     try:
         return importlib.import_module(module_name)
-    except (ModuleNotFoundError, ImportError):
+    except Exception as exc:
+        print("%s %s" % (__file__, exc))
         return None
 
 
+requests = imp("requests")
 matplotlib = imp("matplotlib")
 np = numpy = imp("numpy")
 pd = pandas = imp("pandas")
@@ -45,4 +43,9 @@ plt = imp("matplotlib.pyplot")
 progressbar = imp("progressbar")
 pydantic = imp("pydantic")
 yaml = imp("yaml")
-requests = imp("requests")
+
+# Built-in libraries not present in Python 2
+asyncio = imp("asyncio")
+enum = imp("enum")
+statistics = imp("statistics")
+typing = imp("typing")

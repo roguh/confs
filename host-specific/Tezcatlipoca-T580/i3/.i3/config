@@ -274,6 +274,8 @@ exec --no-startup-id backup.sh
 exec --no-startup-id /opt/dropbox/dropboxd
 exec --no-startup-id kitty fish -c welcome-shell.sh
 exec --no-startup-id kdeconnect-indicator
+# For switching sound devices
+exec --no-startup-id indicator-sound-switcher
 
 exec --no-startup-id evolution
 exec --no-startup-id firefox

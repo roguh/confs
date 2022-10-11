@@ -118,7 +118,7 @@ if command -v git > /dev/null
     abbr ga 'git add'
     abbr gc 'git commit'
     abbr gch 'git checkout'
-    abbr gchm 'git checkout main'
+    abbr gchm 'git checkout main || git checkout master || git checkout trunk'
     abbr gs 'git status'
     abbr gst 'git stash push --'
     abbr gstp 'git stash pop'

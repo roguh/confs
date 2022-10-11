@@ -91,6 +91,13 @@ format = "%H"
 # format = "%a %d/%m %R:%S"
 
 [[block]]
+block = "time"
+interval = 1
+timezone = "Europe/Paris"
+format = "%H"
+# format = "%a %d/%m %R:%S"
+
+[[block]]
 block = "keyboard_layout"
 driver = "xkbswitch"
 on_click = "xkb-switch -n"
