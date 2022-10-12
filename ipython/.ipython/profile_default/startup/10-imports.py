@@ -19,6 +19,7 @@ import platform
 import pprint
 import random
 import re
+import socket
 import string
 import subprocess
 import sys

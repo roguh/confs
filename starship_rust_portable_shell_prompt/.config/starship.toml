@@ -102,6 +102,7 @@ format = ' [$symbol$context( \($namespace\))]($style)'
 style = "fg:#88ddff"
 [kubernetes.context_aliases]
 "0007-04-hugoroguh" = "0007-04"
+"1337-77-hugo" = "1337-77"
 
 [git_commit]
 commit_hash_length = 4
