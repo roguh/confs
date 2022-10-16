@@ -59,7 +59,7 @@ truncation_symbol = ""
 "2022_CognizantFullstackNanodegree_SessionLead" = "2022nd"
 
 [time]
-disabled = false
+disabled = true
 style = "dimmed white"
 format = "[$time]($style) "
 
