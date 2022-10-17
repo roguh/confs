@@ -19,7 +19,8 @@ hide_edge_borders none
 # font pango:monospace 11
 # font pango:DejaVu Sans Mono 10
 # font pango: Source Code Pro 10
-font pango:MonoLisa Medium 9
+font pango:MonoLisa Heavy 10
+# font pango:MonoLisa Heavy 0
 
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
@@ -121,6 +122,7 @@ bindsym $mod+Shift+o move container to workspace 22:TODO; workspace 22:TODO
 bindsym $mod+Shift+p move container to workspace 23:fun; workspace 23:fun
 # Doesn't work!
 # bindsym $mod+braceright move container to workspace 24:music; workspace 24:music
+bindsym $mod+Shift+bracketleft move container to workspace 24:music; workspace 24:music
 
 bindsym XF86HomePage exec --no-startup-id i3empty.py next 1
 
@@ -225,7 +227,7 @@ bindsym $mod+Return exec --no-startup-id $terminal
 bindsym $mod+x exec --no-startup-id $terminal
 bindsym $mod+Shift+x exec --no-startup-id $terminal2
 bindsym $mod+z exec --no-startup-id $terminal2
-bindsym F8 exec --no-startup-id $terminal
+bindsym $mod+Shift+z exec --no-startup-id i3-sensible-terminal
 bindsym $mod+n exec --no-startup-id $browser
 
 bindsym $mod+l exec --no-startup-id locker.sh
@@ -237,8 +239,8 @@ bindsym Control+grave exec dunstctl history-pop
 #### i3 gaps
 # for_window [class="^.*"] border pixel 0
 smart_gaps on
-gaps inner 5
-gaps outer 5
+gaps inner 68
+gaps outer 0
 
 # hide border for extremely common windows
 for_window [title="Firefox|Chromium|Chrome$"] border pixel 1
@@ -263,25 +265,30 @@ exec --no-startup-id udiskie --smart-tray
 exec --no-startup-id xfce4-power-manager
 exec --no-startup-id vorta
 exec --no-startup-id blueman-applet
-exec --no-startup-id set-keyboard-layout.sh
 exec --no-startup-id conky.sh
 exec --no-startup-id wallpaper.sh
 exec --no-startup-id xautolock -time 10 -locker locker.sh
+exec --no-startup-id caffeine
 exec --no-startup-id backup.sh
 # exec --no-startup-id ~/.dropbox-dist/dropboxd
 # Arch: Install dropbox from the AUR
 exec --no-startup-id /opt/dropbox/dropboxd
 exec --no-startup-id kitty fish -c welcome-shell.sh
 exec --no-startup-id kdeconnect-indicator
+# For switching sound devices
+exec --no-startup-id indicator-sound-switcher
 
 exec --no-startup-id firefox
 exec --no-startup-id teams-insiders
 exec --no-startup-id slack-snap.sh
 exec --no-startup-id .screenlayout/select-arandr-display.sh
 
-exec "xbindkeys"
+exec --no-startup-id "xbindkeys"
+
+
 
 exec --no-startup-id indicator-keylock # notifications when capslock pressed
+exec --no-startup-id set-keyboard-layout.sh
 exec --no-startup-id xrdb -merge ~/.Xresources
 
 # Notifications
@@ -295,6 +302,7 @@ exec_always --no-startup-id fix_xcursor
 
 # Default workspace
 exec --no-startup-id i3-msg workspace 21:comm
+
 
 # Color palette used for the terminal ( ~/.Xresources file )
 # Colors are gathered based on the documentation:
@@ -327,12 +335,22 @@ set_from_resource $term_color13    color13
 set_from_resource $term_color14    color14
 set_from_resource $term_color15    color15
 
+# hide/unhide i3status bar
+bindsym $mod+m bar mode toggle
+
+# https://github.com/altdesktop/i3-style
+# i3-style gruvbox -o ~/.i3/config --reload
+
 # Start i3bar to display a workspace bar (plus the system information i3status if available)
 bar {
 	i3bar_command i3bar
 	status_command i3status-rs
-	position top
-  font pango:MonoLisa Bold 8
+  font pango:MonoLisa Light, FontAwesome, PowerlineSymbols 7
+	position bottom
+
+  # mode hide
+  # hidden_state hide
+  modifier $mod
 
   ## please set your primary output first. Example: 'xrandr --output eDP1 --primary'
   tray_output primary
@@ -340,30 +358,18 @@ bar {
 	bindsym button4 nop
 	bindsym button5 nop
 	strip_workspace_numbers yes
-
-    colors {
-        background #282828
-        statusline #ebdbb2
-        separator #928374
-
-#                      border  backgr. text
-        focused_workspace #689d6a #689d6a #282828 #292F34
-        active_workspace #1d2021 #1d2021 #928374 #FDF6E3
-        inactive_workspace #32302f #32302f #928374 #EEE8D5
-        urgent_workspace #cc241d #cc241d #ebdbb2 #E5201D
-    }
+  colors {
+    separator #928374
+    background #282828
+    statusline #ebdbb2
+    focused_workspace #689d6a #689d6a #282828 
+    active_workspace #1d2021 #1d2021 #928374 
+    inactive_workspace #32302f #32302f #928374 
+    urgent_workspace #cc241d #cc241d #ebdbb2 
+  }
 }
 
-# hide/unhide i3status bar
-# bindsym $mod+m bar mode toggle
-
-# Theme colors
-# class                   border  backgr. text    indic.   child_border
-  client.focused #689d6a #689d6a #282828 #282828
-  client.focused_inactive #1d2021 #1d2021 #928374 #282828
-  client.unfocused #32302f #32302f #928374 #282828
-  client.urgent #cc241d #cc241d #ebdbb2 #282828
-  client.placeholder      #000000 #0c0c0c #ffffff #000000
-
-  client.background       #2B2C2B
-
+client.focused #689d6a #689d6a #282828 #282828
+client.focused_inactive #1d2021 #1d2021 #928374 #282828
+client.unfocused #32302f #32302f #928374 #282828
+client.urgent #cc241d #cc241d #ebdbb2 #282828
