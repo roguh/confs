@@ -16,7 +16,8 @@ Plug 'dstein64/vim-startuptime'
 " Color themes
 " $ trizen -S gruvbox-dark-gtk lxappearance-gtk3
 " $ lxappearance
-Plug 'sainnhe/gruvbox-material'
+" Plug 'sainnhe/gruvbox-material'
+Plug 'atelierbram/Base2Tone-vim'
 
 " Reload files edited externally
 Plug 'djoshea/vim-autoread'
@@ -271,7 +272,8 @@ call plug#end()
 " Set colors
 try
   set background=dark
-  colorscheme gruvbox-material
+  colorscheme Base2Tone_EveningDark
+  let g:airline_theme='Base2Tone_EveningDark'
 catch
   echo 'NO COLORS'
 endtry
