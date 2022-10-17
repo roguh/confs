@@ -11,9 +11,6 @@
 # Super key
 set $mod Mod4
 
-# Hide borders
-hide_edge_borders none
-
 # Window title font
 # font pango: Ubuntu Mono 12
 # font pango:monospace 11
@@ -208,9 +205,6 @@ mode "$mode_system" {
 # switch to workspace with urgent window automatically
 for_window [urgent=latest] focus
 
-# window border
-new_window normal 1
-
 # program launcher
 bindsym $mod+d exec --no-startup-id launcher.sh
 bindsym $mod+Tab exec --no-startup-id launcher.sh window
@@ -237,10 +231,17 @@ bindsym Control+space exec dunstctl close
 bindsym Control+grave exec dunstctl history-pop
 
 #### i3 gaps
-# for_window [class="^.*"] border pixel 0
+# window border
+new_window normal 0
+
+# Hide borders
+hide_edge_borders none
+
+for_window [class="^.*"] border pixel 0
+
 smart_gaps on
-gaps inner 68
 gaps outer 0
+gaps inner 68
 
 # hide border for extremely common windows
 for_window [title="Firefox|Chromium|Chrome$"] border pixel 1
@@ -249,6 +250,7 @@ for_window [title="Firefox|Chromium|Chrome$"] border pixel 1
 # popups should float
 for_window [window_role="pop-up"] floating enable
 
+# ;)
 for_window [class="Tor Browser"] floating enable
 
 # reload the configuration file
@@ -345,7 +347,7 @@ bindsym $mod+m bar mode toggle
 bar {
 	i3bar_command i3bar
 	status_command i3status-rs
-  font pango:MonoLisa Light, FontAwesome, PowerlineSymbols 7
+  font pango:MonoLisa Light, FontAwesome, PowerlineSymbols 8
 	position bottom
 
   # mode hide
@@ -359,17 +361,18 @@ bar {
 	bindsym button5 nop
 	strip_workspace_numbers yes
   colors {
-    separator #928374
-    background #282828
-    statusline #ebdbb2
-    focused_workspace #689d6a #689d6a #282828 
-    active_workspace #1d2021 #1d2021 #928374 
-    inactive_workspace #32302f #32302f #928374 
-    urgent_workspace #cc241d #cc241d #ebdbb2 
+    separator #666666
+    background #000000
+    statusline #ffffff
+    focused_workspace #551a8b #551a8b #ffffff #282828
+    active_workspace #333333 #5f676a #ffffff #928374
+    inactive_workspace #000000 #000000 #888888 #928374
+    urgent_workspace #2f343a #900000 #ffffff #ebdbb2
   }
 }
 
-client.focused #689d6a #689d6a #282828 #282828
-client.focused_inactive #1d2021 #1d2021 #928374 #282828
-client.unfocused #32302f #32302f #928374 #282828
-client.urgent #cc241d #cc241d #ebdbb2 #282828
+
+client.focused #3b1261 #3b1261 #ffffff #662b9c
+client.focused_inactive #333333 #5f676a #ffffff #484e50
+client.unfocused #222222 #222222 #888888 #292d2e
+client.urgent #2f343a #900000 #ffffff #900000

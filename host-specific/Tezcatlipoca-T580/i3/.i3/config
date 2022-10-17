@@ -338,6 +338,9 @@ set_from_resource $term_color13    color13
 set_from_resource $term_color14    color14
 set_from_resource $term_color15    color15
 
+# hide/unhide i3status bar
+bindsym $mod+m bar mode toggle
+
 # https://github.com/altdesktop/i3-style
 # i3-style gruvbox -o ~/.i3/config --reload
 
@@ -354,7 +357,6 @@ bar {
 
   ## please set your primary output first. Example: 'xrandr --output eDP1 --primary'
   tray_output primary
-  #	tray_output eDP1
 
 	bindsym button4 nop
 	bindsym button5 nop

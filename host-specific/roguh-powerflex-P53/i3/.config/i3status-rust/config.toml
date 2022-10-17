@@ -1,4 +1,4 @@
-theme = "gruvbox-dark"
+theme = "space-villain"
 icons = "awesome5"
 
 [[block]]
@@ -19,7 +19,7 @@ block = "custom"
 # -t Time to live for each packet
 # -i Wait this many seconds between sending each packet
 # -c Send this many packets
-command = '''ping -W 0.5 -t 250 -i 0.05 -c 10   8.8.8.8   | grep -o "[0-9.]\\+% packet loss, time .*" | sed "s/, time// ; s/ms//"'''
+command = '''ping -W 0.5 -t 250 -i 0.05 -c 10   8.8.8.8   | grep -o "[0-9.]\\+% packet loss, time" | sed "s/, time// ; s/ms//"'''
 interval = 0.5
 
 [[block]]
@@ -78,7 +78,7 @@ format = "%d/%m %R:%S.%3f"
 block = "time"
 interval = 1
 timezone = "US/Mountain"
-# format = "%a %d/%m %R:%S.%3f"
+# format = "%d/%m %R:%S.%3f"
 format = "%H"
 
 [[block]]
@@ -86,21 +86,21 @@ block = "time"
 interval = 1
 timezone = "US/Central"
 format = "%H"
-# format = "%a %d/%m %R:%S"
+# format = "%d/%m %R:%S"
 
 [[block]]
 block = "time"
 interval = 1
 timezone = "US/Eastern"
 format = "%H"
-# format = "%a %d/%m %R:%S"
+# format = "%d/%m %R:%S"
 
 [[block]]
 block = "time"
 interval = 1
 timezone = "Europe/Paris"
 format = "%H"
-# format = "%a %d/%m %R:%S"
+# format = "%d/%m %R:%S"
 
 [[block]]
 block = "keyboard_layout"
