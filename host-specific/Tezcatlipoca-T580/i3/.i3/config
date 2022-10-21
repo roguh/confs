@@ -232,12 +232,12 @@ bindsym Control+grave exec dunstctl history-pop
 
 #### i3 gaps
 # window border
-new_window normal 0
+# new_window normal 0
 
 # Hide borders
 hide_edge_borders none
 
-for_window [class="^.*"] border pixel 0
+# for_window [class="^.*"] border pixel 0
 
 smart_gaps on
 gaps outer 2
