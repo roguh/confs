@@ -1,4 +1,4 @@
-format = "$shell${custom.shorthost}$time$directory$jobs$all$git_metrics$git_branch$git_status$status$cmd_duration$battery$character"
+format = "$shell$hostname$username${custom.shorthostname}$time$directory$jobs$all$git_metrics$git_branch$git_status$status$cmd_duration$battery$character"
 right_format = "${custom.git_metrics_main_added}${custom.git_metrics_main_deleted}$git_commit$conda$kubernetes"
 add_newline = false
 
@@ -7,7 +7,15 @@ add_newline = false
 disabled = true
 
 [hostname]
-disabled = true
+ssh_only = true
+ssh_symbol = 'SSH '
+style = 'bold red'
+format = "[$ssh_symbol]($style)"
+disabled = false
+
+[username]
+disabled = false
+format = "[$user]($style) @ "
 
 [shell]
 fish_indicator = ""
@@ -22,7 +30,7 @@ format = '[$indicator]($style)'
 style = "white"
 disabled = false
 
-[custom.shorthost]
+[custom.shorthostname]
 command = "hostname | cut -d'-' -f'2-'"
 shell = "bash"
 format = "[$symbol($output)]($style) "
