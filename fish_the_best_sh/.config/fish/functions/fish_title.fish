@@ -3,6 +3,14 @@ function title_get_project
   if test "$status" = 0
     printf "%s |" (basename (git rev-parse --show-toplevel 2> /dev/null) "")
   end
+  printf " "
+end
+
+function ssh_info
+  if ! test "$SSH_TTY" = ""
+    printf "%s" "ssh TEST$HOSTNAME"
+  end
+  printf " "
 end
 
 function fish_title_info
@@ -10,5 +18,5 @@ function fish_title_info
 end
 
 function fish_title
-  printf "🐟 \$ %s %s %s" (title_get_project) (pwd) (fish_title_info)
+  printf "🐟 %s\$ %s %s %s" (ssh_info) (title_get_project) (pwd) (fish_title_info)
 end
