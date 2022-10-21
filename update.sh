@@ -9,6 +9,8 @@ if [[ "$#" != "2" || ( "$1" != restore && "$1" != backup ) ]]; then
   exit 1
 fi
 
+HOST="$HOSTNAME"
+
 CONFS_COPY_PARALLEL="${CONFS_COPY_PARALLEL-true}"
 if [ "${VERBOSE-}" == "" ]; then
     VERBOSE=true
@@ -132,7 +134,6 @@ _copy_confs_for() {
 # preserving directory structure.  Make backups before copying.
 copy_confs_for_host() {
     SECTION="$1"
-    HOST="$(hostname)"
     if [ "$CONFS_COPY_PARALLEL" == true ]; then
         _copy_confs_for_host "$@" > "$LOG_FILE_DIR/$SECTION-$HOST" &
         PID="$!"
@@ -145,7 +146,6 @@ copy_confs_for_host() {
 
 _copy_confs_for_host() {
     SECTION="$1"
-    HOST="$(hostname)"
     shift
 
     printf "\n--------- $SECTION for $HOST ---------\n"
@@ -226,7 +226,8 @@ copy_confs_for_host git .gitconfig
 
 copy_confs_for utils \
   bin/cpufreq.sh bin/systemload.sh bin/mem.sh bin/screenshot.sh bin/screenshot-select.sh bin/pip-update-outdated.sh \
-  .xsession
+  .xsession \
+  bin/open-starlink.html
 
 copy_confs_for alacritty .config/alacritty/alacritty.yml bin/alacritty-cwd.sh
 

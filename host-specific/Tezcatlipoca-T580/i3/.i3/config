@@ -240,8 +240,8 @@ hide_edge_borders none
 for_window [class="^.*"] border pixel 0
 
 smart_gaps on
-gaps outer 0
-gaps inner 69
+gaps outer 2
+gaps inner 4
 
 # hide border for extremely common windows
 for_window [title="Firefox|Chromium|Chrome$"] border pixel 1
