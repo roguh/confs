@@ -8,7 +8,7 @@ end
 
 function ssh_info
   if ! test "$SSH_TTY" = ""
-    printf "%s" "ssh TEST$HOSTNAME"
+    printf "%s" "ssh " (hostname)
   end
   printf " "
 end

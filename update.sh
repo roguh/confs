@@ -9,7 +9,7 @@ if [[ "$#" != "2" || ( "$1" != restore && "$1" != backup ) ]]; then
   exit 1
 fi
 
-HOST="$HOSTNAME"
+HOST="$(hostname)"
 
 CONFS_COPY_PARALLEL="${CONFS_COPY_PARALLEL-true}"
 if [ "${VERBOSE-}" == "" ]; then
