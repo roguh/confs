@@ -205,6 +205,8 @@ mode "$mode_system" {
 # switch to workspace with urgent window automatically
 for_window [urgent=latest] focus
 
+for_window [class="Spotify|strawberry"] move to workspace 24:music
+
 # program launcher
 bindsym $mod+d exec --no-startup-id launcher.sh
 bindsym $mod+Tab exec --no-startup-id launcher.sh window
