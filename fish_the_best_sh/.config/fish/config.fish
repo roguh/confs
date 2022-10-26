@@ -93,6 +93,8 @@ set_global PYTHON_KEYRING_BACKEND keyring.backends.null.Keyring
 # To disable parallely notifications unless a failure happens
 set_global_if_unset NOTIFY_COMMAND 'true'
 
+set_global USE_GKE_GCLOUD_AUTH_PLUGIN True
+
 set_global_if_unset PYTHONSTARTUP "$HOME/.ipython/profile_default/startup/10-imports.py"
 
 if test -d /opt/android-sdk/
@@ -133,7 +135,10 @@ if command -v kubectl > /dev/null
     abbr kx kubectx
     abbr kc 'kubectl config'
     # List and detail resources
+    abbr kg 'kubectl get'
     abbr kgp 'kubectl get pods'
+    abbr kgs 'kubectl get services'
+    abbr kga 'kubectl get applications'
     abbr kd 'kubectl describe'
     abbr kdl 'kubectl delete'
     # Debugging pods
@@ -399,3 +404,7 @@ end
 # Fish does lots of things by default:
 # ignore dups and blank lines in history
 # interactive cd and autocompletion
+
+# tabtab source for packages
+# uninstall by removing these lines
+[ -f ~/.config/tabtab/fish/__tabtab.fish ]; and . ~/.config/tabtab/fish/__tabtab.fish; or true

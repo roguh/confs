@@ -16,7 +16,7 @@ set $mod Mod4
 # font pango:monospace 11
 # font pango:DejaVu Sans Mono 10
 # font pango: Source Code Pro 10
-font pango:MonoLisa Heavy 10
+font pango:MonoLisa Heavy 9
 # font pango:MonoLisa Heavy 0
 
 # Use Mouse+$mod to drag floating windows to their wanted position
@@ -351,7 +351,7 @@ bindsym $mod+m bar mode toggle
 bar {
 	i3bar_command i3bar
 	status_command i3status-rs
-  font pango:MonoLisa Light, FontAwesome, PowerlineSymbols 8
+  font pango:MonoLisa Light, FontAwesome, PowerlineSymbols 7
 	position bottom
 
   # mode hide
