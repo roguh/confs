@@ -61,6 +61,7 @@ function set_global_if_unset
 end
 
 debug Starting FISH debug output. Set DO_NOT_CLEAR to leave it on the screen after startup.
+set_global DO_NOT_CLEAR true
 
 load_file $HOME/.config/fish/local_env.fish
 set_global_if_unset FISH_LOGO Fish # 🐠
