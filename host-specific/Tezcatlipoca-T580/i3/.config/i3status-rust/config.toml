@@ -3,7 +3,7 @@ icons = "awesome6"
 
 [[block]]
 block = "time"
-interval = 0.05
+interval = 0.5
 format = "%s.%6f"
 
 [[block]]
@@ -20,7 +20,7 @@ block = "custom"
 # -i Wait this many seconds between sending each packet
 # -c Send this many packets
 command = '''ping -W 0.5 -t 250 -i 0.05 -c 10   8.8.8.8   | grep -o "[0-9.]\\+% packet loss, time" | sed "s/, time// ; s/ms//"'''
-interval = 0.5
+interval = 2
 
 [[block]]
 block = "networkmanager"
@@ -68,18 +68,18 @@ device_kind = "source"
 on_click = "pavucontrol"
 
 [[block]]
+block = "keyboard_layout"
+driver = "xkbswitch"
+on_click = "xkb-switch -n"
+format = "{layout} {variant}"
+interval = 1
+
+[[block]]
 block = "time"
 interval = 1
 timezone = "US/Pacific"
 # format = "%d/%m %R:%S.%3f"
 format = "%H"
-
-[[block]]
-block = "time"
-interval = 1
-timezone = "US/Mountain"
-format = "%d/%m %R:%S.%3f"
-# format = "%H"
 
 [[block]]
 block = "time"
@@ -103,11 +103,11 @@ format = "%H"
 # format = "%d/%m %R:%S"
 
 [[block]]
-block = "keyboard_layout"
-driver = "xkbswitch"
-on_click = "xkb-switch -n"
-format = "{layout} {variant}"
+block = "time"
 interval = 1
+timezone = "US/Mountain"
+format = "%d/%m %R:%S.%3f"
+# format = "%H"
 
 [[block]]
 block = "battery"
@@ -121,3 +121,4 @@ format = "{percentage} {power}"
 device = "BAT1"
 allow_missing = true
 missing_format = "n/a"
+

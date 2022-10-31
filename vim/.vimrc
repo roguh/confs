@@ -274,8 +274,11 @@ try
   set background=dark
   colorscheme Base2Tone_EveningDark
   let g:airline_theme='Base2Tone_EveningDark'
+  " set background=light
+  " colorscheme Base2Tone_LavenderLight
+  " let g:airline_theme='Base2Tone_LavenderLight'
 catch
-  echo 'NO COLORS'
+  echo 'no colorscheme'
 endtry
 
 function! FixColorScheme()
