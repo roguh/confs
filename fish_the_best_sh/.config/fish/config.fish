@@ -5,9 +5,9 @@ set START_TIME (date +%s.%N)
 set FAST_STARTUP true
 set DEBUG_OUTPUT false
 
-if [ "$PWD" = "$HOME" ] && status is-interactive
-  set DEBUG_OUTPUT true
-end
+# if [ "$PWD" = "$HOME" ] && status is-interactive
+#   set DEBUG_OUTPUT true
+# end
 
 function log
   set_color -i
