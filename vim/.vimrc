@@ -35,6 +35,8 @@ Plug 'jceb/vim-orgmode', { 'for': 'org' }
 
 Plug 'ctrlpvim/ctrlp.vim'
 
+Plug 'neovimhaskell/haskell-vim'
+
 " use ctrl-p to find files
 map <C-p> :CtrlPMixed<CR>
 
@@ -106,6 +108,7 @@ Plug 'tpope/vim-fugitive'
 Plug 'neoclide/coc.nvim', { 'branch': 'release', 'for': ['java', 'typescript', 'javascript', 'javascript.jsx', 'python', 'rust', 'json', 'yaml', 'yaml.docker-compose', 'dockerfile'] }
 let g:coc_global_extensions = ['coc-syntax', 'coc-json', 'coc-git', 'coc-java', 'coc-tsserver', 'coc-pyright', 'coc-rust-analyzer', 'coc-yaml', 'coc-docker']
 
+autocmd BufWritePost *.rs call CocAction('format')
 autocmd BufWritePost *.py call CocAction('format')
 autocmd BufWritePost *.py CocCommand python.sortImports
 autocmd BufWritePost *.py CocCommand python.runLinting
@@ -271,12 +274,15 @@ call plug#end()
 
 " Set colors
 try
-  set background=dark
-  colorscheme Base2Tone_EveningDark
-  let g:airline_theme='Base2Tone_EveningDark'
-  " set background=light
-  " colorscheme Base2Tone_LavenderLight
+  " set background=dark
+  " colorscheme Base2Tone_EveningDark
+  " let g:airline_theme='Base2Tone_EveningDark'
+  " set background=dark
+  " colorscheme Base2Tone_LavenderDark
   " let g:airline_theme='Base2Tone_LavenderLight'
+  set background=light
+  colorscheme Base2Tone_LavenderLight
+  let g:airline_theme='Base2Tone_LavenderLight'
 catch
   echo 'no colorscheme'
 endtry
