@@ -345,7 +345,7 @@
   :defer 1
   :config
   (add-hook 'flyspell-mode-hook #'flyspell-popup-auto-correct-mode)
-  (setq flyspell-popup-correct-delay 0.3))
+  (setq flyspell-popup-correct-delay 1))
 
 ;; Do not clobber
 (global-auto-revert-mode 1)
