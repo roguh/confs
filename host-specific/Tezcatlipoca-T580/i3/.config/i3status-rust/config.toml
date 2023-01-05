@@ -19,7 +19,7 @@ block = "custom"
 # -t Time to live for each packet
 # -i Wait this many seconds between sending each packet
 # -c Send this many packets
-command = '''ping -W 0.5 -t 250 -i 0.05 -c 10   8.8.8.8   | grep -o "[0-9.]\\+% packet loss, time" | sed "s/, time// ; s/ms//"'''
+command = '''ping -W 0.5 -t 250 -i 0.05 -c 10   8.8.8.8   | grep -o "[0-9.]\\+% packet loss, time" | sed "s/ packet loss, time/L/ ; s/ms//"'''
 interval = 2
 
 [[block]]
@@ -41,7 +41,7 @@ alert = 10.0
 [[block]]
 block = "memory"
 display_type = "memory"
-format_mem = "{mem_used_percents} RAM"
+format_mem = "{mem_used_percents}RAM"
 format_swap = "{swap_used_percents}"
 
 [[block]]
@@ -106,7 +106,7 @@ format = "%H"
 block = "time"
 interval = 1
 timezone = "US/Mountain"
-format = "%d/%m %R:%S.%3f"
+format = "%d/%m %R"
 # format = "%H"
 
 [[block]]

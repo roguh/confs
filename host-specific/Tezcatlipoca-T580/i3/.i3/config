@@ -354,7 +354,7 @@ bindsym $mod+m bar mode toggle
 bar {
 	i3bar_command i3bar
 	status_command i3status-rs
-  font pango:MonoLisa Light, FontAwesome, PowerlineSymbols 7
+  font pango:MonoLisa Light, FontAwesome, PowerlineSymbols 9
 	position bottom
 
   # mode hide
