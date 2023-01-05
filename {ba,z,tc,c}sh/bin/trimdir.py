@@ -1,37 +1,48 @@
 #!/usr/bin/env python3
+"""
+1. read stdin
+2. split by '/'
+3. replace all parent directory names with their 1st or 1st and 2nd characters
+"""
 
-# 1. read stdin
-# 2. split by '/'
-# 3. replace all parent directory names with their 1st or 1st and 2nd characters
 import sys
+from os.path import expanduser, join, normcase, normpath, split
 from string import punctuation as punc
-from os.path import join, split, expanduser, normpath
 
-def simp(s):
-    return s[0:2] if s[0:1] in punc else s[0:1]
 
-def simplify_path(input_path=None):
-    if input_path is None:
-        input_path = sys.stdin.read().rstrip()
+def shorten_name(dirname):
+    # type: (str) -> str
+    return dirname[0:2] if dirname[0:1] in punc else dirname[0:1]
 
-    path = normpath(input_path)
-    home = expanduser('~')
-    if path.startswith(home):
-        path = path.replace(home, '~')
-    p = split(path)
-    r = p[1]
 
-    while p[0] not in ['', '/']:
-        p = split(p[0])
-        r = join(simp(p[1]), r)
+def trimdir(input_path):
+    # type: (str) -> str
 
-    if path.startswith('/'):
-        r = '/' + r
+    normalized_path = normcase(normpath(input_path))
 
-    return r
+    # Replace home dir with ~
+    home = expanduser("~")
+    if normalized_path.startswith(home):
+        normalized_path = normalized_path.replace(home, "~")
 
-if len(sys.argv) > 1:
-    for p in sys.argv[1:]:
-        print(simplify_path(p))
-else:
-    print(simplify_path())
+    # Shorten each component of the normalized_path
+    dirname, basename = split(normalized_path)
+    simplified_path = basename
+
+    while dirname not in ["", "/"]:
+        dirname, basename = split(dirname)
+        simplified_path = join(shorten_name(basename), simplified_path)
+
+    # Add leading / if it was removed
+    if normalized_path.startswith("/"):
+        simplified_path = "/" + simplified_path
+
+    return simplified_path
+
+
+if __name__ == "__main__":
+    if len(sys.argv) > 1:
+        for p in sys.argv[1:]:
+            print(trimdir(p))
+    else:
+        print(trimdir(sys.stdin.read().rstrip()))

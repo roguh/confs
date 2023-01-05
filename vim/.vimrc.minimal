@@ -136,21 +136,26 @@ set cursorline
 hi  CursorLine term=underline cterm=underline gui=underline
 
 if has('nvim')
-  let $VIMNAME='Neovim editor'
+  let $VIMNAME='nvim'
 else
-  let $VIMNAME='Vim editor'
+  let $VIMNAME='vim'
 endif
 
 " Set terminal emulator window title
-" filename, basename of git root or an extra space, shortened PWD, user@host
+" vim name, filename, basename of git root (aka project name), shortened PWD, user@host
 function! SetTitleString()
-  let &titlestring = 'v ' .
-  \ expand('%') . ' ' .
-  \ system('basename $(git rev-parse --show-toplevel 2> /dev/null) ""') . ' ' .
-  \ system('trimdir.py', expand('%:p:h')) . ' ' .
-  \ $USER . '@' . hostname() . ' ' .
-  \ $VIMNAME . ' ' .
-  \ ' pid=' . system('echo $$')
+  let &titlestring =
+        \ $VIMNAME
+        \ . ' ' .
+        \ system('projectname.sh')
+        \ . ' ' .
+        \ expand('%')
+        \ . ' ' .
+        \ system('trimdir.py', expand('%:p:h'))
+        \ . ' ' .
+        \ $USER . '@' . hostname()
+        \ . ' ' .
+        \ ' pid=' . system('echo $$')
 endfunction
 
 autocmd BufNewFile,BufRead,BufEnter * exe "call SetTitleString()"

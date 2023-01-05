@@ -1,5 +1,7 @@
 -- Hugo O. Rivera's vis configuration
 -- load standard vis module, providing parts of the Lua API
+-- '
+
 require('vis')
 require('plugins/filetype')
 require('plugins/textobject-lexer')

@@ -1,7 +1,7 @@
 function title_get_project
-  git rev-parse 2> /dev/null
-  if test "$status" = 0
-    printf "%s |" (basename (git rev-parse --show-toplevel 2> /dev/null) "")
+  set PROJECTNAME (projectname.sh)
+  if test "$status" = 0 && test "$PROJECTNAME" != ""
+    printf "$PROJECTNAME |"
   end
   printf " "
 end
@@ -14,7 +14,7 @@ function ssh_info
 end
 
 function fish_title_info
-  printf "Fish Shell pid=%s" $fish_pid
+  printf "pid=%s" $fish_pid
 end
 
 function fish_title

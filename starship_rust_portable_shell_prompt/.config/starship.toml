@@ -1,5 +1,5 @@
-format = "$shell$hostname$username$time$directory$jobs$all$git_metrics$git_branch$git_status$status$cmd_duration$battery$character"
-right_format = "${custom.git_metrics_main_added}${custom.git_metrics_main_deleted}$git_commit$conda$kubernetes"
+format = "$shell$hostname$username$time$directory$jobs$all$git_branch$git_status$status$cmd_duration$battery$character"
+right_format = "${custom.git_metrics_main_added_deleted}$git_commit$conda$kubernetes"
 add_newline = false
 
 [line_break]
@@ -30,17 +30,14 @@ format = '[$indicator]($style)'
 style = "white"
 disabled = false
 
-[custom.git_metrics_main_added]
+[custom.git_metrics_main_added_deleted]
 when = "test -d .git"
 shell = "dash"
-command = "git diff main --shortstat | sed 's/[ 0-9]* file.* changed, /+/ ; s/ insertion.*//' | sed '/+[0-9]*/!c 0'"
-format = " [$symbol($output)]($style)"
-style = "bold underline fg:bright-green"
-
-[custom.git_metrics_main_deleted]
-when = "test -d .git"
-shell = "dash"
-command = "git diff main --shortstat | sed 's/[ 0-9]* file.* changed, .*insertion.*, /-/ ; s/ deletion.*//' | sed '/-[0-9]*/!c 0'"
+# Sample outputs:
+# 1 file changed, 2 insertions(+), 2 deletions(-)
+# 1 file changed, 2 deletions(-)
+# 1 file changed, 2 insertions(+)
+command = "git diff main --shortstat | sed 's/.*file.* changed, // ; s/\\([0-9]*\\) insertion/\\1/ ; s/\\([0-9]*\\) deletion/\\1/ ; s/s\\|(\\|)\\|,//g'"
 format = " [$symbol($output)]($style)"
 style = "bold underline fg:blue"
 
@@ -70,8 +67,11 @@ style = "bold fg:bright-yellow"
 symbol = ""
 truncation_length=14
 
+[git_state]
+disabled = true
+
 [git_metrics]
-disabled = false
+disabled = true
 added_style = "bold underline fg:bright-green"
 deleted_style = "bold underline fg:blue"
 
