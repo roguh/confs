@@ -3,8 +3,8 @@ icons = "awesome6"
 
 [[block]]
 block = "time"
-interval = 0.5
-format = "%s.%6f"
+interval = 0.8
+format = "%s"
 
 [[block]]
 block = "speedtest"
