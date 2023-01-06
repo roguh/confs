@@ -112,5 +112,6 @@ missing_format = "n/a"
 [[block]]
 block = "music"
 max_width = 12
-marquee_speed = 0.3
+marquee_speed = 0.15
+marquee_interval = 4
 buttons = ["play"]

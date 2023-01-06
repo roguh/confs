@@ -432,7 +432,7 @@
  '(org-modules
    '(org-bbdb org-bibtex org-docview org-gnus org-info org-irc org-mhe org-protocol org-rmail org-w3m org-drill))
  '(package-selected-packages
-   '(company-c-headers pipenv smooth-scrolling ein helm zenburn diff-hl fill-column-indicator cursor-chg ergoemacs-mode org-contrib flyspell-popup org-drill xresources-theme column-marker git-gutter android-mode whitespace-cleanup-mode use-package tao-theme smex rainbow-mode magit linum-relative langtool json-mode impatient-mode haskell-mode guide-key flycheck evil col-highlight coffee-mode benchmark-init auto-complete auctex)))
+   '(zenburn-theme company-c-headers pipenv smooth-scrolling ein helm zenburn diff-hl fill-column-indicator cursor-chg ergoemacs-mode org-contrib flyspell-popup org-drill xresources-theme column-marker git-gutter android-mode whitespace-cleanup-mode use-package tao-theme smex rainbow-mode magit linum-relative langtool json-mode impatient-mode haskell-mode guide-key flycheck evil col-highlight coffee-mode benchmark-init auto-complete auctex)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.

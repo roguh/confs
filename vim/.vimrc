@@ -18,20 +18,24 @@ Plug 'dstein64/vim-startuptime'
 " $ lxappearance
 " Plug 'sainnhe/gruvbox-material'
 Plug 'atelierbram/Base2Tone-vim'
+Plug 'kitten/vim-adventurous'
 
 " Reload files edited externally
 Plug 'djoshea/vim-autoread'
 
 " Good statusline
 Plug 'vim-airline/vim-airline'
+Plug 'enricobacis/vim-airline-clock'
+let g:airline#extensions#clock#format = '%H:%M'
 let g:airline_powerline_fonts = 1
 
 " Show git diff in window when writing git commit message
 Plug 'rhysd/committia.vim'
 
 " Org mode
-Plug 'jwiegley/org-mode', { 'for': 'org' }
-Plug 'jceb/vim-orgmode', { 'for': 'org' }
+" Doesn't work very well...
+" Plug 'jwiegley/org-mode', { 'for': 'org' }
+" Plug 'jceb/vim-orgmode', { 'for': 'org' }
 
 Plug 'ctrlpvim/ctrlp.vim'
 
@@ -76,14 +80,14 @@ set foldlevelstart=20
 " Use :OpenSession :SaveSession
 " Useful: :RestartVim to save session, close and restart vim, and then reload
 " session. Great for debugging vim scripts.
-Plug 'xolox/vim-misc'
-Plug 'xolox/vim-session'
-
-" Save session every X minutes
-let g:session_autosave_periodic = 1
-let g:session_autosave_silent = 1
-let g:session_autoload = 'no'
-let g:session_autosave = 'no'
+" Plug 'xolox/vim-misc'
+" Plug 'xolox/vim-session'
+" 
+" " Save session every X minutes
+" let g:session_autosave_periodic = 1
+" let g:session_autosave_silent = 1
+" let g:session_autoload = 'no'
+" let g:session_autosave = 'no'
 
 " Rainbow coloring for parenthesis and other paired characters
 " Uncomment following line for demo
@@ -96,7 +100,7 @@ let g:indent_guides_enable_on_vim_startup = 1
 " Sample:
                                                                  let test_var = 0
 
-Plug 'lark-parser/vim-lark-syntax'
+" Plug 'lark-parser/vim-lark-syntax'
 
 Plug 'machakann/vim-highlightedyank'
 let g:highlightedyank_highlight_duration = 10000
@@ -132,10 +136,10 @@ endfunction
 " Use tab for selecting completion
 inoremap <expr><tab> pumvisible() ? "\<c-n>" : "\<tab>"
 
-Plug 'ervandew/supertab'
+" Plug 'ervandew/supertab'
 
 
-Plug 'stevearc/vim-arduino'
+" Plug 'stevearc/vim-arduino'
 
 " Strip trailing whitespace on changed lines only
 " Use :WStrip to clean all trailing whitespace
@@ -277,14 +281,20 @@ try
   " set background=dark
   " colorscheme Base2Tone_EveningDark
   " let g:airline_theme='Base2Tone_EveningDark'
-  set background=dark
-  colorscheme Base2Tone_LavenderDark
-  let g:airline_theme='Base2Tone_LavenderDark'
+
+  " set background=dark
+  " colorscheme Base2Tone_LavenderDark
+  " let g:airline_theme='Base2Tone_LavenderDark'
+
   # set background=light
   # colorscheme Base2Tone_LavenderLight
   # let g:airline_theme='Base2Tone_LavenderLight'
+
+  set background=dark
+  colorscheme adventurous
+  let g:airline_theme='Base2Tone_LavenderDark'
 catch
-  echo 'no colorscheme'
+  " echo 'no colorscheme'
 endtry
 
 function! FixColorScheme()

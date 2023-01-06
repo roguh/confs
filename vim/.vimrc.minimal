@@ -133,7 +133,8 @@ let &guicursor = &guicursor . ',a:blinkon0'
 set cursorcolumn
 set cursorline
 " hi  CursorColumn cterm=reverse cterm=reverse gui=reverse
-hi  CursorLine term=underline cterm=underline gui=underline
+hi CursorLine term=underline cterm=underline gui=underline ctermbg=NONE guibg=NONE
+hi CursorColumn term=underline cterm=underline gui=underline ctermbg=NONE guibg=NONE
 
 if has('nvim')
   let $VIMNAME='nvim'
