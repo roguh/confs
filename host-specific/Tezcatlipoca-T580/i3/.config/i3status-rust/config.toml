@@ -1,5 +1,9 @@
 theme = "space-villain"
-icons = "awesome6"
+
+[icons]
+name = "awesome6"
+[icons.overrides]
+# time = ""
 
 [[block]]
 block = "time"
@@ -78,29 +82,12 @@ interval = 1
 block = "time"
 interval = 1
 timezone = "US/Pacific"
-# format = "%d/%m %R:%S.%3f"
+# format = "%d/%m %R:%S"
 format = "%H"
 
-[[block]]
-block = "time"
-interval = 1
-timezone = "US/Central"
-format = "%H"
-# format = "%d/%m %R:%S"
-
-[[block]]
-block = "time"
-interval = 1
-timezone = "US/Eastern"
-format = "%H"
-# format = "%d/%m %R:%S"
-
-[[block]]
-block = "time"
-interval = 1
-timezone = "Europe/Paris"
-format = "%H"
-# format = "%d/%m %R:%S"
+# timezone = "US/Central"
+# timezone = "US/Eastern"
+# timezone = "Europe/Paris"
 
 [[block]]
 block = "time"
@@ -122,3 +109,8 @@ device = "BAT1"
 allow_missing = true
 missing_format = "n/a"
 
+[[block]]
+block = "music"
+max_width = 12
+marquee_speed = 0.3
+buttons = ["play"]
