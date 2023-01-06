@@ -84,7 +84,7 @@ bindsym $mod+F10 workspace 20
 bindsym $mod+F11 workspace 21
 bindsym $mod+F12 workspace 22
 # backtick
-bindsym $mod+grave workspace 0:journal
+bindsym $mod+grave workspace 0:📝
 bindsym $mod+i workspace 21:🏠
 bindsym $mod+o workspace 22:TODO
 bindsym $mod+p workspace 23:fun
@@ -113,7 +113,7 @@ bindsym $mod+Shift+F10 move container to workspace 20; workspace 20
 bindsym $mod+Shift+F11 move container to workspace 21; workspace 21
 bindsym $mod+Shift+F12 move container to workspace 22; workspace 22
 # backtick
-bindsym $mod+Shift+grave move container to workspace 0:journal; workspace 0:journal
+bindsym $mod+Shift+grave move container to workspace 0:📝; workspace 0:📝
 bindsym $mod+Shift+i move container to workspace 21:🏠; workspace 21:🏠
 bindsym $mod+Shift+o move container to workspace 22:TODO; workspace 22:TODO
 bindsym $mod+Shift+p move container to workspace 23:fun; workspace 23:fun

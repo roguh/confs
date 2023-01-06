@@ -91,6 +91,9 @@ set_global REACT_EDITOR none
 set_global PASSWORD_STORE_ENABLE_EXTENSIONS true
 set_global PYTHON_KEYRING_BACKEND keyring.backends.null.Keyring
 
+# This is used for speeding up integration/unit tests on a private repo
+set_global TEST_TIMEOUT_SCALING_FACTOR 1
+
 # To disable parallely notifications unless a failure happens
 set_global_if_unset NOTIFY_COMMAND 'true'
 
