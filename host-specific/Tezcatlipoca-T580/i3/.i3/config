@@ -85,10 +85,10 @@ bindsym $mod+F11 workspace 21
 bindsym $mod+F12 workspace 22
 # backtick
 bindsym $mod+grave workspace 0:journal
-bindsym $mod+i workspace 21:comm
+bindsym $mod+i workspace 21:🏠
 bindsym $mod+o workspace 22:TODO
 bindsym $mod+p workspace 23:fun
-bindsym $mod+bracketleft workspace 24:music
+bindsym $mod+bracketleft workspace 24:𝄞
 
 # Move focused container to workspace
 bindsym $mod+Shift+1 move container to workspace 1; workspace 1
@@ -114,12 +114,12 @@ bindsym $mod+Shift+F11 move container to workspace 21; workspace 21
 bindsym $mod+Shift+F12 move container to workspace 22; workspace 22
 # backtick
 bindsym $mod+Shift+grave move container to workspace 0:journal; workspace 0:journal
-bindsym $mod+Shift+i move container to workspace 21:comm; workspace 21:comm
+bindsym $mod+Shift+i move container to workspace 21:🏠; workspace 21:🏠
 bindsym $mod+Shift+o move container to workspace 22:TODO; workspace 22:TODO
 bindsym $mod+Shift+p move container to workspace 23:fun; workspace 23:fun
 # Doesn't work!
-# bindsym $mod+braceright move container to workspace 24:music; workspace 24:music
-bindsym $mod+Shift+bracketleft move container to workspace 24:music; workspace 24:music
+# bindsym $mod+braceright move container to workspace 24:𝄞; workspace 24:𝄞
+bindsym $mod+Shift+bracketleft move container to workspace 24:𝄞; workspace 24:𝄞
 
 bindsym XF86HomePage exec --no-startup-id i3empty.py next 1
 
@@ -205,7 +205,7 @@ mode "$mode_system" {
 # switch to workspace with urgent window automatically
 for_window [urgent=latest] focus
 
-for_window [class="Spotify|strawberry"] move to workspace 24:music
+for_window [class="Spotify|strawberry"] move to workspace 24:𝄞
 
 # program launcher
 bindsym $mod+d exec --no-startup-id launcher.sh
@@ -308,7 +308,7 @@ exec_always --no-startup-id ff-theme-util
 exec_always --no-startup-id fix_xcursor
 
 # Default workspace
-exec --no-startup-id i3-msg workspace 21:comm
+exec --no-startup-id i3-msg workspace 21:🏠
 # Default layout
 exec --no-startup-id i3-msg layout stacking
 
