@@ -275,6 +275,8 @@ copy_confs_for i3 \
   bin/calculator.sh \
   bin/hue_lights_toggle_all.sh
 
+copy_confs_for udiskie .config/udiskie/config.yml
+
 copy_confs_for i3 \
   bin/launcher.sh \
   bin/locker.sh \

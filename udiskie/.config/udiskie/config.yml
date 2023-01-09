@@ -1,0 +1,4 @@
+# Do not show loop devices mounts.
+device_config:
+  - is_loop: true
+    ignore: true
