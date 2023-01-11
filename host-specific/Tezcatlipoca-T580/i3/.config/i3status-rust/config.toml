@@ -78,16 +78,12 @@ on_click = "xkb-switch -n"
 format = "{layout} {variant}"
 interval = 1
 
-[[block]]
-block = "time"
-interval = 1
-timezone = "US/Pacific"
-# format = "%d/%m %R:%S"
-format = "%H"
-
+# timezone = "US/Pacific"
+# timezone = "US/Mountain"
 # timezone = "US/Central"
 # timezone = "US/Eastern"
 # timezone = "Europe/Paris"
+# timezone = "America/Argentina/Buenos_Aires"
 
 [[block]]
 block = "time"
@@ -95,6 +91,12 @@ interval = 1
 timezone = "US/Mountain"
 format = "%d/%m %R"
 # format = "%H"
+
+[[block]]
+block = "time"
+interval = 1
+timezone = "America/Argentina/Buenos_Aires"
+format = "%H"
 
 [[block]]
 block = "battery"
