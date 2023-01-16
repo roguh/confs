@@ -154,6 +154,8 @@ if command -v kubectl > /dev/null
     abbr kubectl-start-sync-app 'kubectl -n argocd patch --type=merge application -p "{\"spec\":{\"syncPolicy\":{\"automated\":{\"selfHeal\":true}}}}"'
 
     debug Setup Kubernetes abbreviations
+
+    addpaths $HOME/.krew/bin
 end
 
 if command -v docker > /dev/null

@@ -57,7 +57,7 @@ truncation_symbol = ""
 "2022_CognizantFullstackNanodegree_SessionLead" = "2022nd"
 
 [time]
-disabled = true
+disabled = false
 style = "dimmed white"
 format = "[$time]($style) "
 
@@ -93,8 +93,8 @@ success_symbol = "[\\$](bold white)"
 error_symbol = "[X](bold red)"
 
 [cmd_duration]
-min_time = 1_000
-show_milliseconds = true
+min_time = 60_000
+show_milliseconds = false
 format = "[$duration]($style) "
 
 [kubernetes]
