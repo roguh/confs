@@ -16,6 +16,8 @@ interval = 1600
 
 [[block]]
 block = "custom"
+# Barebones shell with no extra formatting
+shell = "dash"
 # Ping Google's rock solid DNS server
 # Print packet loss percentage and total time to send packet(s)
 # Send a total of -c=2 packets with a deadline timeout of -W=2 seconds

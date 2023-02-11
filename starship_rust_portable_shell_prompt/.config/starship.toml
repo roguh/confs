@@ -104,6 +104,7 @@ style = "fg:#88ddff"
 [kubernetes.context_aliases]
 "0007-04-hugoroguh" = "0007-04"
 "1337-77-hugo" = "1337-77"
+"gke_edf-re-powerflex-dev-16b1_us-west2_gke-dev-powerflex-cluster" = "gke-dev"
 
 [git_commit]
 commit_hash_length = 4

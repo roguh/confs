@@ -18,17 +18,17 @@ function fish_greeting
       clear
     end
 
-    if command -v neofetch > /dev/null 2>&1
-      if command -v neofetch-cached > /dev/null 2>&1
-        neofetch-cached
-      else
-        neofetch
-      end
-    else if command -v screenfetch > /dev/null 2>&1
+    if command -v screenfetch > /dev/null 2>&1
       if command -v screenfetch-cached > /dev/null 2>&1
         screenfetch-cached
       else
         screenfetch
+      end
+    else if command -v neofetch > /dev/null 2>&1
+      if command -v neofetch-cached > /dev/null 2>&1
+        neofetch-cached
+      else
+        neofetch
       end
     end
     
