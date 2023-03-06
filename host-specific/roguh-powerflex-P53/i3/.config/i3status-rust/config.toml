@@ -1,10 +1,14 @@
 theme = "space-villain"
-icons = "awesome5"
+
+[icons]
+name = "awesome6"
+[icons.overrides]
+# time = ""
 
 [[block]]
 block = "time"
-interval = 0.05
-format = "%s.%6f"
+interval = 0.8
+format = "%s"
 
 [[block]]
 block = "speedtest"
@@ -12,6 +16,8 @@ interval = 1600
 
 [[block]]
 block = "custom"
+# Barebones shell with no extra formatting
+shell = "dash"
 # Ping Google's rock solid DNS server
 # Print packet loss percentage and total time to send packet(s)
 # Send a total of -c=2 packets with a deadline timeout of -W=2 seconds
@@ -19,8 +25,8 @@ block = "custom"
 # -t Time to live for each packet
 # -i Wait this many seconds between sending each packet
 # -c Send this many packets
-command = '''ping -W 0.5 -t 250 -i 0.05 -c 10   8.8.8.8   | grep -o "[0-9.]\\+% packet loss, time" | sed "s/, time// ; s/ms//"'''
-interval = 0.5
+command = '''ping -W 0.5 -t 250 -i 0.05 -c 10   8.8.8.8   | grep -o "[0-9.]\\+% packet loss, time" | sed "s/ packet loss, time/L/ ; s/ms//"'''
+interval = 2
 
 [[block]]
 block = "networkmanager"
@@ -41,7 +47,7 @@ alert = 10.0
 [[block]]
 block = "memory"
 display_type = "memory"
-format_mem = "{mem_used_percents} RAM"
+format_mem = "{mem_used_percents}RAM"
 format_swap = "{swap_used_percents}"
 
 [[block]]
@@ -68,41 +74,6 @@ device_kind = "source"
 on_click = "pavucontrol"
 
 [[block]]
-block = "time"
-interval = 1
-timezone = "US/Pacific"
-format = "%d/%m %R:%S.%3f"
-# format = "%H"
-
-[[block]]
-block = "time"
-interval = 1
-timezone = "US/Mountain"
-# format = "%d/%m %R:%S.%3f"
-format = "%H"
-
-[[block]]
-block = "time"
-interval = 1
-timezone = "US/Central"
-format = "%H"
-# format = "%d/%m %R:%S"
-
-[[block]]
-block = "time"
-interval = 1
-timezone = "US/Eastern"
-format = "%H"
-# format = "%d/%m %R:%S"
-
-[[block]]
-block = "time"
-interval = 1
-timezone = "Europe/Paris"
-format = "%H"
-# format = "%d/%m %R:%S"
-
-[[block]]
 block = "keyboard_layout"
 driver = "xkbswitch"
 on_click = "xkb-switch -n"
@@ -110,6 +81,39 @@ format = "{layout} {variant}"
 interval = 1
 
 [[block]]
+block = "time"
+interval = 1
+timezone = "US/Pacific"
+# format = "%d/%m %R:%S"
+format = "%H"
+
+# timezone = "US/Central"
+# timezone = "US/Eastern"
+# timezone = "Europe/Paris"
+# timezone = "America/Argentina/Buenos_Aires"
+
+[[block]]
+block = "time"
+interval = 1
+timezone = "US/Mountain"
+format = "%d/%m %R"
+# format = "%H"
+
+[[block]]
 block = "battery"
 interval = 10
 format = "{percentage} {power}"
+
+[[block]]
+block = "battery"
+interval = 10
+format = "{percentage} {power}"
+device = "BAT1"
+missing_format = "n/a"
+
+[[block]]
+block = "music"
+max_width = 12
+marquee_speed = 0.15
+marquee_interval = 4
+buttons = ["play"]

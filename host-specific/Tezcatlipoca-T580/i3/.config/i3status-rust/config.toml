@@ -110,7 +110,6 @@ block = "battery"
 interval = 10
 format = "{percentage} {power}"
 device = "BAT1"
-allow_missing = true
 missing_format = "n/a"
 
 [[block]]

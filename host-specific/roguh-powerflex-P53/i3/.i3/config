@@ -16,7 +16,7 @@ set $mod Mod4
 # font pango:monospace 11
 # font pango:DejaVu Sans Mono 10
 # font pango: Source Code Pro 10
-font pango:MonoLisa Heavy 10
+font pango:MonoLisa Heavy 9
 # font pango:MonoLisa Heavy 0
 
 # Use Mouse+$mod to drag floating windows to their wanted position
@@ -84,11 +84,11 @@ bindsym $mod+F10 workspace 20
 bindsym $mod+F11 workspace 21
 bindsym $mod+F12 workspace 22
 # backtick
-bindsym $mod+grave workspace 0:journal
-bindsym $mod+i workspace 21:comm
+bindsym $mod+grave workspace 0:📝
+bindsym $mod+i workspace 21:🏠
 bindsym $mod+o workspace 22:TODO
 bindsym $mod+p workspace 23:fun
-bindsym $mod+bracketleft workspace 24:music
+bindsym $mod+bracketleft workspace 24:𝄞
 
 # Move focused container to workspace
 bindsym $mod+Shift+1 move container to workspace 1; workspace 1
@@ -113,13 +113,13 @@ bindsym $mod+Shift+F10 move container to workspace 20; workspace 20
 bindsym $mod+Shift+F11 move container to workspace 21; workspace 21
 bindsym $mod+Shift+F12 move container to workspace 22; workspace 22
 # backtick
-bindsym $mod+Shift+grave move container to workspace 0:journal; workspace 0:journal
-bindsym $mod+Shift+i move container to workspace 21:comm; workspace 21:comm
+bindsym $mod+Shift+grave move container to workspace 0:📝; workspace 0:📝
+bindsym $mod+Shift+i move container to workspace 21:🏠; workspace 21:🏠
 bindsym $mod+Shift+o move container to workspace 22:TODO; workspace 22:TODO
 bindsym $mod+Shift+p move container to workspace 23:fun; workspace 23:fun
 # Doesn't work!
-# bindsym $mod+braceright move container to workspace 24:music; workspace 24:music
-bindsym $mod+Shift+bracketleft move container to workspace 24:music; workspace 24:music
+# bindsym $mod+braceright move container to workspace 24:𝄞; workspace 24:𝄞
+bindsym $mod+Shift+bracketleft move container to workspace 24:𝄞; workspace 24:𝄞
 
 bindsym XF86HomePage exec --no-startup-id i3empty.py next 1
 
@@ -205,6 +205,8 @@ mode "$mode_system" {
 # switch to workspace with urgent window automatically
 for_window [urgent=latest] focus
 
+for_window [class="Spotify|strawberry"] move to workspace 24:𝄞
+
 # program launcher
 bindsym $mod+d exec --no-startup-id launcher.sh
 bindsym $mod+Tab exec --no-startup-id launcher.sh window
@@ -232,16 +234,16 @@ bindsym Control+grave exec dunstctl history-pop
 
 #### i3 gaps
 # window border
-new_window normal 0
+# new_window normal 0
 
 # Hide borders
 hide_edge_borders none
 
-for_window [class="^.*"] border pixel 0
+# for_window [class="^.*"] border pixel 0
 
 smart_gaps on
-gaps outer 0
-gaps inner 68
+gaps outer 2
+gaps inner 4
 
 # hide border for extremely common windows
 for_window [title="Firefox|Chromium|Chrome$"] border pixel 1
@@ -275,17 +277,22 @@ exec --no-startup-id backup.sh
 # exec --no-startup-id ~/.dropbox-dist/dropboxd
 # Arch: Install dropbox from the AUR
 exec --no-startup-id /opt/dropbox/dropboxd
-exec --no-startup-id kitty fish -c welcome-shell.sh
 exec --no-startup-id kdeconnect-indicator
+exec --no-startup-id onboard
 # For switching sound devices
 exec --no-startup-id indicator-sound-switcher
 
+exec --no-startup-id kitty fish -c welcome-shell.sh
+exec --no-startup-id evolution
 exec --no-startup-id firefox
+exec --no-startup-id emacs --daemon
 exec --no-startup-id teams-insiders
 exec --no-startup-id slack-snap.sh
 exec --no-startup-id .screenlayout/select-arandr-display.sh
 
 exec --no-startup-id "xbindkeys"
+
+exec --no-startup-id "xrandr --output DP-1 --primary"
 
 
 
@@ -303,7 +310,9 @@ exec_always --no-startup-id ff-theme-util
 exec_always --no-startup-id fix_xcursor
 
 # Default workspace
-exec --no-startup-id i3-msg workspace 21:comm
+exec --no-startup-id i3-msg workspace 21:🏠
+# Default layout
+exec --no-startup-id i3-msg layout stacking
 
 
 # Color palette used for the terminal ( ~/.Xresources file )
@@ -347,14 +356,14 @@ bindsym $mod+m bar mode toggle
 bar {
 	i3bar_command i3bar
 	status_command i3status-rs
-  font pango:MonoLisa Light, FontAwesome, PowerlineSymbols 8
+  font pango:MonoLisa Light, FontAwesome, PowerlineSymbols 9
 	position bottom
 
   # mode hide
   # hidden_state hide
   modifier $mod
 
-  ## please set your primary output first. Example: 'xrandr --output eDP1 --primary'
+  ## please set your primary output first. Example: 'xrandr --output DP-1 --primary'
   tray_output primary
 
 	bindsym button4 nop
@@ -364,7 +373,7 @@ bar {
     separator #666666
     background #000000
     statusline #ffffff
-    focused_workspace #551a8b #551a8b #ffffff #282828
+    focused_workspace #277BD3 #277BD3 #ffffff #282828
     active_workspace #333333 #5f676a #ffffff #928374
     inactive_workspace #000000 #000000 #888888 #928374
     urgent_workspace #2f343a #900000 #ffffff #ebdbb2
@@ -372,7 +381,7 @@ bar {
 }
 
 
-client.focused #3b1261 #3b1261 #ffffff #662b9c
+client.focused #277BD3 #277BD3 #ffffff #662b9c
 client.focused_inactive #333333 #5f676a #ffffff #484e50
 client.unfocused #222222 #222222 #888888 #292d2e
 client.urgent #2f343a #900000 #ffffff #900000
