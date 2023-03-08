@@ -1,6 +1,8 @@
 # Hugo O. Rivera's FISH config
 # Remember to run `install_plugins` once.
 
+# localectl set-locale LANG=fr_FR.UTF-8 LANGUAGE=fr_FR.UTF-8:es_US.UTF-8:en_US.UTF-8:C LC_COLLATE=C
+
 set START_TIME (date +%s.%N)
 set FAST_STARTUP true
 set DEBUG_OUTPUT false
@@ -80,8 +82,8 @@ addpaths /opt/flutter/bin
 addpaths /opt/cuda/bin
 addpaths /opt/asdf-vm/bin/
 
-set_global_if_unset LC_ALL en_US.UTF-8
-set_global_if_unset LANG en_US.UTF-8
+# set_global_if_unset LC_ALL en_US.UTF-8
+# set_global_if_unset LANG en_US.UTF-8
 
 set_global_if_unset ESHELL /bin/bash
 set_global_if_unset SHELL (which fish)
@@ -359,7 +361,7 @@ if status is-interactive
   end
 
   set TOTAL_STARTUP_TIME (echo (date +%s.%N) "$START_TIME" | awk '{print ($1 - $2) * 1000}' || echo UNKNOWN)
-  log Startup time "$TOTAL_STARTUP_TIME"ms
+  log "$TOTAL_STARTUP_TIME"ms
   echo "$TOTAL_STARTUP_TIME" (date +%Y-%m-%d) >> "$HOME/tmp/fish_startup_times"
 end
 

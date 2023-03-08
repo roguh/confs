@@ -1,4 +1,4 @@
-theme = "space-villain"
+theme = "native"
 
 [icons]
 name = "awesome6"
@@ -32,7 +32,7 @@ interval = 2
 block = "networkmanager"
 on_click = "alacritty -e nmtui"
 ap_format = "{ssid^2}"
-interface_name_exclude = ["br\\-[0-9a-f]{12}", "docker\\d+"]
+interface_name_exclude = ["br\\-[0-9a-f]{12}", "docker\\d+", "lo", "localhost", "loop"]
 
 [[block]]
 block = "disk_space"
@@ -104,13 +104,6 @@ format = "%H"
 block = "battery"
 interval = 10
 format = "{percentage} {power}"
-
-[[block]]
-block = "battery"
-interval = 10
-format = "{percentage} {power}"
-device = "BAT1"
-missing_format = "n/a"
 
 [[block]]
 block = "music"

@@ -39,6 +39,8 @@ tryalias c clear
 
 tryalias docker-prune-everything 'docker system prune -a -f'
 
+tryalias pink 'printf "\x1b[48;5;200m  PINK  "'
+
 tryalias bucle curl
 
 # cp ~/.kube/config ~/.kube/config.bak && KUBECONFIG=~/.kube/config:./ADDITIONAL_KUBECONFIG kubectl config view --flatten > /tmp/config && mv /tmp/config ~/.kube/config

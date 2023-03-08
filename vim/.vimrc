@@ -19,6 +19,8 @@ Plug 'dstein64/vim-startuptime'
 " Plug 'sainnhe/gruvbox-material'
 Plug 'atelierbram/Base2Tone-vim'
 Plug 'kitten/vim-adventurous'
+Plug 'tjdevries/colorbuddy.nvim', { 'branch': 'dev' }
+Plug 'jesseleite/nvim-noirbuddy'
 
 " Reload files edited externally
 Plug 'djoshea/vim-autoread'
@@ -133,10 +135,10 @@ function! s:show_documentation()
   endif
 endfunction
 
+Plug 'ervandew/supertab'
+
 " Use tab for selecting completion
 inoremap <expr><tab> pumvisible() ? "\<c-n>" : "\<tab>"
-
-" Plug 'ervandew/supertab'
 
 
 " Plug 'stevearc/vim-arduino'
@@ -286,15 +288,23 @@ try
   " colorscheme Base2Tone_LavenderDark
   " let g:airline_theme='Base2Tone_LavenderDark'
 
-  # set background=light
-  # colorscheme Base2Tone_LavenderLight
-  # let g:airline_theme='Base2Tone_LavenderLight'
+  " set background=light
+  " colorscheme Base2Tone_LavenderLight
+  " let g:airline_theme='Base2Tone_LavenderLight'
+
+  " set background=dark
+  " colorscheme adventurous
+  " let g:airline_theme='Base2Tone_LavenderDark'
 
   set background=dark
-  colorscheme adventurous
-  let g:airline_theme='Base2Tone_LavenderDark'
+  lua require("noirbuddy").setup()
 catch
-  " echo 'no colorscheme'
+  try
+    set background=dark
+    colorscheme adventurous
+    let g:airline_theme='Base2Tone_LavenderDark'
+  catch
+  endtry
 endtry
 
 function! FixColorScheme()
