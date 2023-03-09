@@ -304,7 +304,7 @@ exec --no-startup-id xrdb -merge ~/.Xresources
 exec --no-startup-id killall xfce4-notifyd; dunst
 
 # Night light. 36N, 115W
-exec --no-startup-id redshift -l36:-115 -t 5500K:2500K
+exec --no-startup-id redshift -l36:-115 -t 5500K:2000K
 
 exec_always --no-startup-id ff-theme-util
 exec_always --no-startup-id fix_xcursor
