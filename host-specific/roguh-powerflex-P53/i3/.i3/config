@@ -16,7 +16,7 @@ set $mod Mod4
 # font pango:monospace 11
 # font pango:DejaVu Sans Mono 10
 # font pango: Source Code Pro 10
-font pango:MonoLisa Heavy 9
+font pango:MonoLisa Heavy 10
 # font pango:MonoLisa Heavy 0
 
 # Use Mouse+$mod to drag floating windows to their wanted position
@@ -304,7 +304,7 @@ exec --no-startup-id xrdb -merge ~/.Xresources
 exec --no-startup-id killall xfce4-notifyd; dunst
 
 # Night light. 36N, 115W
-exec --no-startup-id redshift -l36:-115
+exec --no-startup-id redshift -l36:-115 -t 5500K:2500K
 
 exec_always --no-startup-id ff-theme-util
 exec_always --no-startup-id fix_xcursor
@@ -373,7 +373,7 @@ bar {
     separator #666666
     background #000000
     statusline #ffffff
-    focused_workspace #277BD3 #277BD3 #ffffff #282828
+    focused_workspace #ff1694 #ff1694 #ffffff #282828
     active_workspace #333333 #5f676a #ffffff #928374
     inactive_workspace #000000 #000000 #888888 #928374
     urgent_workspace #2f343a #900000 #ffffff #ebdbb2
@@ -381,7 +381,7 @@ bar {
 }
 
 
-client.focused #277BD3 #277BD3 #ffffff #662b9c
+client.focused #ff1694 #ff1694 #ffffff #662b9c
 client.focused_inactive #333333 #5f676a #ffffff #484e50
 client.unfocused #222222 #222222 #888888 #292d2e
 client.urgent #2f343a #900000 #ffffff #900000
