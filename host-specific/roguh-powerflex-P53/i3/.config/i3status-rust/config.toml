@@ -6,6 +6,12 @@ name = "awesome6"
 # time = ""
 
 [[block]]
+block = "custom"
+shell = "dash"
+command = "nvidia-i3-status.sh"
+interval = 5
+
+[[block]]
 block = "time"
 interval = 0.8
 format = "%s"
@@ -115,3 +121,4 @@ max_width = 12
 marquee_speed = 0.15
 marquee_interval = 4
 buttons = ["play"]
+

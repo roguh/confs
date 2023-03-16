@@ -286,7 +286,7 @@ copy_confs_for i3 \
   bin/wallpaper.sh \
   bin/welcome-shell.sh \
 
-copy_confs_for_host i3 .config/i3status-rust/ .i3/config
+copy_confs_for_host i3 .config/i3status-rust/ .i3/config bin/nvidia-i3-status.sh
 
 copy_confs_for ipython \
     .ipython/profile_default/ipython_config.py \

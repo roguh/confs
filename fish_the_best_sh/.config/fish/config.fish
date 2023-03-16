@@ -281,7 +281,8 @@ function anaconda_fish_init
 end
 
 function miniconda_fish_init
-  set --local CONDA_BIN "$HOME/miniconda3/bin/conda"
+  # set --local CONDA_BIN "$HOME/miniconda3/bin/conda"
+  set --local CONDA_BIN "/opt/miniconda3/bin/conda"
   if ! command -v "$CONDA_BIN" > /dev/null
     return 1
   end

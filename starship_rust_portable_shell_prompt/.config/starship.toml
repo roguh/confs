@@ -54,6 +54,7 @@ truncation_symbol = ""
 "storage_interface" = "storint"
 "storage_simulator" = "storsim"
 "edge_device_manager" = "devman"
+"presentations" = "pr"
 "2022_CognizantFullstackNanodegree_SessionLead" = "2022nd"
 
 [time]
