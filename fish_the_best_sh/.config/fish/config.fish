@@ -86,12 +86,17 @@ addpaths /opt/asdf-vm/bin/
 # set_global_if_unset LANG en_US.UTF-8
 
 set_global_if_unset ESHELL /bin/bash
-set_global_if_unset SHELL (which fish)
+set_global_if_unset SHELL (command -v fish)
 set_global_if_unset EDITOR vim
 set_global_if_unset VISUAL vim
 set_global REACT_EDITOR none
 set_global PASSWORD_STORE_ENABLE_EXTENSIONS true
 set_global PYTHON_KEYRING_BACKEND keyring.backends.null.Keyring
+
+# Caused bitsandbytes package from  oobabooga/text-generation-webui
+# to crash as it scanned through all env vars in search of CUDA stuff
+set --unexport XDG_GREETER_DATA_DIR
+set_global CUDA_LIB /opt/cuda/targets/x86_64-linux/lib/
 
 # This is used for speeding up integration/unit tests on a private repo
 set_global TEST_TIMEOUT_SCALING_FACTOR 2
@@ -170,7 +175,7 @@ if command -v docker > /dev/null
 end
 
 if command -v makeanywhere > /dev/null
-    set -g MAKEANYWHERE (which makeanywhere)
+    set -g MAKEANYWHERE (command -v makeanywhere)
     function makeanywhere --wraps make --description "makeanywhere --wraps make $MAKEANYWHERE"
         "$MAKEANYWHERE" $argv
     end
@@ -286,9 +291,9 @@ function miniconda_fish_init
   if ! command -v "$CONDA_BIN" > /dev/null
     return 1
   end
-  eval "$CONDA_BIN" "shell.fish" "hook" $argv | source
-  conda activate torch
-  debug Loaded miniconda and its torch environment
+  eval "$CONDA_BIN" "shell.fish" "hook" | source
+  conda activate $argv[1]
+  debug Loaded miniconda and the $argv[1] environment
 end
 
 # If this is overwriting your system's Python:
@@ -297,12 +302,6 @@ end
 # miniconda_fish_init
 
 if status is-interactive
-  # Load direnv
-  if command -v direnv > /dev/null 2>&1
-    direnv hook fish | source
-    debug Loaded direnv
-  end
-
   if command -v xset > /dev/null 2>&1 && [ -n "$DISPLAY" ]
     xset r rate 200 60
     debug Set keyboard rate
@@ -363,7 +362,6 @@ if status is-interactive
 
   set TOTAL_STARTUP_TIME (echo (date +%s.%N) "$START_TIME" | awk '{print ($1 - $2) * 1000}' || echo UNKNOWN)
   log "$TOTAL_STARTUP_TIME"ms
-  echo "$TOTAL_STARTUP_TIME" (date +%Y-%m-%d) >> "$HOME/tmp/fish_startup_times"
 end
 
 set SHELL_TYPE ([ -n "$SSH_CLIENT" ] && echo ' SSH' || echo)
@@ -394,9 +392,6 @@ function install_plugin_manager
 end
 
 function install_plugins
-  # Run bash commands
-  fisher install edc/bass
-
   # Done
   fisher install franciscolourenco/done
 
@@ -404,17 +399,8 @@ function install_plugins
   if command -v kubectl > /dev/null 2>&1
     fisher install evanlucas/fish-kubectl-completions
   end
-
-  # pyenv
-  if command -v pyenv > /dev/null 2>&1
-    fisher install oh-my-fish/plugin-pyenv
-  end
 end
 
 # Fish does lots of things by default:
 # ignore dups and blank lines in history
 # interactive cd and autocompletion
-
-# tabtab source for packages
-# uninstall by removing these lines
-[ -f ~/.config/tabtab/fish/__tabtab.fish ]; and . ~/.config/tabtab/fish/__tabtab.fish; or true

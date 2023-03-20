@@ -6,11 +6,6 @@ tryalias pass $HOME/bin/pass-with-custom-editor.sh
 tryalias em 'emacs -nw'
 tryalias emc 'emacsclient -nw --alternate-editor=""'
 tryalias emacsc 'emacsclient --alternate-editor=""'
-tryalias femacs 'emacs'
-tryalias fem 'emacs -nw'
-tryalias femc 'emacsclient -nw --alternate-editor=""'
-tryalias fem_c 'emacsclient -nw --alternate-editor=""'
-tryalias femacsc 'emacsclient --alternate-editor=""'
 tryalias mv 'mv -i'
 tryalias cp 'cp -i'
 tryalias rm 'rm -i'
@@ -33,11 +28,6 @@ tryalias vmin 'nvim -u ~/.vimrc.minimal' 'vim -u ~/.vimrc.minmal' vis vi nano 'n
 tryalias e 'zathura --fork' evince mupdf mupdf-x11 qpdfview 'wine READER10.exe'
 
 tryalias pmake 'pipenv run make'
-
-tryalias cl clear
-tryalias c clear
-
-tryalias docker-prune-everything 'docker system prune -a -f'
 
 tryalias pink 'printf "\x1b[48;5;200m  PINK  "'
 

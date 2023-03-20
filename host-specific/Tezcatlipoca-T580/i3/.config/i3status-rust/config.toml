@@ -6,6 +6,12 @@ name = "awesome6"
 # time = ""
 
 [[block]]
+block = "custom"
+shell = "dash"
+command = "nvidia-i3-status.sh"
+interval = 5
+
+[[block]]
 block = "time"
 interval = 0.8
 format = "%s"
@@ -13,6 +19,7 @@ format = "%s"
 [[block]]
 block = "speedtest"
 interval = 1600
+format = " $ping $speed_down "
 
 [[block]]
 block = "custom"
@@ -25,7 +32,7 @@ shell = "dash"
 # -t Time to live for each packet
 # -i Wait this many seconds between sending each packet
 # -c Send this many packets
-command = '''ping -W 0.5 -t 250 -i 0.05 -c 10   8.8.8.8   | grep -o "[0-9.]\\+% packet loss, time" | sed "s/ packet loss, time/L/ ; s/ms//"'''
+command = '''ping -W 0.5 -t 250 -i 0.05 -c 10   8.8.8.8   | grep -o "[0-9.]\\+% packet loss, time" | sed "s/ packet loss, time/ loss/ ; s/ms//"'''
 interval = 2
 
 [[block]]
@@ -47,8 +54,8 @@ alert = 10.0
 [[block]]
 block = "memory"
 display_type = "memory"
-format_mem = "{mem_used_percents}RAM"
-format_swap = "{swap_used_percents}"
+format_mem = "{mem_used}RAM"
+format_swap = "{swap_used}"
 
 [[block]]
 block = "cpu"
@@ -91,7 +98,7 @@ interval = 1
 block = "time"
 interval = 1
 timezone = "US/Mountain"
-format = "%d/%m %R"
+format = "%d %R"
 # format = "%H"
 
 [[block]]
@@ -104,6 +111,15 @@ format = "%H"
 block = "battery"
 interval = 10
 format = "{percentage} {power}"
+device = "BAT1"
+missing_format = "?"
+
+[[block]]
+block = "battery"
+interval = 10
+format = "{percentage} {power}"
+device = "BAT0"
+missing_format = "?"
 
 [[block]]
 block = "music"

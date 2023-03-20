@@ -264,30 +264,31 @@ bindsym $mod+Shift+c exec "i3-msg reload"
 bindsym $mod+Shift+r restart
 
 # Autostart applications
-exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
-exec --no-startup-id nitrogen --restore; sleep 1; compton -b
+# exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
 exec --no-startup-id nm-applet
 exec --no-startup-id udiskie --smart-tray
 exec --no-startup-id xfce4-power-manager
-exec --no-startup-id vorta
-exec --no-startup-id blueman-applet
+# exec --no-startup-id blueman-applet
 exec --no-startup-id conky.sh
 exec --no-startup-id wallpaper.sh
 exec --no-startup-id xautolock -time 10 -locker locker.sh
-exec --no-startup-id caffeine
+# For disabling power management, e.g. when watching a movie
+# exec --no-startup-id caffeine
 exec --no-startup-id backup.sh
-# exec --no-startup-id ~/.dropbox-dist/dropboxd
+# Run Dropbox daemon to sync files
 # Arch: Install dropbox from the AUR
 exec --no-startup-id /opt/dropbox/dropboxd
-exec --no-startup-id kdeconnect-indicator
-exec --no-startup-id onboard
+# Connect to devices on LAN
+# exec --no-startup-id kdeconnect-indicator
+# On-screen keyboard
+# exec --no-startup-id onboard
 # For switching sound devices
-exec --no-startup-id indicator-sound-switcher
+# exec --no-startup-id indicator-sound-switcher
 
 exec --no-startup-id kitty fish -c welcome-shell.sh
 exec --no-startup-id evolution
 exec --no-startup-id firefox
-exec --no-startup-id emacs --daemon
+# exec --no-startup-id emacs --daemon
 # exec --no-startup-id discord
 # exec --no-startup-id signal-desktop --use-tray-icon
 exec --no-startup-id .screenlayout/select-arandr-display.sh
@@ -296,7 +297,7 @@ exec --no-startup-id "xbindkeys"
 
 
 
-exec --no-startup-id indicator-keylock # notifications when capslock pressed
+# exec --no-startup-id indicator-keylock # notifications when capslock pressed
 exec --no-startup-id set-keyboard-layout.sh
 exec --no-startup-id xrdb -merge ~/.Xresources
 
