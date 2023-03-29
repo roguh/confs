@@ -67,7 +67,6 @@ set_global DO_NOT_CLEAR true
 
 load_file $HOME/.config/fish/local_env.fish
 set_global_if_unset FISH_LOGO Fish # 🐠
-set_global DOCKER_BUILDKIT 1
 
 addpaths $HOME/bin --verbose
 addpaths $HOME/.local/bin  --verbose
@@ -171,6 +170,8 @@ if command -v docker > /dev/null
     abbr dl 'docker logs'
     abbr dex 'docker exec'
     abbr dck 'docker container kill (docker ps -q)'
+    set_global BUILDKIT_PROGRESS plain
+    set_global DOCKER_BUILDKIT 1
     debug Setup Docker abbreviations
 end
 
