@@ -138,6 +138,7 @@ if command -v git > /dev/null
     abbr gdt 'git difftool'
     abbr gl 'git log'
     abbr gcl 'git clone'
+    abbr gri 'git rebase -i'
     debug Setup Git abbreviations
 end
 
