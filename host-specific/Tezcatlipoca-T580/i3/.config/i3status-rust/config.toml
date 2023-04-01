@@ -1,14 +1,19 @@
-theme = "native"
+#  TODO update format
+# TODO pomodoro timer
+# TODO new wifi display
+[theme]
 
 [icons]
-name = "awesome6"
-[icons.overrides]
-# time = ""
+icons = "awesome6"
+
+[[block]]
+block = "external_ip"
+format = " $ip $country_flag "
 
 [[block]]
 block = "time"
+format = " $timestamp.datetime(f:'%s') "
 interval = 1
-format = "%s"
 
 [[block]]
 block = "custom"
@@ -20,7 +25,7 @@ interval = 5
 block = "speedtest"
 interval = 1600
 # format = " $ping $speed_down "
-format = " {ping} {speed_down} "
+format = "$ping $speed_down"
 
 [[block]]
 block = "custom"
@@ -36,56 +41,50 @@ shell = "dash"
 command = '''ping -W 0.5 -t 250 -i 0.05 -c 10   8.8.8.8   | grep -o "[0-9.]\\+% packet loss, time" | sed "s/ packet loss, time/L/ ; s/ms//"'''
 interval = 3
 
-[[block]]
-block = "networkmanager"
-on_click = "alacritty -e nmtui"
-ap_format = "{ssid^2}"
-interface_name_exclude = ["br\\-[0-9a-f]{12}", "docker\\d+", "lo", "localhost", "loop"]
+# [[block]]
+# block = "networkmanager"
+# on_click = "alacritty -e nmtui"
+# ap_format = "{ssid^2}"
+# interface_name_exclude = ["br\\-[0-9a-f]{12}", "docker\\d+", "lo", "localhost", "loop"]
 
 [[block]]
 block = "disk_space"
 path = "/"
-alias = "/"
+# alias = "/"
 info_type = "available"
-unit = "GB"
+# unit = "GB"
 interval = 20
 warning = 20.0
 alert = 10.0
 
 [[block]]
 block = "memory"
-display_type = "memory"
-format_mem = "{mem_used}"
-format_swap = "{swap_used}"
 
 [[block]]
 block = "cpu"
-format = "{utilization} {frequency}"
+format = "$utilization $frequency"
 interval = 2
 
 [[block]]
 block = "temperature"
 interval = 2
-collapsed = false
 scale = "fahrenheit"
-format = "{average}F"
+format = " $average F "
 
 [[block]]
 block = "sound"
 step_width = 1
-on_click = "pavucontrol"
 
 [[block]]
 block = "sound"
 step_width = 1
 device_kind = "source"
-on_click = "pavucontrol"
 
 [[block]]
 block = "keyboard_layout"
-driver = "xkbswitch"
-on_click = "xkb-switch -n"
-format = "{layout} {variant}"
+driver = "setxkbmap"
+# on_click = "xkb-switch -n"
+# format = "{layout} {variant}"
 interval = 1
 
 # timezone = "US/Pacific"
@@ -98,26 +97,20 @@ interval = 1
 [[block]]
 block = "time"
 interval = 15
-timezone = "US/Mountain"
-format = "%d %R"
+format = " $timestamp.datetime(f:'%d %R') "
 
 [[block]]
 block = "battery"
 interval = 30
-format = "{percentage} {power}"
 device = "BAT1"
-missing_format = "?"
+format = "$percentage $power"
 
 [[block]]
 block = "battery"
 interval = 30
-format = "{percentage} {power}"
 device = "BAT0"
-missing_format = "?"
+format = "$percentage $power"
 
 [[block]]
 block = "music"
-max_width = 12
-marquee_speed = 0.15
-marquee_interval = 4
-buttons = ["play"]
+# max_width = 12
