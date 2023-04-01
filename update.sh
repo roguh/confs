@@ -331,7 +331,7 @@ copy_confs_for performance bin/cerberus.sh bin/cerberus-notify-send.sh
 
 copy_confs_for feh_sane_defaults bin/feh-sane-defaults.sh bin/feh-sane-defaults-gallery.sh
 
-copy_confs_for pacman_scripts bin/pacman-remove-orphans.sh bin/defuck-a-pacman-install.sh
+copy_confs_for pacman_scripts bin/pacman-remove-orphans.sh bin/defuck-a-pacman-install.sh bin/pacman-sort-by-size.sh
 
 copy_confs_for arandr bin/switch-displays-xrandr.sh
 
