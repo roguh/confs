@@ -71,11 +71,6 @@ block = "sound"
 step_width = 1
 device_kind = "source"
 
-[[block]]
-block = "keyboard_layout"
-driver = "setxkbmap"
-interval = 10
-
 # timezone = "US/Pacific"
 # timezone = "US/Mountain"
 # timezone = "US/Central"
@@ -102,3 +97,4 @@ format = " $percentage $power "
 
 [[block]]
 block = "music"
+format = " {$combo.str(max_w:8) $play $next |}"

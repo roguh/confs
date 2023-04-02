@@ -2,7 +2,6 @@
 set -o pipefail
 
 if ! nvidia-smi --query-gpu=memory.used --format=csv > /dev/zero ; then
-  echo '🚫nv'
   exit 1
 fi
 
