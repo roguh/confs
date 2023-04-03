@@ -187,11 +187,7 @@ copy_confs_for vim \
   .vimrc \
   .vimrc.minimal \
   .config/nvim/coc-settings.json \
-  .bash_vim \
-  bin/pyston-pylint \
-  bin/pyston-black \
-  bin/pyston-isort \
-  bin/try-pyston
+  .bash_vim
 
 copy_confs_for vis \
   .config/vis/visrc.lua \
@@ -217,7 +213,7 @@ copy_confs_for starship_rust_portable_shell_prompt \
   .config/starship.toml
 
 copy_confs_for "{ba,z,tc,c}sh" \
-  .bashrc .bashrc_ps1 .bash_profile .zshrc .cshrc .tryalias.sh .aliases bin/trimdir.py bin/gitinfo.sh bin/projectname.sh bin/projectroot.sh bin/real-deal-turbo-charged-cd.sh
+  .bashrc .bashrc_ps1 .bash_profile .tryalias.sh .aliases bin/trimdir.py bin/gitinfo.sh bin/projectname.sh bin/projectroot.sh bin/real-deal-turbo-charged-cd.sh
 
 copy_confs_for git \
     bin/git-show-commits-not-in-branch.sh bin/git-remove-branches-gone-in-remote.sh bin/git-push-new-branch.sh bin/gitdiff.sh .git-template/HEAD
@@ -232,9 +228,7 @@ copy_confs_for utils \
 copy_confs_for alacritty .config/alacritty/alacritty.yml bin/alacritty-cwd.sh
 
 copy_confs_for cli \
-  .tmux.conf \
-  .config/lxterminal/lxterminal.conf \
-  .config/terminator/config
+  .tmux.conf
 
 copy_confs_for compton .config/compton.conf
 
@@ -273,11 +267,7 @@ copy_confs_for i3 \
   bin/i3empty.py \
   bin/i3txt.py \
   bin/calculator.sh \
-  bin/hue_lights_toggle_all.sh
-
-copy_confs_for udiskie .config/udiskie/config.yml
-
-copy_confs_for i3 \
+  bin/hue_lights_toggle_all.sh \
   bin/launcher.sh \
   bin/locker.sh \
   bin/read-one-mouse-char.sh \
@@ -285,6 +275,8 @@ copy_confs_for i3 \
   bin/terminal2.sh \
   bin/wallpaper.sh \
   bin/welcome-shell.sh \
+
+copy_confs_for udiskie .config/udiskie/config.yml
 
 copy_confs_for_host i3 .config/i3status-rust/ .i3/config bin/nvidia-i3-status.sh
 
@@ -311,8 +303,6 @@ copy_confs_for top .config/procps/toprc
 copy_confs_for readline .inputrc
 
 copy_confs_for pywal bin/wal-set-theme.sh bin/theme-post.sh .cache/wal/{sequences,colors.*}
-
-copy_confs_for ranger .config/ranger/rc.conf
 
 copy_confs_for unison .unison/default.prf
 
