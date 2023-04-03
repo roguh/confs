@@ -1,0 +1,54 @@
+[user]
+    email = hugo@roguh.com
+    name = Hugo O. Rivera
+    signingkey = 57F7D4304B2BE5ACD2B27C7B7A0DD45A919A55AF
+
+[commit]
+    gpgsign = true
+
+[credential]
+    helper = cache --timeout=3600
+
+[difftool]
+    prompt = false
+
+[difftool "meld"]
+    cmd = meld "$LOCAL" "$REMOTE"
+
+[color]
+    pager = false
+
+[merge]
+    tool = meld
+
+[core]
+    editor = /usr/bin/nvim
+    packedGitLimit = 512m 
+    packedGitWindowSize = 512m
+
+[pack]
+    deltaCacheSize = 2047m 
+    packSizeLimit = 2047m 
+    windowMemory = 2047m
+
+[pull]
+    rebase = false
+
+[init]
+    templateDir = /home/hugo/.git-template
+
+[mergetool]
+    keepBackup = false
+
+[alias]
+    praise = blame
+    er-done = commit
+
+[http]
+    postBuffer = 157286400
+
+[filter "lfs"]
+    clean = git-lfs clean -- %f
+    smudge = git-lfs smudge -- %f
+    process = git-lfs filter-process
+    required = true
