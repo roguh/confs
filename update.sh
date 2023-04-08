@@ -243,9 +243,6 @@ copy_confs_for fish_the_best_sh \
   .config/fish/fish_starship_prompt.fish \
   bin/{🐠,string_split.py,real-deal-turbo-charged-cd.sh} \
 
-copy_confs_for_host fish_local \
-  .config/fish/local_env.fish
-
 copy_confs_for bash-cache bin/bash-cache
 
 copy_confs_for fetch-cached bin/{neofetch-cached,screenfetch-cached,bash-cache}
