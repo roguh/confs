@@ -1,3 +1,4 @@
+tryalias knock 'nc -z'
 tryalias ma makeanywhere
 tryalias pma 'pipenv run makeanywhere'
 
