@@ -1,7 +1,8 @@
 # Hugo O. Rivera's FISH config
 # Remember to run `install_plugins` once.
 
-# localectl set-locale LANG=fr_FR.UTF-8 LANGUAGE=fr_FR.UTF-8:es_US.UTF-8:en_US.UTF-8:C LC_COLLATE=C
+localectl set-locale LANG=fr_FR.UTF-8 LANGUAGE=fr_FR.UTF-8:es_US.UTF-8:en_US.UTF-8:C LC_COLLATE=C
+set LANG fr_FR.UTF-8
 
 set START_TIME (date +%s.%N)
 set FAST_STARTUP true
@@ -343,7 +344,9 @@ if status is-interactive
     if [ "$FAST_STARTUP" = true ] && [ "$SSH_AGENT_PID" != "" ] && [ -e "/proc/$SSH_AGENT_PID/status" ]
         debug SPEEDUP Skipping calling keychain as SSH_AGENT_PID is already set and ssh-agent is running
     else
-        eval (keychain --eval --agents ssh -Q --quiet --nogui id_ed25519) &
+        # Timeout after 10 hours (600 minutes)
+        # -Q --quick If an ssh-agent process is running then use it.  Don't verify the list of keys, other than making sure it's non-empty.  This option avoids locking when possible so that multiple terminals can be opened simultaneously without waiting on each other.
+        eval (keychain --quick --timeout 600 --eval --agents ssh -Q --quiet --nogui id_ed25519) &
         debug Started ssh-agent with keychain
         if ! [ -e "/proc/$SSH_AGENT_PID/status" ]
           if [ (ps "$SSH_AGENT_PID" | wc -l) -ge 2 ]

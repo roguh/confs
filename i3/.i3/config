@@ -288,7 +288,9 @@ exec --no-startup-id /opt/dropbox/dropboxd
 exec --no-startup-id kitty fish -c welcome-shell.sh
 exec --no-startup-id evolution
 exec --no-startup-id firefox
-# exec --no-startup-id emacs --daemon
+# Systemd does this
+# exec --no-startup-id protonvpn-cli connect --cc US
+exec --no-startup-id emacs --daemon
 exec --no-startup-id ripcord
 exec --no-startup-id teams-insiders
 exec --no-startup-id .screenlayout/select-arandr-display.sh

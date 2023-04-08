@@ -251,6 +251,8 @@ copy_confs_for fluxbox .fluxbox/menu .fluxbox/keys
 
 copy_confs_for htop .config/htop/htoprc
 
+copy_confs_for protonvpn .config/systemd/user/protonvpn-autostart.service
+
 copy_confs_for i3 \
   .i3status.conf \
   .xbindkeysrc \

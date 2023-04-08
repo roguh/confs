@@ -15,7 +15,7 @@ interval = 5
 
 [[block]]
 block = "speedtest"
-interval = 1600
+interval = 600
 format = " $ping $speed_down "
 
 [[block]]
