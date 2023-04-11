@@ -110,6 +110,8 @@ let g:highlightedyank_highlight_duration = 10000
 " THE BEST GIT PORCELAIN IN THE VIM WORLD
 Plug 'tpope/vim-fugitive'
 
+Plug 'tpope/vim-jdaddy'
+
 " Language server protocol (LSP) for completion and other fancy IDE-like features
 Plug 'neoclide/coc.nvim', { 'branch': 'release', 'for': ['java', 'typescript', 'javascript', 'javascript.jsx', 'python', 'rust', 'json', 'yaml', 'yaml.docker-compose', 'dockerfile'] }
 let g:coc_global_extensions = ['coc-syntax', 'coc-json', 'coc-git', 'coc-java', 'coc-tsserver', 'coc-pyright', 'coc-rust-analyzer', 'coc-yaml', 'coc-docker']

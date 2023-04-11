@@ -5,17 +5,18 @@ theme = "semi-native"
 icons = "awesome6"
 
 [[block]]
-block = "external_ip"
-format = " $ip $country_flag "
-
-[[block]]
 block = "time"
 format = " $timestamp.datetime(f:'%s') "
 interval = 5
 
 [[block]]
+block = "external_ip"
+format = " $ip $region_code $country_flag "
+
+[[block]]
 block = "speedtest"
-interval = 600
+# 33.3333 minutes
+interval = 2000
 format = " $ping $speed_down "
 
 [[block]]
