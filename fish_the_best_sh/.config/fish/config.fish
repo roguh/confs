@@ -305,6 +305,8 @@ end
 # miniconda_fish_init
 
 if status is-interactive
+  echo Mater artium necessitas.
+
   if command -v xset > /dev/null 2>&1 && [ -n "$DISPLAY" ]
     xset r rate 200 60
     debug Set keyboard rate

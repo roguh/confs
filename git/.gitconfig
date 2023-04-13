@@ -22,7 +22,7 @@
     tool = meld
 
 [core]
-    editor = /usr/bin/nvim
+    editor = /usr/bin/vis
     packedGitLimit = 512m 
     packedGitWindowSize = 512m
 
