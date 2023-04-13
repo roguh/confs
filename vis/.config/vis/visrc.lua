@@ -1,5 +1,4 @@
 -- Hugo O. Rivera's vis configuration
--- '
 
 -- Load standard vis module, providing parts of the Lua API
 require('vis')
