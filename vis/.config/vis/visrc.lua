@@ -1,36 +1,55 @@
 -- Hugo O. Rivera's vis configuration
+-- Hugo O. Rivera's vis configuration
+
+-- TODO ranger file browser or alternative
+-- TODO simple version of https://github.com/rhysd/committia.vim/tree/master/autoload ?
+-- TODO rainbow indentation?
+-- TODO org-mode hierarchy support? navigate to next level, create new level, etc
+-- TODO run code checks and githooks automatically or with hotkey? format on save?
+-- TODO autoreload on changes??? (IMPORTANT)
+
 
 -- Load standard vis module, providing parts of the Lua API
 require('vis')
 
--- Semicolon is the same as colon
-vis:map(vis.modes.NORMAL, ';', ':')
+vis.events.subscribe(vis.events.INIT, function(win)
+    -- Semicolon is the same as colon
+    vis:map(vis.modes.NORMAL, ';', ':')
+    
+    -- Alias shell redirection commands
+    -- These won't work in VISUAL since they're taken by other mappings
+    -- TODO force a mapping?
+    vis:map(vis.modes.NORMAL | vis.modes.VISUAL_LINE, '|', ':|')
+    vis:map(vis.modes.NORMAL | vis.modes.VISUAL_LINE, '<', ':<')
+    vis:map(vis.modes.NORMAL | vis.modes.VISUAL_LINE, '>', ':>')
+    
+    vis:map(vis.modes.NORMAL, '`', ':!makeanywhere format || makeanywhere format-fix')
+    
+    -- The famous ctrl-P for finding files
+    vis:map(vis.modes.NORMAL | vis.modes.VISUAL_LINE | vis.modes.VISUAL,
+        '<C-p>', function() vis:command(':fzf') end)
+    
+    -- Paste from system clipboard with vis-clipboard
+    vis:map(vis.modes.NORMAL, '<C-v>', '"+p')
+    vis:map(vis.modes.INSERT, '<C-v>', '<Escape>"+pa')
+    
+    -- Put selection content into system clipboard
+    vis:map(vis.modes.VISUAL_LINE, '<C-c>', function() vis:feedkeys(':>vis-clipboard --copy<Enter>') end)
+    -- TODO this doesn't work with multiple cursors, just gets last selection
+    vis:map(vis.modes.VISUAL, '<C-c>', function() vis:feedkeys(':>vis-clipboard --copy<Enter>') end)
 
--- Alias shell redirection commands
--- These won't work in VISUAL since they're taken by other mappings
--- TODO force a mapping?
-vis:map(vis.modes.NORMAL | vis.modes.VISUAL_LINE, '|', ':|')
-vis:map(vis.modes.NORMAL | vis.modes.VISUAL_LINE, '<', ':<')
-vis:map(vis.modes.NORMAL | vis.modes.VISUAL_LINE, '>', ':>')
+    linters = {}
+    linters["bash"] = {"shellcheck"}
+    linters["python"] = {"ruff", "mypy --strict"}
+    linters["json"] = {"jq"}
 
-vis:map(vis.modes.NORMAL, '`', ':!makeanywhere format || makeanywhere format-fix')
+    fixers = {}
+    fixers["python"] = {"black", "isort", "ruff --fix"}
+    fixers["json"] = {"jq -c"}
 
--- The famous ctrl-P for finding files
-vis:map(vis.modes.NORMAL | vis.modes.VISUAL_LINE | vis.modes.VISUAL,
-    '<C-p>', function() vis:command(':fzf') end)
-
--- Paste from system clipboard with vis-clipboard
-vis:map(vis.modes.NORMAL, '<C-v>', '"+p')
-vis:map(vis.modes.INSERT, '<C-v>', function()
-    -- Put register content after cursor from system clipboard with vis-clipoard
-    vis.mode = vis.modes.NORMAL
-    vis:feedkeys('<C-v>')
+    vis:command_register("lint", function(argv, force, win, selection, range) return run_actions_on_file('linters', linters, win.file) end)
+    vis:command_register("fix", function(argv, force, win, selection, range) return run_actions_on_file('fixers', fixers, win.file, true) end)
 end)
-
--- Put selection content into system clipboard
-vis:map(vis.modes.VISUAL_LINE, '<C-c>', function() vis:feedkeys(':>vis-clipboard --copy') end)
--- TODO this doesn't work with multiple cursors, just gets last selection
-vis:map(vis.modes.VISUAL, '<C-c>', function() vis:feedkeys(':>vis-clipboard --copy') end)
 
 vis.events.subscribe(vis.events.WIN_OPEN, function(win)
     -- Per window configuration options.
@@ -60,7 +79,8 @@ vis.events.subscribe(vis.events.START, function()
 
     -- Configure backup plugin
     backup.time_format = "%H-%M-%S"
-    backup.directory = os.getenv("HOME") .. "/tmp/backup"
+    -- This will create the directory
+    backup.set_directory(os.getenv("HOME") .. "/tmp/vis-backups")
     backup.get_fname = backup.entire_path_with_double_percentage_signs_and_timestamp
 end)
 
@@ -148,34 +168,62 @@ end
 
 -- Based on https://github.com/erf/vis-title/blob/master/init.luoa
 function set_title(fname)
-	local full_title = 'vis ' .. fname .. ' ' .. run_command('hostname')
-	vis:command(string.format(":!printf '\\033]0;%s\\007'", full_title))
+    local full_title = 'vis ' .. fname .. ' ' .. run_command('hostname')
+    vis:command(string.format(":!printf '\\033]0;%s\\007'", full_title))
 end
 
 vis.events.subscribe(vis.events.WIN_OPEN, function(win)
-	set_title(win.file.name or '[No Name]')
+    set_title(win.file.name or '[No Name]')
 end)
 
 vis.events.subscribe(vis.events.FILE_SAVE_POST, function(file, path)
-	set_title(file.name)
+    set_title(file.name)
 end)
+
+-- Based on https://github.com/rnpnr/vis-lint
+run_actions_on_file = function(action, actions, file, save_after)
+    local cmds = actions[vis.win.syntax]
+    if cmds == nil or #cmds == 0 then
+        vis:info(action  .. " not defined for " .. vis.win.syntax)
+        return false
+    end
+    if file.name == nil then
+        vis:info("Cannot run " .. action .. " on current window")
+    end
+    for i, cmd in ipairs(cmds) do
+        local full_cmd = cmd .. " " .. file.name
+        vis:message('$ ' .. full_cmd .. '\n')
+        local _, ostr, estr = vis:pipe(file, {start = 0, finish = 0}, full_cmd)
+
+        vis:message((ostr or '') .. (estr or ''))
+        if ostr == nil and estr == nil then
+          vis:message('[no output]')
+        end
+        vis:message('\n\n')
+
+        if save_after then
+            vis:command(':e')
+        end
+    end
+    return true
+end
 
 -- For loading plugins
 function require_if_exists(repo, directory, sub)
   local name = directory .. '/' .. sub
-  local fname = name .. '.lua'
-  if not file_exists(fname) then
-    run_command('git clone ' .. repo .. ' ' .. directory)
-    vis:message('Installed plugin from repo: ' .. repo)
+  module = require(name)
+  if module then
+    return module
   end
-  if file_exists(fname) then
-    require(name)
-  end
+
+  local location = os.getenv("HOME") .. "/.config/vis/" .. directory
+  run_command('git clone ' .. repo .. ' ' .. location)
+  vis:message('Installed plugin from repo: ' .. repo .. ' in ' .. location)
+  return require(name)
 end
 
 -- PURTT COLORS
--- This runs even before vis.events.START
-vis.events.subscribe(vis.events.INIT, function()
+purty_colors_now = function(a, b, c, d)
     local lexers = vis.lexers
     
     -- Basic Style
@@ -242,9 +290,13 @@ vis.events.subscribe(vis.events.INIT, function()
     lexers.STYLE_STATUS = 'fore:'..colors.base04..',back:'..colors.base01
     lexers.STYLE_STATUS_FOCUSED = 'fore:'..colors.base09..',back:'..colors.base01
     lexers.STYLE_SEPARATOR = lexers.STYLE_DEFAULT
+    lexers.STYLE_INDENTGUIDE = 'fore:white'
     lexers.STYLE_INFO = 'fore:default,back:default,bold'
     lexers.STYLE_EOF = ''
-end)
+end
+
+vis.events.subscribe(vis.events.INIT, purty_colors_now)
+vis.events.subscribe(vis.events.WIN_OPEN, purty_colors_now)
 
 -- https://gitlab.com/muhq/vis-lspc ? Might slow vis down too much
 
@@ -265,3 +317,5 @@ end)
 -- TODO alias arrow keys for switching windows
 
 -- > and < in VISUAL modify indentation
+
+-- Ctrl-n C-n is TAB for autocomplete
