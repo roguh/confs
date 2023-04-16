@@ -1,4 +1,5 @@
 #!/bin/sh
+MAPNAME="${1:-manjaro}"
 set -x
-cryptsetup luksOpen /dev/xvdi manjaro
-mount /dev/mapper/manjaro /home/user/manjaro/
+cryptsetup luksOpen /dev/xvdi "$MAPNAME"
+mount "/dev/mapper/$MAPNAME" /home/user/manjaro/

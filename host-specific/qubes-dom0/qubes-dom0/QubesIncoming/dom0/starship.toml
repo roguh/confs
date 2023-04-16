@@ -1,0 +1,30 @@
+[line_break]
+# One line prompt, not two
+disabled = true
+
+[hostname]
+disabled = false
+
+[time]
+disabled = false
+
+[cmd_duration]
+min_time = 1000
+
+[status]
+disabled = false
+
+[[battery.display]]
+threshold = 75
+
+[shell]
+# Not supported in Qubes dom0 (yet)
+disabled = false
+bash_indicator = "bash "
+unknown_indicator = "sh? "
+fish_indicator = ""
+format = '[$indicator]($style)'
+
+[character]
+success_symbol = "$"
+error_symbol = "x$"

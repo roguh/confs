@@ -1,0 +1,85 @@
+[theme]
+theme = "semi-native"
+
+[icons]
+icons = "awesome6"
+
+[[block]]
+block = "time"
+format = " $timestamp.datetime(f:'%s') "
+interval = 5
+
+# [[block]]
+# block = "custom"
+# # Barebones shell with no extra formatting
+# shell = "dash"
+# # Ping Google's rock solid DNS server
+# # Print packet loss percentage and total time to send packet(s)
+# # Send a total of -c=2 packets with a deadline timeout of -W=2 seconds
+# # -W Time to wait for response
+# # -t Time to live for each packet
+# # -i Wait this many seconds between sending each packet
+# # -c Send this many packets
+# command = '''ping -W 0.5 -t 250 -i 0.05 -c 10   8.8.8.8   | grep -o "[0-9.]\\+% packet loss, time" | sed "s/ packet loss, time/L/ ; s/ms//"'''
+# interval = 5
+
+[[block]]
+block = "disk_space"
+path = "/"
+info_type = "available"
+interval = 20
+warning = 20.0
+alert = 10.0
+
+[[block]]
+block = "memory"
+format = " $mem_total_used "
+interval = 5
+
+[[block]]
+block = "cpu"
+format = " $utilization $frequency "
+interval = 5
+
+[[block]]
+block = "temperature"
+interval = 5
+scale = "fahrenheit"
+format = " $average F "
+
+[[block]]
+block = "sound"
+step_width = 1
+
+[[block]]
+block = "sound"
+step_width = 1
+device_kind = "source"
+
+# timezone = "US/Pacific"
+# timezone = "US/Mountain"
+# timezone = "US/Central"
+# timezone = "US/Eastern"
+# timezone = "Europe/Paris"
+# timezone = "America/Argentina/Buenos_Aires"
+
+[[block]]
+block = "time"
+interval = 15
+format = " $timestamp.datetime(f:'%d %R') "
+
+[[block]]
+block = "battery"
+interval = 30
+device = "BAT1"
+format = " $percentage $power "
+
+[[block]]
+block = "battery"
+interval = 30
+device = "BAT0"
+format = " $percentage $power "
+
+# [[block]]
+# block = "music"
+# format = " {$combo.str(max_w:8) $play $next |}"

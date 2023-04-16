@@ -53,7 +53,7 @@ if command -v fzf > /dev/null ; then
 
     # Use ctrl-p to find files. (Same as ctrl-t)
     if [ $BASH_VERSINFO -gt 3 ]; then
-        bind -x '"\C-p": "fzf-file-widget"'
+        bind -x '"\C-p": "fzf"'
     elif __fzf_use_tmux__; then
         bind '"\C-p": "\C-x\C-a$a \C-x\C-addi`__fzf_select_tmux__`\C-x\C-e\C-x\C-a0P$xa"'
     else

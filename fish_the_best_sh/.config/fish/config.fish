@@ -1,7 +1,14 @@
 # Hugo O. Rivera's FISH config
 # Remember to run `install_plugins` once.
 
-localectl set-locale LANG=fr_FR.UTF-8 LANGUAGE=fr_FR.UTF-8:es_US.UTF-8:en_US.UTF-8:C LC_COLLATE=C
+if [ (random 0 1) = 0 ]
+    localectl set-locale LANG=es_MX.UTF-8 LANGUAGE=es_MX.UTF-8 LC_COLLATE=C
+    echo HOLA
+else
+    localectl set-locale LANG=fr_FR.UTF-8 LANGUAGE=fr_FR.UTF-8 LC_COLLATE=C
+    echo BONJOUR
+end
+
 set LANG fr_FR.UTF-8
 
 set START_TIME (date +%s.%N)
@@ -324,13 +331,15 @@ if status is-interactive
   function fish_user_key_bindings
     if command -v fzf > /dev/null 2>&1
       # Use Ctrl-R to find command in history
-      fzf_key_bindings
+      if command -v fzf_key_bindings > /dev/null 2>&1
+          fzf_key_bindings
+      end
 
       # Use Ctrl-P to find files
-      bind \cp fzf-file-widget
+      bind \cp fzf
 
       if bind -M insert > /dev/null 2>&1 2>&1
-        bind -M insert \cp fzf-file-widget
+        bind -M insert \cp fzf
       end
       # debug Configured interactive fzf features
     end
