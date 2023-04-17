@@ -35,7 +35,7 @@
     rebase = false
 
 [init]
-    templateDir = /home/hugo/.git-template
+    templateDir = ~/.git-template
 
 [mergetool]
     keepBackup = false
