@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # delete extraneous files from destination
-ROOT=$(get-backup-root.sh)-$(date +%Y-%m)
+ROOT=$(get-backup-root.sh)/$(date +%Y-%m)
 
 set -x
 
