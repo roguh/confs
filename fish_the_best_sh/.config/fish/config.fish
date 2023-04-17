@@ -1,23 +1,11 @@
 # Hugo O. Rivera's FISH config
 # Remember to run `install_plugins` once.
 
-if [ (random 0 1) = 0 ]
-    localectl set-locale LANG=es_MX.UTF-8 LANGUAGE=es_MX.UTF-8 LC_COLLATE=C
-    echo HOLA
-else
-    localectl set-locale LANG=fr_FR.UTF-8 LANGUAGE=fr_FR.UTF-8 LC_COLLATE=C
-    echo BONJOUR
-end
-
 set LANG fr_FR.UTF-8
 
 set START_TIME (date +%s.%N)
 set FAST_STARTUP true
 set DEBUG_OUTPUT false
-
-# if [ "$PWD" = "$HOME" ] && status is-interactive
-#   set DEBUG_OUTPUT true
-# end
 
 function log
   set_color -i
@@ -78,27 +66,14 @@ set_global_if_unset FISH_LOGO Fish # 🐠
 
 addpaths $HOME/bin --verbose
 addpaths $HOME/.local/bin  --verbose
-addpaths $HOME/.poetry/bin
-addpaths $HOME/.gem/ruby/2.5.0/bin
-addpaths $HOME/.gem/ruby/2.6.0/bin
-addpaths $HOME/Library/Python/3.7/bin
-addpaths $HOME/.dropbox-dist  --verbose
 addpaths $HOME/.cargo/bin
-addpaths $HOME/.pyenv/bin
-addpaths /opt/flutter/bin
 addpaths /opt/cuda/bin
 addpaths /opt/asdf-vm/bin/
-
-# set_global_if_unset LC_ALL en_US.UTF-8
-# set_global_if_unset LANG en_US.UTF-8
 
 set_global_if_unset ESHELL /bin/bash
 set_global_if_unset SHELL (command -v fish)
 set_global_if_unset EDITOR vim
 set_global_if_unset VISUAL vim
-set_global REACT_EDITOR none
-set_global PASSWORD_STORE_ENABLE_EXTENSIONS true
-set_global PYTHON_KEYRING_BACKEND keyring.backends.null.Keyring
 
 # Caused bitsandbytes package from  oobabooga/text-generation-webui
 # to crash as it scanned through all env vars in search of CUDA stuff
@@ -214,7 +189,6 @@ tryalias ,, commacomma
 load_file $HOME/.opam/opam-init/init.fish
 
 load_file ~/.asdf/asdf.fish --verbose
-load_file /opt/asdf-vm/asdf.fish --verbose
 
 if test -e ~/.asdf/completions/asdf.fish
   mkdir -p ~/.config/fish/completions
@@ -234,20 +208,6 @@ if command -v go > /dev/null 2>&1
   debug Set Go variables and paths
 end
 
-
-# Load pywal theme
-# load_theme
-
-# Ruby version manager
-# https://rvm.io/rvm/install
-# gpg --keyserver hkp://pool.sks-keyservers.net --recv-keys 409B6B1796C275462A1703113804BB82D39DC0E3 7D2BAF1CF37B13E2069D6956105BD0E739499BDB
-# or curl -sSL https://rvm.io/mpapis.asc | gpg --import -
-# curl -sSL https://get.rvm.io | bash -s stable --ruby
-# curl -L --create-dirs -o ~/.config/fish/functions/rvm.fish https://raw.github.com/lunks/fish-nuggets/master/functions/rvm.fish
-if command -v rvm > /dev/null 2>&1
-  rvm default
-  debug Loaded RVM
-end
 
 set_global MANPATH $MANPATH /usr/share/man /usr/local/share/man/
 
@@ -289,10 +249,6 @@ if command -v ag > /dev/null 2>&1
 
     debug Set fzf variables
   end
-end
-
-function anaconda_fish_init
-  eval "$HOME/anaconda3/bin/conda" "shell.fish" "hook" $argv | source
 end
 
 function miniconda_fish_init
@@ -353,7 +309,7 @@ if status is-interactive
 
   if command -v keychain > /dev/null 2>&1
     if [ "$FAST_STARTUP" = true ] && [ "$SSH_AGENT_PID" != "" ] && [ -e "/proc/$SSH_AGENT_PID/status" ]
-        debug SPEEDUP Skipping calling keychain as SSH_AGENT_PID is already set and ssh-agent is running
+        warn SPEEDUP Skipping calling keychain as SSH_AGENT_PID is already set and ssh-agent is running
     else
         # Timeout after 10 hours (600 minutes)
         # -Q --quick If an ssh-agent process is running then use it.  Don't verify the list of keys, other than making sure it's non-empty.  This option avoids locking when possible so that multiple terminals can be opened simultaneously without waiting on each other.
@@ -371,10 +327,7 @@ if status is-interactive
 
   # Waiting for https://github.com/starship/starship/issues/3305 to be fixed
   # Applying temp fix manually
-  # starship init fish | source
-  if command -v starship > /dev/null
-    load_file ~/.config/fish/fish_starship_prompt.fish
-  end
+  starship init fish | source
 
   set TOTAL_STARTUP_TIME (echo (date +%s.%N) "$START_TIME" | awk '{print ($1 - $2) * 1000}' || echo UNKNOWN)
   log "$TOTAL_STARTUP_TIME"ms
@@ -420,3 +373,4 @@ end
 # Fish does lots of things by default:
 # ignore dups and blank lines in history
 # interactive cd and autocompletion
+# etc
