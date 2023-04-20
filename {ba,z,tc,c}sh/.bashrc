@@ -117,10 +117,7 @@ if [[ $- == *i* ]]; then
     fi
 
     tty -s
-    # if command -v keychain > /dev/null ; then
-    #     eval $(keychain --eval --agents ssh --nogui --quick --quiet id_ed25519)
-    # fi
-
+    
     ##### Set PS1
     if command -v starship > /dev/null; then
       eval "$(starship init bash)"
@@ -144,3 +141,11 @@ fi
 export PATH="$PATH:$HOME/.rvm/bin"
 
 export BASHRC_LOADED=true
+    
+##### Set commands in interactive mode
+# RUN THIS LAST so the user can Ctrl-C out of it if keychain unneeded
+if [[ $- == *i* ]]; then
+    if command -v keychain > /dev/null ; then
+        eval "$(keychain --quick --timeout 600 --eval --agents ssh -Q --quiet --nogui id_ed25519)"
+    fi
+fi

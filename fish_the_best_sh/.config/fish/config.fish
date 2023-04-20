@@ -307,6 +307,37 @@ if status is-interactive
     # debug Bound Ctrl-F
   end
 
+  # Waiting for https://github.com/starship/starship/issues/3305 to be fixed
+  # Applying temp fix manually
+  starship init fish | source
+  
+  set TOTAL_STARTUP_TIME (echo (date +%s.%N) "$START_TIME" | awk '{print ($1 - $2) * 1000}' || echo UNKNOWN)
+  log "$TOTAL_STARTUP_TIME"ms
+
+  set SHELL_TYPE ([ -n "$SSH_CLIENT" ] && echo ' SSH' || echo)
+  switch $hostname$SHELL_TYPE
+    case 'raspberrypi' '*SSH*'
+      if [ "$hostname" = raspberrypi ]
+        set HOSTNAME_SUMMARY "a Raspberry Pi"
+      else
+        set HOSTNAME_SUMMARY "SSH on $hostname (SSH_CLIENT=$SSH_CLIENT)"
+      end
+      set USER_AND_HOST_COLOR brred
+    case '*T580*' localhost
+      set HOSTNAME_SUMMARY "a known host"
+      set USER_AND_HOST_COLOR brcyan
+    case '*flex*'
+      set HOSTNAME_SUMMARY "a known host"
+      set USER_AND_HOST_COLOR bryellow
+    case '2012-iMac'
+      set HOSTNAME_SUMMARY "a known host"
+      set USER_AND_HOST_COLOR bryellow
+    case '*'
+      set HOSTNAME_SUMMARY "an UNKNOWN host"
+      set USER_AND_HOST_COLOR brwhite
+  end
+
+  # RUN LAST so user can ctrl-c
   if command -v keychain > /dev/null 2>&1
     if [ "$FAST_STARTUP" = true ] && [ "$SSH_AGENT_PID" != "" ] && [ -e "/proc/$SSH_AGENT_PID/status" ]
         warn SPEEDUP Skipping calling keychain as SSH_AGENT_PID is already set and ssh-agent is running
@@ -324,36 +355,6 @@ if status is-interactive
         end
     end
   end
-
-  # Waiting for https://github.com/starship/starship/issues/3305 to be fixed
-  # Applying temp fix manually
-  starship init fish | source
-
-  set TOTAL_STARTUP_TIME (echo (date +%s.%N) "$START_TIME" | awk '{print ($1 - $2) * 1000}' || echo UNKNOWN)
-  log "$TOTAL_STARTUP_TIME"ms
-end
-
-set SHELL_TYPE ([ -n "$SSH_CLIENT" ] && echo ' SSH' || echo)
-switch $hostname$SHELL_TYPE
-  case 'raspberrypi' '*SSH*'
-    if [ "$hostname" = raspberrypi ]
-      set HOSTNAME_SUMMARY "a Raspberry Pi"
-    else
-      set HOSTNAME_SUMMARY "SSH on $hostname (SSH_CLIENT=$SSH_CLIENT)"
-    end
-    set USER_AND_HOST_COLOR brred
-  case '*T580*' localhost
-    set HOSTNAME_SUMMARY "a known host"
-    set USER_AND_HOST_COLOR brcyan
-  case '*flex*'
-    set HOSTNAME_SUMMARY "a known host"
-    set USER_AND_HOST_COLOR bryellow
-  case '2012-iMac'
-    set HOSTNAME_SUMMARY "a known host"
-    set USER_AND_HOST_COLOR bryellow
-  case '*'
-    set HOSTNAME_SUMMARY "an UNKNOWN host"
-    set USER_AND_HOST_COLOR brwhite
 end
 
 function install_plugin_manager
