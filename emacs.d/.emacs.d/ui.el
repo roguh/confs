@@ -12,15 +12,13 @@
 ;;                (load-theme 'ample-light t t)
 ;;                (enable-theme 'ample-flat)))
 
-(use-package zenburn-theme
-  :ensure t
-  :init
-  (load-theme 'zenburn t)
-  (setq zenburn-use-variable-pitch t)
-  ;; scale headings in org-mode
-  (setq zenburn-scale-org-headlines t)
-  ;; scale headings in outline-mode
-  (setq zenburn-scale-outline-headlines t))
+(use-package almost-mono-themes
+  :config
+  (load-theme 'almost-mono-black t)
+  ;; (load-theme 'almost-mono-gray t)
+  ;; (load-theme 'almost-mono-cream t)
+  ;; (load-theme 'almost-mono-white t)
+)
 
 ;; Matching parentheses.
 (show-paren-mode 1)
