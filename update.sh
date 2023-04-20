@@ -253,14 +253,17 @@ copy_confs_for htop .config/htop/htoprc
 
 copy_confs_for protonvpn .config/systemd/user/protonvpn-autostart.service
 
+copy_confs_for backup \
+  bin/backup-this-pacman-machine.sh \
+  bin/backup-this-dnf-machine.sh \
+  bin/backup.sh \
+  bin/get-backup-root.sh
+
 copy_confs_for i3 \
   .i3status.conf \
   .xbindkeysrc \
   .profile \
   bin/backlightoff.sh \
-  bin/backup-this-pacman-machine.sh \
-  bin/backup.sh \
-  bin/get-backup-root.sh \
   bin/i3empty.py \
   bin/i3txt.py \
   bin/calculator.sh \
@@ -272,10 +275,9 @@ copy_confs_for i3 \
   bin/terminal2.sh \
   bin/wallpaper.sh \
   bin/welcome-shell.sh \
+  .config/i3status-rust/ .i3/config bin/nvidia-i3-status.sh
 
 copy_confs_for udiskie .config/udiskie/config.yml
-
-copy_confs_for i3 .config/i3status-rust/ .i3/config bin/nvidia-i3-status.sh
 
 copy_confs_for ipython \
     .ipython/profile_default/ipython_config.py \
