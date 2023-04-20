@@ -331,7 +331,7 @@ copy_confs_for pass bin/pass-with-custom-editor.sh
 copy_confs_for kubernetes bin/kubectl-get-image-sizes.sh bin/kubectl-monitor-zigbee.sh
 
 copy_confs_for qubes bin/mount-manjaro.sh
-HOST=qubes-dom0 copy_confs_for_host qubes-dom0 QubesIncoming/dom0/{bin,fish,i3,i3status-rust,starship.toml}
+HOST=qubes-dom0 copy_confs_for_host qubes-dom0 QubesIncoming/dom0/{bin,fish,i3,i3status-rust,starship.toml,.bashrc,Xresources}
 
 # MAKE SURE TO INSTALL docker-credential-pass
 # trizen -S docker-credential-pass-bin

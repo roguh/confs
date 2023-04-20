@@ -6,5 +6,5 @@ if [ -z "$TARGET" ]; then
 fi
 
 set -x
-qvm-copy-to-vm "$TARGET" bin .config/{fish,i3,i3status-rust,starship.toml}
+qvm-copy-to-vm "$TARGET" bin .config/{fish,i3,i3status-rust,starship.toml} .bashrc /etc/X11/Xresources
 echo "Files backed up to $TARGET ~/QubesIncoming"
