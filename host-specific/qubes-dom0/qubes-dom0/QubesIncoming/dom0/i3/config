@@ -167,6 +167,7 @@ set $ws7 "7"
 set $ws8 "8"
 set $ws9 "9"
 set $ws10 "10"
+set $wsmusic "20:music"
 
 # switch to workspace
 bindsym $mod+1 workspace number $ws1
@@ -179,6 +180,7 @@ bindsym $mod+7 workspace number $ws7
 bindsym $mod+8 workspace number $ws8
 bindsym $mod+9 workspace number $ws9
 bindsym $mod+0 workspace number $ws10
+bindsym $mod+[ workspace number $wsmusic
 
 # move focused container to workspace
 bindsym $mod+Shift+1 move container to workspace number $ws1
@@ -191,6 +193,7 @@ bindsym $mod+Shift+7 move container to workspace number $ws7
 bindsym $mod+Shift+8 move container to workspace number $ws8
 bindsym $mod+Shift+9 move container to workspace number $ws9
 bindsym $mod+Shift+0 move container to workspace number $ws10
+bindsym $mod+Shift+[ move container to workspace number $wsmusic
 
 # reload the configuration file
 # bindsym $mod+Shift+c reload
@@ -230,6 +233,7 @@ bindsym $mod+r mode "resize"
 # finds out, if available)
 bar {
         status_command qubes-i3status
+        position bottom
         # status_command i3status-rs
         colors {
             background #d2d2d2
