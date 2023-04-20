@@ -105,10 +105,10 @@ bindsym $mod+d exec --no-startup-id i3-dmenu-desktop --dmenu="dmenu -nb #d2d2d2 
 bindsym $mod+Tab exec --no-startup-id "rofi -padding 50 -show combi -modi run,window,combi -lines 33 -sidebar-mode"
 
 # change focus
-bindsym $mod+j focus left
-bindsym $mod+k focus down
-bindsym $mod+l focus up
-bindsym $mod+semicolon focus right
+# bindsym $mod+j focus left
+# bindsym $mod+k focus down
+# bindsym $mod+l focus up
+# bindsym $mod+semicolon focus right
 
 # alternatively, you can use the cursor keys:
 bindsym $mod+Left focus left
@@ -117,10 +117,10 @@ bindsym $mod+Up focus up
 bindsym $mod+Right focus right
 
 # move focused window
-bindsym $mod+Shift+j move left
-bindsym $mod+Shift+k move down
-bindsym $mod+Shift+l move up
-bindsym $mod+Shift+semicolon move right
+# bindsym $mod+Shift+j move left
+# bindsym $mod+Shift+k move down
+# bindsym $mod+Shift+l move up
+# bindsym $mod+Shift+semicolon move right
 
 # alternatively, you can use the cursor keys:
 bindsym $mod+Shift+Left move left
@@ -167,7 +167,8 @@ set $ws7 "7"
 set $ws8 "8"
 set $ws9 "9"
 set $ws10 "10"
-set $wsmusic "20:music"
+set $wsTODO "22:TODO"
+set $wsmusic "24:music"
 
 # switch to workspace
 bindsym $mod+1 workspace number $ws1
@@ -180,7 +181,8 @@ bindsym $mod+7 workspace number $ws7
 bindsym $mod+8 workspace number $ws8
 bindsym $mod+9 workspace number $ws9
 bindsym $mod+0 workspace number $ws10
-bindsym $mod+[ workspace number $wsmusic
+bindsym $mod+o workspace number $wsTODO
+bindsym $mod+bracketleft workspace number $wsmusic
 
 # move focused container to workspace
 bindsym $mod+Shift+1 move container to workspace number $ws1
@@ -193,7 +195,13 @@ bindsym $mod+Shift+7 move container to workspace number $ws7
 bindsym $mod+Shift+8 move container to workspace number $ws8
 bindsym $mod+Shift+9 move container to workspace number $ws9
 bindsym $mod+Shift+0 move container to workspace number $ws10
-bindsym $mod+Shift+[ move container to workspace number $wsmusic
+bindsym $mod+Shift+o move container to workspace number $wsTODO
+bindsym $mod+Shift+bracketleft move container to workspace number $wsmusic
+
+# TODO windows qube should float
+
+# Hide border for web browsers
+for_window [title="Firefox|Chromium"] border pixel 1
 
 # reload the configuration file
 # bindsym $mod+Shift+c reload
@@ -226,6 +234,9 @@ mode "resize" {
         bindsym Escape mode "default"
         bindsym $mod+r mode "default"
 }
+
+# Tiny size
+bindsym $mod+k resize set 25 ppt 25 ppt
 
 bindsym $mod+r mode "resize"
 
