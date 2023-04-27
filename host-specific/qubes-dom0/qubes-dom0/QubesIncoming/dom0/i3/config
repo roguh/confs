@@ -10,6 +10,7 @@
 # Please see https://i3wm.org/docs/userguide.html for a complete reference!
 
 set $mod Mod4
+# set $mod Mod1+Control
 
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below.
@@ -168,6 +169,7 @@ set $ws8 "8"
 set $ws9 "9"
 set $ws10 "10"
 set $wsTODO "22:TODO"
+set $wscomm "21:comm"
 set $wsmusic "24:music"
 
 # switch to workspace
@@ -181,6 +183,7 @@ bindsym $mod+7 workspace number $ws7
 bindsym $mod+8 workspace number $ws8
 bindsym $mod+9 workspace number $ws9
 bindsym $mod+0 workspace number $ws10
+bindsym $mod+i workspace number $wscomm
 bindsym $mod+o workspace number $wsTODO
 bindsym $mod+bracketleft workspace number $wsmusic
 
@@ -195,13 +198,17 @@ bindsym $mod+Shift+7 move container to workspace number $ws7
 bindsym $mod+Shift+8 move container to workspace number $ws8
 bindsym $mod+Shift+9 move container to workspace number $ws9
 bindsym $mod+Shift+0 move container to workspace number $ws10
+bindsym $mod+Shift+i move container to workspace number $wscomm
 bindsym $mod+Shift+o move container to workspace number $wsTODO
 bindsym $mod+Shift+bracketleft move container to workspace number $wsmusic
 
-# TODO windows qube should float
+strip_workspace_numbers yes
+
+# TODO Windows10 qube should float
 
 # Hide border for web browsers
 for_window [title="Firefox|Chromium"] border pixel 1
+for_window [class="Evolution|Ripcord"] move to workspace $wscomm
 
 # reload the configuration file
 # bindsym $mod+Shift+c reload
@@ -245,6 +252,7 @@ bindsym $mod+r mode "resize"
 bar {
         status_command qubes-i3status
         position bottom
+	separator_symbol "  "
         # status_command i3status-rs
         colors {
             background #d2d2d2
@@ -262,4 +270,8 @@ bar {
 # necessary to make sure transient vm's come up
 exec --no-startup-id qubes-i3-xdg-autostart
 exec --no-startup-id redshift -l36:-115 -t 5500K:2000K
+# Faster keyboard rate
+exec --no-startup-id xset r rate 150 100
 
+# Default layout
+workspace_layout stacking

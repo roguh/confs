@@ -1,4 +1,4 @@
-alias v vim
+alias v nvim
 
 if status is-interactive
   echo Mater artium necessitas.

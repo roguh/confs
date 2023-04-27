@@ -21,9 +21,14 @@ export EDITOR=nvim
 export HISTSIZE=9999999
 export HISTCONTROL=ignoredups:ignorespace
 
-if command -v starship > /dev/null; then
-  eval "$(starship init bash)"
-fi
-
 # User specific aliases and functions
 alias v=nvim
+
+# Interactive mode
+if [[ $- == *i* ]]; then
+  if command -v starship > /dev/null; then
+    eval "$(starship init bash)"
+  fi
+  
+  echo WELCOME TO BASH
+fi
