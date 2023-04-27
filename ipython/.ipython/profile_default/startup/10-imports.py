@@ -94,7 +94,6 @@ print(
     "preimported",
     len(_preimported_modules),
     "in",
-    time.time() - _preimport_start_time,
-    "seconds.  ",
-    " ".join(sorted(_preimported_modules)),
+    f"{time.time() - _preimport_start_time:.3} seconds.",
 )
+print(" ".join(sorted(_preimported_modules)))

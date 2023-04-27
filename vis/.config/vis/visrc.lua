@@ -37,18 +37,6 @@ vis.events.subscribe(vis.events.INIT, function(win)
     vis:map(vis.modes.VISUAL_LINE, '<C-c>', function() vis:feedkeys(':>vis-clipboard --copy<Enter>') end)
     -- TODO this doesn't work with multiple cursors, just gets last selection
     vis:map(vis.modes.VISUAL, '<C-c>', function() vis:feedkeys(':>vis-clipboard --copy<Enter>') end)
-
-    linters = {}
-    linters["bash"] = {"shellcheck"}
-    linters["python"] = {"ruff", "mypy --strict"}
-    linters["json"] = {"jq"}
-
-    fixers = {}
-    fixers["python"] = {"black", "isort", "ruff --fix"}
-    fixers["json"] = {"jq -c"}
-
-    vis:command_register("lint", function(argv, force, win, selection, range) return run_actions_on_file('linters', linters, win.file) end)
-    vis:command_register("fix", function(argv, force, win, selection, range) return run_actions_on_file('fixers', fixers, win.file, true) end)
 end)
 
 vis.events.subscribe(vis.events.WIN_OPEN, function(win)
@@ -75,6 +63,7 @@ vis.events.subscribe(vis.events.START, function()
     -- Global configuration options.
     
     -- Load plugins after all other config is done
+    -- lint = require_if_exists('https://github.com/roguh/vis-lint', 'vis-lint', 'init') or {}
     backup = require_if_exists('https://github.com/roguh/vis-backup', 'vis-backup', 'backup') or {}
 
     -- Configure backup plugin
@@ -180,34 +169,6 @@ vis.events.subscribe(vis.events.FILE_SAVE_POST, function(file, path)
     set_title(file.name)
 end)
 
--- Based on https://github.com/rnpnr/vis-lint
-run_actions_on_file = function(action, actions, file, save_after)
-    local cmds = actions[vis.win.syntax]
-    if cmds == nil or #cmds == 0 then
-        vis:info(action  .. " not defined for " .. vis.win.syntax)
-        return false
-    end
-    if file.name == nil then
-        vis:info("Cannot run " .. action .. " on current window")
-    end
-    for i, cmd in ipairs(cmds) do
-        local full_cmd = cmd .. " " .. file.name
-        vis:message('$ ' .. full_cmd .. '\n')
-        local _, ostr, estr = vis:pipe(file, {start = 0, finish = 0}, full_cmd)
-
-        vis:message((ostr or '') .. (estr or ''))
-        if ostr == nil and estr == nil then
-          vis:message('[no output]')
-        end
-        vis:message('\n\n')
-
-        if save_after then
-            vis:command(':e')
-        end
-    end
-    return true
-end
-
 -- For loading plugins
 function require_if_exists(repo, directory, sub)
   local name = directory .. '/' .. sub
@@ -272,7 +233,7 @@ purty_colors_now = function(a, b, c, d)
     lexers.STYLE_NUMBER = 'fore:'..colors.base09
     lexers.STYLE_OPERATOR = 'fore:'..colors.base05
     lexers.STYLE_REGEX = 'fore:'..colors.base0C
-    lexers.STYLE_STRING = 'fore:'..'#880847'
+    lexers.STYLE_STRING = 'fore:'..'#ff1616'
     lexers.STYLE_PREPROCESSOR = 'fore:'..colors.base0A
     lexers.STYLE_TAG = 'fore:'..colors.base0A
     lexers.STYLE_TYPE = 'fore:'..colors.base0A

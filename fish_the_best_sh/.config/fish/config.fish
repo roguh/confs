@@ -5,7 +5,7 @@ set LANG fr_FR.UTF-8
 
 set START_TIME (date +%s.%N)
 set FAST_STARTUP true
-set DEBUG_OUTPUT false
+set DEBUG_OUTPUT true
 
 function log
   set_color -i
@@ -62,7 +62,7 @@ debug Starting FISH debug output. Set DO_NOT_CLEAR to leave it on the screen aft
 set_global DO_NOT_CLEAR true
 
 load_file $HOME/.config/fish/local_env.fish
-set_global_if_unset FISH_LOGO Fish # 🐠
+set_global_if_unset FISH_LOGO # 🐠
 
 addpaths $HOME/bin --verbose
 addpaths $HOME/.local/bin  --verbose
@@ -253,7 +253,8 @@ end
 
 function miniconda_fish_init
   # set --local CONDA_BIN "$HOME/miniconda3/bin/conda"
-  set --local CONDA_BIN "/opt/miniconda3/bin/conda"
+  # set --local CONDA_BIN "/opt/miniconda3/bin/conda"
+  set --local CONDA_BIN "/usr/bin/conda"
   if ! command -v "$CONDA_BIN" > /dev/null
     return 1
   end
@@ -309,7 +310,9 @@ if status is-interactive
 
   # Waiting for https://github.com/starship/starship/issues/3305 to be fixed
   # Applying temp fix manually
-  starship init fish | source
+  if command -v starship
+    starship init fish | source
+  end
   
   set TOTAL_STARTUP_TIME (echo (date +%s.%N) "$START_TIME" | awk '{print ($1 - $2) * 1000}' || echo UNKNOWN)
   log "$TOTAL_STARTUP_TIME"ms

@@ -1,54 +1,59 @@
 [user]
-    email = hugo@roguh.com
-    name = Hugo O. Rivera
-    signingkey = 57F7D4304B2BE5ACD2B27C7B7A0DD45A919A55AF
+email = hugo@roguh.com
+name = Hugo O. Rivera
+signingkey = 57F7D4304B2BE5ACD2B27C7B7A0DD45A919A55AF
 
 [commit]
-    gpgsign = true
+gpgsign = true
 
 [credential]
-    helper = cache --timeout=3600
+helper = cache --timeout=3600
 
 [difftool]
-    prompt = false
+prompt = false
 
 [difftool "meld"]
-    cmd = meld "$LOCAL" "$REMOTE"
+cmd = meld "$LOCAL" "$REMOTE"
 
 [color]
-    pager = false
+pager = false
 
 [merge]
-    tool = meld
+tool = meld
 
 [core]
-    editor = /usr/bin/vis
-    packedGitLimit = 512m 
-    packedGitWindowSize = 512m
+editor = /usr/bin/vis
+packedgitlimit = 512m
+packedgitwindowsize = 512m
 
 [pack]
-    deltaCacheSize = 2047m 
-    packSizeLimit = 2047m 
-    windowMemory = 2047m
+deltacachesize = 2047m
+packsizelimit = 2047m
+windowmemory = 2047m
 
 [pull]
-    rebase = false
+rebase = false
 
 [init]
-    templateDir = ~/.git-template
+templatedir = ~/.git-template
 
 [mergetool]
-    keepBackup = false
+keepbackup = false
 
 [alias]
-    praise = blame
-    er-done = commit
+praise = blame
+er-done = commit
 
 [http]
-    postBuffer = 157286400
+postbuffer = 157286400
 
 [filter "lfs"]
-    clean = git-lfs clean -- %f
-    smudge = git-lfs smudge -- %f
-    process = git-lfs filter-process
-    required = true
+clean = git-lfs clean -- %f
+smudge = git-lfs smudge -- %f
+process = git-lfs filter-process
+required = true
+
+[diff "gds_diff"]
+command = python -m gdsfactory.gdsdiff.gds_diff_git
+binary = True
+

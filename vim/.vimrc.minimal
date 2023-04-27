@@ -146,6 +146,8 @@ endif
 " vim name, filename, basename of git root (aka project name), shortened PWD, user@host
 function! SetTitleString()
   let &titlestring =
+        \ '🐱'
+        \ . ' ' .
         \ $VIMNAME
         \ . ' ' .
         \ system('projectname.sh')
