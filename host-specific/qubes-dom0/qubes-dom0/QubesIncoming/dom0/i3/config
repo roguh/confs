@@ -202,8 +202,6 @@ bindsym $mod+Shift+i move container to workspace number $wscomm
 bindsym $mod+Shift+o move container to workspace number $wsTODO
 bindsym $mod+Shift+bracketleft move container to workspace number $wsmusic
 
-strip_workspace_numbers yes
-
 # TODO Windows10 qube should float
 
 # Hide border for web browsers
@@ -253,6 +251,7 @@ bar {
         status_command qubes-i3status
         position bottom
 	separator_symbol "  "
+	strip_workspace_numbers yes
         # status_command i3status-rs
         colors {
             background #d2d2d2
