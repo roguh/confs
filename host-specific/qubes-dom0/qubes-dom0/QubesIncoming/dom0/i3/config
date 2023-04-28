@@ -268,9 +268,15 @@ bar {
 # Make sure all xdg autostart entries are started, this is (among other things)
 # necessary to make sure transient vm's come up
 exec --no-startup-id qubes-i3-xdg-autostart
+exec --no-startup-id qubes-qube-manager
 exec --no-startup-id redshift -l36:-115 -t 5500K:2000K
 # Faster keyboard rate
 exec --no-startup-id xset r rate 150 100
 
 # Default layout
 workspace_layout stacking
+
+# bindsym Control+space exec dunstctl close
+# bindsym Control+grave exec dunstctl history-pop
+# 
+# exec --no-startup-id killall xfce4-notifyd; dunst

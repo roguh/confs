@@ -333,6 +333,8 @@ copy_confs_for kubernetes bin/kubectl-get-image-sizes.sh bin/kubectl-monitor-zig
 copy_confs_for qubes bin/mount-manjaro.sh
 HOST=qubes-dom0 copy_confs_for_host qubes-dom0 QubesIncoming/dom0/{bin,fish,i3,i3status-rust,starship.toml,.bashrc,Xresources}
 
+HOST=qubes-fedora-37 copy_confs_for_host qubes-fedora-37 QubesIncoming/fedora-37/du-niiice.sh
+
 # MAKE SURE TO INSTALL docker-credential-pass
 # trizen -S docker-credential-pass-bin
 copy_confs_for DOCKER bin/docker-remove-images.sh bin/docker-remove-stopped-containers.sh
