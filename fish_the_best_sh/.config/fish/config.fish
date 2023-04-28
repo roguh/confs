@@ -122,6 +122,7 @@ if command -v git > /dev/null
     abbr gl 'git log'
     abbr gcl 'git clone'
     abbr gri 'git rebase -i'
+    abbr grim 'git rebase -i main'
     debug Setup Git abbreviations
 end
 
