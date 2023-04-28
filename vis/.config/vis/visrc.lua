@@ -28,6 +28,8 @@ vis.events.subscribe(vis.events.INIT, function(win)
     -- The famous ctrl-P for finding files
     vis:map(vis.modes.NORMAL | vis.modes.VISUAL_LINE | vis.modes.VISUAL,
         '<C-p>', function() vis:command(':fzf') end)
+    vis:map(vis.modes.NORMAL | vis.modes.VISUAL_LINE | vis.modes.VISUAL,
+        '<C-f>', function() vis:command(':fzf') end)
     
     -- Paste from system clipboard with vis-clipboard
     vis:map(vis.modes.NORMAL, '<C-v>', '"+p')

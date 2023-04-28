@@ -5,7 +5,7 @@ set LANG fr_FR.UTF-8
 
 set START_TIME (date +%s.%N)
 set FAST_STARTUP true
-set DEBUG_OUTPUT true
+set DEBUG_OUTPUT false
 
 function log
   set_color -i

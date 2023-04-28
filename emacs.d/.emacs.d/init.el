@@ -330,8 +330,8 @@
 (setq inhibit-splash-screen t)
 
 ;; Enable on-the-fly spellcheck suggestions
-(add-hook 'text-mode-hook 'flyspell-mode)
-(add-hook 'prog-mode-hook 'flyspell-prog-mode)
+;; (add-hook 'text-mode-hook 'flyspell-mode)
+;; (add-hook 'prog-mode-hook 'flyspell-prog-mode)
 
 ;; (with-eval-after-load "ispell"
 ;;         (setq ispell-program-name "hunspell")
