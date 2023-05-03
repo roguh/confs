@@ -194,7 +194,7 @@ load_file ~/.asdf/asdf.fish --verbose
 if test -e ~/.asdf/completions/asdf.fish
   mkdir -p ~/.config/fish/completions
   rm -f ~/.config/fish/completions/asdf.fish
-  cp ~/.asdf/completions/asdf.fish ~/.config/fish/completions
+  cp -f ~/.asdf/completions/asdf.fish ~/.config/fish/completions
   debug Loaded ASDF fish completions
 end
 

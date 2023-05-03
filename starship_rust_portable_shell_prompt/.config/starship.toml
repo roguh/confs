@@ -106,6 +106,7 @@ style = "fg:#88ddff"
 "0007-04-hugoroguh" = "0007-04"
 "1337-77-hugo" = "1337-77"
 "gke_edf-re-powerflex-dev-16b1_us-west2_gke-dev-powerflex-cluster" = "gke-dev"
+"gke_powerflex-small-scale-dev-7fa9_us-west2_powerflex-small-scale-cluster" = "smallscale-dev"
 "powerflex-0001-25-powerflex-leghorn" = "foghorn-leghorn-hq"
 
 [git_commit]
