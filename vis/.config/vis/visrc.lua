@@ -187,6 +187,12 @@ end
 
 -- PURTT COLORS
 purty_colors_now = function(a, b, c, d)
+    local light_mode = false
+    if light_mode then
+        vis:command('set theme mellow')
+        return null
+    end
+
     local lexers = vis.lexers
     
     -- Basic Style

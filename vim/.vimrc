@@ -21,6 +21,7 @@ Plug 'atelierbram/Base2Tone-vim'
 Plug 'kitten/vim-adventurous'
 Plug 'tjdevries/colorbuddy.nvim', { 'branch': 'dev' }
 Plug 'jesseleite/nvim-noirbuddy'
+Plug 'adigitoleo/vim-mellow'
 
 " Reload files edited externally
 Plug 'djoshea/vim-autoread'
@@ -290,16 +291,18 @@ try
   " colorscheme Base2Tone_LavenderDark
   " let g:airline_theme='Base2Tone_LavenderDark'
 
+  set background=dark
+  colorscheme adventurous
+  let g:airline_theme='Base2Tone_LavenderDark'
+
+  set background=dark
+  lua require("noirbuddy").setup()
+  
   " set background=light
   " colorscheme Base2Tone_LavenderLight
   " let g:airline_theme='Base2Tone_LavenderLight'
 
-  " set background=dark
-  " colorscheme adventurous
-  " let g:airline_theme='Base2Tone_LavenderDark'
-
-  set background=dark
-  lua require("noirbuddy").setup()
+  " colorscheme mellow
 catch
   try
     set background=dark
