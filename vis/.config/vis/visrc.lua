@@ -33,7 +33,7 @@ vis.events.subscribe(vis.events.INIT, function(win)
     
     -- Paste from system clipboard with vis-clipboard
     vis:map(vis.modes.NORMAL, '<C-v>', '"+p')
-    vis:map(vis.modes.INSERT, '<C-v>', '<Escape>"+pa')
+    vis:map(vis.modes.INSERT, '<C-v>', '<Escape>"+pi')
     
     -- Put selection content into system clipboard
     vis:map(vis.modes.VISUAL_LINE, '<C-c>', function() vis:feedkeys(':>vis-clipboard --copy<Enter>') end)
@@ -48,9 +48,6 @@ vis.events.subscribe(vis.events.WIN_OPEN, function(win)
     vis:command('set relativenumber')
     vis:command('set autoindent')
     vis:command('set cursorline on')
-    vis:command('set show-tabs on')
-    vis:command('set show-newlines on')
-    vis:command('set show-eof on')
 
     -- Python formatting settings
     vis:command('set colorcolumn 79')
@@ -61,12 +58,19 @@ vis.events.subscribe(vis.events.WIN_OPEN, function(win)
     end
 end)
 
-vis.events.subscribe(vis.events.START, function()
-    -- Global configuration options.
-    
-    -- Load plugins after all other config is done
-    -- lint = require_if_exists('https://github.com/roguh/vis-lint', 'vis-lint', 'init') or {}
+vis.events.subscribe(vis.events.INIT, function()
+    -- Load plugins with require(), download if necessary
+    lint = require_if_exists('https://github.com/roguh/vis-lint', 'vis-lint') or {}
     backup = require_if_exists('https://github.com/roguh/vis-backup', 'vis-backup', 'backup') or {}
+    shebang = require_if_exists('https://github.com/e-zk/vis-shebang', 'vis-shebang') or {}
+
+    -- A global variable for configuring vis-shebang
+    shebangs = {
+        ["#!/bin/sh"] = "bash",
+        ["#!/bin/bash"] = "bash",
+        ["#!/usr/bin/env python3"] = "python",
+        ["#!/usr/bin/env python"] = "python",
+    }
 
     -- Configure backup plugin
     backup.time_format = "%H-%M-%S"
@@ -172,16 +176,17 @@ vis.events.subscribe(vis.events.FILE_SAVE_POST, function(file, path)
 end)
 
 -- For loading plugins
-function require_if_exists(repo, directory, sub)
-  local name = directory .. '/' .. sub
-  module = require(name)
-  if module then
-    return module
+function require_if_exists(repo, directory, initfile)
+  initfile = initfile or 'init'
+  local name = directory .. '/' .. initfile
+  local location = os.getenv("HOME") .. "/.config/vis/"
+  local plugin_location = location .. directory
+
+  if os.rename(plugin_location, plugin_location) == nil then
+    run_command('cd ' .. location .. ' && git clone ' .. repo .. ' ' .. plugin_location)
+    vis:message('Installed plugin from repo: ' .. repo .. ' in ' .. location)
   end
 
-  local location = os.getenv("HOME") .. "/.config/vis/" .. directory
-  run_command('git clone ' .. repo .. ' ' .. location)
-  vis:message('Installed plugin from repo: ' .. repo .. ' in ' .. location)
   return require(name)
 end
 

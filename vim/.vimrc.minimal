@@ -52,16 +52,6 @@ set complete+=kspell
 " Reload a file if it's changed by another process
 set autoread
 
-" Don't run modeline commands when opening files.
-" This would read code in any file and run it!
-set nomodeline
-
-" No viminfo file
-set viminfo=
-
-" Keep 5 lines of history
-set history=5
-
 " Show line numbers
 set number
 set relativenumber
@@ -104,6 +94,12 @@ set backup
 set directory=~/tmp/swap//,~/tmp//
 set backupdir=~/tmp/backup//,~/tmp//
 set undodir=~/tmp/undo//,~/tmp//
+
+" No viminfo file
+" " default?
+" set viminfo=~/.viminfo
+set history=10000
+
 
 " Save backups with a timestamp and directory info
 au BufWritePre * let &backupext = '%' . strftime('%m-%d-%H:%M')
