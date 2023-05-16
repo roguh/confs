@@ -1,20 +1,18 @@
 [submodule "external/bash-sensible"]
 	path = external/bash-sensible
-	url = git@github.com:mrzool/bash-sensible
-  branch = master
+	url = https://github.com/mrzool/bash-sensible
 [submodule "external/commacd"]
 	path = external/commacd
-	url = git@github.com:shyiko/commacd
-  branch = master
+	url = https://github.com/shyiko/commacd
 [submodule "external/rsync-for-src.sh"]
 	path = external/rsync-for-src.sh
-	url = git@github.com:roguh/rsync-for-src.sh
+	url = https://github.com/roguh/rsync-for-src.sh
 [submodule "external/gocryptfs.sh"]
 	path = external/gocryptfs.sh
-	url = git@github.com:roguh/gocryptfs.sh
+	url = https://github.com/roguh/gocryptfs.sh
 [submodule "external/gp"]
 	path = external/gp
-	url = git@github.com:roguh/gp
+	url = https://github.com/roguh/gp
 [submodule "external/makeanywhere"]
 	path = external/makeanywhere
-	url = git@github.com:roguh/makeanywhere.git
+	url = https://github.com/roguh/makeanywhere.git
