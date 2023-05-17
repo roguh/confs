@@ -311,7 +311,7 @@ if status is-interactive
 
   # Waiting for https://github.com/starship/starship/issues/3305 to be fixed
   # Applying temp fix manually
-  if command -v starship
+  if command -v starship > /dev/null
     starship init fish | source
   end
   
