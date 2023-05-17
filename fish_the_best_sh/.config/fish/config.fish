@@ -1,4 +1,4 @@
-# Hugo O. Rivera's FISH config
+# Felina A. Rivera's FISH config
 # Remember to run `install_plugins` once.
 
 set LANG fr_FR.UTF-8
@@ -270,6 +270,7 @@ end
 # miniconda_fish_init
 
 if status is-interactive
+  echo Bienvenue dans fish, le shell amical et interactif :)
   echo Mater artium necessitas.
 
   if command -v xset > /dev/null 2>&1 && [ -n "$DISPLAY" ]

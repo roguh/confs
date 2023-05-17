@@ -1,3 +1,3 @@
 #!/bin/bash
-# Hugo O. Rivera's CERBERUS watchdog
+# Felina A. Rivera's CERBERUS watchdog
 notify-send "🐶" "$(pwd)\n$(cerberus.sh)"

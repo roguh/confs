@@ -17,7 +17,7 @@
 # source code below.
 #
 # © 2012 Valentin Haenel <valentin.haenel@gmx.de>
-# © 2018 Hugo Rivera
+# © 2018 Felina A. Rivera
 #
 # This program is free software. It comes without any warranty, to the extent
 # permitted by applicable law. You can redistribute it and/or modify it under
