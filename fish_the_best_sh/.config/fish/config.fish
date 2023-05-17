@@ -270,7 +270,7 @@ end
 # miniconda_fish_init
 
 if status is-interactive
-  echo Bienvenue dans fish, le shell amical et interactif :)
+  echo "Bienvenue dans fish, le shell amical et interactif :)"
   echo Mater artium necessitas.
 
   if command -v xset > /dev/null 2>&1 && [ -n "$DISPLAY" ]
